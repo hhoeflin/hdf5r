@@ -43,16 +43,16 @@ list.datasets(object, path = "/", recursive = TRUE, ...)
 
 extendDataSet(object, dims)
 
-\method{rbind}{H5D}(x, mat)
+\method{rbind}{H5D}(x, mat, ..., deparse.level = 1)
 
-\method{cbind}{H5D}(x, mat)
+\method{cbind}{H5D}(x, mat, ..., deparse.level = 1)
 
 \method{c}{H5D}(x, ...)
 
 h5unlink(object, name)
 }
 \arguments{
-\item{...}{Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset}}
+\item{...}{Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset} or ignored for \code{cbind} and \code{rbind}.}
 
 \item{object}{H5RefClass; H5 Reference Class to be used}
 
@@ -63,6 +63,12 @@ h5unlink(object, name)
 \item{recursive}{logical; Specify if object should be traversed recursively.}
 
 \item{dims}{numeric; Dimension vector to which dataset should be extended.}
+
+\item{x}{An object of class H5D; the dataset to add rows or columns to; Needs to be a matrix}
+
+\item{mat}{The matrix to add to x}
+
+\item{deparse.level}{Set to 1; ignored otherwise; only present as required by generic}
 }
 \description{
 Wrapper functions to provide h5 compatible interface.

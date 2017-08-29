@@ -5,7 +5,7 @@
 #' @param name character; Group/Filename to be created
 #' @param path character; Path named to be used for iteration.
 #' @param recursive logical; Specify if object should be traversed recursively.
-#' @param ... Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset}
+#' @param ... Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset} or ignored for \code{cbind} and \code{rbind}.
 #'
 #' @rdname h5-wrapper
 #' @export
@@ -131,32 +131,43 @@ extendDataSet <- function(object, dims) {
 }
 
 #' @rdname h5-wrapper
+#' @param x An object of class H5D; the dataset to add rows or columns to; Needs to be a matrix
+#' @param mat The matrix to add to x
+#' @param deparse.level Set to 1; ignored otherwise; only present as required by generic
 #' @export
-rbind.H5D <- function(x, mat) {
-  startx <- x$dims[1] + 1
-  endx <- x$dims[1] + nrow(mat)
+rbind.H5D <- function(x, mat, ..., deparse.level=1) {
+  xdims <- x$dims
+  if(length(xdims) != 2) {
+      stop("x needs to be a matrix (2-dimensionsal)")
+  }
+  startx <- xdims[1] + 1
+  endx <- xdims[1] + nrow(mat)
 
-  if(x$dims[2] != ncol(mat)) {
+  if(xdims[2] != ncol(mat)) {
     stop(sprintf("Data to append does not match dataset dimensions (%d != %d).",
-                 x$dims[2], ncol(mat)))
+                 xdims[2], ncol(mat)))
   }
 
-  x[startx:endx, 1:x$dims[2]] <- mat
+  x[startx:endx, 1:xdims[2]] <- mat
   invisible(x)
 }
 
 #' @rdname h5-wrapper
 #' @export
-cbind.H5D <- function(x, mat) {
-  starty <- x$dims[2] + 1
-  endy <- x$dims[2] + ncol(mat)
+cbind.H5D <- function(x, mat, ..., deparse.level=1) {
+  xdims <- x$dims
+  if(length(xdims) != 2) {
+      stop("x needs to be a matrix (2-dimensionsal)")
+  }
+  starty <- xdims[2] + 1
+  endy <- xdims[2] + ncol(mat)
 
-  if(x$dims[1] != nrow(mat)) {
+  if(xdims[1] != nrow(mat)) {
     stop(sprintf("Data to append does not match dataset dimensions (%d != %d).",
-                 x$dims[1], nrow(mat)))
+                 xdims[1], nrow(mat)))
   }
 
-  x[1:x$dims[1], starty:endy] <- mat
+  x[1:xdims[1], starty:endy] <- mat
   invisible(x)
 }
 
