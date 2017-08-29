@@ -2435,7 +2435,7 @@ SEXP set_dim_attribute(SEXP x, SEXP dim) {
 }
     
 
-SEXP as_hex(SEXP x) {
+SEXP R_as_hex(SEXP x) {
   SEXP as_hex_r = PROTECT(NEW_CHARACTER(XLENGTH(x)));
   char as_hex[17];
   

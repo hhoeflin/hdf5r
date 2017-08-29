@@ -22,7 +22,7 @@
 
 
 
-##' @useDynLib hdf5r
+##' @useDynLib hdf5r, .registration = TRUE
 NULL
 
 

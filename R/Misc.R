@@ -66,6 +66,6 @@ h5garbage_collect <- function() {
 ##' @author Holger Hoefling
 ##' @export
 as_hex <- function(x) {
-    return(paste0("0x", .Call("as_hex", x, PACKAGE="hdf5r")))
+    return(paste0("0x", .Call("R_as_hex", x, PACKAGE="hdf5r")))
 }
 
