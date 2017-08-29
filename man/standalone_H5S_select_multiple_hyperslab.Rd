@@ -25,4 +25,3 @@ Selects multiple hyperslabs in a space. Before the selection, the space selectio
 Holger Hoefling
 }
 \keyword{internal}
-

@@ -26,4 +26,3 @@ Get/Assign the dimensionality of the objects.
 \author{
 Holger Hoefling
 }
-

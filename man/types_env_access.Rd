@@ -28,4 +28,3 @@ original type
 \author{
 Holger Hoefling
 }
-

@@ -27,4 +27,3 @@ for data frames with extended factors, by adding the class \code{data.frame_ext}
 \author{
 Holger Hoefling
 }
-

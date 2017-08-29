@@ -2,10 +2,10 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_INTEGER-class}
+\alias{H5T_INTEGER-class}
+\alias{H5T_INTEGER}
 \alias{H5T_BITFIELD}
 \alias{H5T_BITFIELD-class}
-\alias{H5T_INTEGER}
-\alias{H5T_INTEGER-class}
 \title{Class for HDF5 integer-datatypes.}
 \value{
 Object of class \code{\link[=H5T_INTEGER-class]{H5T_INTEGER}}.
@@ -16,30 +16,24 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{set_sign}}{
+\item{\code{set_sign(sign)}}{
 
-\strong{Usage:}
-\preformatted{set_sign(sign)}
 This function implements the HDF5-API function H5Tset_sign.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetSign} for details.}
 
-\item{\code{get_sign}}{
+\item{\code{get_sign()}}{
 
-\strong{Usage:}
-\preformatted{get_sign()}
 This function implements the HDF5-API function H5Tget_sign.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSign} for details.}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Return a vector that describes the key features of the datatype}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

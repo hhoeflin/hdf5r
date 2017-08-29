@@ -23,4 +23,3 @@ of of length 1 with value 1, i.e. can be interpreted as a scalar.
 Holger Hoefling
 }
 \keyword{internal}
-

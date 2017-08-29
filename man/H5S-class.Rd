@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5S.R
 \docType{class}
 \name{H5S-class}
-\alias{H5S}
 \alias{H5S-class}
+\alias{H5S}
 \title{Class for representing HDF5 spaces}
 \value{
 Object of class \code{\link{H5S}}.
@@ -15,11 +15,9 @@ This class represents an HDF5 space-id. It inherits all functions of the
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(type = c("simple", "scalar", "null"), dims = NULL, maxdims = dims,
+  decode_buf = NULL, id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(type = c("simple", "scalar", "null"), dims = NULL, maxdims = dims,
-  decode_buf = NULL, id = NULL)}
 Create a new HDF5-space. This can be done by either specifying a space with appropriate dimensions or by
 decoding a character string that represents an encoded space
 
@@ -33,157 +31,107 @@ or a \code{scalar} or \code{null} space. See the HDF5 user guide on spaces to ex
 \item{id}{An existing HDF5 id; internal use only}
 }}
 
-\item{\code{copy}}{
+\item{\code{copy()}}{
 
-\strong{Usage:}
-\preformatted{copy()}
 This function implements the HDF5-API function H5Scopy. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Copy} for details.}
 
-\item{\code{encode}}{
+\item{\code{encode()}}{
 
-\strong{Usage:}
-\preformatted{encode()}
 This function implements the HDF5-API function H5Sencode. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Encode} for details.}
 
-\item{\code{is_simple}}{
+\item{\code{is_simple()}}{
 
-\strong{Usage:}
-\preformatted{is_simple()}
 This function implements the HDF5-API function H5Sis_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-IsSimple} for details.}
 
-\item{\code{get_simple_extent_ndims}}{
+\item{\code{get_simple_extent_ndims()}}{
 
-\strong{Usage:}
-\preformatted{get_simple_extent_ndims()}
 This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNdims} for details.}
 
-\item{\code{offset_simple}}{
+\item{\code{offset_simple(offset)}}{
 
-\strong{Usage:}
-\preformatted{offset_simple(offset)}
 This function implements the HDF5-API function H5Soffset_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-OffsetSimple} for details.}
 
-\item{\code{get_simple_extent_dims}}{
+\item{\code{get_simple_extent_dims()}}{
 
-\strong{Usage:}
-\preformatted{get_simple_extent_dims()}
 This function implements the HDF5-API function H5Sget_simple_extent_dims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentDims} for details.}
 
-\item{\code{get_simple_extent_npoints}}{
+\item{\code{get_simple_extent_npoints()}}{
 
-\strong{Usage:}
-\preformatted{get_simple_extent_npoints()}
 This function implements the HDF5-API function H5Sget_simple_extent_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNpoints} for details.}
 
-\item{\code{get_simple_extent_type}}{
+\item{\code{get_simple_extent_type()}}{
 
-\strong{Usage:}
-\preformatted{get_simple_extent_type()}
 This function implements the HDF5-API function H5Sget_simple_extent_type. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentType} for details.}
 
-\item{\code{extent_copy}}{
+\item{\code{extent_copy(h5s_source)}}{
 
-\strong{Usage:}
-\preformatted{extent_copy(h5s_source)}
 This function implements the HDF5-API function H5Sextent_copy. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentCopy} for details.}
 
-\item{\code{extent_equal}}{
+\item{\code{extent_equal(h5s_cmp)}}{
 
-\strong{Usage:}
-\preformatted{extent_equal(h5s_cmp)}
 This function implements the HDF5-API function H5Sextent_equal. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentEqual} for details.}
 
-\item{\code{set_extent_simple}}{
+\item{\code{set_extent_simple(dims, maxdims)}}{
 
-\strong{Usage:}
-\preformatted{set_extent_simple(dims, maxdims)}
 This function implements the HDF5-API function H5Sset_extent_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentSimple} for details.}
 
-\item{\code{set_extent_none}}{
+\item{\code{set_extent_none()}}{
 
-\strong{Usage:}
-\preformatted{set_extent_none()}
 This function implements the HDF5-API function H5Sset_extent_none. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentNone} for details.}
 
-\item{\code{get_select_type}}{
+\item{\code{get_select_type()}}{
 
-\strong{Usage:}
-\preformatted{get_select_type()}
 This function implements the HDF5-API function H5Sget_select_type. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectType} for details.}
 
-\item{\code{get_select_npoints}}{
+\item{\code{get_select_npoints()}}{
 
-\strong{Usage:}
-\preformatted{get_select_npoints()}
 This function implements the HDF5-API function H5Sget_select_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectNpoints} for details.}
 
-\item{\code{get_select_hyper_nblocks}}{
+\item{\code{get_select_hyper_nblocks()}}{
 
-\strong{Usage:}
-\preformatted{get_select_hyper_nblocks()}
 This function implements the HDF5-API function H5Sget_select_hyper_nblocks. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperNblocks} for details.}
 
-\item{\code{get_select_hyper_blocklist}}{
+\item{\code{get_select_hyper_blocklist(startblock = 0,
+  numblocks = (self$get_select_hyper_nblocks() - startblock))}}{
 
-\strong{Usage:}
-\preformatted{get_select_hyper_blocklist(startblock = 0,
-  numblocks = (self$get_select_hyper_nblocks() - startblock))}
 This function implements the HDF5-API function H5Sget_select_hyper_blocklist. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperBlocklist} for details.}
 
-\item{\code{get_select_elem_npoints}}{
+\item{\code{get_select_elem_npoints()}}{
 
-\strong{Usage:}
-\preformatted{get_select_elem_npoints()}
 This function implements the HDF5-API function H5Sget_select_elem_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemNpoints} for details.}
 
-\item{\code{get_select_elem_pointlist}}{
+\item{\code{get_select_elem_pointlist(startpoint = 0,
+  numpoints = (self$get_select_elem_npoints() - startpoint))}}{
 
-\strong{Usage:}
-\preformatted{get_select_elem_pointlist(startpoint = 0,
-  numpoints = (self$get_select_elem_npoints() - startpoint))}
 This function implements the HDF5-API function H5Sget_select_elem_pointlist. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemPointlist} for details.}
 
-\item{\code{get_select_bounds}}{
+\item{\code{get_select_bounds()}}{
 
-\strong{Usage:}
-\preformatted{get_select_bounds()}
 This function implements the HDF5-API function H5Sget_select_bounds. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectBounds} for details.}
 
-\item{\code{select_all}}{
+\item{\code{select_all()}}{
 
-\strong{Usage:}
-\preformatted{select_all()}
 This function implements the HDF5-API function H5Sselect_all. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectAll} for details.}
 
-\item{\code{select_none}}{
+\item{\code{select_none()}}{
 
-\strong{Usage:}
-\preformatted{select_none()}
 This function implements the HDF5-API function H5Sselect_none. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectNone} for details.}
 
-\item{\code{select_valid}}{
+\item{\code{select_valid()}}{
 
-\strong{Usage:}
-\preformatted{select_valid()}
 This function implements the HDF5-API function H5Sselect_valid. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectValid} for details.}
 
-\item{\code{select_elements}}{
+\item{\code{select_elements(coord, op = h5const$H5S_SELECT_SET, byrow = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{select_elements(coord, op = h5const$H5S_SELECT_SET, byrow = TRUE)}
 This function implements the HDF5-API function H5Sselect_elements. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectElements} for details.}
 
-\item{\code{select_hyperslab}}{
+\item{\code{select_hyperslab(start, count, stride = NULL, block = NULL,
+  op = h5const$H5S_SELECT_SET)}}{
 
-\strong{Usage:}
-\preformatted{select_hyperslab(start, count, stride = NULL, block = NULL,
-  op = h5const$H5S_SELECT_SET)}
 This function implements the HDF5-API function H5Sselect_hyperslab. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectHyperslab} for details.}
 
-\item{\code{subset}}{
+\item{\code{subset(args, op = h5const$H5S_SELECT_SET, envir = parent.frame())}}{
 
-\strong{Usage:}
-\preformatted{subset(args, op = h5const$H5S_SELECT_SET, envir = parent.frame())}
 Subsetting the space. This is mainly intended as a helper function for the '[' function, but
 can also be used on its own.
 
@@ -196,28 +144,22 @@ For interactive use we recomment the use of the \code{[} operator.}
 \item{envir}{The environment in which to evaluate \code{args}}
 }}
 
-\item{\code{dims}}{Active method
+\item{\code{dims()}}{
 
-\strong{Usage:}
-\preformatted{dims()}
 Get the dimensions of the space. Return NULL if the space is not simple (i.e. NULL-space) or a length-0 integer if it is a scalar}
 
-\item{\code{maxdims}}{Active method
+\item{\code{maxdims()}}{
 
-\strong{Usage:}
-\preformatted{maxdims()}
 Get the maximal dimensions of the space.Return NULL if the space is not simple (i.e. NULL-space) or a length-0 integer if it is a scalar}
 
-\item{\code{rank}}{Active method
+\item{\code{rank()}}{
 
-\strong{Usage:}
-\preformatted{rank()}
 This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNdims} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

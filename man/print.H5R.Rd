@@ -23,4 +23,3 @@ Rudimentary printing of information of the object, mainly its length
 \author{
 Holger Hoefling
 }
-

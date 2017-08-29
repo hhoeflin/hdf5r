@@ -23,4 +23,3 @@ Coerce an \code{H5R} object to a vector - in practice this just means setting th
 \author{
 Holger Hoefling
 }
-

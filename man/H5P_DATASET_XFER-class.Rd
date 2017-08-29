@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_DATASET_XFER-class}
-\alias{H5P_DATASET_XFER}
 \alias{H5P_DATASET_XFER-class}
+\alias{H5P_DATASET_XFER}
 \title{Class for HDF5 property list for dataset transfer}
 \value{
 Object of class \code{\link[=H5P_DATASET_XFER-class]{H5P_DATASET_XFER}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_DATASET_XFER}}
 
 \strong{Parameters:}
@@ -25,59 +23,45 @@ Create a new class of type \code{\link{H5P_DATASET_XFER}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_buffer}}{
+\item{\code{set_buffer(size = 2^20)}}{
 
-\strong{Usage:}
-\preformatted{set_buffer(size = 2^20)}
 This function implements the HDF5-API function H5Pset_buffer.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBuffer} for details.}
 
-\item{\code{set_edc_check}}{
+\item{\code{set_edc_check(check = h5const$H5Z_ENABLE_EDC)}}{
 
-\strong{Usage:}
-\preformatted{set_edc_check(check = h5const$H5Z_ENABLE_EDC)}
 This function implements the HDF5-API function H5Pset_edc_check.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetEdcCheck} for details.}
 
-\item{\code{get_edc_check}}{
+\item{\code{get_edc_check()}}{
 
-\strong{Usage:}
-\preformatted{get_edc_check()}
 This function implements the HDF5-API function H5Pget_edc_check.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetEdcCheck} for details.}
 
-\item{\code{set_hyper_vector_size}}{
+\item{\code{set_hyper_vector_size(size = 2^10)}}{
 
-\strong{Usage:}
-\preformatted{set_hyper_vector_size(size = 2^10)}
 This function implements the HDF5-API function H5Pset_hyper_vector_size.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetHyperVectorSize} for details.}
 
-\item{\code{get_hyper_vector_size}}{
+\item{\code{get_hyper_vector_size()}}{
 
-\strong{Usage:}
-\preformatted{get_hyper_vector_size()}
 This function implements the HDF5-API function H5Pget_hyper_vector_size.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetHyperVectorSize} for details.}
 
-\item{\code{set_btree_ratios}}{
+\item{\code{set_btree_ratios(left, middle, right)}}{
 
-\strong{Usage:}
-\preformatted{set_btree_ratios(left, middle, right)}
 This function implements the HDF5-API function H5Pset_btree_ratios.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBtreeRatios} for details.}
 
-\item{\code{get_btree_ratios}}{
+\item{\code{get_btree_ratios()}}{
 
-\strong{Usage:}
-\preformatted{get_btree_ratios()}
 This function implements the HDF5-API function H5Pget_btree_ratios.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetBtreeRatios} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

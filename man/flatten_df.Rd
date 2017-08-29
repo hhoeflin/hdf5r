@@ -27,4 +27,3 @@ character variables.
 \author{
 Holger Hoefling
 }
-

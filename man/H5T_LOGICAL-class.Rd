@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_LOGICAL-class}
-\alias{H5T_LOGICAL}
 \alias{H5T_LOGICAL-class}
+\alias{H5T_LOGICAL}
 \title{Class for HDF5 logical datatypes. This is an enum with the 3 values FALSE, TRUE and NA mapped on values 0, 1 and 2.
 Is transparently mapped onto a logical variable}
 \value{
@@ -15,10 +15,8 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(include_NA = TRUE, id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(include_NA = TRUE, id = NULL)}
 Create a logical datatype. This is
 internally represented by an ENUM-type
 
@@ -27,10 +25,10 @@ internally represented by an ENUM-type
 \item{id}{Internal use only}
 }}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_ENUM-class]{H5T_ENUM}}
 }
-
+\author{
+Holger Hoefling
+}

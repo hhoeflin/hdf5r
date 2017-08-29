@@ -19,4 +19,3 @@ R garbage collection and currenctly has to be triggered by hand.
 \author{
 Holger Hoefling
 }
-

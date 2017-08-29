@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_LINK_ACCESS-class}
-\alias{H5P_LINK_ACCESS}
 \alias{H5P_LINK_ACCESS-class}
+\alias{H5P_LINK_ACCESS}
 \title{Class for HDF5 property list for link access}
 \value{
 Object of class \code{\link[=H5P_LINK_ACCESS-class]{H5P_LINK_ACCESS}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_LINK_ACCESS}}
 
 \strong{Parameters:}
@@ -25,52 +23,40 @@ Create a new class of type \code{\link{H5P_LINK_ACCESS}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_nlinks}}{
+\item{\code{set_nlinks(nlinks)}}{
 
-\strong{Usage:}
-\preformatted{set_nlinks(nlinks)}
 This function implements the HDF5-API function H5Pset_nlinks.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetNlinks} for details.}
 
-\item{\code{get_nlinks}}{
+\item{\code{get_nlinks()}}{
 
-\strong{Usage:}
-\preformatted{get_nlinks()}
 This function implements the HDF5-API function H5Pget_nlinks.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetNlinks} for details.}
 
-\item{\code{set_elink_prefix}}{
+\item{\code{set_elink_prefix(elink_prefix)}}{
 
-\strong{Usage:}
-\preformatted{set_elink_prefix(elink_prefix)}
 This function implements the HDF5-API function H5Pset_elink_prefix.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetElinkPrefix} for details.}
 
-\item{\code{get_elink_prefix}}{
+\item{\code{get_elink_prefix()}}{
 
-\strong{Usage:}
-\preformatted{get_elink_prefix()}
 This function implements the HDF5-API function H5Pget_elink_prefix.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetElinkPrefix} for details.}
 
-\item{\code{set_elink_acc_flags}}{
+\item{\code{set_elink_acc_flags(elink_acc_flags = h5const$H5F_ACC_RDWR)}}{
 
-\strong{Usage:}
-\preformatted{set_elink_acc_flags(elink_acc_flags = h5const$H5F_ACC_RDWR)}
 This function implements the HDF5-API function H5Pset_elink_acc_flags.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetElinkAccFlags} for details.}
 
-\item{\code{get_elink_acc_flags}}{
+\item{\code{get_elink_acc_flags()}}{
 
-\strong{Usage:}
-\preformatted{get_elink_acc_flags()}
 This function implements the HDF5-API function H5Pget_elink_acc_flags.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetElinkAccFlags} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5S.R
 \docType{class}
 \name{H5S_DEFAULT-class}
-\alias{H5S_DEFAULT}
 \alias{H5S_DEFAULT-class}
+\alias{H5S_DEFAULT}
 \title{Class for HDF5 default space}
 \value{
 Object of class \code{\link[=H5S_DEFAULT-class]{H5S_DEFAULT}}.
@@ -13,19 +13,10 @@ It inherits all functions of the \code{\link{H5S-class}}. As this is implemented
 all functions that work for H5S-class objects will fail. It is likely better to implement this as a separate default class,
 avoid the id-tracking associated with it (which doesn't make sense anyway). Should find a better way to handle this.
 }
-\section{Methods}{
 
-\describe{
-\item{\code{new}}{
-
-\strong{Usage:}
-\preformatted{new(id)}
-NO DOCUMENTATION AVAILABLE}
-}}
-\author{
-Holger Hoefling
-}
 \seealso{
 H5Class_overview, \code{\link[=H5S-class]{H5S}}
 }
-
+\author{
+Holger Hoefling
+}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_COMPOUND-class}
-\alias{H5T_COMPOUND}
 \alias{H5T_COMPOUND-class}
+\alias{H5T_COMPOUND}
 \title{Class for HDF5 compound datatypes.}
 \value{
 Object of class \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}.
@@ -14,10 +14,8 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(labels, dtypes, size = NULL, offset = NULL, id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(labels, dtypes, size = NULL, offset = NULL, id = NULL)}
 Create at compound type that is the HDF5 equivalent of a table
 
 \strong{Parameters:}
@@ -31,48 +29,36 @@ so that datatypes are aligned with memory addresses. If \code{NULL}, inferred au
 \item{id}{Internal use only}
 }}
 
-\item{\code{pack}}{
+\item{\code{pack()}}{
 
-\strong{Usage:}
-\preformatted{pack()}
 This function implements the HDF5-API function H5Tpack.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Pack} for details.}
 
-\item{\code{get_cpd_types}}{
+\item{\code{get_cpd_types()}}{
 
-\strong{Usage:}
-\preformatted{get_cpd_types()}
 Return \code{\link{H5T-class}} objects that represent the datatypes of the columns of the 
 compound object. Returned as a list if more than 1}
 
-\item{\code{get_cpd_labels}}{
+\item{\code{get_cpd_labels()}}{
 
-\strong{Usage:}
-\preformatted{get_cpd_labels()}
 Return the labels of the columns as a character vector}
 
-\item{\code{get_cpd_classes}}{
+\item{\code{get_cpd_classes()}}{
 
-\strong{Usage:}
-\preformatted{get_cpd_classes()}
 Return the classes of the columns as an object of type \code{\link{factor_ext}}}
 
-\item{\code{get_cpd_offsets}}{
+\item{\code{get_cpd_offsets()}}{
 
-\strong{Usage:}
-\preformatted{get_cpd_offsets()}
 Return the offsets of the datatypes}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Print a detailed description of the datatype; this is experimental}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

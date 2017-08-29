@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_ARRAY-class}
-\alias{H5T_ARRAY}
 \alias{H5T_ARRAY-class}
+\alias{H5T_ARRAY}
 \title{Class for HDF5 array datatypes.}
 \value{
 Object of class \code{\link[=H5T_ARRAY-class]{H5T_ARRAY}}.
@@ -14,10 +14,8 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(dims, dtype_base, id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(dims, dtype_base, id = NULL)}
 Create an array datatype.
 
 \strong{Parameters:}
@@ -27,37 +25,29 @@ Create an array datatype.
 \item{id}{internal use only}
 }}
 
-\item{\code{get_array_ndims}}{
+\item{\code{get_array_ndims()}}{
 
-\strong{Usage:}
-\preformatted{get_array_ndims()}
 This function implements the HDF5-API function H5Tget_array_ndims.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetArrayNdims} for details.}
 
-\item{\code{get_array_dims}}{
+\item{\code{get_array_dims()}}{
 
-\strong{Usage:}
-\preformatted{get_array_dims()}
 This function implements the HDF5-API function H5Tget_array_dims2.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetArrayDims2} for details.}
 
-\item{\code{get_super}}{
+\item{\code{get_super()}}{
 
-\strong{Usage:}
-\preformatted{get_super()}
 This function implements the HDF5-API function H5Tget_super.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSuper} for details.}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Print a detailed description of the datatype; this is experimental}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

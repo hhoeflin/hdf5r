@@ -23,4 +23,3 @@ object itself as it assumes it is already an id.
 Holger Hoefling
 }
 \keyword{internal}
-

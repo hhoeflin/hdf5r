@@ -32,4 +32,3 @@ In this page this is heavily used, as constants in HDF5 can be arbitrary integer
 \author{
 Holger Hoefling
 }
-

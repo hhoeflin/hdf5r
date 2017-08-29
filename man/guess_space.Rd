@@ -26,4 +26,3 @@ Creates a dataspace that fits an object so that it can be written into a dataset
 \author{
 Holger Hoefling
 }
-

@@ -24,4 +24,3 @@ if the names are \code{NULL}.
 \author{
 Holger Hoefling
 }
-

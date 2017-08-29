@@ -31,4 +31,4 @@ SystemRequirements: GNU make (on Linux/Mac) or cmake (on windows); HDF5 (>=
     1.8.13)
 VignetteBuilder: knitr
 NeedsCompilation: yes
-RoxygenNote: 5.0.1.9001
+RoxygenNote: 6.0.1.9000

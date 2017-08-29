@@ -26,4 +26,3 @@ by the option \code{hdf5r.point_to_hyperslab_ratio}. If this is 1, then always h
 Holger Hoefling
 }
 \keyword{internal}
-

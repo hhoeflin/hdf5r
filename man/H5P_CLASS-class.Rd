@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_CLASS-class}
-\alias{H5P_CLASS}
 \alias{H5P_CLASS-class}
+\alias{H5P_CLASS}
 \title{Class for HDF5 property list classes (not HDF5 property lists)}
 \value{
 Object of class \code{\link[=H5P_CLASS-class]{H5P_CLASS}}.
@@ -16,17 +16,15 @@ to get the class type of an HDF5 identifier that is known to be a property list,
 \section{Methods}{
 
 \describe{
-\item{\code{equal}}{
+\item{\code{equal(cmp)}}{
 
-\strong{Usage:}
-\preformatted{equal(cmp)}
 This function implements the HDF5-API function H5Pequal.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Equal} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

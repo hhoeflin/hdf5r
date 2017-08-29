@@ -21,4 +21,3 @@ Uses the HDF5 function \code{H5Fis_hdf5} to check if a file is of type HDF5.
 \author{
 Holger Hoefling
 }
-

@@ -21,4 +21,3 @@ Return the version of the HDF5-API and print it to the screen if requested
 \author{
 Holger Hoefling
 }
-

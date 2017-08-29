@@ -16,4 +16,3 @@ h5types$H5T_NATIVE_DOUBLE
 \author{
 Holger Hoefling
 }
-

@@ -23,4 +23,3 @@ Coerces an extended factor to a character vector. Each item is replaced with it 
 \author{
 Holger Hoefling
 }
-

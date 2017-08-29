@@ -30,4 +30,3 @@ For each argument check if it can be used as a hyperslab, potentially after sort
 Holger Hoefling
 }
 \keyword{internal}
-

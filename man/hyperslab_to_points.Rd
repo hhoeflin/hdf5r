@@ -22,4 +22,3 @@ Uses the information of a hyperslab and turns it into an explicit vector.
 Holger Hoefling
 }
 \keyword{internal}
-

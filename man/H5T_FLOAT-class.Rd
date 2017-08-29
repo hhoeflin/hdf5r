@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_FLOAT-class}
-\alias{H5T_FLOAT}
 \alias{H5T_FLOAT-class}
+\alias{H5T_FLOAT}
 \title{Class for HDF5 floating point datatypes.}
 \value{
 Object of class \code{\link[=H5T_FLOAT-class]{H5T_FLOAT}}.
@@ -14,72 +14,54 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{set_fields}}{
+\item{\code{set_fields(spos, epos, esize, mpos, msize)}}{
 
-\strong{Usage:}
-\preformatted{set_fields(spos, epos, esize, mpos, msize)}
 This function implements the HDF5-API function H5Tset_fields.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetFields} for details.}
 
-\item{\code{get_fields}}{
+\item{\code{get_fields()}}{
 
-\strong{Usage:}
-\preformatted{get_fields()}
 This function implements the HDF5-API function H5Tget_fields.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetFields} for details.}
 
-\item{\code{set_ebias}}{
+\item{\code{set_ebias(ebias)}}{
 
-\strong{Usage:}
-\preformatted{set_ebias(ebias)}
 This function implements the HDF5-API function H5Tset_ebias.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetEbias} for details.}
 
-\item{\code{get_ebias}}{
+\item{\code{get_ebias()}}{
 
-\strong{Usage:}
-\preformatted{get_ebias()}
 This function implements the HDF5-API function H5Tget_ebias.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetEbias} for details.}
 
-\item{\code{set_norm}}{
+\item{\code{set_norm(norm)}}{
 
-\strong{Usage:}
-\preformatted{set_norm(norm)}
 This function implements the HDF5-API function H5Tset_norm.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetNorm} for details.}
 
-\item{\code{get_norm}}{
+\item{\code{get_norm()}}{
 
-\strong{Usage:}
-\preformatted{get_norm()}
 This function implements the HDF5-API function H5Tget_norm.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetNorm} for details.}
 
-\item{\code{set_inpad}}{
+\item{\code{set_inpad(inpad)}}{
 
-\strong{Usage:}
-\preformatted{set_inpad(inpad)}
 This function implements the HDF5-API function H5Tset_inpad.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetInpad} for details.}
 
-\item{\code{get_inpad}}{
+\item{\code{get_inpad()}}{
 
-\strong{Usage:}
-\preformatted{get_inpad()}
 This function implements the HDF5-API function H5Tget_inpad.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetInpad} for details.}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Print a detailed description of the datatype; this is experimental}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

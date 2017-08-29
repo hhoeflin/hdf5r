@@ -22,4 +22,3 @@ an id that is no longer needed using the appropriate HDF5 library function.
 \author{
 Holger Hoefling
 }
-

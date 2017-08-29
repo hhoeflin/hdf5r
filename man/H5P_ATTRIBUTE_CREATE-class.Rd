@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_ATTRIBUTE_CREATE-class}
-\alias{H5P_ATTRIBUTE_CREATE}
 \alias{H5P_ATTRIBUTE_CREATE-class}
+\alias{H5P_ATTRIBUTE_CREATE}
 \title{Class for HDF5 property list for attribute creation}
 \value{
 Object of class \code{\link[=H5P_ATTRIBUTE_CREATE-class]{H5P_ATTRIBUTE_CREATE}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_ATTRIBUTE_CREATE}}
 
 \strong{Parameters:}
@@ -25,22 +23,18 @@ Create a new class of type \code{\link{H5P_ATTRIBUTE_CREATE}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_char_encoding}}{
+\item{\code{set_char_encoding(encoding = h5const$H5T_CSET_UTF8)}}{
 
-\strong{Usage:}
-\preformatted{set_char_encoding(encoding = h5const$H5T_CSET_UTF8)}
 This function implements the HDF5-API function H5Pset_char_encoding. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCharEncoding} for details.}
 
-\item{\code{get_char_encoding}}{
+\item{\code{get_char_encoding()}}{
 
-\strong{Usage:}
-\preformatted{get_char_encoding()}
 This function implements the HDF5-API function H5Pget_char_encoding. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCharEncoding} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

@@ -23,4 +23,3 @@ Formatting of H5R objects
 \author{
 Holger Hoefling
 }
-

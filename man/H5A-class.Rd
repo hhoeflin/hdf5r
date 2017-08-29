@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5A.R
 \docType{class}
 \name{H5A-class}
-\alias{H5A}
 \alias{H5A-class}
+\alias{H5A}
 \title{Class for representing HDF5 attributes}
 \value{
 Object of class \code{\link{H5A}}.
@@ -15,53 +15,39 @@ This class represents an HDF5 group-id. It inherits all functions of the
 \section{Methods}{
 
 \describe{
-\item{\code{get_info}}{
+\item{\code{get_info()}}{
 
-\strong{Usage:}
-\preformatted{get_info()}
 This function implements the HDF5-API function H5Aget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo} for details.}
 
-\item{\code{attr_name}}{
+\item{\code{attr_name()}}{
 
-\strong{Usage:}
-\preformatted{attr_name()}
 This function implements the HDF5-API function H5Aget_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetName} for details.}
 
-\item{\code{get_space}}{
+\item{\code{get_space()}}{
 
-\strong{Usage:}
-\preformatted{get_space()}
 This function implements the HDF5-API function H5Aget_space.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetSpace} for details.}
 
-\item{\code{get_type}}{
+\item{\code{get_type(native = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{get_type(native = TRUE)}
 This function implements the HDF5-API function H5Aget_type.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetType} for details.}
 
-\item{\code{get_storage_size}}{
+\item{\code{get_storage_size()}}{
 
-\strong{Usage:}
-\preformatted{get_storage_size()}
 This function implements the HDF5-API function H5Aget_storage_size.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetStorageSize} for details.}
 
-\item{\code{read_low_level}}{
+\item{\code{read_low_level(buffer, mem_type, duplicate_buffer = FALSE)}}{
 
-\strong{Usage:}
-\preformatted{read_low_level(buffer, mem_type, duplicate_buffer = FALSE)}
 Only for advanced users. See documentation for \code{read} instead.
 This function implements the HDF5-API function H5Aread.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Read} for details.}
 
-\item{\code{read}}{
+\item{\code{read(flags = getOption("hdf5r.h5tor_default"), drop = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{read(flags = getOption("hdf5r.h5tor_default"), drop = TRUE)}
 Reads the data of the attribute and returns it as an R-object
 
 \strong{Parameters:}
@@ -70,18 +56,14 @@ Reads the data of the attribute and returns it as an R-object
 \item{drop}{Logical. Should dimensions of length 1 be dropped (R-default for arrays)}
 }}
 
-\item{\code{write_low_level}}{
+\item{\code{write_low_level(buffer, mem_type)}}{
 
-\strong{Usage:}
-\preformatted{write_low_level(buffer, mem_type)}
 Only for advanced users. See documentation for \code{write} instead.
 This function implements the HDF5-API function H5Awrite.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Write} for details.}
 
-\item{\code{write}}{
+\item{\code{write(robj, mem_type = NULL, flush = getOption("hdf5r.flush_on_write"))}}{
 
-\strong{Usage:}
-\preformatted{write(robj, mem_type = NULL, flush = getOption("hdf5r.flush_on_write"))}
 Writes the data of \code{robj} to the attribute
 
 \strong{Parameters:}
@@ -91,17 +73,15 @@ Writes the data of \code{robj} to the attribute
 advanced development feature and may be removed in the future.}
 }}
 
-\item{\code{flush}}{
+\item{\code{flush(scope = h5const$H5F_SCOPE_GLOBAL)}}{
 
-\strong{Usage:}
-\preformatted{flush(scope = h5const$H5F_SCOPE_GLOBAL)}
 This function implements the HDF5-API function H5Fflush.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

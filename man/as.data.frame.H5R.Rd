@@ -36,4 +36,3 @@ Coerce an \code{H5R} object to a data.frame
 \author{
 Holger Hoefling
 }
-

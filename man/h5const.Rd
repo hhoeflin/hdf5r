@@ -41,4 +41,3 @@ bitwOr(h5const$H5TOR_CONV_UINT64_NA, h5const$H5TOR_CONV_INT64_INT_NOLOSS)
 \author{
 Holger Hoefling
 }
-

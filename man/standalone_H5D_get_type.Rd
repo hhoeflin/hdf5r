@@ -26,4 +26,3 @@ certain circumstances
 Holger Hoefling
 }
 \keyword{internal}
-

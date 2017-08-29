@@ -21,4 +21,3 @@ Returns the slot that describes the length of the object
 \author{
 Holger Hoefling
 }
-

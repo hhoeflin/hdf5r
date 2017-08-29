@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_ENUM-class}
-\alias{H5T_ENUM}
 \alias{H5T_ENUM-class}
+\alias{H5T_ENUM}
 \title{Class for HDF5 enumeration datatypes.}
 \value{
 Object of class \code{\link[=H5T_ENUM-class]{H5T_ENUM}}.
@@ -14,10 +14,8 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(labels, values = seq_along(labels), id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(labels, values = seq_along(labels), id = NULL)}
 Create an enumeration datatype. This is either a factor-like object or a logical variable (that is
 internally represented as an ENUM-type.
 
@@ -30,40 +28,30 @@ will be ignored. The labels will be \code{FALSE} and \code{TRUE} for values 0 an
 \item{id}{Internal use only}
 }}
 
-\item{\code{get_labels}}{
+\item{\code{get_labels()}}{
 
-\strong{Usage:}
-\preformatted{get_labels()}
 Return all the labels of the enumeration type}
 
-\item{\code{get_values}}{
+\item{\code{get_values()}}{
 
-\strong{Usage:}
-\preformatted{get_values()}
 Return the values of the enumeration type}
 
-\item{\code{set_size}}{
+\item{\code{set_size(size)}}{
 
-\strong{Usage:}
-\preformatted{set_size(size)}
 Base type of every enum is \code{H5T_INTEGER}. This disables the set_size function}
 
-\item{\code{get_super}}{
+\item{\code{get_super()}}{
 
-\strong{Usage:}
-\preformatted{get_super()}
 Returns \code{\link{H5T_INTEGER}} that is the base type of the enumeration}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Print a detailed description of the datatype; this is experimental}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

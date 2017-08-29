@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_OBJECT_CREATE-class}
-\alias{H5P_OBJECT_CREATE}
 \alias{H5P_OBJECT_CREATE-class}
+\alias{H5P_OBJECT_CREATE}
 \title{Class for HDF5 property list for object creation}
 \value{
 Object of class \code{\link[=H5P_OBJECT_CREATE-class]{H5P_OBJECT_CREATE}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_OBJECT_CREATE}}
 
 \strong{Parameters:}
@@ -25,46 +23,34 @@ Create a new class of type \code{\link{H5P_OBJECT_CREATE}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_obj_track_times}}{
+\item{\code{set_obj_track_times(track_times = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{set_obj_track_times(track_times = TRUE)}
 This function implements the HDF5-API function H5Pset_obj_track_times. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetObjTrackTimes} for details.}
 
-\item{\code{get_obj_track_times}}{
+\item{\code{get_obj_track_times()}}{
 
-\strong{Usage:}
-\preformatted{get_obj_track_times()}
 This function implements the HDF5-API function H5Pget_obj_track_times. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetObjTrackTimes} for details.}
 
-\item{\code{set_attr_phase_change}}{
+\item{\code{set_attr_phase_change(max_compact, min_dense)}}{
 
-\strong{Usage:}
-\preformatted{set_attr_phase_change(max_compact, min_dense)}
 This function implements the HDF5-API function H5Pset_attr_phase_change. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAttrPhaseChange} for details.}
 
-\item{\code{get_attr_phase_change}}{
+\item{\code{get_attr_phase_change()}}{
 
-\strong{Usage:}
-\preformatted{get_attr_phase_change()}
 This function implements the HDF5-API function H5Pget_attr_phase_change. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAttrPhaseChange} for details.}
 
-\item{\code{set_attr_creation_order}}{
+\item{\code{set_attr_creation_order(crt_order_flags = 0)}}{
 
-\strong{Usage:}
-\preformatted{set_attr_creation_order(crt_order_flags = 0)}
 This function implements the HDF5-API function H5Pset_attr_creation_order. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAttrCreationOrder} for details.}
 
-\item{\code{get_attr_creation_order}}{
+\item{\code{get_attr_creation_order()}}{
 
-\strong{Usage:}
-\preformatted{get_attr_creation_order()}
 This function implements the HDF5-API function H5Pget_attr_creation_order. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAttrCreationOrder} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

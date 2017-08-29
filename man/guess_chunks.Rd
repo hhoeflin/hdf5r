@@ -33,4 +33,3 @@ As a chunk is never allowed to be larger than the maximum dimension of the datas
 \author{
 Holger Hoefling
 }
-

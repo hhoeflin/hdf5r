@@ -22,4 +22,3 @@ The function is similar to the \code{expand.grid} function
 Holger Hoefling
 }
 \keyword{internal}
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5File.R
 \docType{class}
 \name{H5File-class}
-\alias{H5File}
 \alias{H5File-class}
+\alias{H5File}
 \title{Class for interacting with HDF5 files.}
 \value{
 Object of class \code{\link{H5File}}.
@@ -15,12 +15,10 @@ This class represents an open HDF5 File-id. It inherits all functions of the
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
-
-\strong{Usage:}
-\preformatted{new(filename, mode = c("a", "r", "r+", "w", "w-", "x"),
+\item{\code{new(filename = NULL, mode = c("a", "r", "r+", "w", "w-", "x"),
   file_create_pl = h5const$H5P_DEFAULT,
-  file_access_pl = h5const$H5P_DEFAULT, id = NULL)}
+  file_access_pl = h5const$H5P_DEFAULT, id = NULL)}}{
+
 Opens or creates a new HDF5 File
 
 \strong{Parameters:}
@@ -31,165 +29,125 @@ existing file for reading, \code{r+} opens an existing file for read/write. \cod
 existing ones and \code{w-}/\code{x} are synonyms, creating a file and failing if it already exists.}
 }}
 
-\item{\code{get_obj_count}}{
+\item{\code{get_obj_count(types = h5const$H5F_OBJ_ALL)}}{
 
-\strong{Usage:}
-\preformatted{get_obj_count(types = h5const$H5F_OBJ_ALL)}
 This function implements the HDF5-API function H5Aget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo} for details.}
 
-\item{\code{get_obj_ids}}{
+\item{\code{get_obj_ids(types = h5const$H5F_OBJ_ALL)}}{
 
-\strong{Usage:}
-\preformatted{get_obj_ids(types = h5const$H5F_OBJ_ALL)}
 This function implements the HDF5-API function H5Fget_obj_ids.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetObjIds} for details.}
 
-\item{\code{get_filesize}}{
+\item{\code{get_filesize()}}{
 
-\strong{Usage:}
-\preformatted{get_filesize()}
 This function implements the HDF5-API function H5Fget_filesize.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetFilesize} for details.}
 
-\item{\code{file_info}}{
+\item{\code{file_info()}}{
 
-\strong{Usage:}
-\preformatted{file_info()}
 This function implements the HDF5-API function H5Fget_info2.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetInfo2} for details.
 Please note that the returned information differs if HDF5 Version 1.8.16 or HDF5 Version >= 1.10.0 is being used}
 
-\item{\code{close_all}}{
+\item{\code{close_all(close_self = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{close_all(close_self = TRUE)}
 Closes the file, flushes it and also closes all open objects that are still open in it. This is the recommended way of
 closing any file. If not all objects in a file are closed, the file remains open and cannot be re-opened the regular way.}
 
-\item{\code{open}}{
-
-\strong{Usage:}
-\preformatted{open(name, link_access_pl = h5const$H5P_DEFAULT,
+\item{\code{open(name, link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)}
+  type_access_pl = h5const$H5P_DEFAULT)}}{
+
 Opens groups, datasets or types using the appropriate HDF5-API functions. Please see the documentation at
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-Open} for datasets, 
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open} for types and 
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open} for general objects.}
 
-\item{\code{open_by_idx}}{
+\item{\code{open_by_idx(n, group_name = ".", index_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{open_by_idx(n, group_name = ".", index_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Oopen_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-OpenByIdx} for details.}
 
-\item{\code{ls}}{
-
-\strong{Usage:}
-\preformatted{ls(recursive = FALSE, detailed = FALSE,
+\item{\code{ls(recursive = FALSE, detailed = FALSE,
   index_type = h5const$H5_INDEX_NAME, order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)}
+  type_access_pl = h5const$H5P_DEFAULT)}}{
+
 Returns the contents of a file or group as a data.frame.}
 
-\item{\code{exists}}{
+\item{\code{exists(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{exists(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lexists.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists} for details.}
 
-\item{\code{path_valid}}{
+\item{\code{path_valid(path, check_object_valid = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{path_valid(path, check_object_valid = TRUE)}
 This function implements the HDF5-API function H5LTpath_valid.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5LT.html#H5LTpath_valid} for details.}
 
-\item{\code{link}}{
+\item{\code{link(obj, new_link_name, link_create_pl = h5const$H5P_DEFAULT,
+  link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link(obj, new_link_name, link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Olink.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Link} for details.}
 
-\item{\code{obj_copy_to}}{
+\item{\code{obj_copy_to(dst_loc, dst_name, src_name, object_copy_pl = h5const$H5P_DEFAULT,
+  link_create_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{obj_copy_to(dst_loc, dst_name, src_name, object_copy_pl = h5const$H5P_DEFAULT,
-  link_create_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Ocopy.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy} for details.}
 
-\item{\code{obj_copy_from}}{
-
-\strong{Usage:}
-\preformatted{obj_copy_from(src_loc, src_name, dst_name,
+\item{\code{obj_copy_from(src_loc, src_name, dst_name,
   object_copy_pl = h5const$H5P_DEFAULT,
-  link_create_pl = h5const$H5P_DEFAULT)}
+  link_create_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Ocopy.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy} for details.}
 
-\item{\code{obj_info_by_idx}}{
+\item{\code{obj_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, remove_internal_use_only = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{obj_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, remove_internal_use_only = TRUE)}
 This function implements the HDF5-API function H5Oget_info_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByIdx} for details.}
 
-\item{\code{obj_info_by_name}}{
+\item{\code{obj_info_by_name(object_name, remove_internal_use_only = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{obj_info_by_name(object_name, remove_internal_use_only = TRUE)}
 This function implements the HDF5-API function H5Oget_info_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByName} for details.}
 
-\item{\code{group_info}}{
+\item{\code{group_info()}}{
 
-\strong{Usage:}
-\preformatted{group_info()}
 This function implements the HDF5-API function H5Gget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfo} for details.}
 
-\item{\code{group_info_by_name}}{
+\item{\code{group_info_by_name(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{group_info_by_name(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Gget_info_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByName} for details.}
 
-\item{\code{group_info_by_idx}}{
+\item{\code{group_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{group_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Gget_info_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByIdx} for details.}
 
-\item{\code{create_group}}{
-
-\strong{Usage:}
-\preformatted{create_group(name, link_create_pl = h5const$H5P_DEFAULT,
+\item{\code{create_group(name, link_create_pl = h5const$H5P_DEFAULT,
   group_create_pl = h5const$H5P_DEFAULT,
-  group_access_pl = h5const$H5P_DEFAULT)}
+  group_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Gcreate2 and H5Gcreate_anon (if name is NULL). Please see the documentation at
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-Create2} for regular groups and
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-CreateAnon} for anonymous groups for details.}
 
-\item{\code{create_dataset}}{
-
-\strong{Usage:}
-\preformatted{create_dataset(name, robj = NULL, dtype = NULL, space = NULL,
+\item{\code{create_dataset(name, robj = NULL, dtype = NULL, space = NULL,
   chunk_dims = "auto", gzip_level = 4,
   link_create_pl = h5const$H5P_DEFAULT,
   dataset_create_pl = h5const$H5P_DEFAULT,
-  dataset_access_pl = h5const$H5P_DEFAULT)}
+  dataset_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function is the main interface to create a new dataset. Its parameters allow for customization of the default
 behaviour, i.e. in order to get a specific datatype, a certain chunk size or dataset dimensionality.
 Also note that this function implements the HDF5-API function H5Dcreate2 and H5Dcreate_anon (if name is NULL). Please see the documentation at
@@ -213,295 +171,219 @@ at the level given here. If set to NULL, then gzip is not set (but could be set 
 \item{dataset_access_pl}{Dataset access property list. See \code{\link{H5P_DATASET_ACCESS-class}}}
 }}
 
-\item{\code{commit}}{
-
-\strong{Usage:}
-\preformatted{commit(name, dtype, link_create_pl = h5const$H5P_DEFAULT,
+\item{\code{commit(name, dtype, link_create_pl = h5const$H5P_DEFAULT,
   type_create_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)}
+  type_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Tcommit2.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Commit2} for details.}
 
-\item{\code{link_create_hard}}{
-
-\strong{Usage:}
-\preformatted{link_create_hard(obj_loc, obj_name, link_name,
+\item{\code{link_create_hard(obj_loc, obj_name, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lcreate_hard.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateHard} for details.}
 
-\item{\code{link_create_soft}}{
+\item{\code{link_create_soft(target_path, link_name, link_create_pl = h5const$H5P_DEFAULT,
+  link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_create_soft(target_path, link_name, link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lcreate_soft.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateSoft} for details.}
 
-\item{\code{link_create_external}}{
-
-\strong{Usage:}
-\preformatted{link_create_external(target_file_name, target_obj_name, link_name,
+\item{\code{link_create_external(target_file_name, target_obj_name, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lcreate_external.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateExternal} for details.}
 
-\item{\code{link_exists}}{
+\item{\code{link_exists(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_exists(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lexists.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists} for details.}
 
-\item{\code{link_move_from}}{
-
-\strong{Usage:}
-\preformatted{link_move_from(src_loc, src_name, dst_name,
+\item{\code{link_move_from(src_loc, src_name, dst_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lmove.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move} for details.}
 
-\item{\code{link_move_to}}{
-
-\strong{Usage:}
-\preformatted{link_move_to(dst_loc, dst_name, src_name,
+\item{\code{link_move_to(dst_loc, dst_name, src_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lmove.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move} for details.}
 
-\item{\code{link_copy_from}}{
-
-\strong{Usage:}
-\preformatted{link_copy_from(src_loc, src_name, dst_name,
+\item{\code{link_copy_from(src_loc, src_name, dst_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lcopy.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy} for details.}
 
-\item{\code{link_copy_to}}{
-
-\strong{Usage:}
-\preformatted{link_copy_to(dst_loc, dst_name, src_name,
+\item{\code{link_copy_to(dst_loc, dst_name, src_name,
   link_create_pl = h5const$H5P_DEFAULT,
-  link_access_pl = h5const$H5P_DEFAULT)}
+  link_access_pl = h5const$H5P_DEFAULT)}}{
+
 This function implements the HDF5-API function H5Lcopy.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy} for details.}
 
-\item{\code{link_delete}}{
+\item{\code{link_delete(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_delete(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Ldelete.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Delete} for details.}
 
-\item{\code{link_delete_by_idx}}{
+\item{\code{link_delete_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_delete_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Ldelete_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-DeleteByIdx} for details.}
 
-\item{\code{link_info}}{
+\item{\code{link_info(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_info(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfo} for details.}
 
-\item{\code{link_info_by_idx}}{
+\item{\code{link_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_info_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lget_info_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfoByIdx} for details.}
 
-\item{\code{link_value}}{
+\item{\code{link_value(name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_value(name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lget_val.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetVal} for details.}
 
-\item{\code{link_value_by_idx}}{
+\item{\code{link_value_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_value_by_idx(n, group_name = ".", index_field = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lget_val_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetValByIdx} for details.}
 
-\item{\code{link_name_by_idx}}{
+\item{\code{link_name_by_idx(n, group_name, idx_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{link_name_by_idx(n, group_name, idx_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Lget_name_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetNameByIdx} for details.}
 
-\item{\code{mount}}{
+\item{\code{mount(name, child)}}{
 
-\strong{Usage:}
-\preformatted{mount(name, child)}
 This function implements the HDF5-API function H5Fmount.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Mount} for details.}
 
-\item{\code{unmount}}{
+\item{\code{unmount(name)}}{
 
-\strong{Usage:}
-\preformatted{unmount(name)}
 This function implements the HDF5-API function H5Funmount.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Unmount} for details.}
 
-\item{\code{create_reference}}{
+\item{\code{create_reference(name = ".", space = NULL)}}{
 
-\strong{Usage:}
-\preformatted{create_reference(name = ".", space = NULL)}
 This function implements the HDF5-API function H5Rcreate. If \code{space=NULL} then a \code{H5R_OBJECT} reference
 is created, otherwise a \code{H5R_DATASET_REGION} reference
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create} for details.}
 
-\item{\code{obj_info}}{
+\item{\code{obj_info(remove_internal_use_only = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{obj_info(remove_internal_use_only = TRUE)}
 This function implements the HDF5-API function H5Oget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo} for details.}
 
-\item{\code{create_attr}}{
+\item{\code{create_attr(attr_name, robj = NULL, dtype = NULL, space = NULL)}}{
 
-\strong{Usage:}
-\preformatted{create_attr(attr_name, robj = NULL, dtype = NULL, space = NULL)}
 This function implements the HDF5-API function H5Acreate2.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Create2} for details.}
 
-\item{\code{attr_open}}{
+\item{\code{attr_open(attr_name)}}{
 
-\strong{Usage:}
-\preformatted{attr_open(attr_name)}
 This function implements the HDF5-API function H5Aopen.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Open} for details.}
 
-\item{\code{create_attr_by_name}}{
+\item{\code{create_attr_by_name(attr_name, obj_name, robj = NULL, dtype = NULL,
+  space = NULL, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{create_attr_by_name(attr_name, obj_name, robj = NULL, dtype = NULL,
-  space = NULL, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Acreate_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-CreateByName} for details.}
 
-\item{\code{attr_open_by_name}}{
+\item{\code{attr_open_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_open_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aopen_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByName} for details.}
 
-\item{\code{attr_open_by_idx}}{
+\item{\code{attr_open_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_open_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aopen_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByIdx} for details.}
 
-\item{\code{attr_exists_by_name}}{
+\item{\code{attr_exists_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_exists_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aexists_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-ExistsByName} for details.}
 
-\item{\code{attr_exists}}{
+\item{\code{attr_exists(attr_name)}}{
 
-\strong{Usage:}
-\preformatted{attr_exists(attr_name)}
 This function implements the HDF5-API function H5Aexists.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Exists} for details.}
 
-\item{\code{attr_rename_by_name}}{
+\item{\code{attr_rename_by_name(old_attr_name, new_attr_name, obj_name,
+  link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_rename_by_name(old_attr_name, new_attr_name, obj_name,
-  link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Arename_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-RenameByName} for details.}
 
-\item{\code{attr_rename}}{
+\item{\code{attr_rename(old_attr_name, new_attr_name)}}{
 
-\strong{Usage:}
-\preformatted{attr_rename(old_attr_name, new_attr_name)}
 This function implements the HDF5-API function H5Arename.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Rename} for details.}
 
-\item{\code{attr_delete}}{
+\item{\code{attr_delete(attr_name)}}{
 
-\strong{Usage:}
-\preformatted{attr_delete(attr_name)}
 This function implements the HDF5-API function H5Adelete.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Delete} for details.}
 
-\item{\code{attr_delete_by_name}}{
+\item{\code{attr_delete_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_delete_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Adelete_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByName} for details.}
 
-\item{\code{attr_delete_by_idx}}{
+\item{\code{attr_delete_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_delete_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Adelete_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByIdx} for details.}
 
-\item{\code{attr_info_by_name}}{
+\item{\code{attr_info_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_info_by_name(attr_name, obj_name, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aget_info_by_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByName} for details.}
 
-\item{\code{attr_info_by_idx}}{
+\item{\code{attr_info_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_info_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aget_info_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByIdx} for details.}
 
-\item{\code{attr_name_by_idx}}{
+\item{\code{attr_name_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
+  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{attr_name_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
-  order = h5const$H5_ITER_NATIVE, link_access_pl = h5const$H5P_DEFAULT)}
 This function implements the HDF5-API function H5Aget_name_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx} for details.}
 
-\item{\code{get_file_name}}{
+\item{\code{get_file_name()}}{
 
-\strong{Usage:}
-\preformatted{get_file_name()}
 This function implements the HDF5-API function H5Fget_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details.}
 
-\item{\code{flush}}{
+\item{\code{flush(scope = h5const$H5F_SCOPE_GLOBAL)}}{
 
-\strong{Usage:}
-\preformatted{flush(scope = h5const$H5F_SCOPE_GLOBAL)}
 This function implements the HDF5-API function H5Fflush.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush} for details.}
 
-\item{\code{names}}{Active method
+\item{\code{names(link_access_pl = h5const$H5P_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{names(link_access_pl = h5const$H5P_DEFAULT)}
 Returns the names of the items in the group or at the root of the file
 
 \strong{Parameters:}
@@ -509,10 +391,10 @@ Returns the names of the items in the group or at the root of the file
 \item{link_access_pl}{The link-access property list. See \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html} for more detail.}
 }}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

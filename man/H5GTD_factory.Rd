@@ -22,4 +22,3 @@ id types that can be the result of opening an object. For datatypes, the \code{\
 \author{
 Holger Hoefling
 }
-

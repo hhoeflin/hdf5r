@@ -21,4 +21,3 @@ Concatenation of \code{factor_ext} objects.
 \author{
 Holger Hoefling
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_DATASET_CREATE-class}
-\alias{H5P_DATASET_CREATE}
 \alias{H5P_DATASET_CREATE-class}
+\alias{H5P_DATASET_CREATE}
 \title{Class for HDF5 property list for dataset creation}
 \value{
 Object of class \code{\link[=H5P_DATASET_CREATE-class]{H5P_DATASET_CREATE}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_DATASET_CREATE}}
 
 \strong{Parameters:}
@@ -25,188 +23,138 @@ Create a new class of type \code{\link{H5P_DATASET_CREATE}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_layout}}{
+\item{\code{set_layout(layout = h5const$H5D_CHUNKED)}}{
 
-\strong{Usage:}
-\preformatted{set_layout(layout = h5const$H5D_CHUNKED)}
 This function implements the HDF5-API function H5Pset_layout.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetLayout} for details.}
 
-\item{\code{get_layout}}{
+\item{\code{get_layout()}}{
 
-\strong{Usage:}
-\preformatted{get_layout()}
 This function implements the HDF5-API function H5Pget_layout.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetLayout} for details.}
 
-\item{\code{set_chunk}}{
+\item{\code{set_chunk(chunk)}}{
 
-\strong{Usage:}
-\preformatted{set_chunk(chunk)}
 This function implements the HDF5-API function H5Pset_chunk.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetChunk} for details.}
 
-\item{\code{get_chunk}}{
+\item{\code{get_chunk(max_ndims)}}{
 
-\strong{Usage:}
-\preformatted{get_chunk(max_ndims)}
 This function implements the HDF5-API function H5Pget_chunk.
 If the layout is not chunked, returns NA.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetChunk} for details.}
 
-\item{\code{set_deflate}}{
+\item{\code{set_deflate(level)}}{
 
-\strong{Usage:}
-\preformatted{set_deflate(level)}
 This function implements the HDF5-API function H5Pset_deflate.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetDeflate} for details.}
 
-\item{\code{set_fill_value}}{
+\item{\code{set_fill_value(dtype, value)}}{
 
-\strong{Usage:}
-\preformatted{set_fill_value(dtype, value)}
 This function implements the HDF5-API function H5Pset_fill_value.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFillValue} for details.}
 
-\item{\code{get_fill_value}}{
+\item{\code{get_fill_value(dtype)}}{
 
-\strong{Usage:}
-\preformatted{get_fill_value(dtype)}
 This function implements the HDF5-API function H5Pget_fill_value.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFillValue} for details.}
 
-\item{\code{set_fill_time}}{
+\item{\code{set_fill_time(fill_time = h5const$H5D_FILL_TIME_IFSET)}}{
 
-\strong{Usage:}
-\preformatted{set_fill_time(fill_time = h5const$H5D_FILL_TIME_IFSET)}
 This function implements the HDF5-API function H5Pset_fill_time.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFillTime} for details.}
 
-\item{\code{get_fill_time}}{
+\item{\code{get_fill_time()}}{
 
-\strong{Usage:}
-\preformatted{get_fill_time()}
 This function implements the HDF5-API function H5Pget_fill_time.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFillTime} for details.}
 
-\item{\code{set_alloc_time}}{
+\item{\code{set_alloc_time(alloc_time = h5const$H5D_ALLOC_TIME_DEFAULT)}}{
 
-\strong{Usage:}
-\preformatted{set_alloc_time(alloc_time = h5const$H5D_ALLOC_TIME_DEFAULT)}
 This function implements the HDF5-API function H5Pset_alloc_time.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAllocTime} for details.}
 
-\item{\code{get_alloc_time}}{
+\item{\code{get_alloc_time()}}{
 
-\strong{Usage:}
-\preformatted{get_alloc_time()}
 This function implements the HDF5-API function H5Pget_alloc_time.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAllocTime} for details.}
 
-\item{\code{set_filter}}{
+\item{\code{set_filter(filter = h5const$H5Z_FILTER_DEFLATE,
+  flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}}{
 
-\strong{Usage:}
-\preformatted{set_filter(filter = h5const$H5Z_FILTER_DEFLATE,
-  flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}
 This function implements the HDF5-API function H5Pset_filter.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFilter} for details.}
 
-\item{\code{all_filters_avail}}{
+\item{\code{all_filters_avail()}}{
 
-\strong{Usage:}
-\preformatted{all_filters_avail()}
 This function implements the HDF5-API function H5Pall_filters_avail.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-AllFiltersAvail} for details.}
 
-\item{\code{get_nfilters}}{
+\item{\code{get_nfilters()}}{
 
-\strong{Usage:}
-\preformatted{get_nfilters()}
 This function implements the HDF5-API function H5Pget_nfilters.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetNfilters} for details.}
 
-\item{\code{get_filter}}{
+\item{\code{get_filter(idx)}}{
 
-\strong{Usage:}
-\preformatted{get_filter(idx)}
 This function implements the HDF5-API function H5Pget_filter2.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFilter2} for details.}
 
-\item{\code{modify_filter}}{
+\item{\code{modify_filter(filter = h5const$H5Z_FILTER_DEFLATE,
+  flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}}{
 
-\strong{Usage:}
-\preformatted{modify_filter(filter = h5const$H5Z_FILTER_DEFLATE,
-  flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}
 This function implements the HDF5-API function H5Pmodify_filter.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-ModifyFilter} for details.}
 
-\item{\code{remove_filter}}{
+\item{\code{remove_filter(filter = h5const$H5Z_FILTER_ALL)}}{
 
-\strong{Usage:}
-\preformatted{remove_filter(filter = h5const$H5Z_FILTER_ALL)}
 This function implements the HDF5-API function H5Premove_filter.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-RemoveFilter} for details.}
 
-\item{\code{set_fletcher32}}{
+\item{\code{set_fletcher32()}}{
 
-\strong{Usage:}
-\preformatted{set_fletcher32()}
 This function implements the HDF5-API function H5Pset_fletcher32.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFletcher32} for details.}
 
-\item{\code{set_nbit}}{
+\item{\code{set_nbit()}}{
 
-\strong{Usage:}
-\preformatted{set_nbit()}
 This function implements the HDF5-API function H5Pset_nbit.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetNbit} for details.}
 
-\item{\code{set_scaleoffset}}{
+\item{\code{set_scaleoffset(scale_type = h5const$H5Z_SO_FLOAT_DSCALE, scale_factor = 0)}}{
 
-\strong{Usage:}
-\preformatted{set_scaleoffset(scale_type = h5const$H5Z_SO_FLOAT_DSCALE, scale_factor = 0)}
 This function implements the HDF5-API function H5Pset_scaleoffset.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetScaleoffset} for details.}
 
-\item{\code{set_shuffle}}{
+\item{\code{set_shuffle()}}{
 
-\strong{Usage:}
-\preformatted{set_shuffle()}
 This function implements the HDF5-API function H5Pset_shuffle.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetShuffle} for details.}
 
-\item{\code{set_szip}}{
+\item{\code{set_szip()}}{
 
-\strong{Usage:}
-\preformatted{set_szip()}
 This function implements the HDF5-API function H5Pset_szip.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSzip} for details.}
 
-\item{\code{set_external}}{
+\item{\code{set_external(filename, offset, size)}}{
 
-\strong{Usage:}
-\preformatted{set_external(filename, offset, size)}
 This function implements the HDF5-API function H5Pset_external.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetExternal} for details.}
 
-\item{\code{get_external_count}}{
+\item{\code{get_external_count()}}{
 
-\strong{Usage:}
-\preformatted{get_external_count()}
 This function implements the HDF5-API function H5Pget_external_count.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetExternalCount} for details.}
 
-\item{\code{get_external}}{
+\item{\code{get_external(idx)}}{
 
-\strong{Usage:}
-\preformatted{get_external(idx)}
 This function implements the HDF5-API function H5Pget_external.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetExternal} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

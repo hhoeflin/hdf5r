@@ -24,4 +24,3 @@ R6-classes are being created.
 \author{
 Holger Hoefling
 }
-

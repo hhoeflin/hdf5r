@@ -24,4 +24,3 @@ Converts a text to a datatype using the HDF5 function H5LT_text_to_dtype. Docume
 \author{
 Holger Hoefling
 }
-

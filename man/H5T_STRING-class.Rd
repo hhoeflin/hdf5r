@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5T.R
 \docType{class}
 \name{H5T_STRING-class}
-\alias{H5T_STRING}
 \alias{H5T_STRING-class}
+\alias{H5T_STRING}
 \title{Class for HDF5 string datatypes.}
 \value{
 Object of class \code{\link[=H5T_STRING-class]{H5T_STRING}}.
@@ -14,10 +14,8 @@ Inherits from class \code{\link[=H5T-class]{H5T}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(type = c("c", "fortran"), size = 1, id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(type = c("c", "fortran"), size = 1, id = NULL)}
 Create a string datatype
 
 \strong{Parameters:}
@@ -27,52 +25,40 @@ Create a string datatype
 \item{id}{internal use only}
 }}
 
-\item{\code{get_size}}{
+\item{\code{get_size(variable_as_inf = TRUE)}}{
 
-\strong{Usage:}
-\preformatted{get_size(variable_as_inf = TRUE)}
 Retrieves the length of the string, setting it to \code{Inf} it is of variable length.
 This function implements the HDF5-API function H5Tis_variable_str.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-IsVariableStr} for details.}
 
-\item{\code{get_cset}}{
+\item{\code{get_cset()}}{
 
-\strong{Usage:}
-\preformatted{get_cset()}
 This function implements the HDF5-API function H5Tget_cset.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetCset} for details.}
 
-\item{\code{set_cset}}{
+\item{\code{set_cset(cset = c("unknown", "UTF-8"))}}{
 
-\strong{Usage:}
-\preformatted{set_cset(cset = c("unknown", "UTF-8"))}
 This function implements the HDF5-API function H5Tset_cset.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetCset} for details.}
 
-\item{\code{set_strpad}}{
+\item{\code{set_strpad(strpad)}}{
 
-\strong{Usage:}
-\preformatted{set_strpad(strpad)}
 This function implements the HDF5-API function H5Tset_strpad.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetStrpad} for details.}
 
-\item{\code{get_strpad}}{
+\item{\code{get_strpad()}}{
 
-\strong{Usage:}
-\preformatted{get_strpad()}
 This function implements the HDF5-API function H5Tget_strpad.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetStrpad} for details.}
 
-\item{\code{describe}}{
+\item{\code{describe()}}{
 
-\strong{Usage:}
-\preformatted{describe()}
 Print a detailed description of the datatype; this is experimental}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5T-class]{H5T}}
 }
-
+\author{
+Holger Hoefling
+}

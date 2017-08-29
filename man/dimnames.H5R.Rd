@@ -26,4 +26,3 @@ Get/set the dimnames of an \code{H5R} object
 \author{
 Holger Hoefling
 }
-

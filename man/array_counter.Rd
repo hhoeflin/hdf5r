@@ -25,4 +25,3 @@ moves fastest. The counter is 0-based and the output is 0-based as well.
 Holger Hoefling
 }
 \keyword{internal}
-

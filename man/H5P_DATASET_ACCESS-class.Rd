@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_DATASET_ACCESS-class}
-\alias{H5P_DATASET_ACCESS}
 \alias{H5P_DATASET_ACCESS-class}
+\alias{H5P_DATASET_ACCESS}
 \title{Class for HDF5 property list for dataset access}
 \value{
 Object of class \code{\link[=H5P_DATASET_ACCESS-class]{H5P_DATASET_ACCESS}}.
@@ -14,30 +14,20 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{set_chunk_cache(rdcc_nslots = -1, rdcc_nbytes = -1, rdcc_w0 = -1)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
-NO DOCUMENTATION AVAILABLE}
-
-\item{\code{set_chunk_cache}}{
-
-\strong{Usage:}
-\preformatted{set_chunk_cache(rdcc_nslots = -1, rdcc_nbytes = -1, rdcc_w0 = -1)}
 This function implements the HDF5-API function H5Pset_chunk_cache.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetChunkCache} for details.}
 
-\item{\code{get_chunk_cache}}{
+\item{\code{get_chunk_cache()}}{
 
-\strong{Usage:}
-\preformatted{get_chunk_cache()}
 This function implements the HDF5-API function H5Pget_chunk_cache.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetChunkCache} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

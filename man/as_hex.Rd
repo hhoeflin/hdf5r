@@ -22,4 +22,3 @@ this is done without any conversion of integers in double-format to integers in 
 \author{
 Holger Hoefling
 }
-

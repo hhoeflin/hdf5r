@@ -19,6 +19,7 @@
 
 
 
+setOldClass("H5R")
 
 
 ##' Class for representing HDF5 datasets

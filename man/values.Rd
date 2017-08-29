@@ -27,4 +27,3 @@ overloaded for \code{factor_ext} classes. It extract the values used in the \cod
 \author{
 Holger Hoefling
 }
-

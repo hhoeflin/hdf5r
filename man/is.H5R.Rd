@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5R.R
 \name{is.H5R}
 \alias{is.H5R}
-\alias{is.H5R_DATASET_REGION}
 \alias{is.H5R_OBJECT}
+\alias{is.H5R_DATASET_REGION}
 \title{Checks if object is of a HDF5-Reference class}
 \usage{
 is.H5R(x)
@@ -27,4 +27,3 @@ Simple check if it inherits from \code{H5R}, \code{H5R_OBJECT} or \code{H5R_DATS
 \author{
 Holger Hoefling
 }
-

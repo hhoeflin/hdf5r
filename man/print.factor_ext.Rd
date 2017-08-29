@@ -27,10 +27,9 @@ Print an \code{factor_ext} object to the screen
 \details{
 Printing an \code{factor_ext} object. Adapted from \code{\link{print.factor}}.
 }
-\author{
-Holger Hoefling
-}
 \seealso{
 \code{\link{print.factor}}
 }
-
+\author{
+Holger Hoefling
+}

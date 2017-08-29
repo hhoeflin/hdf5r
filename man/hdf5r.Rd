@@ -9,4 +9,3 @@
 A package that allows to interface with the HDF5 C-library. Proivdes acces to most of its
 functionality from inside R using R6 classes.
 }
-

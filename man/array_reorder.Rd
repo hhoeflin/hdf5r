@@ -31,4 +31,3 @@ for its simple generality and only intended for internal use in the package.
 Holger Hoefling
 }
 \keyword{internal}
-

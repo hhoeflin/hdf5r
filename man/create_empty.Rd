@@ -28,4 +28,3 @@ empty strings.
 \author{
 Holger Hoefling
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P-class}
-\alias{H5P}
 \alias{H5P-class}
+\alias{H5P}
 \title{Class for HDF5 property lists.}
 \value{
 Object of class \code{\link{H5P}}.
@@ -26,10 +26,8 @@ It inherits all functions of the
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new property list; this function itself is unlikely to be needed by users. Users should
 use the classes of the type they actually require
 
@@ -38,38 +36,30 @@ use the classes of the type they actually require
 \item{id}{Internal use only}
 }}
 
-\item{\code{get_class}}{
+\item{\code{get_class()}}{
 
-\strong{Usage:}
-\preformatted{get_class()}
 This function implements the HDF5-API function H5Pget_class.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetClass} for details.}
 
-\item{\code{get_class_name}}{
+\item{\code{get_class_name()}}{
 
-\strong{Usage:}
-\preformatted{get_class_name()}
 This function implements the HDF5-API function H5Pget_class_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetClassName} for details.}
 
-\item{\code{copy}}{
+\item{\code{copy()}}{
 
-\strong{Usage:}
-\preformatted{copy()}
 This function implements the HDF5-API function H5Pcopy.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Copy} for details.}
 
-\item{\code{equal}}{
+\item{\code{equal(cmp)}}{
 
-\strong{Usage:}
-\preformatted{equal(cmp)}
 This function implements the HDF5-API function H5Pequal.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Equal} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

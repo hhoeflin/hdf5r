@@ -21,4 +21,3 @@ Check if it is an object of class \code{factor_ext}
 \author{
 Holger Hoefling
 }
-

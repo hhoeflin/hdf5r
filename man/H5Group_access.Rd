@@ -2,10 +2,10 @@
 % Please edit documentation in R/high_level_UI.R
 \name{H5Group_access}
 \alias{H5Group_access}
-\alias{[[.H5File}
 \alias{[[.H5Group}
-\alias{[[<-.H5File}
+\alias{[[.H5File}
 \alias{[[<-.H5Group}
+\alias{[[<-.H5File}
 \title{Retrieve object from a group of file}
 \usage{
 \method{[[}{H5Group}(x, name, ..., link_access_pl = h5const$H5P_DEFAULT,
@@ -52,4 +52,3 @@ a hard link is created. If it is a datatype, \code{\link{H5T-class}}, this is co
 \author{
 Holger Hoefling
 }
-

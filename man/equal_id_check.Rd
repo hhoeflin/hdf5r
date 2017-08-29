@@ -22,4 +22,3 @@ When several \code{H5RefClass} objects are passed in
 Holger Hoefling
 }
 \keyword{internal}
-

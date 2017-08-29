@@ -21,4 +21,3 @@ Brings up a searchable table that lists the methods available in the R6 classes
 \author{
 Holger Hoefling
 }
-

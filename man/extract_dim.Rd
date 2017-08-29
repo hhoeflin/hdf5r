@@ -30,4 +30,3 @@ Internal use only; currently unused
 Holger Hoefling
 }
 \keyword{internal}
-

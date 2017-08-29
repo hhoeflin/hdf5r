@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_DEFAULT-class}
-\alias{H5P_DEFAULT}
 \alias{H5P_DEFAULT-class}
+\alias{H5P_DEFAULT}
 \title{Class for default values for HDF5 property lists.}
 \value{
 Object of class \code{\link{H5P}}.
@@ -12,19 +12,10 @@ Object of class \code{\link{H5P}}.
 This class represents default values for H5P property lists. As with H5S_DEFAULT, the current choice is not optimal
 for the same reasons and likely to be changed
 }
-\section{Methods}{
 
-\describe{
-\item{\code{new}}{
-
-\strong{Usage:}
-\preformatted{new(id = NULL)}
-NO DOCUMENTATION AVAILABLE}
-}}
-\author{
-Holger Hoefling
-}
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

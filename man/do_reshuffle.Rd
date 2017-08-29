@@ -24,4 +24,3 @@ When necessary, this function performs the reshuffle as defined by \code{args_re
 Holger Hoefling
 }
 \keyword{internal}
-

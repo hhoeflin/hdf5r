@@ -5,9 +5,9 @@
 \alias{rbind.H5R}
 \title{cbind/rbind of HDF5-Reference classes}
 \usage{
-cbind.H5R(..., deparse.level = 1)
+\method{cbind}{H5R}(..., deparse.level = 1)
 
-rbind.H5R(..., deparse.level = 1)
+\method{rbind}{H5R}(..., deparse.level = 1)
 }
 \arguments{
 \item{...}{The objects to put together by row/column}
@@ -26,4 +26,3 @@ cbind/rbind functionality for HDF5-Reference classes
 \author{
 Holger Hoefling
 }
-

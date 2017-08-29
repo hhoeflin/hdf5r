@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes.R
 \docType{class}
 \name{H5RefClass-class}
-\alias{H5RefClass}
 \alias{H5RefClass-class}
+\alias{H5RefClass}
 \title{Base class that tracks the ids and allows for closing an id}
 \value{
 Object of reference class \code{\link{H5RefClass}}.
@@ -17,109 +17,78 @@ H5-derived classes to provide common functionality for id tracking
 \describe{
 \item{\code{id}}{Returns the id of the object as an integer}
 }}
+
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Constructor for the basic class for hdf5 objects. Takes an id and stores it appropriately, including
 the necessary counting of object references that the package implements. This reference counting is
 included in addition to R's internal method in order to allow for the invalidation of objects
 in R itself when all open handles in an R-file are being closed.}
 
-\item{\code{close}}{
+\item{\code{close()}}{
 
-\strong{Usage:}
-\preformatted{close()}
 Closes an object and calls the appropriate HDF5 function for the type of object}
 
-\item{\code{print}}{
+\item{\code{print(...)}}{
 
-\strong{Usage:}
-\preformatted{print(...)}
 Prints the class of the object and the id}
 
-\item{\code{methods}}{
+\item{\code{methods()}}{
 
-\strong{Usage:}
-\preformatted{methods()}
 Prints available methods on the screen}
 
-\item{\code{get_file_id}}{
+\item{\code{get_file_id()}}{
 
-\strong{Usage:}
-\preformatted{get_file_id()}
 This function implements the HDF5-API function H5Iget_file_id.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetFileId} for details.}
 
-\item{\code{get_obj_name}}{
+\item{\code{get_obj_name()}}{
 
-\strong{Usage:}
-\preformatted{get_obj_name()}
 This function implements the HDF5-API function H5Iget_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details.}
 
-\item{\code{get_obj_type}}{
+\item{\code{get_obj_type()}}{
 
-\strong{Usage:}
-\preformatted{get_obj_type()}
 This function implements the HDF5-API function H5Iget_type.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetType} for details.}
 
-\item{\code{get_ref}}{
+\item{\code{get_ref()}}{
 
-\strong{Usage:}
-\preformatted{get_ref()}
 This function implements the HDF5-API function H5Iget_ref.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetRef} for details.}
 
-\item{\code{inc_ref}}{
+\item{\code{inc_ref()}}{
 
-\strong{Usage:}
-\preformatted{inc_ref()}
 This function implements the HDF5-API function H5Iinc_ref.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-IncRef} for details.}
 
-\item{\code{dec_ref}}{
+\item{\code{dec_ref()}}{
 
-\strong{Usage:}
-\preformatted{dec_ref()}
 This function implements the HDF5-API function H5Idec_ref.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-DecRef} for details.}
 
-\item{\code{id}}{Active method
+\item{\code{id()}}{
 
-\strong{Usage:}
-\preformatted{id()}
 Returns the id of the object}
 
-\item{\code{id_env}}{Active method
+\item{\code{is_valid()}}{
 
-\strong{Usage:}
-\preformatted{id_env()}
-NO DOCUMENTATION AVAILABLE}
-
-\item{\code{is_valid}}{Active method
-
-\strong{Usage:}
-\preformatted{is_valid()}
 This function implements the HDF5-API function H5Iis_valid.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-IsValid} for details.
 Additionally, the R-object representing the HDF5-id can be invalidated as well. In this
 case, the class id is set to \code{NA} and \code{is_valid} returns \code{FALSE}.}
 
-\item{\code{message}}{Active method
+\item{\code{message()}}{
 
-\strong{Usage:}
-\preformatted{message()}
 Legacy function; currently not used; may be removed}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview
 }
-
+\author{
+Holger Hoefling
+}

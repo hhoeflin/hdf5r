@@ -2,8 +2,8 @@
 % Please edit documentation in R/R6Classes_H5P.R
 \docType{class}
 \name{H5P_OBJECT_COPY-class}
-\alias{H5P_OBJECT_COPY}
 \alias{H5P_OBJECT_COPY-class}
+\alias{H5P_OBJECT_COPY}
 \title{Class for HDF5 property list for object copying}
 \value{
 Object of class \code{\link[=H5P_OBJECT_COPY-class]{H5P_OBJECT_COPY}}.
@@ -14,10 +14,8 @@ It inherits all functions of the \code{\link{H5P-class}}.
 \section{Methods}{
 
 \describe{
-\item{\code{new}}{
+\item{\code{new(id = NULL)}}{
 
-\strong{Usage:}
-\preformatted{new(id = NULL)}
 Create a new class of type \code{\link{H5P_OBJECT_COPY}}
 
 \strong{Parameters:}
@@ -25,22 +23,18 @@ Create a new class of type \code{\link{H5P_OBJECT_COPY}}
 \item{id}{Internal use only}
 }}
 
-\item{\code{set_copy_obj}}{
+\item{\code{set_copy_obj(copy_options = 0)}}{
 
-\strong{Usage:}
-\preformatted{set_copy_obj(copy_options = 0)}
 This function implements the HDF5-API function H5Pset_copy_object. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCopyObject} for details.}
 
-\item{\code{get_copy_obj}}{
+\item{\code{get_copy_obj()}}{
 
-\strong{Usage:}
-\preformatted{get_copy_obj()}
 This function implements the HDF5-API function H5Pget_copy_object. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCopyObject} for details.}
 }}
-\author{
-Holger Hoefling
-}
+
 \seealso{
 H5Class_overview, \code{\link[=H5P-class]{H5P}}
 }
-
+\author{
+Holger Hoefling
+}

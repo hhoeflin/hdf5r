@@ -24,4 +24,3 @@ Checks for the functions \code{:}, \code{seq} and \code{seq_len}
 Holger Hoefling
 }
 \keyword{internal}
-

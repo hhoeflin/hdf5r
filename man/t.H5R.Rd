@@ -21,4 +21,3 @@ Clones the matrix and returns a transpose of the clone
 \author{
 Holger Hoefling
 }
-

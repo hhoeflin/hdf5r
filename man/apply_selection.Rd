@@ -22,4 +22,3 @@ calling a method of an R6 object is to make it more efficient and make it useabl
 Holger Hoefling
 }
 \keyword{internal}
-

@@ -22,4 +22,3 @@ the appropriate class for it.
 \author{
 Holger Hoefling
 }
-

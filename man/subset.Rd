@@ -34,4 +34,3 @@ The standard array/vector subsetting functions
 \author{
 Holger Hoefling
 }
-

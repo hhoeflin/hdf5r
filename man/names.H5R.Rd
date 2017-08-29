@@ -21,4 +21,3 @@ Returns the name vector of the object
 \author{
 Holger Hoefling
 }
-

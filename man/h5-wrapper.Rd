@@ -3,16 +3,19 @@
 \name{h5file}
 \alias{h5file}
 \alias{createGroup}
+\alias{openLocation}
 \alias{createDataSet}
+\alias{readDataSet}
 \alias{h5close}
 \alias{h5flush}
 \alias{existsGroup}
 \alias{is.h5file}
 \alias{list.groups}
 \alias{list.datasets}
-\alias{openLocation}
-\alias{readDataSet}
 \alias{extendDataSet}
+\alias{rbind.H5D}
+\alias{cbind.H5D}
+\alias{c.H5D}
 \alias{h5unlink}
 \title{h5 wrapper functions}
 \usage{
@@ -20,7 +23,11 @@ h5file(...)
 
 createGroup(object, name, ...)
 
+openLocation(object, name)
+
 createDataSet(object, name, ...)
+
+readDataSet(object)
 
 h5close(object)
 
@@ -34,14 +41,15 @@ list.groups(object, path = "/", recursive = TRUE, ...)
 
 list.datasets(object, path = "/", recursive = TRUE, ...)
 
-openLocation(object, name)
-
-readDataSet(object)
-
 extendDataSet(object, dims)
 
-h5unlink(object, name)
+\method{rbind}{H5D}(x, mat)
 
+\method{cbind}{H5D}(x, mat)
+
+\method{c}{H5D}(x, ...)
+
+h5unlink(object, name)
 }
 \arguments{
 \item{...}{Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset}}
@@ -55,7 +63,6 @@ h5unlink(object, name)
 \item{recursive}{logical; Specify if object should be traversed recursively.}
 
 \item{dims}{numeric; Dimension vector to which dataset should be extended.}
-
 }
 \description{
 Wrapper functions to provide h5 compatible interface.
