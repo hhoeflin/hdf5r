@@ -20,7 +20,7 @@ OBJECTS = const_export.o datatype_export.o Wrapper_auto_H5A.o Wrapper_auto_H5.o 
 		Wrapper_auto_H5TB.o Wrapper_auto_H5T.o Wrapper_auto_H5Z.o \
 		Wrapper_auto_H5FDcore.o Wrapper_auto_H5FDfamily.o Wrapper_auto_H5FDlog.o \
 		Wrapper_auto_H5FDsec2.o Wrapper_auto_H5FDstdio.o \
-		convert.o export_all.o H5Error.o H5ls.o Wrapper_manual_H5T.o
+		convert.o hdf5r_init.o H5Error.o H5ls.o Wrapper_manual_H5T.o
 
 OBJECTS_TO_COPY = const_export.c datatype_export.c Wrapper_auto_H5A.c Wrapper_auto_H5.c Wrapper_auto_H5D.c \
 			Wrapper_auto_H5DS.c Wrapper_auto_H5E.c Wrapper_auto_H5F.c Wrapper_auto_H5G.c Wrapper_auto_H5I.c Wrapper_auto_H5IM.c \
