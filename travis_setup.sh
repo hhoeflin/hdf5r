@@ -2,7 +2,7 @@
 
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then # use homebrew version
   brew update
-  brew install homebrew/science/hdf5
+  brew install hdf5
   echo "brew install finished"
 else # install from source
   cd ..
