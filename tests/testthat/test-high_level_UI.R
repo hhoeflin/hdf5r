@@ -438,3 +438,21 @@ test_that("Subsetting dimensions, drop and write", {
 
 })
 
+
+test_that("Check if index is ok before expand", {
+    test_file <- tempfile(fileext=".h5")
+    file.h5 <- H5File$new(test_file, mode="w")
+
+    ex_dset <- array(81, dim=c(9,9))
+    file.h5[["dset"]] <- ex_dset
+
+    dset <- file.h5[["dset"]]
+
+    ## needs to throw an error as too many elements
+    expect_error({dset[10:11, 9] <- matrix(rep(0, 2*9), nrow = 2)})
+
+    ## needs to throw an error if dimensions have changed
+    expect_equal(dset$dims, c(9,9)) 
+    file.h5$close_all()
+    file.remove(test_file)
+})

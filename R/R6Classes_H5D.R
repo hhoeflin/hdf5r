@@ -423,6 +423,7 @@ H5D <- R6Class("H5D",
                        "@param envir The environment in which to evaluate \\code{args}"
                        "@param dataset_xfer_pl An object of class \\code{\\link{H5P_DATASET_XFER-class}}." 
                        "@return The HDF5 dataset object, returned invisibly"
+
                        
                        self_space_id <- as.integer64(.Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val)
                        on.exit(.Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r"), add=TRUE)
@@ -451,32 +452,8 @@ H5D <- R6Class("H5D",
                                args <- rep(list(quote(expr=)), simple_extent$rank)
                            }
                            reg_eval_res <- args_regularity_evaluation(args=args, ds_dims=simple_extent$dims, envir=envir, post_read=FALSE)
-                           ## need to check if maximum dimension in indices are larger than dataset dimensions
-                           ## if yes need to throw an error
-                           if(any(reg_eval_res$max_dims > simple_extent$dims)) {
-                               ## need to reset the extent of the arguments
-                               if(any(reg_eval_res$max_dims > simple_extent$maxdims)) {
-                                   stop("The following coordinates are larger than the largest possible dataset dimensions (maxdims): ",
-                                        paste(which(reg_eval_res$max_dims > simple_extent$maxdims), sep=", "))
-                               }
-                               self$set_extent(pmax(reg_eval_res$max_dims, simple_extent$dims))
-                               .Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r")
-                               self_space_id <- as.integer64(.Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val)
-                               on.exit(.Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r"), add=FALSE)
-                           }
+
                            robj_dim <- private$get_robj_dim(reg_eval_res) 
-                           selection <- regularity_eval_to_selection(reg_eval_res=reg_eval_res) 
-                           apply_selection(space_id=self_space_id, selection=selection) 
-                           
-                           mem_space_dims <- reg_eval_res$result_dims_post_shuffle
-                           mem_space_rank <- length(mem_space_dims)
-                           mem_space_id <- as.integer64(.Call("R_H5Screate_simple", mem_space_rank, rev(mem_space_dims), rev(mem_space_dims),
-                                                 PACKAGE="hdf5r")$return_val)
-                           if(mem_space_id < 0) {
-                               stop("Error creating simple dataspace")
-                           }
-                           on.exit(.Call("R_H5Sclose", mem_space_id, PACKAGE = "hdf5r"), add=TRUE)
-                           
                            if(any(reg_eval_res$needs_reshuffle)) {
                                ## need to ensure that the input has the right dimensions attached in case it is just a vector)
                                ## and dimensions doesn't need to be reset for data.frames; there they are automatically correct
@@ -485,6 +462,46 @@ H5D <- R6Class("H5D",
                                }
                                value <- do_reshuffle(value, reg_eval_res)
                            }
+                           ## need to check if maximum dimension in indices are larger than dataset dimensions
+                           ## if yes need to throw an error
+                           if(any(reg_eval_res$max_dims > simple_extent$dims)) {
+                               ## need to reset the extent of the arguments
+                               if(any(reg_eval_res$max_dims > simple_extent$maxdims)) {
+                                   stop("The following coordinates are larger than the largest possible dataset dimensions (maxdims): ",
+                                        paste(which(reg_eval_res$max_dims > simple_extent$maxdims), sep=", "))
+                               }
+                               ## need to check that value conforms to the right dimension for the arguments
+                               ## this is needed before a possible expansion of arguments
+                               mem_type_id <- standalone_H5D_get_type(h5d_id=self$id, native=TRUE)
+                               nelem_value <- .Call("R_guess_nelem", value, mem_type_id, PACKAGE="hdf5r")                               
+                               .Call("R_H5Tclose", mem_type_id, PACKAGE = "hdf5r")
+
+                               num_args_elem <- prod(reg_eval_res$result_dims_post_shuffle)
+                               if(nelem_value != num_args_elem && (num_args_elem %% nelem_value != 0 || num_args_elem < nelem_value)) {
+                                   stop("Number of objects in robj is not the same and not a multiple of number of elements selected in file")
+                               }
+
+                               self$set_extent(pmax(reg_eval_res$max_dims, simple_extent$dims))
+                               .Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r")
+                               self_space_id <- as.integer64(.Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val)
+                               on.exit(.Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r"), add=FALSE)
+                           }
+
+                           ## create the memory space
+                           ## go through all the robj-dimension
+                           selection <- regularity_eval_to_selection(reg_eval_res=reg_eval_res) 
+                           apply_selection(space_id=self_space_id, selection=selection) 
+                           
+                           mem_space_dims <- reg_eval_res$result_dims_post_shuffle
+                           mem_space_rank <- length(mem_space_dims)
+                           
+                           mem_space_id <- as.integer64(.Call("R_H5Screate_simple", mem_space_rank, rev(mem_space_dims), rev(mem_space_dims),
+                                                 PACKAGE="hdf5r")$return_val)
+                           if(mem_space_id < 0) {
+                               stop("Error creating simple dataspace")
+                           }
+                           on.exit(.Call("R_H5Sclose", mem_space_id, PACKAGE = "hdf5r"), add=TRUE)
+
                            return(self$write_low_level(value, file_space=self_space_id, mem_space=mem_space_id, dataset_xfer_pl=dataset_xfer_pl))
                        }
                    },
