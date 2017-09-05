@@ -521,7 +521,7 @@ commonFG <- list(
         return(invisible(self))
 
     },
-    link_create_external=function(target_file_name, target_obj_name, link_name, link_create_pl=h5const$H5P_DEFAULT,
+    link_create_external=function(target_filename, target_obj_name, link_name, link_create_pl=h5const$H5P_DEFAULT,
         link_access_pl=h5const$H5P_DEFAULT) {
         "This function implements the HDF5-API function H5Lcreate_external."
         "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateExternal} for details."
@@ -529,10 +529,10 @@ commonFG <- list(
         check_pl(link_access_pl, "H5P_LINK_ACCESS")
         check_pl(link_create_pl, "H5P_LINK_CREATE")
 
-        herr <- .Call("R_H5Lcreate_external", target_file_name, target_obj_name, self$id, link_name, link_create_pl$id,
+        herr <- .Call("R_H5Lcreate_external", target_filename, target_obj_name, self$id, link_name, link_create_pl$id,
                       link_access_pl$id, PACKAGE="hdf5r")$return_val
         if(herr < 0) {
-            stop(paste("Error creating external link for file", target_file_name, "with target object", target_obj_name, " and link_name", link_name))
+            stop(paste("Error creating external link for file", target_filename, "with target object", target_obj_name, " and link_name", link_name))
         }
         return(invisible(self))
 
@@ -1146,7 +1146,7 @@ commonFGDT <- list(
         }
         return(res$name)
     },
-    get_file_name=function() {
+    get_filename=function() {
         "This function implements the HDF5-API function H5Fget_name."
         "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details."
 

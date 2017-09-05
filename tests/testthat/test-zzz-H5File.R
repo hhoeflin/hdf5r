@@ -27,7 +27,7 @@ test_that("H5File-FileMode-param-a",{
 	expect_that(file, is_a("H5File"))
 	# TODO: add mode to file
 	#expect_that(file$mode, is_identical_to("a"))
-	expect_that(normalizePath(file$get_file_name(), mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
+	expect_that(normalizePath(file$get_filename(), mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
 	group1 <- createGroup(file, "testgroup")
 	expect_that(group1, is_a("H5Group"))
 	h5close(group1)

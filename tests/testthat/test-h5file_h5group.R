@@ -79,7 +79,7 @@ test_that("File creation", {
 
     ## retrieve the filesize and info and name
     ## in order not to get an error on OSx, need to replace // in filename
-    expect_equal(normalizePath(file.h5$get_file_name(), mustWork = FALSE), normalizePath(test_file, mustWork=FALSE))
+    expect_equal(normalizePath(file.h5$get_filename(), mustWork = FALSE), normalizePath(test_file, mustWork=FALSE))
     expect_true(nrow(file.h5$file_info()) == 1)
     expect_true(file.h5$get_filesize() > 0)
         

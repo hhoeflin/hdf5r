@@ -129,7 +129,7 @@ H5File <- R6Class("H5File",
 
                           super$initialize(id)
                           self$mode <- mode
-                          self$filename <- self$get_file_name()
+                          self$filename <- self$get_filename()
                       },
                       get_obj_count=function(types=h5const$H5F_OBJ_ALL) {
                           "This function implements the HDF5-API function H5Aget_info."
@@ -202,7 +202,7 @@ H5File <- R6Class("H5File",
                               rm_obj(self$id)
                           }
                           return(invisible(self))
-                      }
+                      },
                       ## close=function(all=TRUE) {
                       ##     "Closes an object and calls the appropriate HDF5 function for the type of object"
                       ##     "@param all Closes all open objects of the file"
@@ -219,6 +219,19 @@ H5File <- R6Class("H5File",
                       ##     }
                       ##     return(invisible(self))
                       ## }
+                      print=function(..., is_valid=NULL){
+                          "Prints information for the file"
+                          "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
+
+                          if(is.null(is_valid)) {
+                              is_valid <- self$is_valid
+                          }
+                          super$print(is_valid=is_valid)
+                          if(is_valid) {
+                              cat("Filename: ", normalizePath(self$filename, mustWork=FALSE), "\n", sep="")
+                          }
+                          return(invisible(self))
+                      }
                       ),
                   private=list(
                       closeFun=function(id) {
