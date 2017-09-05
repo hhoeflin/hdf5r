@@ -88,15 +88,22 @@ H5RefClass <- R6Class("H5RefClass",
  #                             private$pid <- NA
  #                             private$pmessage <- "erased"
  #                         },
-                          print=function(...) {
+                          print=function(..., is_valid=NULL) {
                               "Prints the class of the object and the id"
+                              "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
+
+                              if(is.null(is_valid)) {
+                                  is_valid <- self$is_valid
+                              }
+                              
                               myclass <- class(self)[1]
-                              if(!self$is_valid) {
-                                  cat(myclass, ": Object invalid\n", sep="")
+                              cat("Class: ", myclass, "\n", sep="")
+                              if(!is_valid) {
+                                  cat("ID: Object invalid\n")
                               }
                               else {
                                   id_as_hex <- as_hex(self$id)
-                                  cat(myclass, ": ", id_as_hex, "\n", sep="")
+                                  cat("ID: ", id_as_hex, "\n", sep="")
                               }
                               return(invisible(self))
                           },
