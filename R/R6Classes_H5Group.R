@@ -36,6 +36,23 @@
 ##' @seealso H5Class_overview
 H5Group <- R6Class("H5Group",
                    inherit=H5RefClass,
+                   public=list(
+                       print=function(..., is_valid=NULL){
+                           "Prints information for the group"
+                           "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
+                           
+                           if(is.null(is_valid)) {
+                               is_valid <- self$is_valid
+                           }
+                           super$print(is_valid=is_valid)
+                           if(is_valid) {
+                               cat("Filename: ", normalizePath(self$get_filename(), mustWork=FALSE), "\n", sep="")
+                               cat("Group: ", self$get_obj_name(), "\n", sep="")
+                           }
+                           return(invisible(self))
+                       }
+            
+                       ),
                    private=list(
                        closeFun=function(id) if(!is.na(id) && is.loaded("R_H5Gclose", PACKAGE="hdf5r")) {
                           invisible(.Call("R_H5Gclose", id, PACKAGE = "hdf5r"))}

@@ -28,26 +28,6 @@ interface <- list(
         fid <- .Call("R_H5Iget_file_id", self$id, PACKAGE="hdf5r")$return_val
         return(H5File$new(id=fid))
     },
-    get_obj_name=function() {
-        "This function implements the HDF5-API function H5Iget_name."
-        "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details."
-
-        ## get size of the name
-        name_size <- .Call("R_H5Iget_name", self$id, character(0), 0, PACKAGE="hdf5r")$return_val
-        if(name_size < 0) {
-            stop("Error returning name of object")
-        }
-        if(name_size == 0) {
-            return(NA)
-        }
-        ## create a character vector of sufficient size (it will be copied in the internal C function as is available for writign
-        char_buf=paste(rep(" ", name_size), collapse="")
-        res <- .Call("R_H5Iget_name", self$id, char_buf, name_size + 1, PACKAGE="hdf5r")
-        if(res$return_val < 0) {
-            stop("Error returning name of object")
-        }
-        return(res$name)
-    },
     get_obj_type=function() {
         "This function implements the HDF5-API function H5Iget_type."
         "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetType} for details."
@@ -851,6 +831,26 @@ commonFGDT <- list(
             return(res$oinfo)
         }
     },
+    get_obj_name=function() {
+        "This function implements the HDF5-API function H5Iget_name."
+        "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details."
+
+        ## get size of the name
+        name_size <- .Call("R_H5Iget_name", self$id, character(0), 0, PACKAGE="hdf5r")$return_val
+        if(name_size < 0) {
+            stop("Error returning name of object")
+        }
+        if(name_size == 0) {
+            return(NA)
+        }
+        ## create a character vector of sufficient size (it will be copied in the internal C function as is available for writign
+        char_buf=paste(rep(" ", name_size), collapse="")
+        res <- .Call("R_H5Iget_name", self$id, char_buf, name_size + 1, PACKAGE="hdf5r")
+        if(res$return_val < 0) {
+            stop("Error returning name of object")
+        }
+        return(res$name)
+    },
     ## functions that work on attributes
     create_attr=function(attr_name, robj=NULL, dtype=NULL, space=NULL) {
         "This function implements the HDF5-API function H5Acreate2."
@@ -1145,28 +1145,8 @@ commonFGDT <- list(
             stop("Problem getting attribute name by index")
         }
         return(res$name)
-    },
-    get_filename=function() {
-        "This function implements the HDF5-API function H5Fget_name."
-        "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details."
-
-        ## get size of the name
-        name_size <- .Call("R_H5Fget_name", self$id, character(0), 0, PACKAGE="hdf5r")$return_val
-        if(name_size < 0) {
-            stop("Error returning name of object")
-        }
-        if(name_size == 0) {
-            return(NA)
-        }
-        ## create a character vector of sufficient size (it will be copied in the internal C function as is available for writign
-        char_buf=paste(rep(" ", name_size), collapse="")
-        res <- .Call("R_H5Fget_name", self$id, char_buf, name_size + 1, PACKAGE="hdf5r")
-        if(res$return_val < 0) {
-            stop("Error returning name of object")
-        }
-        return(res$name)
     }
-    )
+)
 
 
 ## create reference for datasets is implemented separately to allower for better ease of use in creating
@@ -1195,7 +1175,7 @@ commonFGT <- list(
         ref_obj$ref <- res$ref
         return(ref_obj)
     }
-    )
+)
 
 commonFGDTA <- list(
     flush=function(scope=h5const$H5F_SCOPE_GLOBAL) {
@@ -1212,6 +1192,25 @@ commonFGDTA <- list(
         else {
             return(invisible(self))
         }
-    }
+    },
+    get_filename=function() {
+        "This function implements the HDF5-API function H5Fget_name."
+        "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details."
 
-    )
+        ## get size of the name
+        name_size <- .Call("R_H5Fget_name", self$id, character(0), 0, PACKAGE="hdf5r")$return_val
+        if(name_size < 0) {
+            stop("Error returning name of object")
+        }
+        if(name_size == 0) {
+            return(NA)
+        }
+        ## create a character vector of sufficient size (it will be copied in the internal C function as is available for writign
+        char_buf=paste(rep(" ", name_size), collapse="")
+        res <- .Call("R_H5Fget_name", self$id, char_buf, name_size + 1, PACKAGE="hdf5r")
+        if(res$return_val < 0) {
+            stop("Error returning name of object")
+        }
+        return(res$name)
+    }
+)
