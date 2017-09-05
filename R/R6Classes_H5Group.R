@@ -37,14 +37,13 @@
 H5Group <- R6Class("H5Group",
                    inherit=H5RefClass,
                    public=list(
-                       print=function(..., is_valid=NULL){
+                       print=function(...){
                            "Prints information for the group"
                            "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
                            
-                           if(is.null(is_valid)) {
-                               is_valid <- self$is_valid
-                           }
-                           super$print(is_valid=is_valid)
+                           is_valid <- self$is_valid
+
+                           print_class_id(self, is_valid)
                            if(is_valid) {
                                cat("Filename: ", normalizePath(self$get_filename(), mustWork=FALSE), "\n", sep="")
                                cat("Group: ", self$get_obj_name(), "\n", sep="")

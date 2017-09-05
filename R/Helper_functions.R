@@ -196,3 +196,28 @@ H5Class_overview <- function(browser = getOption("browser")) {
     browseURL(system.file("manual/function_overview.html", package="hdf5r"), browser=browser)
     return(invisible(system.file("manual/function_overview.html", package="hdf5r")))
 }
+
+
+
+##' Print the class and ID
+##'
+##' Used by the print-methods
+##' @title Print the class and ID
+##' @param obj The object for which to print the class and id
+##' @param is_valid is the object valid
+##' @return invisible NULL
+##' @author Holger Hoefling
+##' @keywords internal
+print_class_id <- function(obj, is_valid) {
+    myclass <- class(obj)[1]
+    cat("Class: ", myclass, "\n", sep="")
+    if(!is_valid) {
+        cat("ID: Object invalid\n")
+    }
+    else {
+        id_as_hex <- as_hex(obj$id)
+        cat("ID: ", id_as_hex, "\n", sep="")
+    }
+    return(invisible(NULL))
+}
+

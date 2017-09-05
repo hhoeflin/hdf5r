@@ -219,14 +219,13 @@ H5File <- R6Class("H5File",
                       ##     }
                       ##     return(invisible(self))
                       ## }
-                      print=function(..., is_valid=NULL){
+                      print=function(...){
                           "Prints information for the file"
-                          "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
 
-                          if(is.null(is_valid)) {
-                              is_valid <- self$is_valid
-                          }
-                          super$print(is_valid=is_valid)
+                          is_valid <- self$is_valid
+                          
+                          print_class_id(self, is_valid)
+
                           if(is_valid) {
                               cat("Filename: ", normalizePath(self$filename, mustWork=FALSE), "\n", sep="")
                           }

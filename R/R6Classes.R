@@ -88,23 +88,12 @@ H5RefClass <- R6Class("H5RefClass",
  #                             private$pid <- NA
  #                             private$pmessage <- "erased"
  #                         },
-                          print=function(..., is_valid=NULL) {
+                          print=function(...) {
                               "Prints the class of the object and the id"
-                              "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
 
-                              if(is.null(is_valid)) {
-                                  is_valid <- self$is_valid
-                              }
-                              
-                              myclass <- class(self)[1]
-                              cat("Class: ", myclass, "\n", sep="")
-                              if(!is_valid) {
-                                  cat("ID: Object invalid\n")
-                              }
-                              else {
-                                  id_as_hex <- as_hex(self$id)
-                                  cat("ID: ", id_as_hex, "\n", sep="")
-                              }
+                              is_valid <- self$is_valid
+
+                              print_class_id(self, is_valid)
                               return(invisible(self))
                           },
                           methods=function() {
@@ -167,9 +156,6 @@ H5RefClass <- R6Class("H5RefClass",
                       )
 
 R6_set_list_of_items(H5RefClass, "public", interface, overwrite=TRUE)
-
-
-
 
 
 
