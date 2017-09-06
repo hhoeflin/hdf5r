@@ -77,6 +77,11 @@ advanced development feature and may be removed in the future.}
 
 This function implements the HDF5-API function H5Fflush.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush} for details.}
+
+\item{\code{get_filename()}}{
+
+This function implements the HDF5-API function H5Fget_name.
+Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details.}
 }}
 
 \seealso{

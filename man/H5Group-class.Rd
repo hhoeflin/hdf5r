@@ -15,6 +15,16 @@ This class represents an HDF5 group-id. It inherits all functions of the
 \section{Methods}{
 
 \describe{
+\item{\code{print(..., max.attributes = 10, max.listing = 10)}}{
+
+Prints information for the group
+
+\strong{Parameters:}
+\describe{
+\item{max.attributes}{Maximum number of attribute names to print}
+\item{max.listing}{Maximum number of ls-items to print}
+}}
+
 \item{\code{open(name, link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
   type_access_pl = h5const$H5P_DEFAULT)}}{
@@ -151,7 +161,7 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L
 This function implements the HDF5-API function H5Lcreate_soft.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateSoft} for details.}
 
-\item{\code{link_create_external(target_file_name, target_obj_name, link_name,
+\item{\code{link_create_external(target_filename, target_obj_name, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
@@ -251,6 +261,11 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R
 This function implements the HDF5-API function H5Oget_info.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo} for details.}
 
+\item{\code{get_obj_name()}}{
+
+This function implements the HDF5-API function H5Iget_name.
+Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details.}
+
 \item{\code{create_attr(attr_name, robj = NULL, dtype = NULL, space = NULL)}}{
 
 This function implements the HDF5-API function H5Acreate2.
@@ -332,15 +347,15 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A
 This function implements the HDF5-API function H5Aget_name_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx} for details.}
 
-\item{\code{get_file_name()}}{
-
-This function implements the HDF5-API function H5Fget_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details.}
-
 \item{\code{flush(scope = h5const$H5F_SCOPE_GLOBAL)}}{
 
 This function implements the HDF5-API function H5Fflush.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush} for details.}
+
+\item{\code{get_filename()}}{
+
+This function implements the HDF5-API function H5Fget_name.
+Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details.}
 
 \item{\code{names(link_access_pl = h5const$H5P_DEFAULT)}}{
 

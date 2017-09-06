@@ -37,9 +37,10 @@
 H5Group <- R6Class("H5Group",
                    inherit=H5RefClass,
                    public=list(
-                       print=function(...){
+                       print=function(..., max.attributes=10, max.listing=10){
                            "Prints information for the group"
-                           "@param is_valid If \\code{NULL}, then validty is being checked, otherwise the logical value given is used."
+                           "@param max.attributes Maximum number of attribute names to print"
+                           "@param max.listing Maximum number of ls-items to print"
                            
                            is_valid <- self$is_valid
 
@@ -47,6 +48,8 @@ H5Group <- R6Class("H5Group",
                            if(is_valid) {
                                cat("Filename: ", normalizePath(self$get_filename(), mustWork=FALSE), "\n", sep="")
                                cat("Group: ", self$get_obj_name(), "\n", sep="")
+                               print_attributes(self, max_to_print=max.attributes)
+                               print_listing(self, max_to_print=max.listing)
                            }
                            return(invisible(self))
                        }

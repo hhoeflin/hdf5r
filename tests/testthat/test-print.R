@@ -27,9 +27,9 @@ test_that("Print functions work as expected", {
                                                  " test H5O_TYPE_GROUP         <NA>               <NA>"))
 
     #H5Group also prints the name of the group
-    expect_output(h5group$print(), regexp=paste0("Class: H5Group\nID: 0x[0-9A-F]+\nFilename: ",
+    expect_output(h5group$print(), regexp=paste0("Class: H5Group\nFilename: ",
                                                  escape_regexp(normalizePath(test_file, mustWork=FALSE)),
-                                                 "\nGroup: /test"))
+                                                 "\nGroup: /test\nAttributes: grp_attr"))
     
     ## cleanup
     file.h5$close_all()

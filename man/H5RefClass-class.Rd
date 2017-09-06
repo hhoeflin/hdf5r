@@ -45,11 +45,6 @@ Prints available methods on the screen}
 This function implements the HDF5-API function H5Iget_file_id.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetFileId} for details.}
 
-\item{\code{get_obj_name()}}{
-
-This function implements the HDF5-API function H5Iget_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details.}
-
 \item{\code{get_obj_type()}}{
 
 This function implements the HDF5-API function H5Iget_type.
