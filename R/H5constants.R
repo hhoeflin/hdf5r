@@ -124,6 +124,9 @@ install_types_const <- function(h5types, h5const) {
     all_types_frame <- .Call("show_all_types_data_frame", PACKAGE="hdf5r")
     all_const_frame <- .Call("show_all_const_data_frame", PACKAGE="hdf5r") 
 
+    ## exclude H5F_ACC_DEBUG; listed as 0; not supported for end-users
+    all_const_frame <- all_const_frame[all_const_frame$Name != "H5F_ACC_DEBUG",]
+    
     ## of all the datatypes, get all individual values
     all_types_unique <- unique(all_types_frame$Type_id)
     names(all_types_unique) <- as.character(all_types_unique)

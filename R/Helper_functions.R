@@ -215,9 +215,58 @@ print_class_id <- function(obj, is_valid) {
         cat("ID: Object invalid\n")
     }
     else {
-        id_as_hex <- as_hex(obj$id)
-        cat("ID: ", id_as_hex, "\n", sep="")
+        if(getOption("hdf5r.print_id")) {
+            id_as_hex <- as_hex(obj$id)
+            cat("ID: ", id_as_hex, "\n", sep="")
+        }
     }
     return(invisible(NULL))
 }
 
+##' Print attributes
+##'
+##' Prints the names of the attributes up to a given maximum number
+##' @title Print attributes
+##' @param obj The obj for which to print the attributes
+##' @param max_to_print Maximum number of attributes to print
+##' @return Invisible NULL
+##' @author Holger Hoefling
+##' @keywords internal
+print_attributes <- function(obj, max_to_print) {
+    obj_attr_names <- h5attr_names(obj)
+    if(length(obj_attr_names) > 0) {
+        if(length(obj_attr_names) <= max_to_print) {
+            cat("Attributes: ", paste(obj_attr_names, collapse=", "), "\n", sep="")
+        }
+        else {
+            cat("Attributes: ", paste(obj_attr_names[seq_len(max_to_print)], collapse=", "),
+                " ... < truncated at ", max_to_print, " out of ", length(obj_attr_names), ">\n", sep="")
+        }
+    }
+    return(invisible(NULL))
+}
+
+##' Print listing
+##'
+##' Prints a smaller part of the \code{ls} output of an object, up to a maximum number
+##' @title Print listing 
+##' @param obj Object for which to print the listing
+##' @param max_to_print Maximum number of listing items to print
+##' @return Invisible NULL
+##' @author Holger Hoefling
+##' @keywords internal
+print_listing <- function(obj, max_to_print) {
+    listing <- obj$ls(recursive=FALSE, detailed=FALSE)
+    listing <- listing[, c("name", "object.type", "dataset.dims", "dataset.type_class")]
+    if(nrow(listing) > 0) {
+        cat("Listing:\n")
+        if(nrow(listing) <= max_to_print) {
+            print(listing, row.names=FALSE)
+        }
+        else {
+            print(listing[seq_len(max_to_print),], row.names=FALSE)
+            cat("< Printed ", max_to_print, ", out of ", nrow(listing), ">\n", sep="")
+        }
+    }
+    return(invisible(NULL))
+}

@@ -132,8 +132,8 @@ H5File <- R6Class("H5File",
                           self$filename <- self$get_filename()
                       },
                       get_obj_count=function(types=h5const$H5F_OBJ_ALL) {
-                          "This function implements the HDF5-API function H5Aget_info."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo} for details."
+                          "This function implements the HDF5-API function H5Fget_obj_count."
+                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetObjCount} for details."
                           count <- .Call("R_H5Fget_obj_count", self$id, types, PACKAGE = "hdf5r")$return_val
                           if(count < 0) {
                               stop("Couldn't get object count in file")
@@ -182,6 +182,18 @@ H5File <- R6Class("H5File",
                               return(res$bh_info)
                           }
                       },
+                      get_intent=function() {
+                          "This function implements the HDF5-API function H5Fget_intent."
+                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetIntent} for details."
+
+                          res <- .Call("R_H5Fget_intent", self$id, request_empty(1), PACKAGE="hdf5r")
+                          if(res$return_val < 0) {
+                              stop("Error retrieving the file size")
+                          }
+                          h5f_acc <- h5const$H5F_ACC
+                          intent <- factor_ext(res$intent, values=values(h5f_acc), levels=levels(h5f_acc))
+                          return(intent)
+                      },
                       close_all=function(close_self=TRUE) {
                           "Closes the file, flushes it and also closes all open objects that are still open in it. This is the recommended way of"
                           "closing any file. If not all objects in a file are closed, the file remains open and cannot be re-opened the regular way."
@@ -219,7 +231,7 @@ H5File <- R6Class("H5File",
                       ##     }
                       ##     return(invisible(self))
                       ## }
-                      print=function(...){
+                      print=function(..., max.attributes=10, max.listing=10){
                           "Prints information for the file"
 
                           is_valid <- self$is_valid
@@ -228,7 +240,11 @@ H5File <- R6Class("H5File",
 
                           if(is_valid) {
                               cat("Filename: ", normalizePath(self$filename, mustWork=FALSE), "\n", sep="")
+                              cat("Access type: ", as.character(self$get_intent()), "\n", sep="")
+                              print_attributes(self, max_to_print=max.attributes)
+                              print_listing(self, max_to_print=max.listing)
                           }
+                          
                           return(invisible(self))
                       }
                       ),

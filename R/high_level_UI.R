@@ -166,7 +166,7 @@ h5attributes <- function(x) {
 h5attr_names <- function(x) {
     ## get the number of attributes
     obj_info <- x$obj_info()
-    attr_names <- character(obj_info$num_attrs);
+    attr_names <- character(obj_info$num_attrs)
     for(i in seq_along(attr_names)) {
         attr_names[i] <- x$attr_name_by_idx(i - 1, ".")
     }

@@ -35,7 +35,8 @@
         hdf5r.default_string_len = Inf,
         hdf5r.flush_on_write=TRUE,
         hdf5r.h5tor_default=h5const$H5TOR_CONV_INT64_NOLOSS,
-        hdf5r.point_to_hyperslabs_ratio=4
+        hdf5r.point_to_hyperslabs_ratio=4,
+        hdf5r.print_id=FALSE
         )
     toset <- !(names(op.hdf5r) %in% names(op))
     if(any(toset)) options(op.hdf5r[toset])

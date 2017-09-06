@@ -12,8 +12,9 @@ test_that("Print functions work as expected", {
     file.h5 <- H5File$new(test_file, mode="w")
 
     ## H5File has its location as part of its output
-    expect_output(file.h5$print(), regexp=paste0("Class: H5File\nID: 0x[0-9A-F]+\nFilename: ",
-                                                 escape_regexp(normalizePath(test_file, mustWork=FALSE))))
+    expect_output(file.h5$print(), regexp=paste0("Class: H5File\nFilename: ",
+                                                 escape_regexp(normalizePath(test_file, mustWork=FALSE)),
+                                                 "\nAccess type: H5F_ACC_RDWR"))
 
     #H5Group also prints the name of the group
     h5group <- file.h5$create_group("test")
