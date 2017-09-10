@@ -19,6 +19,8 @@ test_that("Print functions work as expected", {
 
     ## create a space that defines the nsize fo the new dataset
     dset_space <- H5S$new(type="simple", dims=c(5,10,15))
+    h5dset <- h5group$create_dataset("test_dset", dtype=h5types$H5T_IEEE_F64LE, space=dset_space)
+
     ## check that the pring output for spaces is ok
     expect_output(dset_space$print(), regexp="Class: H5S\nType: Simple\nDims: 5 x 10 x 15\nMaxdims: 5 x 10 x 15", fixed=TRUE)
 
@@ -27,24 +29,33 @@ test_that("Print functions work as expected", {
                   regexp="Class: H5S\nType: Scalar", fixed=TRUE)
     expect_output(H5S$new(type="null")$print(),
                   regexp="Class: H5S\nType: NULL", fixed=TRUE)
-
-    
-    ## create a dataset inside the group
-    h5group$create_dataset("test_dset", dtype=h5types$H5T_NATIVE_DOUBLE, space=dset_space)
     
     ## H5File has its location as part of its output
     expect_output(file.h5$print(), regexp=paste0("Class: H5File\nFilename: ",
-                                                 escape_regexp(normalizePath(test_file, mustWork=FALSE)),
+                                                 normalizePath(test_file, mustWork=FALSE),
                                                  "\nAccess type: H5F_ACC_RDWR\n",
                                                  "Attributes: attr1, attr2\n",
                                                  "Listing:\n",
                                                  " name    object.type dataset.dims dataset.type_class\n",
-                                                 " test H5O_TYPE_GROUP         <NA>               <NA>"))
+                                                 " test H5O_TYPE_GROUP         <NA>               <NA>"), fixed=TRUE)
 
     #H5Group also prints the name of the group
     expect_output(h5group$print(), regexp=paste0("Class: H5Group\nFilename: ",
-                                                 escape_regexp(normalizePath(test_file, mustWork=FALSE)),
-                                                 "\nGroup: /test\nAttributes: grp_attr"))
+                                                 normalizePath(test_file, mustWork=FALSE),
+                                                 "\nGroup: /test\nAttributes: grp_attr\n",
+                                                 "Listing:\n",
+                                                 "      name      object.type dataset.dims dataset.type_class\n",
+                                                 " test_dset H5O_TYPE_DATASET  5 x 10 x 15          H5T_FLOAT"), fixed=TRUE)
+
+    ## create a dataset inside the group
+    expect_output(h5dset$print(), regexp=paste0("Class: H5D\n",
+                                                "Dataset: /test/test_dset\n",
+                                                "Filename: ",
+                                                normalizePath(test_file, mustWork=FALSE),
+                                                "\nAccess type: H5F_ACC_RDWR\n",
+                                                "Datatype: H5T_IEEE_F64LE\n",
+                                                "Space: Type=Simple     Dims=5 x 10 x 15     Maxdims=5 x 10 x 15\n",
+                                                "Chunk: 5 x 10 x 15"), fixed=TRUE)
 
 
     ## test the printing of datatypes

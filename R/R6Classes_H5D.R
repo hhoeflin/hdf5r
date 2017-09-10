@@ -678,7 +678,63 @@ H5D <- R6Class("H5D",
                        }
                        ref_obj$ref <- res$ref
                        return(ref_obj)
-                   }
+                   },
+                   print=function(..., max.attributes){
+                          "Prints information for the dataset"
+                          "@param ... ignored"
+                          "@param max.attributes Maximum number of attribute names to print"
+
+
+                          is_valid <- self$is_valid
+                          
+                          print_class_id(self, is_valid)
+                          
+                          if(is_valid) {
+                              ## get information about the file
+                              ## get the dataset name
+                              cat("Dataset: ", self$get_obj_name(), "\n", sep="")
+                              ## get information about the file
+                              this_file <- self$get_file_id()
+                              cat("Filename: ", normalizePath(this_file$filename, mustWork=FALSE), "\n", sep="")
+                              cat("Access type: ", as.character(this_file$get_intent()), "\n", sep="")
+                              this_file$close()
+                              ## get attributes
+                              print_attributes(self, max_to_print=max.attributes)
+                              ## get the datatype
+                              this_dtype <- self$get_type()
+                              type_text <- this_dtype$to_text()
+                              cat("Datatype: ", type_text, "\n", sep="")
+                              this_dtype$close()
+                              ## get the dataspace
+                              this_space <- self$get_space()
+                              if(!this_space$is_simple()) {
+                                  ## has to be a NULL space
+                                  cat("Space: Type=NULL\n")
+                              }
+                              else {
+                                  extent_res <- this_space$get_simple_extent_dims()
+                                  if(extent_res$rank == 0) {
+                                      cat("Space: Type=Scalar\n")
+                                  }
+                                  else {
+                                      cat("Space: Type=Simple     ")
+                                      cat("Dims=", paste(extent_res$dims, collapse=" x "), "     ", sep="")
+                                      cat("Maxdims=", paste(extent_res$maxdims, collapse=" x "), "\n", sep="")
+                                  }
+                              }
+                              this_space$close()
+                              this_chunk_dims <- self$chunk_dims
+                              if(length(this_chunk_dims) == 1 && is.na(this_chunk_dims)) {
+                                  cat("Not chunked\n")
+                              }
+                              else {
+                                  cat("Chunk: ", paste(this_chunk_dims, collapse=" x "), "\n", sep="")
+                              }
+                         }
+                          
+                          return(invisible(self))
+                      }
+
 
                    ),
                active=list(
