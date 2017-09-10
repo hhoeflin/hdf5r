@@ -61,7 +61,17 @@ test_that("Print functions work as expected", {
     ## test the printing of datatypes
     test_type <- h5types$H5T_STD_I32LE
     expect_output(test_type$print(), regexp=paste0("Class: H5T_INTEGER\nDatatype: H5T_STD_I32LE"), fixed=TRUE)
-    
+
+    group_attr <- h5group$attr_open_by_name("grp_attr", ".")
+    expect_output(group_attr$print(), regexp=paste0("Class: H5A\n",
+                                                    "Attribute: grp_attr\n",
+                                                    "Datatype: H5T_STRING {\n",
+                                                    "      STRSIZE H5T_VARIABLE;\n",
+                                                    "      STRPAD H5T_STR_NULLTERM;\n",
+                                                    "      CSET H5T_CSET_ASCII;\n",
+                                                    "      CTYPE H5T_C_S1;\n",
+                                                    "   }\n",
+                                                    "Space: Type=Simple     Dims=1     Maxdims=1"), fixed=TRUE)
     
     ## cleanup
     file.h5$close_all()

@@ -212,8 +212,43 @@ H5A <- R6Class("H5A",
                            self$flush()
                        }
                        return(invisible(self))
-                   }
+                   },
+                   print=function(...){
+                       "Prints information for the dataset"
+                       "@param ... ignored"
 
+                       is_valid <- self$is_valid
+                       
+                       print_class_id(self, is_valid)
+                       
+                       if(is_valid) {
+                           ## get information about the file
+                           ## get the dataset name
+                           cat("Attribute: ", self$attr_name(), "\n", sep="")
+                           this_dtype <- self$get_type()
+                           type_text <- this_dtype$to_text()
+                           cat("Datatype: ", type_text, "\n", sep="")
+                           this_dtype$close()
+                           ## get the dataspace
+                           this_space <- self$get_space()
+                           if(!this_space$is_simple()) {
+                               ## has to be a NULL space
+                               cat("Space: Type=NULL\n")
+                           }
+                           else {
+                               extent_res <- this_space$get_simple_extent_dims()
+                               if(extent_res$rank == 0) {
+                                   cat("Space: Type=Scalar\n")
+                               }
+                               else {
+                                   cat("Space: Type=Simple     ")
+                                   cat("Dims=", paste(extent_res$dims, collapse=" x "), "     ", sep="")
+                                   cat("Maxdims=", paste(extent_res$maxdims, collapse=" x "), "\n", sep="")
+                               }
+                           }
+                           this_space$close()
+                       }
+                   }
                    ),
                private=list(
                    closeFun=function(id) if(!is.na(id) && is.loaded("R_H5Aclose", PACKAGE="hdf5r")) {
