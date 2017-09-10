@@ -16,6 +16,21 @@ test_that("Print functions work as expected", {
     h5attr(file.h5, "attr1") <- 1.0
     h5attr(file.h5, "attr2") <- "A"
     h5attr(h5group, "grp_attr") <- "a group"
+
+    ## create a space that defines the nsize fo the new dataset
+    dset_space <- H5S$new(type="simple", dims=c(5,10,15))
+    ## check that the pring output for spaces is ok
+    expect_output(dset_space$print(), regexp="Class: H5S\nType: Simple\nDims: 5 x 10 x 15\nMaxdims: 5 x 10 x 15", fixed=TRUE)
+
+    ## also test output for a scalar and a null space
+    expect_output(H5S$new(type="scalar")$print(),
+                  regexp="Class: H5S\nType: Scalar", fixed=TRUE)
+    expect_output(H5S$new(type="null")$print(),
+                  regexp="Class: H5S\nType: NULL", fixed=TRUE)
+
+    
+    ## create a dataset inside the group
+    h5group$create_dataset("test_dset", dtype=h5types$H5T_NATIVE_DOUBLE, space=dset_space)
     
     ## H5File has its location as part of its output
     expect_output(file.h5$print(), regexp=paste0("Class: H5File\nFilename: ",
@@ -30,6 +45,12 @@ test_that("Print functions work as expected", {
     expect_output(h5group$print(), regexp=paste0("Class: H5Group\nFilename: ",
                                                  escape_regexp(normalizePath(test_file, mustWork=FALSE)),
                                                  "\nGroup: /test\nAttributes: grp_attr"))
+
+
+    ## test the printing of datatypes
+    test_type <- h5types$H5T_STD_I32LE
+    expect_output(test_type$print(), regexp=paste0("Class: H5T_INTEGER\nDatatype: H5T_STD_I32LE"), fixed=TRUE)
+    
     
     ## cleanup
     file.h5$close_all()

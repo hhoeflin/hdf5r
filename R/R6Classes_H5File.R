@@ -235,6 +235,7 @@ H5File <- R6Class("H5File",
                           "Prints information for the file"
                           "@param max.attributes Maximum number of attribute names to print"
                           "@param max.listing Maximum number of ls-items to print"
+                          "@param ... ignored"
 
                           is_valid <- self$is_valid
                           

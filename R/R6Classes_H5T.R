@@ -362,16 +362,23 @@ H5T <- R6Class("H5T",
                    to_text=function(lang_type=h5const$H5LT_DDL) {
                        "This function implements the HDF5-API function H5LTdtype_to_text."
                        "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/HL/RM_H5LT.html#H5LTdtype_to_text} for details."
-                       res <- .Call("R_H5LTdtype_to_text", self$id, character(0), lang_type, request_empty(1), PACKAGE="hdf5r")
-                       if(res$return_val < 0) {
-                           stop("Could not retrieve the necessary size of the buffer to convert type to text")
+                       res <- standalone_H5T_dtype_to_text(self$id, lang_type)
+
+                       return(res)
+                   },
+                   print=function(...){
+                       "Prints information for the group"
+                       "@param ... ignored"
+                       
+                       is_valid <- self$is_valid
+                       
+                       print_class_id(self, is_valid)
+
+                       if(is_valid) {
+                           type_text <- self$to_text()
+                           cat("Datatype: ", type_text, "\n", sep="")
                        }
-                       char_buf <- paste(rep(" ", res$len + 1), collapse="")
-                       res <- .Call("R_H5LTdtype_to_text", self$id, char_buf, lang_type, nchar(char_buf), PACKAGE="hdf5r")
-                       if(res$return_val < 0) {
-                           stop("Could not convert type to text")
-                       }
-                       return(res$str)
+                       return(invisible(self))
                    }
                    ),
                private=list(
@@ -385,6 +392,20 @@ H5T <- R6Class("H5T",
 ## add a common function
 R6_set_list_of_items(H5T, "public", commonFGDT, overwrite=TRUE)
 R6_set_list_of_items(H5T, "public", commonFGT, overwrite=TRUE)
+
+
+standalone_H5T_dtype_to_text <- function(h5t_id, lang_type) {
+    res <- .Call("R_H5LTdtype_to_text", h5t_id, character(0), lang_type, request_empty(1), PACKAGE="hdf5r")
+    if(res$return_val < 0) {
+        stop("Could not retrieve the necessary size of the buffer to convert type to text")
+    }
+    char_buf <- paste(rep(" ", res$len + 1), collapse="")
+    res <- .Call("R_H5LTdtype_to_text", h5t_id, char_buf, lang_type, nchar(char_buf), PACKAGE="hdf5r")
+    if(res$return_val < 0) {
+        stop("Could not convert type to text")
+    }
+    return(res$str)
+}
 
 
 #' Class for HDF5 integer-datatypes.

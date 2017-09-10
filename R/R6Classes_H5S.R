@@ -373,8 +373,35 @@ H5S <- R6Class("H5S",
                            apply_selection(space_id=self$id, selection=selection)
                        }
                        return(invisible(self))
+                   },
+                   print=function(...){
+                       "Prints information for the group"
+                       "@param ... ignored"
+                       
+                       is_valid <- self$is_valid
+                       
+                       print_class_id(self, is_valid)
+
+                       if(is_valid) {
+                           if(!self$is_simple()) {
+                               ## has to be a NULL space
+                               cat("Type: NULL\n")
+                           }
+                           else {
+                               extent_res <- self$get_simple_extent_dims()
+                               if(extent_res$rank == 0) {
+                                   cat("Type: Scalar\n")
+                               }
+                               else {
+                                   cat("Type: Simple\n")
+                                   cat("Dims: ", paste(extent_res$dims, collapse=" x "), "\n", sep="")
+                                   cat("Maxdims: ", paste(extent_res$maxdims, collapse=" x "), "\n", sep="")
+                               }
+                           }
+                       }
+                       return(invisible(self))
                    }
-                   ),
+               ),
                active=list(
                    dims=function() {
                        "Get the dimensions of the space. Return NULL if the space is not simple (i.e. NULL-space) or a length-0 integer if it is a scalar"

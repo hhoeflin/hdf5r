@@ -41,7 +41,8 @@ H5Group <- R6Class("H5Group",
                            "Prints information for the group"
                            "@param max.attributes Maximum number of attribute names to print"
                            "@param max.listing Maximum number of ls-items to print"
-                           
+                           "@param ... ignored"
+
                            is_valid <- self$is_valid
 
                            print_class_id(self, is_valid)
