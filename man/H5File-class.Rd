@@ -101,7 +101,7 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L
 \item{\code{path_valid(path, check_object_valid = TRUE)}}{
 
 This function implements the HDF5-API function H5LTpath_valid.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5LT.html#H5LTpath_valid} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/HDF5/doc/HL/RM_H5LT.html#H5LTpath_valid} for details.}
 
 \item{\code{link(obj, new_link_name, link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)}}{

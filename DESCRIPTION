@@ -1,6 +1,6 @@
 Package: hdf5r
 Type: Package
-Title: HDF5 interface to R
+Title: HDF5 Interface to R
 Version: 0.9.7.9000
 Authors@R: c(
     person("Holger", "Hoefling", email = "hhoeflin@gmail.com", role = c("aut", "cre")),

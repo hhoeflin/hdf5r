@@ -17,7 +17,6 @@ build_script:
   - travis-tool.sh install_deps
   - echo %CD%
   - ls
-  - sh inst/download_libwin.sh
 
 test_script:
   - travis-tool.sh run_tests

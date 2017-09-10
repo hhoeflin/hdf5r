@@ -33,3 +33,7 @@ travis_setup.sh
 ^\.Rproj\.user$
 TODO.md
 .wercker.yml
+Makefile
+^.*\.tar.gz
+configure.win.temp
+wercker.yml

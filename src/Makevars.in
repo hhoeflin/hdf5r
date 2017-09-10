@@ -1,12 +1,10 @@
 PKG_LIBS = @HDF5R_LIBS@ 
-PKG_CPPFLAGS=@HDF5R_CPPFLAGS@ # -Wall -pedantic
-PKG_CFLAGS= -D_DEFINE_H5FREE_MEMORY_=@DEFINE_H5FREE_MEMORY@ # -Wall -pedantic
-
+PKG_CPPFLAGS=@HDF5R_CPPFLAGS@
+PKG_CFLAGS=@HDF5R_CFLAGS@ -D_DEFINE_H5FREE_MEMORY_=@DEFINE_H5FREE_MEMORY@
 
 .PHONY: all copy_auto_files
 
 all: $(SHLIB)
-$(SHLIB): copy_auto_files
 
 OBJECTS = const_export.o datatype_export.o Wrapper_auto_H5A.o Wrapper_auto_H5.o Wrapper_auto_H5D.o \
 		Wrapper_auto_H5DS.o Wrapper_auto_H5E.o Wrapper_auto_H5F.o Wrapper_auto_H5G.o Wrapper_auto_H5I.o Wrapper_auto_H5IM.o \
@@ -21,7 +19,6 @@ OBJECTS_TO_COPY = const_export.c datatype_export.c Wrapper_auto_H5A.c Wrapper_au
 			Wrapper_auto_H5L.c Wrapper_auto_H5LT.c Wrapper_auto_H5O.c Wrapper_auto_H5P.c Wrapper_auto_H5R.c Wrapper_auto_H5S.c \
 			Wrapper_auto_H5TB.c Wrapper_auto_H5T.c Wrapper_auto_H5Z.c Wrapper_auto_H5FDcore.c \
 			Wrapper_auto_H5FDfamily.c Wrapper_auto_H5FDlog.c Wrapper_auto_H5FDsec2.c Wrapper_auto_H5FDstdio.c
-
 
 $(OBJECTS): copy_auto_files
 $(OBJECTS_TO_COPY): copy_auto_files

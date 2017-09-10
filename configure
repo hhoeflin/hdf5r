@@ -625,6 +625,7 @@ ac_subst_vars='LTLIBOBJS
 LIBOBJS
 HDF5R_LIBS
 HDF5R_CPPFLAGS
+HDF5R_CFLAGS
 DEFINE_H5FREE_MEMORY
 HDF5_VERSION_USE
 HDF5_FLIBS
@@ -4294,6 +4295,7 @@ $as_echo "no" >&6; }
   rm -f myconftest.c
 fi
 
+HDF5R_CFLAGS=""
 
 
 

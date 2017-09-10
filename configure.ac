@@ -112,7 +112,9 @@ if test -z "${CPPFLAGS}"; then
   rm -f myconftest.c
 fi
 
-
+dnl dummy substitute HDF5R_CFLAGS
+HDF5R_CFLAGS=""
+AC_SUBST(HDF5R_CFLAGS)
 
 dnl substitute CPPFLAGS and LIBS
 AC_SUBST(HDF5R_CPPFLAGS)
