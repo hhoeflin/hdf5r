@@ -144,6 +144,15 @@ For interactive use we recomment the use of the \code{[} operator.}
 \item{envir}{The environment in which to evaluate \code{args}}
 }}
 
+\item{\code{print(...)}}{
+
+Prints information for the group
+
+\strong{Parameters:}
+\describe{
+\item{...}{ignored}
+}}
+
 \item{\code{dims()}}{
 
 Get the dimensions of the space. Return NULL if the space is not simple (i.e. NULL-space) or a length-0 integer if it is a scalar}

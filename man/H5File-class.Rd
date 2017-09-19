@@ -68,6 +68,7 @@ Prints information for the file
 \describe{
 \item{max.attributes}{Maximum number of attribute names to print}
 \item{max.listing}{Maximum number of ls-items to print}
+\item{...}{ignored}
 }}
 
 \item{\code{open(name, link_access_pl = h5const$H5P_DEFAULT,
@@ -158,7 +159,7 @@ This function implements the HDF5-API function H5Gcreate2 and H5Gcreate_anon (if
 \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-CreateAnon} for anonymous groups for details.}
 
 \item{\code{create_dataset(name, robj = NULL, dtype = NULL, space = NULL,
-  chunk_dims = "auto", gzip_level = 4,
+  dims = NULL, chunk_dims = "auto", gzip_level = 4,
   link_create_pl = h5const$H5P_DEFAULT,
   dataset_create_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT)}}{
@@ -176,9 +177,12 @@ Also note that this function implements the HDF5-API function H5Dcreate2 and H5D
 have to be provided}
 \item{dtype}{The datatype to use for the creation of the object. Can be null if \code{robj} is given.}
 \item{space}{The space to use for the object creation. Can be null if \code{robj} is given. Otherwise an object of type \code{H5S-class} which specifies the dimensions of the dataset.}
+\item{dims}{Dimension of the new dataset; used if \code{space} is \code{NULL}. overwrite the dimension guessed from \code{robj}
+if \code{robj} is given.}
 \item{chunk_dims}{Size of the chunk. Has to have the same length as the dataset dimension. If \code{"auto"}
 then the size of each chunk is estimated so that each chunk is roughly as large in bytes as the value in
-the \code{hdf5r.chunk_size} option. See also \code{\link{guess_chunks}} for a more detailed explanation.}
+the \code{hdf5r.chunk_size} option. See also \code{\link{guess_chunks}} for a more detailed explanation.
+If set to \code{NULL}, then no chunking is used, unless explicitly set in \code{dataset_create_pl}.}
 \item{gzip_level}{Only if \code{chunk_dims} is not null. If given, then the \code{dataset_create_pl} is set to enable zipping
 at the level given here. If set to NULL, then gzip is not set (but could be set otherwise in \code{dataset_create_pl}}
 \item{link_create_pl}{Link creation property list. See \code{\link{H5P_LINK_CREATE-class}}}

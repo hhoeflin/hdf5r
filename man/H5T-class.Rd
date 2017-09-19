@@ -127,6 +127,15 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T
 This function implements the HDF5-API function H5LTdtype_to_text.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/HL/RM_H5LT.html#H5LTdtype_to_text} for details.}
 
+\item{\code{print(...)}}{
+
+Prints information for the group
+
+\strong{Parameters:}
+\describe{
+\item{...}{ignored}
+}}
+
 \item{\code{obj_info(remove_internal_use_only = TRUE)}}{
 
 This function implements the HDF5-API function H5Oget_info.

@@ -42,8 +42,6 @@ list.groups(object, path = "/", recursive = TRUE, ...)
 
 list.datasets(object, path = "/", recursive = TRUE, ...)
 
-list.attributes(object)
-
 extendDataSet(object, dims)
 
 \method{rbind}{H5D}(x, mat, ..., deparse.level = 1)
@@ -53,6 +51,8 @@ extendDataSet(object, dims)
 \method{c}{H5D}(x, ...)
 
 h5unlink(object, name)
+
+list.attributes(object)
 }
 \arguments{
 \item{...}{Additional Parameters passed to \code{file$create_group}, \code{file$create_dataset} or ignored for \code{cbind} and \code{rbind}.}

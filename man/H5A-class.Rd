@@ -73,6 +73,15 @@ Writes the data of \code{robj} to the attribute
 advanced development feature and may be removed in the future.}
 }}
 
+\item{\code{print(...)}}{
+
+Prints information for the dataset
+
+\strong{Parameters:}
+\describe{
+\item{...}{ignored}
+}}
+
 \item{\code{flush(scope = h5const$H5F_SCOPE_GLOBAL)}}{
 
 This function implements the HDF5-API function H5Fflush.

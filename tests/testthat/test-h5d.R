@@ -160,6 +160,14 @@ test_that("Creating datasets of different types", {
     expect_equal(ds_int32$get_fill_value(), 0)
     expect_equal(ds_string_short$get_fill_value(), "")
     expect_equal(ds_cpd$get_fill_value(), data.frame(a=0, b=0))
+
+
+    ## check other ways of creating a dataset
+    ## using the dims parameter
+    ds_dimsparam <- file.h5$create_dataset(name="dims_param", dtype=dtype_int32, dims=c(2,3,4))
+    expect_equal(ds_dimsparam$dims, c(2,3,4))
+    res_dimsparam <- read_write_roundtrip(ds_dimsparam, array(1:24 * 2, dim=c(2,3,4)))
+    expect_equal(res_dimsparam$input, res_dimsparam$output)
     
     file.h5$close_all()
     file.remove(test_file)

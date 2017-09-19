@@ -315,7 +315,7 @@ commonFG <- list(
         }
         return(H5Group$new(id))
     },
-    create_dataset=function(name, robj=NULL, dtype=NULL, space=NULL, chunk_dims="auto", gzip_level=4,
+    create_dataset=function(name, robj=NULL, dtype=NULL, space=NULL, dims=NULL, chunk_dims="auto", gzip_level=4,
         link_create_pl=h5const$H5P_DEFAULT, dataset_create_pl=h5const$H5P_DEFAULT, dataset_access_pl=h5const$H5P_DEFAULT) {
         "This function is the main interface to create a new dataset. Its parameters allow for customization of the default"
         "behaviour, i.e. in order to get a specific datatype, a certain chunk size or dataset dimensionality."
@@ -327,9 +327,12 @@ commonFG <- list(
         "have to be provided"
         "@param dtype The datatype to use for the creation of the object. Can be null if \\code{robj} is given."
         "@param space The space to use for the object creation. Can be null if \\code{robj} is given. Otherwise an object of type \\code{H5S-class} which specifies the dimensions of the dataset."
+        "@param dims Dimension of the new dataset; used if \\code{space} is \\code{NULL}. overwrite the dimension guessed from \\code{robj}"
+        "if \\code{robj} is given."
         "@param chunk_dims Size of the chunk. Has to have the same length as the dataset dimension. If \\code{\"auto\"}"
         "then the size of each chunk is estimated so that each chunk is roughly as large in bytes as the value in"
         "the \\code{hdf5r.chunk_size} option. See also \\code{\\link{guess_chunks}} for a more detailed explanation."
+        "If set to \\code{NULL}, then no chunking is used, unless explicitly set in \\code{dataset_create_pl}."
         "@param gzip_level Only if \\code{chunk_dims} is not null. If given, then the \\code{dataset_create_pl} is set to enable zipping"
         "at the level given here. If set to NULL, then gzip is not set (but could be set otherwise in \\code{dataset_create_pl}"
         "@param link_create_pl Link creation property list. See \\code{\\link{H5P_LINK_CREATE-class}}"
@@ -353,19 +356,37 @@ commonFG <- list(
             stop("name has to be of length at most 1")
         }
 
-        ## adapt dtype, space as necessary
-        if(is.null(robj) && (is.null(dtype) || is.null(space))) {
-            stop("If a sample robj is not provided, both dtype and space have to be given")
+        ## check that enough data is given to determine size of space
+        if(is.null(robj)) {
+            if(is.null(dtype)) {
+                stop("If a sample robj is not provided, then dtype has to be given")
+            }
+            else {
+                if(is.null(space) && is.null(dims)) {
+                    stop("If a sample robj is not provided, space or dims has to be given")
+                }
+            }
         }
+        ## adapt dtype, space as necessary
         if(is.null(dtype)) {
             dtype <- guess_dtype(x=robj, scalar=FALSE, string_len=Inf)
         }
         if(is.null(space)) {
-            if(!is.null(chunk_dims)) {
-                space <- guess_space(x=robj, dtype=dtype, chunked=TRUE)
+            if(is.null(dims)) {
+                if(!is.null(chunk_dims)) {
+                    space <- guess_space(x=robj, dtype=dtype, chunked=TRUE)
+                }
+                else {
+                    space <- guess_space(x=robj, dtype=dtype, chunked=FALSE)
+                }
             }
             else {
-                space <- guess_space(x=robj, dtype=dtype, chunked=FALSE)
+                if(!is.null(chunk_dims)) {
+                    space <- H5S$new(type="simple", dims=dims, maxdims=rep(Inf, length(dims)))
+                }
+                else {
+                    space <- H5S$new(type="simple", dims=dims, maxdims=dims)
+                }
             }
         }
 

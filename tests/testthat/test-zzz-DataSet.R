@@ -7,7 +7,7 @@ test_that("DataSet-createDataset",{
     file <- h5file(fname, "a")
 
   f <- function() dset1 <- createDataSet(file, "testmat_n")
-  expect_that(f(), throws_error("If a sample robj is not provided, both dtype and space have to be given"))
+  expect_that(f(), throws_error("If a sample robj is not provided, then dtype has to be given"))
 
   h5close(file)
   expect_that(file.remove(fname), is_true())
