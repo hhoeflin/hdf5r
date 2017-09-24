@@ -107,7 +107,6 @@ H5P_factory <- function(id) {
 #' @return Object of class \code{\link{H5P}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview
 H5P <- R6Class("H5P",
                inherit=H5RefClass,
                public=list(
@@ -173,7 +172,6 @@ H5P <- R6Class("H5P",
 #' @return Object of class \code{\link{H5P}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview
 H5P_DEFAULT <- R6Class("H5P_DEFAULT",
                        inherit=H5P,
                        public=list(
@@ -199,7 +197,7 @@ H5P_DEFAULT <- R6Class("H5P_DEFAULT",
 #' @return Object of class \code{\link[=H5P_CLASS-class]{H5P_CLASS}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_CLASS <- R6Class("H5P_CLASS",
                      inherit=H5RefClass,
                      public=list(
@@ -240,7 +238,7 @@ H5P_CLASS <- R6Class("H5P_CLASS",
 #' @return Object of class \code{\link[=H5P_FILE_CREATE-class]{H5P_FILE_CREATE}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                               inherit=H5P,
                               public=list(
@@ -387,7 +385,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
 #' @return Object of class \code{\link[=H5P_FILE_ACCESS-class]{H5P_FILE_ACCESS}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_FILE_ACCESS <-  R6Class("H5P_FILE_ACCESS",
                               inherit=H5P,
                               public=list(
@@ -438,7 +436,7 @@ H5P_FILE_ACCESS <-  R6Class("H5P_FILE_ACCESS",
 #' @return Object of class \code{\link[=H5P_DATASET_CREATE-class]{H5P_DATASET_CREATE}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                               inherit=H5P,
                               public=list(
@@ -759,7 +757,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
 #' @return Object of class \code{\link[=H5P_DATASET_ACCESS-class]{H5P_DATASET_ACCESS}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_DATASET_ACCESS <- R6Class("H5P_DATASET_ACCESS",
                            inherit=H5P,
                            public=list(
@@ -806,7 +804,7 @@ H5P_DATASET_ACCESS <- R6Class("H5P_DATASET_ACCESS",
 #' @return Object of class \code{\link[=H5P_DATASET_XFER-class]{H5P_DATASET_XFER}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                            inherit=H5P,
                            public=list(
@@ -910,7 +908,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
 #' @return Object of class \code{\link[=H5P_LINK_CREATE-class]{H5P_LINK_CREATE}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
                            inherit=H5P,
                            public=list(
@@ -979,7 +977,7 @@ H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
 #' @return Object of class \code{\link[=H5P_LINK_ACCESS-class]{H5P_LINK_ACCESS}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                            inherit=H5P,
                            public=list(
@@ -1076,7 +1074,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
 #' @return Object of class \code{\link[=H5P_OBJECT_CREATE-class]{H5P_OBJECT_CREATE}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                            inherit=H5P,
                            public=list(
@@ -1160,7 +1158,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
 #' @return Object of class \code{\link[=H5P_OBJECT_COPY-class]{H5P_OBJECT_COPY}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_OBJECT_COPY <- R6Class("H5P_OBJECT_COPY",
                            inherit=H5P,
                            public=list(
@@ -1208,7 +1206,7 @@ H5P_OBJECT_COPY <- R6Class("H5P_OBJECT_COPY",
 #' @return Object of class \code{\link[=H5P_ATTRIBUTE_CREATE-class]{H5P_ATTRIBUTE_CREATE}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5P-class]{H5P}}
+#' @seealso \code{\link[=H5P-class]{H5P}}
 H5P_ATTRIBUTE_CREATE <- R6Class("H5P_ATTRIBUTE_CREATE",
                            inherit=H5P,
                            public=list(

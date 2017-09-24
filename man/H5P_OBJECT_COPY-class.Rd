@@ -33,7 +33,7 @@ This function implements the HDF5-API function H5Pget_copy_object. Please see th
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5P-class]{H5P}}
+\code{\link[=H5P-class]{H5P}}
 }
 \author{
 Holger Hoefling

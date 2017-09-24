@@ -163,7 +163,6 @@ text_to_dtype <- function(text, lang_type=h5const$H5LT_DDL) {
 #' @return Object of class \code{\link{H5T}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview
 H5T <- R6Class("H5T",
                inherit=H5RefClass,
                public=list(
@@ -417,7 +416,7 @@ standalone_H5T_dtype_to_text <- function(h5t_id, lang_type) {
 #' @export
 #' @aliases H5T_BITFIELD H5T_BITFIELD-class
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_INTEGER <- R6Class("H5T_INTEGER",
                        inherit=H5T,
                        public=list(
@@ -460,7 +459,7 @@ H5T_BITFIELD <- H5T_INTEGER
 #' @return Object of class \code{\link[=H5T_FLOAT-class]{H5T_FLOAT}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_FLOAT <- R6Class("H5T_FLOAT",
                        inherit=H5T,
                        public=list(
@@ -562,7 +561,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
 #' @return Object of class \code{\link[=H5T_ENUM-class]{H5T_ENUM}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_ENUM <- R6Class("H5T_ENUM",
                     inherit=H5T_INTEGER,
                     public=list(
@@ -676,7 +675,7 @@ H5T_ENUM <- R6Class("H5T_ENUM",
 #' @return Object of class \code{\link[=H5T_LOGICAL-class]{H5T_LOGICAL}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_ENUM-class]{H5T_ENUM}}
+#' @seealso \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_ENUM-class]{H5T_ENUM}}
 H5T_LOGICAL <-  R6Class("H5T_LOGICAL",
                     inherit=H5T_ENUM,
                     public=list(
@@ -724,7 +723,7 @@ H5T_LOGICAL <-  R6Class("H5T_LOGICAL",
 #' @return Object of class \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_COMPOUND <- R6Class("H5T_COMPOUND",
                         inherit=H5T,
                         public=list(
@@ -805,7 +804,7 @@ H5T_COMPOUND <- R6Class("H5T_COMPOUND",
 #' @return Object of class \code{\link[=H5T_STRING-class]{H5T_STRING}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_STRING <- R6Class("H5T_STRING",
                       inherit=H5T,
                       public=list(
@@ -915,7 +914,7 @@ H5T_STRING <- R6Class("H5T_STRING",
 #' @return Object of class \code{\link[=H5T_COMPLEX-class]{H5T_COMPLEX}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}
+#' @seealso \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}
 H5T_COMPLEX <- R6Class("H5T_COMPLEX",
                        inherit=H5T_COMPOUND,
                        public=list(
@@ -944,7 +943,7 @@ H5T_COMPLEX <- R6Class("H5T_COMPLEX",
 #' @return Object of class \code{\link[=H5T_ARRAY-class]{H5T_ARRAY}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_ARRAY <- R6Class("H5T_ARRAY",
                      inherit=H5T,
                      public=list(
@@ -1018,7 +1017,7 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
 #' @return Object of class \code{\link[=H5T_VLEN-class]{H5T_VLEN}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview, \code{\link[=H5T-class]{H5T}}
+#' @seealso \code{\link[=H5T-class]{H5T}}
 H5T_VLEN <- R6Class("H5T_VLEN",
                     inherit=H5T,
                     public=list(

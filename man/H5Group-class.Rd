@@ -371,9 +371,6 @@ Returns the names of the items in the group or at the root of the file
 }}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

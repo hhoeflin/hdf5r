@@ -32,7 +32,6 @@ setOldClass("H5R")
 ##' @return Object of class \code{\link{H5D}}.
 ##' @export
 ##' @author Holger Hoefling
-##' @seealso H5Class_overview
 H5D <- R6Class("H5D",
                inherit=H5RefClass,
                public=list(

@@ -56,14 +56,6 @@ native_int_type <- h5types$H5T_NATIVE_INT
 native_int_type$methods()
 ```
 
-Additionally, there is an web-browser-based searchable tables for all classes and methods of the package. There are two tables, one
-that only shows methods for class that are directly implemented in that class and one that also shows all inherited methods). If your setup supports a 
-browser, you can call it up with 
-
-```r
-H5Class_overview()
-```
-
 Of course, there is also the regular R help that you can call for each class. These help pages tend to be long, as they also document all
 methods of that class.
 

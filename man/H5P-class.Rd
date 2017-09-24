@@ -57,9 +57,6 @@ This function implements the HDF5-API function H5Pequal.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Equal} for details.}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

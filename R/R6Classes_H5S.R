@@ -35,7 +35,6 @@
 ##' @return Object of class \code{\link{H5S}}. 
 ##' @export
 ##' @author Holger Hoefling
-##' @seealso H5Class_overview
 H5S <- R6Class("H5S",
                inherit=H5RefClass,
                public=list(
@@ -440,7 +439,7 @@ H5S$set("active", "rank", H5S$public_methods$get_simple_extent_ndims, overwrite=
 #' @return Object of class \code{\link[=H5S_DEFAULT-class]{H5S_DEFAULT}}. 
 #' @author Holger Hoefling
 #' @export
-#' @seealso H5Class_overview, \code{\link[=H5S-class]{H5S}}
+#' @seealso \code{\link[=H5S-class]{H5S}}
 H5S_DEFAULT <- R6Class("H5S_DEFAULT",
                        inherit=H5S,
                        public=list(

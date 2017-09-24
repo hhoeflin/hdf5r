@@ -81,9 +81,6 @@ case, the class id is set to \code{NA} and \code{is_valid} returns \code{FALSE}.
 Legacy function; currently not used; may be removed}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

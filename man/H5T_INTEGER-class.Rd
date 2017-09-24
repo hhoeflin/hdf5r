@@ -32,7 +32,7 @@ Return a vector that describes the key features of the datatype}
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5T-class]{H5T}}
+\code{\link[=H5T-class]{H5T}}
 }
 \author{
 Holger Hoefling

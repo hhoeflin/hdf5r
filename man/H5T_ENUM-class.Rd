@@ -50,7 +50,7 @@ Print a detailed description of the datatype; this is experimental}
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5T-class]{H5T}}
+\code{\link[=H5T-class]{H5T}}
 }
 \author{
 Holger Hoefling

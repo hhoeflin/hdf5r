@@ -27,7 +27,7 @@ Create a new complex datatype
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}
+\code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_COMPOUND-class]{H5T_COMPOUND}}
 }
 \author{
 Holger Hoefling

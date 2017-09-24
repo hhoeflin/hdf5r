@@ -93,9 +93,6 @@ This function implements the HDF5-API function H5Fget_name.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName} for details.}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

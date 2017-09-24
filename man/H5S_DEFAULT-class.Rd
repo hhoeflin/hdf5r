@@ -15,7 +15,7 @@ avoid the id-tracking associated with it (which doesn't make sense anyway). Shou
 }
 
 \seealso{
-H5Class_overview, \code{\link[=H5S-class]{H5S}}
+\code{\link[=H5S-class]{H5S}}
 }
 \author{
 Holger Hoefling

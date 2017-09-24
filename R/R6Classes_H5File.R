@@ -104,7 +104,6 @@ is_hdf5 <- function(name) {
 #' @return Object of class \code{\link{H5File}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview
 H5File <- R6Class("H5File",
                   inherit=H5RefClass,
                   public=list(

@@ -38,7 +38,6 @@ ref_obj_size <- new.env()
 #' @return Object of class \code{\link[=H5R-class]{H5R}}.
 #' @export
 #' @author Holger Hoefling
-#' @seealso H5Class_overview
 H5R <- R6Class("H5R",
                inherit=H5RefClass,
                public=list(

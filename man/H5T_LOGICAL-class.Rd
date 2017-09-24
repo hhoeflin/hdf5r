@@ -27,7 +27,7 @@ internally represented by an ENUM-type
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_ENUM-class]{H5T_ENUM}}
+\code{\link[=H5T-class]{H5T}}, \code{\link[=H5T_ENUM-class]{H5T_ENUM}}
 }
 \author{
 Holger Hoefling

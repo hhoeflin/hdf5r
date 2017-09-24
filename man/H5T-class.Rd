@@ -234,9 +234,6 @@ is created, otherwise a \code{H5R_DATASET_REGION} reference
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create} for details.}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

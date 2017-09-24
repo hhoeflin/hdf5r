@@ -30,7 +30,6 @@
 ##' @importFrom bit64 as.integer64
 ##' @importFrom bit64 is.na.integer64
 ##' @author Holger Hoefling
-##' @seealso H5Class_overview
 H5RefClass <- R6Class("H5RefClass",
                       public=list(
                           initialize=function(id=NULL) {

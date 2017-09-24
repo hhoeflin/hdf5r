@@ -45,7 +45,7 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P
 }}
 
 \seealso{
-H5Class_overview, \code{\link[=H5P-class]{H5P}}
+\code{\link[=H5P-class]{H5P}}
 }
 \author{
 Holger Hoefling

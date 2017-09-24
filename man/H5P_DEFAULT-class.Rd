@@ -13,9 +13,6 @@ This class represents default values for H5P property lists. As with H5S_DEFAULT
 for the same reasons and likely to be changed
 }
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

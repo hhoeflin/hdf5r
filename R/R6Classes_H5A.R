@@ -30,7 +30,6 @@
 ##' @return Object of class \code{\link{H5A}}. 
 ##' @export
 ##' @author Holger Hoefling
-##' @seealso H5Class_overview
 H5A <- R6Class("H5A",
                inherit=H5RefClass,
                public=list(

@@ -33,7 +33,6 @@
 ##' @return Object of class \code{\link{H5Group}}. 
 ##' @export
 ##' @author Holger Hoefling
-##' @seealso H5Class_overview
 H5Group <- R6Class("H5Group",
                    inherit=H5RefClass,
                    public=list(

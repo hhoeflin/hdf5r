@@ -335,9 +335,6 @@ type_size_raw versus variable differs for variable length types, which return \c
 for type_size_variable and the underlying size for type_size_raw}
 }}
 
-\seealso{
-H5Class_overview
-}
 \author{
 Holger Hoefling
 }

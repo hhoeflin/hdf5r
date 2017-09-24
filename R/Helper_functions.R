@@ -181,24 +181,6 @@ array_counter <- function(count, dims) {
 
 
 
-##' Call the HDF5 class overview
-##'
-##' Brings up a searchable table that lists the methods available in the R6 classes
-##' @title Call the HDF5 class overview
-##' @param browser The browser to use
-##' @return Invisibly, the name of the overivew html-page 
-##' @author Holger Hoefling
-##' @export
-##' @importFrom utils help.start
-##' @importFrom utils browseURL
-H5Class_overview <- function(browser = getOption("browser")) {
-    help.start(browser=browser)
-    browseURL(system.file("manual/function_overview.html", package="hdf5r"), browser=browser)
-    return(invisible(system.file("manual/function_overview.html", package="hdf5r")))
-}
-
-
-
 ##' Print the class and ID
 ##'
 ##' Used by the print-methods
