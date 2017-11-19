@@ -461,7 +461,8 @@ H5D <- R6Class("H5D",
                        nelem_robj <- .Call("R_guess_nelem", robj, mem_type_id, PACKAGE="hdf5r")
 
                        if(nelem_robj != nelem_file && (nelem_file %% nelem_robj != 0 || nelem_file < nelem_robj)) {
-                           stop("Number of objects in robj is not the same and not a multiple of number of elements selected in file")
+                           stop("Number of objects in robj is not the same and not a multiple of number of elements selected in file: expected are ",
+                                nelem_file, " but provided are ", nelem_robj)
                        }
                        buffer <- .Call("R_RToH5", robj, mem_type_id, nelem_robj, PACKAGE="hdf5r")
                        if(nelem_robj != nelem_file) {
