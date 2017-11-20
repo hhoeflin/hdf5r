@@ -135,7 +135,7 @@ commonFG <- list(
         }
         else {
             ls_res <- flatten_df(ls_res)
-            ls_res_summary <- ls_res[, c("name", "link.type", "object.type", "object.num_attrs", "group.nlinks", "group.mounted", "dataset.rank",
+            ls_res_summary <- ls_res[, c("name", "link.type", "obj_type", "num_attrs", "group.nlinks", "group.mounted", "dataset.rank",
                                          "dataset.dims", "dataset.maxdims", "dataset.type_class", "dataset.space_class", "committed_type")]
             return(ls_res_summary)
         }

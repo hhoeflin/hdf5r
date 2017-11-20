@@ -162,7 +162,9 @@ install_types_const <- function(h5types, h5const) {
     all_enums <- subset(all_types_frame, Category=="enum")
     all_enum_const_list <- vector("list", length=nrow(all_enums))
     for(i in seq_len(nrow(all_enums))) {
-        all_enum_const_list[[i]] <- extract_enum_const(h5types[[all_enums$Name[i]]], all_enums$Name[i])
+        enum_df <- extract_enum_const(h5types[[all_enums$Name[i]]], all_enums$Name[i])
+        enum_df$Constant <- as.integer64(enum_df$Constant)
+        all_enum_const_list[[i]] <- enum_df
     }
     all_enum_const <- do.call("rbind", all_enum_const_list)
 

@@ -131,7 +131,7 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
 
   // first check if we have allocated space; if not - just increase the counter
   if(lsdata_ptr->num_visited < lsdata_ptr->num_allocated) {
-    Rprintf("Storing info on a link %s\n", name);
+    //Rprintf("Storing info on a link %s\n", name);
     // save the name of the link
     ls_info->name=R_alloc(1, strlen(name) + 1);
     strcpy(ls_info->name, name);
@@ -141,25 +141,32 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
     ls_info->link = *info;
 
     // now also grab the object info
+    //Rprintf("Started getting object info\n");
+    // first need to open the object, then get its type, then close it again
+    hid_t obj_id;
     herr_t err;
-    H5O_info_t obj_info;
-    Rprintf("Started getting object info\n");
-    err = H5Oget_info_by_name(g_id, name, &obj_info, lsdata_ptr->lapl_id);
-    Rprintf("Finished getting object info\n");
-    if(err >= 0) {
+    obj_id = H5Oopen(g_id, name, lsdata_ptr->lapl_id);
+    //Rprintf("Finished getting object info\n");
+    if(obj_id >= 0) {
       // everything ok
-      ls_info->object_success=1;
-      ls_info->object=obj_info;
+      H5I_type_t obj_type;
+      int num_attrs;
+      obj_type = H5Iget_type(obj_id);
+      num_attrs = H5Aget_num_attrs(obj_id);
+      err = H5Oclose(obj_id);
+      ls_info->obj_type_success=1;
+      ls_info->obj_type=obj_type;
+      ls_info->num_attrs = num_attrs;
     }
     else {  // this is intended to let us count how many items we have in the end
-      ls_info->object_success=0; // not really necessary; already initialized to 0
+      ls_info->obj_type_success=0; // not really necessary; already initialized to 0
       // if getting the object failed, we are done
       lsdata_ptr->num_visited++;
       return(0);
     }
 
     // We know that we could access the object; grab data specific to the object type
-    if(ls_info->object.type == H5O_TYPE_GROUP) {
+    if(ls_info->obj_type == H5I_GROUP) {
       // grab group info if it is a group
       H5G_info_t group_info;
       err = H5Gget_info_by_name(g_id, name, &group_info, lsdata_ptr->lapl_id);
@@ -171,12 +178,12 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
 	ls_info->group_success=0;
       }
     }
-    else if(ls_info->object.type == H5O_TYPE_DATASET) {
+    else if(ls_info->obj_type == H5I_DATASET) {
       // grab dataset info if it is a dataset
       H5D_info_t dataset_info;
-      Rprintf("Getting dataset info\n");
+      //Rprintf("Getting dataset info\n");
       err = H5Dget_info_by_name(g_id, name, &dataset_info, lsdata_ptr->dapl_id);
-      Rprintf("Finished dataset info\n");
+      //Rprintf("Finished dataset info\n");
       if(err >= 0) {
 	ls_info->dataset_success=1;
 	ls_info->dataset = dataset_info;
@@ -185,7 +192,7 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
 	ls_info->dataset_success=0;
       }
     }
-    else if(ls_info->object.type == H5O_TYPE_NAMED_DATATYPE) {
+    else if(ls_info->obj_type == H5I_DATATYPE) {
       // grab datatype class if it is a datatype
       hid_t named_dt = H5Topen2(g_id, name, lsdata_ptr->tapl_id);
       if(named_dt >= 0) {
@@ -200,7 +207,7 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
     }
   }
   lsdata_ptr->num_visited++;
-  Rprintf("Counting link %s\n", name);
+  //Rprintf("Counting link %s\n", name);
   return(0);
 }
 
