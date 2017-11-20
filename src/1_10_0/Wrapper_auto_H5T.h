@@ -5,10 +5,10 @@
 SEXP R_H5Tarray_create2(SEXP R_base_id, SEXP R_ndims, SEXP R_dim);
 /* H5_DLL herr_t H5Tclose(hid_t type_id); */
 SEXP R_H5Tclose(SEXP R_type_id);
-/* H5_DLL herr_t H5Tcommit2(hid_t loc_id, const char *name, hid_t type_id, hid_t lcpl_id, hid_t tcpl_id, hid_t tapl_id); */
-SEXP R_H5Tcommit2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_lcpl_id, SEXP R_tcpl_id, SEXP R_tapl_id);
 /* H5_DLL herr_t H5Tcommit_anon(hid_t loc_id, hid_t type_id, hid_t tcpl_id, hid_t tapl_id); */
 SEXP R_H5Tcommit_anon(SEXP R_loc_id, SEXP R_type_id, SEXP R_tcpl_id, SEXP R_tapl_id);
+/* H5_DLL herr_t H5Tcommit2(hid_t loc_id, const char *name, hid_t type_id, hid_t lcpl_id, hid_t tcpl_id, hid_t tapl_id); */
+SEXP R_H5Tcommit2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_lcpl_id, SEXP R_tcpl_id, SEXP R_tapl_id);
 /* H5_DLL htri_t H5Tcommitted(hid_t type_id); */
 SEXP R_H5Tcommitted(SEXP R_type_id);
 /* H5_DLL htri_t H5Tcompiler_conv(hid_t src_id, hid_t dst_id); */

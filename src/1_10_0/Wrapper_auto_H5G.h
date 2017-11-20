@@ -3,10 +3,10 @@
 #include "global.h"
 /* H5_DLL herr_t H5Gclose(hid_t group_id); */
 SEXP R_H5Gclose(SEXP R_group_id);
-/* H5_DLL hid_t H5Gcreate2(hid_t loc_id, const char *name, hid_t lcpl_id, hid_t gcpl_id, hid_t gapl_id); */
-SEXP R_H5Gcreate2(SEXP R_loc_id, SEXP R_name, SEXP R_lcpl_id, SEXP R_gcpl_id, SEXP R_gapl_id);
 /* H5_DLL hid_t H5Gcreate_anon(hid_t loc_id, hid_t gcpl_id, hid_t gapl_id); */
 SEXP R_H5Gcreate_anon(SEXP R_loc_id, SEXP R_gcpl_id, SEXP R_gapl_id);
+/* H5_DLL hid_t H5Gcreate2(hid_t loc_id, const char *name, hid_t lcpl_id, hid_t gcpl_id, hid_t gapl_id); */
+SEXP R_H5Gcreate2(SEXP R_loc_id, SEXP R_name, SEXP R_lcpl_id, SEXP R_gcpl_id, SEXP R_gapl_id);
 /* H5_DLL herr_t H5Gflush(hid_t group_id); */
 SEXP R_H5Gflush(SEXP R_group_id);
 /* H5_DLL hid_t H5Gget_create_plist(hid_t group_id); */

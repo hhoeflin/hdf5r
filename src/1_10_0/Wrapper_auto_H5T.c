@@ -68,16 +68,14 @@ SEXP R_H5Tclose(SEXP R_type_id){
   return(__ret_list);
 }
 
-/* H5_DLL herr_t H5Tcommit2(hid_t loc_id, const char *name, hid_t type_id, hid_t lcpl_id, hid_t tcpl_id, hid_t tapl_id); */
-SEXP R_H5Tcommit2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_lcpl_id, SEXP R_tcpl_id, SEXP R_tapl_id){
+/* H5_DLL herr_t H5Tcommit_anon(hid_t loc_id, hid_t type_id, hid_t tcpl_id, hid_t tapl_id); */
+SEXP R_H5Tcommit_anon(SEXP R_loc_id, SEXP R_type_id, SEXP R_tcpl_id, SEXP R_tapl_id){
   int vars_protected=0;
   hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
-  const char* name = CHAR(STRING_ELT(R_name, 0));
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
-  hid_t lcpl_id = SEXP_to_longlong(R_lcpl_id, 0);
   hid_t tcpl_id = SEXP_to_longlong(R_tcpl_id, 0);
   hid_t tapl_id = SEXP_to_longlong(R_tapl_id, 0);
-  herr_t return_val = H5Tcommit2(loc_id, name, type_id, lcpl_id, tcpl_id, tapl_id);
+  herr_t return_val = H5Tcommit_anon(loc_id, type_id, tcpl_id, tapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;
@@ -93,14 +91,16 @@ SEXP R_H5Tcommit2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_lcpl_id, SE
   return(__ret_list);
 }
 
-/* H5_DLL herr_t H5Tcommit_anon(hid_t loc_id, hid_t type_id, hid_t tcpl_id, hid_t tapl_id); */
-SEXP R_H5Tcommit_anon(SEXP R_loc_id, SEXP R_type_id, SEXP R_tcpl_id, SEXP R_tapl_id){
+/* H5_DLL herr_t H5Tcommit2(hid_t loc_id, const char *name, hid_t type_id, hid_t lcpl_id, hid_t tcpl_id, hid_t tapl_id); */
+SEXP R_H5Tcommit2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_lcpl_id, SEXP R_tcpl_id, SEXP R_tapl_id){
   int vars_protected=0;
   hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
+  const char* name = CHAR(STRING_ELT(R_name, 0));
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
+  hid_t lcpl_id = SEXP_to_longlong(R_lcpl_id, 0);
   hid_t tcpl_id = SEXP_to_longlong(R_tcpl_id, 0);
   hid_t tapl_id = SEXP_to_longlong(R_tapl_id, 0);
-  herr_t return_val = H5Tcommit_anon(loc_id, type_id, tcpl_id, tapl_id);
+  herr_t return_val = H5Tcommit2(loc_id, name, type_id, lcpl_id, tcpl_id, tapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;

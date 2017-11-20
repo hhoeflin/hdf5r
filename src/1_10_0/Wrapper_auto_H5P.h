@@ -93,10 +93,10 @@ SEXP R_H5Pget_file_space(SEXP R_plist_id, SEXP R_strategy, SEXP R_threshold);
 SEXP R_H5Pget_fill_time(SEXP R_plist_id, SEXP R_fill_time);
 /* H5_DLL herr_t H5Pget_fill_value(hid_t plist_id, hid_t type_id, void *value); */
 SEXP R_H5Pget_fill_value(SEXP R_plist_id, SEXP R_type_id, SEXP R_value, SEXP _dupl_value);
-/* H5_DLL H5Z_filter_t H5Pget_filter2(hid_t plist_id, unsigned filter, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config ); */
-SEXP R_H5Pget_filter2(SEXP R_plist_id, SEXP R_filter, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config);
 /* H5_DLL herr_t H5Pget_filter_by_id2(hid_t plist_id, H5Z_filter_t id, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config); */
 SEXP R_H5Pget_filter_by_id2(SEXP R_plist_id, SEXP R_id, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config);
+/* H5_DLL H5Z_filter_t H5Pget_filter2(hid_t plist_id, unsigned filter, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config ); */
+SEXP R_H5Pget_filter2(SEXP R_plist_id, SEXP R_filter, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config);
 /* H5_DLL herr_t H5Pget_gc_references(hid_t fapl_id, unsigned *gc_ref); */
 SEXP R_H5Pget_gc_references(SEXP R_fapl_id, SEXP R_gc_ref);
 /* H5_DLL herr_t H5Pget_hyper_vector_size(hid_t fapl_id, size_t *size); */

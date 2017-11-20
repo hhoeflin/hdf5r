@@ -266,11 +266,11 @@ SEXP init_dtypes(void) {
   h5_datatype[DT_H5D_mpio_actual_chunk_opt_mode_t] = create_DT_H5D_mpio_actual_chunk_opt_mode_t();
   h5_datatype[DT_H5D_mpio_actual_io_mode_t] = create_DT_H5D_mpio_actual_io_mode_t();
   h5_datatype[DT_H5D_mpio_no_collective_cause_t] = create_DT_H5D_mpio_no_collective_cause_t();
-  h5_datatype[DT_H5_index_t] = create_DT_H5_index_t();
   h5_datatype[DT_H5_iter_order_t] = create_DT_H5_iter_order_t();
+  h5_datatype[DT_H5_index_t] = create_DT_H5_index_t();
   h5_datatype[DT_H5R_type_t] = create_DT_H5R_type_t();
-  h5_datatype[DT_H5S_class_t] = create_DT_H5S_class_t();
   h5_datatype[DT_H5S_sel_type] = create_DT_H5S_sel_type();
+  h5_datatype[DT_H5S_class_t] = create_DT_H5S_class_t();
   h5_datatype[DT_H5S_seloper_t] = create_DT_H5S_seloper_t();
   h5_datatype[DT_H5T_bkg_t] = create_DT_H5T_bkg_t();
   h5_datatype[DT_H5T_class_t] = create_DT_H5T_class_t();
@@ -1000,6 +1000,14 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_float, mkChar("float"));
   ((long long *) REAL(R_type))[DT_float] = h5_datatype[DT_float];
 
+  SET_STRING_ELT(R_categ, DT_H5_index_t, mkChar("enum"));
+  SET_STRING_ELT(R_name, DT_H5_index_t, mkChar("H5_index_t"));
+  ((long long *) REAL(R_type))[DT_H5_index_t] = h5_datatype[DT_H5_index_t];
+
+  SET_STRING_ELT(R_categ, DT_H5_iter_order_t, mkChar("enum"));
+  SET_STRING_ELT(R_name, DT_H5_iter_order_t, mkChar("H5_iter_order_t"));
+  ((long long *) REAL(R_type))[DT_H5_iter_order_t] = h5_datatype[DT_H5_iter_order_t];
+
   SET_STRING_ELT(R_categ, DT_H5C_cache_decr_mode, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5C_cache_decr_mode, mkChar("H5C_cache_decr_mode"));
   ((long long *) REAL(R_type))[DT_H5C_cache_decr_mode] = h5_datatype[DT_H5C_cache_decr_mode];
@@ -1064,10 +1072,6 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5F_close_degree_t, mkChar("H5F_close_degree_t"));
   ((long long *) REAL(R_type))[DT_H5F_close_degree_t] = h5_datatype[DT_H5F_close_degree_t];
 
-  SET_STRING_ELT(R_categ, DT_H5FD_file_image_op_t, mkChar("enum"));
-  SET_STRING_ELT(R_name, DT_H5FD_file_image_op_t, mkChar("H5FD_file_image_op_t"));
-  ((long long *) REAL(R_type))[DT_H5FD_file_image_op_t] = h5_datatype[DT_H5FD_file_image_op_t];
-
   SET_STRING_ELT(R_categ, DT_H5F_file_space_type_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5F_file_space_type_t, mkChar("H5F_file_space_type_t"));
   ((long long *) REAL(R_type))[DT_H5F_file_space_type_t] = h5_datatype[DT_H5F_file_space_type_t];
@@ -1084,6 +1088,10 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5F_scope_t, mkChar("H5F_scope_t"));
   ((long long *) REAL(R_type))[DT_H5F_scope_t] = h5_datatype[DT_H5F_scope_t];
 
+  SET_STRING_ELT(R_categ, DT_H5FD_file_image_op_t, mkChar("enum"));
+  SET_STRING_ELT(R_name, DT_H5FD_file_image_op_t, mkChar("H5FD_file_image_op_t"));
+  ((long long *) REAL(R_type))[DT_H5FD_file_image_op_t] = h5_datatype[DT_H5FD_file_image_op_t];
+
   SET_STRING_ELT(R_categ, DT_H5G_obj_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5G_obj_t, mkChar("H5G_obj_t"));
   ((long long *) REAL(R_type))[DT_H5G_obj_t] = h5_datatype[DT_H5G_obj_t];
@@ -1092,25 +1100,17 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5G_storage_type_t, mkChar("H5G_storage_type_t"));
   ((long long *) REAL(R_type))[DT_H5G_storage_type_t] = h5_datatype[DT_H5G_storage_type_t];
 
-  SET_STRING_ELT(R_categ, DT_H5_index_t, mkChar("enum"));
-  SET_STRING_ELT(R_name, DT_H5_index_t, mkChar("H5_index_t"));
-  ((long long *) REAL(R_type))[DT_H5_index_t] = h5_datatype[DT_H5_index_t];
-
-  SET_STRING_ELT(R_categ, DT_H5_iter_order_t, mkChar("enum"));
-  SET_STRING_ELT(R_name, DT_H5_iter_order_t, mkChar("H5_iter_order_t"));
-  ((long long *) REAL(R_type))[DT_H5_iter_order_t] = h5_datatype[DT_H5_iter_order_t];
-
   SET_STRING_ELT(R_categ, DT_H5I_type_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5I_type_t, mkChar("H5I_type_t"));
   ((long long *) REAL(R_type))[DT_H5I_type_t] = h5_datatype[DT_H5I_type_t];
 
-  SET_STRING_ELT(R_categ, DT_H5LT_lang_t, mkChar("enum"));
-  SET_STRING_ELT(R_name, DT_H5LT_lang_t, mkChar("H5LT_lang_t"));
-  ((long long *) REAL(R_type))[DT_H5LT_lang_t] = h5_datatype[DT_H5LT_lang_t];
-
   SET_STRING_ELT(R_categ, DT_H5L_type_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5L_type_t, mkChar("H5L_type_t"));
   ((long long *) REAL(R_type))[DT_H5L_type_t] = h5_datatype[DT_H5L_type_t];
+
+  SET_STRING_ELT(R_categ, DT_H5LT_lang_t, mkChar("enum"));
+  SET_STRING_ELT(R_name, DT_H5LT_lang_t, mkChar("H5LT_lang_t"));
+  ((long long *) REAL(R_type))[DT_H5LT_lang_t] = h5_datatype[DT_H5LT_lang_t];
 
   SET_STRING_ELT(R_categ, DT_H5O_mcdt_search_ret_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5O_mcdt_search_ret_t, mkChar("H5O_mcdt_search_ret_t"));
@@ -1132,13 +1132,13 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5S_class_t, mkChar("H5S_class_t"));
   ((long long *) REAL(R_type))[DT_H5S_class_t] = h5_datatype[DT_H5S_class_t];
 
-  SET_STRING_ELT(R_categ, DT_H5S_seloper_t, mkChar("enum"));
-  SET_STRING_ELT(R_name, DT_H5S_seloper_t, mkChar("H5S_seloper_t"));
-  ((long long *) REAL(R_type))[DT_H5S_seloper_t] = h5_datatype[DT_H5S_seloper_t];
-
   SET_STRING_ELT(R_categ, DT_H5S_sel_type, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5S_sel_type, mkChar("H5S_sel_type"));
   ((long long *) REAL(R_type))[DT_H5S_sel_type] = h5_datatype[DT_H5S_sel_type];
+
+  SET_STRING_ELT(R_categ, DT_H5S_seloper_t, mkChar("enum"));
+  SET_STRING_ELT(R_name, DT_H5S_seloper_t, mkChar("H5S_seloper_t"));
+  ((long long *) REAL(R_type))[DT_H5S_seloper_t] = h5_datatype[DT_H5S_seloper_t];
 
   SET_STRING_ELT(R_categ, DT_H5T_bkg_t, mkChar("enum"));
   SET_STRING_ELT(R_name, DT_H5T_bkg_t, mkChar("H5T_bkg_t"));
@@ -1208,13 +1208,17 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5L_info_helper_t, mkChar("H5L_info_helper_t"));
   ((long long *) REAL(R_type))[DT_H5L_info_helper_t] = h5_datatype[DT_H5L_info_helper_t];
 
-  SET_STRING_ELT(R_categ, DT_H5AC_cache_config_t, mkChar("struct"));
-  SET_STRING_ELT(R_name, DT_H5AC_cache_config_t, mkChar("H5AC_cache_config_t"));
-  ((long long *) REAL(R_type))[DT_H5AC_cache_config_t] = h5_datatype[DT_H5AC_cache_config_t];
+  SET_STRING_ELT(R_categ, DT_H5_ih_info_t, mkChar("struct"));
+  SET_STRING_ELT(R_name, DT_H5_ih_info_t, mkChar("H5_ih_info_t"));
+  ((long long *) REAL(R_type))[DT_H5_ih_info_t] = h5_datatype[DT_H5_ih_info_t];
 
   SET_STRING_ELT(R_categ, DT_H5A_info_t, mkChar("struct"));
   SET_STRING_ELT(R_name, DT_H5A_info_t, mkChar("H5A_info_t"));
   ((long long *) REAL(R_type))[DT_H5A_info_t] = h5_datatype[DT_H5A_info_t];
+
+  SET_STRING_ELT(R_categ, DT_H5AC_cache_config_t, mkChar("struct"));
+  SET_STRING_ELT(R_name, DT_H5AC_cache_config_t, mkChar("H5AC_cache_config_t"));
+  ((long long *) REAL(R_type))[DT_H5AC_cache_config_t] = h5_datatype[DT_H5AC_cache_config_t];
 
   SET_STRING_ELT(R_categ, DT_H5D_info_t, mkChar("struct"));
   SET_STRING_ELT(R_name, DT_H5D_info_t, mkChar("H5D_info_t"));
@@ -1264,10 +1268,6 @@ SEXP show_all_types_data_frame(void) {
   SET_STRING_ELT(R_name, DT_H5G_info_t, mkChar("H5G_info_t"));
   ((long long *) REAL(R_type))[DT_H5G_info_t] = h5_datatype[DT_H5G_info_t];
 
-  SET_STRING_ELT(R_categ, DT_H5_ih_info_t, mkChar("struct"));
-  SET_STRING_ELT(R_name, DT_H5_ih_info_t, mkChar("H5_ih_info_t"));
-  ((long long *) REAL(R_type))[DT_H5_ih_info_t] = h5_datatype[DT_H5_ih_info_t];
-
   SET_STRING_ELT(R_categ, DT_H5L_info_t, mkChar("struct"));
   SET_STRING_ELT(R_name, DT_H5L_info_t, mkChar("H5L_info_t"));
   ((long long *) REAL(R_type))[DT_H5L_info_t] = h5_datatype[DT_H5L_info_t];
@@ -1309,6 +1309,40 @@ SEXP show_all_types_data_frame(void) {
  * Enums
  * 
  *************************************************************************/
+
+/* typedef enum H5_index_t { H5_INDEX_UNKNOWN = -1, H5_INDEX_NAME, H5_INDEX_CRT_ORDER, H5_INDEX_N } H5_index_t; */
+hid_t create_DT_H5_index_t(void) {
+  enum H5_index_t myenum;
+  hid_t base_type = get_h5_equiv(sizeof(enum H5_index_t), issigned(enum H5_index_t));
+  hid_t dtype_id = H5Tenum_create(base_type);
+  myenum = H5_INDEX_UNKNOWN;
+  H5Tenum_insert(dtype_id, "H5_INDEX_UNKNOWN", &myenum);
+  myenum = H5_INDEX_NAME;
+  H5Tenum_insert(dtype_id, "H5_INDEX_NAME", &myenum);
+  myenum = H5_INDEX_CRT_ORDER;
+  H5Tenum_insert(dtype_id, "H5_INDEX_CRT_ORDER", &myenum);
+  myenum = H5_INDEX_N;
+  H5Tenum_insert(dtype_id, "H5_INDEX_N", &myenum);
+  return(dtype_id);
+}
+
+/* typedef enum { H5_ITER_UNKNOWN = -1, H5_ITER_INC, H5_ITER_DEC, H5_ITER_NATIVE, H5_ITER_N } H5_iter_order_t; */
+hid_t create_DT_H5_iter_order_t(void) {
+  H5_iter_order_t myenum;
+  hid_t base_type = get_h5_equiv(sizeof(H5_iter_order_t), issigned(H5_iter_order_t));
+  hid_t dtype_id = H5Tenum_create(base_type);
+  myenum = H5_ITER_UNKNOWN;
+  H5Tenum_insert(dtype_id, "H5_ITER_UNKNOWN", &myenum);
+  myenum = H5_ITER_INC;
+  H5Tenum_insert(dtype_id, "H5_ITER_INC", &myenum);
+  myenum = H5_ITER_DEC;
+  H5Tenum_insert(dtype_id, "H5_ITER_DEC", &myenum);
+  myenum = H5_ITER_NATIVE;
+  H5Tenum_insert(dtype_id, "H5_ITER_NATIVE", &myenum);
+  myenum = H5_ITER_N;
+  H5Tenum_insert(dtype_id, "H5_ITER_N", &myenum);
+  return(dtype_id);
+}
 
 /* typedef enum H5C_cache_decr_mode{ H5C_decr__off, H5C_decr__threshold, H5C_decr__age_out, H5C_decr__age_out_with_threshold} H5C_cache_decr_mode; */
 hid_t create_DT_H5C_cache_decr_mode(void) {
@@ -1568,30 +1602,6 @@ hid_t create_DT_H5F_close_degree_t(void) {
   return(dtype_id);
 }
 
-/* typedef enum { H5FD_FILE_IMAGE_OP_NO_OP, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE, H5FD_FILE_IMAGE_OP_FILE_OPEN, H5FD_FILE_IMAGE_OP_FILE_RESIZE, H5FD_FILE_IMAGE_OP_FILE_CLOSE} H5FD_file_image_op_t; */
-hid_t create_DT_H5FD_file_image_op_t(void) {
-  H5FD_file_image_op_t myenum;
-  hid_t base_type = get_h5_equiv(sizeof(H5FD_file_image_op_t), issigned(H5FD_file_image_op_t));
-  hid_t dtype_id = H5Tenum_create(base_type);
-  myenum = H5FD_FILE_IMAGE_OP_NO_OP;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_NO_OP", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_FILE_OPEN;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_OPEN", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_FILE_RESIZE;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_RESIZE", &myenum);
-  myenum = H5FD_FILE_IMAGE_OP_FILE_CLOSE;
-  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_CLOSE", &myenum);
-  return(dtype_id);
-}
-
 /* typedef enum H5F_file_space_type_t { H5F_FILE_SPACE_DEFAULT = 0, H5F_FILE_SPACE_ALL_PERSIST = 1, H5F_FILE_SPACE_ALL = 2, H5F_FILE_SPACE_AGGR_VFD = 3, H5F_FILE_SPACE_VFD = 4, H5F_FILE_SPACE_NTYPES } H5F_file_space_type_t; */
 hid_t create_DT_H5F_file_space_type_t(void) {
   enum H5F_file_space_type_t myenum;
@@ -1662,6 +1672,30 @@ hid_t create_DT_H5F_scope_t(void) {
   return(dtype_id);
 }
 
+/* typedef enum { H5FD_FILE_IMAGE_OP_NO_OP, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE, H5FD_FILE_IMAGE_OP_FILE_OPEN, H5FD_FILE_IMAGE_OP_FILE_RESIZE, H5FD_FILE_IMAGE_OP_FILE_CLOSE} H5FD_file_image_op_t; */
+hid_t create_DT_H5FD_file_image_op_t(void) {
+  H5FD_file_image_op_t myenum;
+  hid_t base_type = get_h5_equiv(sizeof(H5FD_file_image_op_t), issigned(H5FD_file_image_op_t));
+  hid_t dtype_id = H5Tenum_create(base_type);
+  myenum = H5FD_FILE_IMAGE_OP_NO_OP;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_NO_OP", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_FILE_OPEN;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_OPEN", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_FILE_RESIZE;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_RESIZE", &myenum);
+  myenum = H5FD_FILE_IMAGE_OP_FILE_CLOSE;
+  H5Tenum_insert(dtype_id, "H5FD_FILE_IMAGE_OP_FILE_CLOSE", &myenum);
+  return(dtype_id);
+}
+
 /* typedef enum H5G_obj_t { H5G_UNKNOWN = -1, H5G_GROUP, H5G_DATASET, H5G_TYPE, H5G_LINK, H5G_UDLINK, H5G_RESERVED_5, H5G_RESERVED_6, H5G_RESERVED_7 } H5G_obj_t; */
 hid_t create_DT_H5G_obj_t(void) {
   enum H5G_obj_t myenum;
@@ -1701,40 +1735,6 @@ hid_t create_DT_H5G_storage_type_t(void) {
   H5Tenum_insert(dtype_id, "H5G_STORAGE_TYPE_COMPACT", &myenum);
   myenum = H5G_STORAGE_TYPE_DENSE;
   H5Tenum_insert(dtype_id, "H5G_STORAGE_TYPE_DENSE", &myenum);
-  return(dtype_id);
-}
-
-/* typedef enum H5_index_t { H5_INDEX_UNKNOWN = -1, H5_INDEX_NAME, H5_INDEX_CRT_ORDER, H5_INDEX_N } H5_index_t; */
-hid_t create_DT_H5_index_t(void) {
-  enum H5_index_t myenum;
-  hid_t base_type = get_h5_equiv(sizeof(enum H5_index_t), issigned(enum H5_index_t));
-  hid_t dtype_id = H5Tenum_create(base_type);
-  myenum = H5_INDEX_UNKNOWN;
-  H5Tenum_insert(dtype_id, "H5_INDEX_UNKNOWN", &myenum);
-  myenum = H5_INDEX_NAME;
-  H5Tenum_insert(dtype_id, "H5_INDEX_NAME", &myenum);
-  myenum = H5_INDEX_CRT_ORDER;
-  H5Tenum_insert(dtype_id, "H5_INDEX_CRT_ORDER", &myenum);
-  myenum = H5_INDEX_N;
-  H5Tenum_insert(dtype_id, "H5_INDEX_N", &myenum);
-  return(dtype_id);
-}
-
-/* typedef enum { H5_ITER_UNKNOWN = -1, H5_ITER_INC, H5_ITER_DEC, H5_ITER_NATIVE, H5_ITER_N } H5_iter_order_t; */
-hid_t create_DT_H5_iter_order_t(void) {
-  H5_iter_order_t myenum;
-  hid_t base_type = get_h5_equiv(sizeof(H5_iter_order_t), issigned(H5_iter_order_t));
-  hid_t dtype_id = H5Tenum_create(base_type);
-  myenum = H5_ITER_UNKNOWN;
-  H5Tenum_insert(dtype_id, "H5_ITER_UNKNOWN", &myenum);
-  myenum = H5_ITER_INC;
-  H5Tenum_insert(dtype_id, "H5_ITER_INC", &myenum);
-  myenum = H5_ITER_DEC;
-  H5Tenum_insert(dtype_id, "H5_ITER_DEC", &myenum);
-  myenum = H5_ITER_NATIVE;
-  H5Tenum_insert(dtype_id, "H5_ITER_NATIVE", &myenum);
-  myenum = H5_ITER_N;
-  H5Tenum_insert(dtype_id, "H5_ITER_N", &myenum);
   return(dtype_id);
 }
 
@@ -1778,24 +1778,6 @@ hid_t create_DT_H5I_type_t(void) {
   return(dtype_id);
 }
 
-/* typedef enum H5LT_lang_t { H5LT_LANG_ERR = -1, H5LT_DDL = 0, H5LT_C = 1, H5LT_FORTRAN = 2, H5LT_NO_LANG = 3 } H5LT_lang_t; */
-hid_t create_DT_H5LT_lang_t(void) {
-  enum H5LT_lang_t myenum;
-  hid_t base_type = get_h5_equiv(sizeof(enum H5LT_lang_t), issigned(enum H5LT_lang_t));
-  hid_t dtype_id = H5Tenum_create(base_type);
-  myenum = H5LT_LANG_ERR;
-  H5Tenum_insert(dtype_id, "H5LT_LANG_ERR", &myenum);
-  myenum = H5LT_DDL;
-  H5Tenum_insert(dtype_id, "H5LT_DDL", &myenum);
-  myenum = H5LT_C;
-  H5Tenum_insert(dtype_id, "H5LT_C", &myenum);
-  myenum = H5LT_FORTRAN;
-  H5Tenum_insert(dtype_id, "H5LT_FORTRAN", &myenum);
-  myenum = H5LT_NO_LANG;
-  H5Tenum_insert(dtype_id, "H5LT_NO_LANG", &myenum);
-  return(dtype_id);
-}
-
 /* typedef enum { H5L_TYPE_ERROR = (-1), H5L_TYPE_HARD = 0, H5L_TYPE_SOFT = 1, H5L_TYPE_EXTERNAL = 64, H5L_TYPE_MAX = 255 } H5L_type_t; */
 hid_t create_DT_H5L_type_t(void) {
   H5L_type_t myenum;
@@ -1811,6 +1793,24 @@ hid_t create_DT_H5L_type_t(void) {
   H5Tenum_insert(dtype_id, "H5L_TYPE_EXTERNAL", &myenum);
   myenum = H5L_TYPE_MAX;
   H5Tenum_insert(dtype_id, "H5L_TYPE_MAX", &myenum);
+  return(dtype_id);
+}
+
+/* typedef enum H5LT_lang_t { H5LT_LANG_ERR = -1, H5LT_DDL = 0, H5LT_C = 1, H5LT_FORTRAN = 2, H5LT_NO_LANG = 3 } H5LT_lang_t; */
+hid_t create_DT_H5LT_lang_t(void) {
+  enum H5LT_lang_t myenum;
+  hid_t base_type = get_h5_equiv(sizeof(enum H5LT_lang_t), issigned(enum H5LT_lang_t));
+  hid_t dtype_id = H5Tenum_create(base_type);
+  myenum = H5LT_LANG_ERR;
+  H5Tenum_insert(dtype_id, "H5LT_LANG_ERR", &myenum);
+  myenum = H5LT_DDL;
+  H5Tenum_insert(dtype_id, "H5LT_DDL", &myenum);
+  myenum = H5LT_C;
+  H5Tenum_insert(dtype_id, "H5LT_C", &myenum);
+  myenum = H5LT_FORTRAN;
+  H5Tenum_insert(dtype_id, "H5LT_FORTRAN", &myenum);
+  myenum = H5LT_NO_LANG;
+  H5Tenum_insert(dtype_id, "H5LT_NO_LANG", &myenum);
   return(dtype_id);
 }
 
@@ -1892,6 +1892,26 @@ hid_t create_DT_H5S_class_t(void) {
   return(dtype_id);
 }
 
+/* typedef enum { H5S_SEL_ERROR = -1, H5S_SEL_NONE = 0, H5S_SEL_POINTS = 1, H5S_SEL_HYPERSLABS = 2, H5S_SEL_ALL = 3, H5S_SEL_N }H5S_sel_type; */
+hid_t create_DT_H5S_sel_type(void) {
+  H5S_sel_type myenum;
+  hid_t base_type = get_h5_equiv(sizeof(H5S_sel_type), issigned(H5S_sel_type));
+  hid_t dtype_id = H5Tenum_create(base_type);
+  myenum = H5S_SEL_ERROR;
+  H5Tenum_insert(dtype_id, "H5S_SEL_ERROR", &myenum);
+  myenum = H5S_SEL_NONE;
+  H5Tenum_insert(dtype_id, "H5S_SEL_NONE", &myenum);
+  myenum = H5S_SEL_POINTS;
+  H5Tenum_insert(dtype_id, "H5S_SEL_POINTS", &myenum);
+  myenum = H5S_SEL_HYPERSLABS;
+  H5Tenum_insert(dtype_id, "H5S_SEL_HYPERSLABS", &myenum);
+  myenum = H5S_SEL_ALL;
+  H5Tenum_insert(dtype_id, "H5S_SEL_ALL", &myenum);
+  myenum = H5S_SEL_N;
+  H5Tenum_insert(dtype_id, "H5S_SEL_N", &myenum);
+  return(dtype_id);
+}
+
 /* typedef enum H5S_seloper_t { H5S_SELECT_NOOP = -1, H5S_SELECT_SET = 0, H5S_SELECT_OR, H5S_SELECT_AND, H5S_SELECT_XOR, H5S_SELECT_NOTB, H5S_SELECT_NOTA, H5S_SELECT_APPEND, H5S_SELECT_PREPEND, H5S_SELECT_INVALID } H5S_seloper_t; */
 hid_t create_DT_H5S_seloper_t(void) {
   enum H5S_seloper_t myenum;
@@ -1917,26 +1937,6 @@ hid_t create_DT_H5S_seloper_t(void) {
   H5Tenum_insert(dtype_id, "H5S_SELECT_PREPEND", &myenum);
   myenum = H5S_SELECT_INVALID;
   H5Tenum_insert(dtype_id, "H5S_SELECT_INVALID", &myenum);
-  return(dtype_id);
-}
-
-/* typedef enum { H5S_SEL_ERROR = -1, H5S_SEL_NONE = 0, H5S_SEL_POINTS = 1, H5S_SEL_HYPERSLABS = 2, H5S_SEL_ALL = 3, H5S_SEL_N }H5S_sel_type; */
-hid_t create_DT_H5S_sel_type(void) {
-  H5S_sel_type myenum;
-  hid_t base_type = get_h5_equiv(sizeof(H5S_sel_type), issigned(H5S_sel_type));
-  hid_t dtype_id = H5Tenum_create(base_type);
-  myenum = H5S_SEL_ERROR;
-  H5Tenum_insert(dtype_id, "H5S_SEL_ERROR", &myenum);
-  myenum = H5S_SEL_NONE;
-  H5Tenum_insert(dtype_id, "H5S_SEL_NONE", &myenum);
-  myenum = H5S_SEL_POINTS;
-  H5Tenum_insert(dtype_id, "H5S_SEL_POINTS", &myenum);
-  myenum = H5S_SEL_HYPERSLABS;
-  H5Tenum_insert(dtype_id, "H5S_SEL_HYPERSLABS", &myenum);
-  myenum = H5S_SEL_ALL;
-  H5Tenum_insert(dtype_id, "H5S_SEL_ALL", &myenum);
-  myenum = H5S_SEL_N;
-  H5Tenum_insert(dtype_id, "H5S_SEL_N", &myenum);
   return(dtype_id);
 }
 
@@ -2275,6 +2275,24 @@ hid_t create_DT_H5Z_SO_scale_type_t(void) {
  *************************************************************************/
 
 
+/* typedef struct H5_ih_info_t { hsize_t index_size; hsize_t heap_size} H5_ih_info_t; */
+hid_t create_DT_H5_ih_info_t(void) {
+  hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5_ih_info_t));
+  H5Tinsert(dtype_id, "index_size", HOFFSET(H5_ih_info_t, index_size), h5_datatype[DT_hsize_t]);
+  H5Tinsert(dtype_id, "heap_size", HOFFSET(H5_ih_info_t, heap_size), h5_datatype[DT_hsize_t]);
+  return(dtype_id);
+}
+
+/* typedef struct { hbool_t corder_valid; H5O_msg_crt_idx_t corder; H5T_cset_t cset; hsize_t data_size} H5A_info_t; */
+hid_t create_DT_H5A_info_t(void) {
+  hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5A_info_t));
+  H5Tinsert(dtype_id, "corder_valid", HOFFSET(H5A_info_t, corder_valid), h5_datatype[DT_hbool_t]);
+  H5Tinsert(dtype_id, "corder", HOFFSET(H5A_info_t, corder), h5_datatype[DT_H5O_msg_crt_idx_t]);
+  H5Tinsert(dtype_id, "cset", HOFFSET(H5A_info_t, cset), h5_datatype[DT_H5T_cset_t]);
+  H5Tinsert(dtype_id, "data_size", HOFFSET(H5A_info_t, data_size), h5_datatype[DT_hsize_t]);
+  return(dtype_id);
+}
+
 /* typedef struct H5AC_cache_config_t{ int version; hbool_t rpt_fcn_enabled; hbool_t open_trace_file; hbool_t close_trace_file; char trace_file_name[H5AC__MAX_TRACE_FILE_NAME_LEN + 1]; hbool_t evictions_enabled; hbool_t set_initial_size; size_t initial_size; double min_clean_fraction; size_t max_size; size_t min_size; long int epoch_length; enum H5C_cache_incr_mode incr_mode; double lower_hr_threshold; double increment; hbool_t apply_max_increment; size_t max_increment; enum H5C_cache_flash_incr_mode flash_incr_mode; double flash_multiple; double flash_threshold; enum H5C_cache_decr_mode decr_mode; double upper_hr_threshold; double decrement; hbool_t apply_max_decrement; size_t max_decrement; int epochs_before_eviction; hbool_t apply_empty_reserve; double empty_reserve; size_t dirty_bytes_threshold; int metadata_write_strategy} H5AC_cache_config_t; */
 hid_t create_DT_H5AC_cache_config_t(void) {
   hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5AC_cache_config_t));
@@ -2308,16 +2326,6 @@ hid_t create_DT_H5AC_cache_config_t(void) {
   H5Tinsert(dtype_id, "empty_reserve", HOFFSET(H5AC_cache_config_t, empty_reserve), h5_datatype[DT_double]);
   H5Tinsert(dtype_id, "dirty_bytes_threshold", HOFFSET(H5AC_cache_config_t, dirty_bytes_threshold), h5_datatype[DT_size_t]);
   H5Tinsert(dtype_id, "metadata_write_strategy", HOFFSET(H5AC_cache_config_t, metadata_write_strategy), h5_datatype[DT_int]);
-  return(dtype_id);
-}
-
-/* typedef struct { hbool_t corder_valid; H5O_msg_crt_idx_t corder; H5T_cset_t cset; hsize_t data_size} H5A_info_t; */
-hid_t create_DT_H5A_info_t(void) {
-  hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5A_info_t));
-  H5Tinsert(dtype_id, "corder_valid", HOFFSET(H5A_info_t, corder_valid), h5_datatype[DT_hbool_t]);
-  H5Tinsert(dtype_id, "corder", HOFFSET(H5A_info_t, corder), h5_datatype[DT_H5O_msg_crt_idx_t]);
-  H5Tinsert(dtype_id, "cset", HOFFSET(H5A_info_t, cset), h5_datatype[DT_H5T_cset_t]);
-  H5Tinsert(dtype_id, "data_size", HOFFSET(H5A_info_t, data_size), h5_datatype[DT_hsize_t]);
   return(dtype_id);
 }
 
@@ -2435,14 +2443,6 @@ hid_t create_DT_H5G_info_t(void) {
   return(dtype_id);
 }
 
-/* typedef struct H5_ih_info_t { hsize_t index_size; hsize_t heap_size} H5_ih_info_t; */
-hid_t create_DT_H5_ih_info_t(void) {
-  hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5_ih_info_t));
-  H5Tinsert(dtype_id, "index_size", HOFFSET(H5_ih_info_t, index_size), h5_datatype[DT_hsize_t]);
-  H5Tinsert(dtype_id, "heap_size", HOFFSET(H5_ih_info_t, heap_size), h5_datatype[DT_hsize_t]);
-  return(dtype_id);
-}
-
 /* typedef union H5L_info_helper_t { haddr_t address; size_t val_size} H5L_info_helper_t;  */
 hid_t create_DT_H5L_info_helper_t(void) {
   hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5L_info_helper_t));
@@ -2461,14 +2461,14 @@ hid_t create_DT_H5L_info_t(void) {
   return(dtype_id);
 }
 
-/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5O_info_t object; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
+/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5I_type_t type; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
 hid_t create_DT_H5ls_info_t(void) {
   hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5ls_info_t));
   H5Tinsert(dtype_id, "name", HOFFSET(H5ls_info_t, name), h5_datatype[DT_char]);
   H5Tinsert(dtype_id, "link_success", HOFFSET(H5ls_info_t, link_success), h5_datatype[DT_int]);
   H5Tinsert(dtype_id, "link", HOFFSET(H5ls_info_t, link), h5_datatype[DT_H5L_info_t]);
   H5Tinsert(dtype_id, "object_success", HOFFSET(H5ls_info_t, object_success), h5_datatype[DT_int]);
-  H5Tinsert(dtype_id, "object", HOFFSET(H5ls_info_t, object), h5_datatype[DT_H5O_info_t]);
+  H5Tinsert(dtype_id, "type", HOFFSET(H5ls_info_t, type), h5_datatype[DT_H5I_type_t]);
   H5Tinsert(dtype_id, "group_success", HOFFSET(H5ls_info_t, group_success), h5_datatype[DT_int]);
   H5Tinsert(dtype_id, "group", HOFFSET(H5ls_info_t, group), h5_datatype[DT_H5G_info_t]);
   H5Tinsert(dtype_id, "dataset_success", HOFFSET(H5ls_info_t, dataset_success), h5_datatype[DT_int]);

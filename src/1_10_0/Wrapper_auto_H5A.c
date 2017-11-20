@@ -37,16 +37,18 @@ SEXP R_H5Aclose(SEXP R_attr_id){
   return(__ret_list);
 }
 
-/* H5_DLL hid_t H5Acreate2(hid_t loc_id, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id); */
-SEXP R_H5Acreate2(SEXP R_loc_id, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id){
+/* H5_DLL hid_t H5Acreate_by_name(hid_t loc_id, const char *obj_name, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id, hid_t lapl_id); */
+SEXP R_H5Acreate_by_name(SEXP R_loc_id, SEXP R_obj_name, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id, SEXP R_lapl_id){
   int vars_protected=0;
   hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
+  const char* obj_name = CHAR(STRING_ELT(R_obj_name, 0));
   const char* attr_name = CHAR(STRING_ELT(R_attr_name, 0));
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   hid_t space_id = SEXP_to_longlong(R_space_id, 0);
   hid_t acpl_id = SEXP_to_longlong(R_acpl_id, 0);
   hid_t aapl_id = SEXP_to_longlong(R_aapl_id, 0);
-  hid_t return_val = H5Acreate2(loc_id, attr_name, type_id, space_id, acpl_id, aapl_id);
+  hid_t lapl_id = SEXP_to_longlong(R_lapl_id, 0);
+  hid_t return_val = H5Acreate_by_name(loc_id, obj_name, attr_name, type_id, space_id, acpl_id, aapl_id, lapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;
@@ -62,18 +64,16 @@ SEXP R_H5Acreate2(SEXP R_loc_id, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_
   return(__ret_list);
 }
 
-/* H5_DLL hid_t H5Acreate_by_name(hid_t loc_id, const char *obj_name, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id, hid_t lapl_id); */
-SEXP R_H5Acreate_by_name(SEXP R_loc_id, SEXP R_obj_name, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id, SEXP R_lapl_id){
+/* H5_DLL hid_t H5Acreate2(hid_t loc_id, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id); */
+SEXP R_H5Acreate2(SEXP R_loc_id, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id){
   int vars_protected=0;
   hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
-  const char* obj_name = CHAR(STRING_ELT(R_obj_name, 0));
   const char* attr_name = CHAR(STRING_ELT(R_attr_name, 0));
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   hid_t space_id = SEXP_to_longlong(R_space_id, 0);
   hid_t acpl_id = SEXP_to_longlong(R_acpl_id, 0);
   hid_t aapl_id = SEXP_to_longlong(R_aapl_id, 0);
-  hid_t lapl_id = SEXP_to_longlong(R_lapl_id, 0);
-  hid_t return_val = H5Acreate_by_name(loc_id, obj_name, attr_name, type_id, space_id, acpl_id, aapl_id, lapl_id);
+  hid_t return_val = H5Acreate2(loc_id, attr_name, type_id, space_id, acpl_id, aapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;

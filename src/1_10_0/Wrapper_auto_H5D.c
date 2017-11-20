@@ -37,17 +37,15 @@ SEXP R_H5Dclose(SEXP R_dset_id){
   return(__ret_list);
 }
 
-/* H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id, hid_t space_id, hid_t lcpl_id, hid_t dcpl_id, hid_t dapl_id); */
-SEXP R_H5Dcreate2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_space_id, SEXP R_lcpl_id, SEXP R_dcpl_id, SEXP R_dapl_id){
+/* H5_DLL hid_t H5Dcreate_anon(hid_t file_id, hid_t type_id, hid_t space_id, hid_t plist_id, hid_t dapl_id); */
+SEXP R_H5Dcreate_anon(SEXP R_file_id, SEXP R_type_id, SEXP R_space_id, SEXP R_plist_id, SEXP R_dapl_id){
   int vars_protected=0;
-  hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
-  const char* name = CHAR(STRING_ELT(R_name, 0));
+  hid_t file_id = SEXP_to_longlong(R_file_id, 0);
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   hid_t space_id = SEXP_to_longlong(R_space_id, 0);
-  hid_t lcpl_id = SEXP_to_longlong(R_lcpl_id, 0);
-  hid_t dcpl_id = SEXP_to_longlong(R_dcpl_id, 0);
+  hid_t plist_id = SEXP_to_longlong(R_plist_id, 0);
   hid_t dapl_id = SEXP_to_longlong(R_dapl_id, 0);
-  hid_t return_val = H5Dcreate2(loc_id, name, type_id, space_id, lcpl_id, dcpl_id, dapl_id);
+  hid_t return_val = H5Dcreate_anon(file_id, type_id, space_id, plist_id, dapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;
@@ -63,15 +61,17 @@ SEXP R_H5Dcreate2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_space_id, S
   return(__ret_list);
 }
 
-/* H5_DLL hid_t H5Dcreate_anon(hid_t file_id, hid_t type_id, hid_t space_id, hid_t plist_id, hid_t dapl_id); */
-SEXP R_H5Dcreate_anon(SEXP R_file_id, SEXP R_type_id, SEXP R_space_id, SEXP R_plist_id, SEXP R_dapl_id){
+/* H5_DLL hid_t H5Dcreate2(hid_t loc_id, const char *name, hid_t type_id, hid_t space_id, hid_t lcpl_id, hid_t dcpl_id, hid_t dapl_id); */
+SEXP R_H5Dcreate2(SEXP R_loc_id, SEXP R_name, SEXP R_type_id, SEXP R_space_id, SEXP R_lcpl_id, SEXP R_dcpl_id, SEXP R_dapl_id){
   int vars_protected=0;
-  hid_t file_id = SEXP_to_longlong(R_file_id, 0);
+  hid_t loc_id = SEXP_to_longlong(R_loc_id, 0);
+  const char* name = CHAR(STRING_ELT(R_name, 0));
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   hid_t space_id = SEXP_to_longlong(R_space_id, 0);
-  hid_t plist_id = SEXP_to_longlong(R_plist_id, 0);
+  hid_t lcpl_id = SEXP_to_longlong(R_lcpl_id, 0);
+  hid_t dcpl_id = SEXP_to_longlong(R_dcpl_id, 0);
   hid_t dapl_id = SEXP_to_longlong(R_dapl_id, 0);
-  hid_t return_val = H5Dcreate_anon(file_id, type_id, space_id, plist_id, dapl_id);
+  hid_t return_val = H5Dcreate2(loc_id, name, type_id, space_id, lcpl_id, dcpl_id, dapl_id);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;

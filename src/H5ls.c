@@ -104,7 +104,7 @@ herr_t H5Dget_info(hid_t d_id, H5D_info_t * dataset_info) {
     dataset_info->dims = "-";
     dataset_info->maxdims = "-";
   }
-
+ 
   H5Tclose(t_id);
   H5Sclose(s_id);
   return(0);
@@ -127,10 +127,11 @@ herr_t H5Dget_info_by_name(hid_t g_id, const char* name, H5D_info_t * dataset_in
 
 herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *info, void *op_data) {
   H5L_op_data* lsdata_ptr = op_data;
-  H5ls_info_t* ls_info=lsdata_ptr->ls_info + lsdata_ptr->num_visited; // this is the current one we are editiion
+  H5ls_info_t* ls_info=lsdata_ptr->ls_info + lsdata_ptr->num_visited; // this is the current one we are editing
 
   // first check if we have allocated space; if not - just increase the counter
-  if(lsdata_ptr-> num_visited < lsdata_ptr->num_allocated) {
+  if(lsdata_ptr->num_visited < lsdata_ptr->num_allocated) {
+    Rprintf("Storing info on a link %s\n", name);
     // save the name of the link
     ls_info->name=R_alloc(1, strlen(name) + 1);
     strcpy(ls_info->name, name);
@@ -142,13 +143,15 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
     // now also grab the object info
     herr_t err;
     H5O_info_t obj_info;
+    Rprintf("Started getting object info\n");
     err = H5Oget_info_by_name(g_id, name, &obj_info, lsdata_ptr->lapl_id);
+    Rprintf("Finished getting object info\n");
     if(err >= 0) {
       // everything ok
       ls_info->object_success=1;
       ls_info->object=obj_info;
     }
-    else {
+    else {  // this is intended to let us count how many items we have in the end
       ls_info->object_success=0; // not really necessary; already initialized to 0
       // if getting the object failed, we are done
       lsdata_ptr->num_visited++;
@@ -171,7 +174,9 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
     else if(ls_info->object.type == H5O_TYPE_DATASET) {
       // grab dataset info if it is a dataset
       H5D_info_t dataset_info;
+      Rprintf("Getting dataset info\n");
       err = H5Dget_info_by_name(g_id, name, &dataset_info, lsdata_ptr->dapl_id);
+      Rprintf("Finished dataset info\n");
       if(err >= 0) {
 	ls_info->dataset_success=1;
 	ls_info->dataset = dataset_info;
@@ -195,6 +200,7 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
     }
   }
   lsdata_ptr->num_visited++;
+  Rprintf("Counting link %s\n", name);
   return(0);
 }
 

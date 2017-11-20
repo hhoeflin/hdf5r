@@ -1704,114 +1704,6 @@ SEXP R_H5Pget_fill_value(SEXP R_plist_id, SEXP R_type_id, SEXP R_value, SEXP _du
   return(__ret_list);
 }
 
-/* H5_DLL H5Z_filter_t H5Pget_filter2(hid_t plist_id, unsigned filter, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config ); */
-SEXP R_H5Pget_filter2(SEXP R_plist_id, SEXP R_filter, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config){
-  hsize_t size_helper;
-  SEXP R_helper = R_NilValue;
-  int vars_protected=0;
-  R_flags = PROTECT(duplicate(R_flags));
-  vars_protected++;
-  R_cd_nelmts = PROTECT(duplicate(R_cd_nelmts));
-  vars_protected++;
-  R_cd_values = PROTECT(duplicate(R_cd_values));
-  vars_protected++;
-  R_name = PROTECT(duplicate(R_name));
-  vars_protected++;
-  R_filter_config = PROTECT(duplicate(R_filter_config));
-  vars_protected++;
-  hid_t plist_id = SEXP_to_longlong(R_plist_id, 0);
-  unsigned filter = SEXP_to_longlong(R_filter, 0);
-  unsigned int* flags;
-  if(XLENGTH(R_flags) == 0) {
-    flags = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_flags, h5_datatype[DT_unsigned_int], XLENGTH(R_flags)));
-    flags= (unsigned int*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  size_t* cd_nelmts;
-  if(XLENGTH(R_cd_nelmts) == 0) {
-    cd_nelmts = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_cd_nelmts, h5_datatype[DT_size_t], XLENGTH(R_cd_nelmts)));
-    cd_nelmts= (size_t*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  unsigned* cd_values;
-  if(XLENGTH(R_cd_values) == 0) {
-    cd_values = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_cd_values, h5_datatype[DT_unsigned], XLENGTH(R_cd_values)));
-    cd_values= (unsigned*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  size_t namelen = SEXP_to_longlong(R_namelen, 0);
-  char* name;
-  if(XLENGTH(R_name) == 0) {
-    name = NULL;
-  }
-  else {
-    name = R_alloc(strlen(CHAR(STRING_ELT(R_name, 0))) + 1, 1);
-    strcpy(name, CHAR(STRING_ELT(R_name, 0)));
-  }
-  unsigned* filter_config;
-  if(XLENGTH(R_filter_config) == 0) {
-    filter_config = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_filter_config, h5_datatype[DT_unsigned], XLENGTH(R_filter_config)));
-    filter_config= (unsigned*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  H5Z_filter_t return_val = H5Pget_filter2(plist_id, filter, flags, cd_nelmts, cd_values, namelen, name, filter_config);
-  SEXP R_return_val= R_NilValue;
-  R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
-  vars_protected++;
-  size_helper = guess_nelem(R_flags, h5_datatype[DT_unsigned_int]);
-  R_flags = PROTECT(H5ToR_single_step(flags, h5_datatype[DT_unsigned_int], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  size_helper = guess_nelem(R_cd_nelmts, h5_datatype[DT_size_t]);
-  R_cd_nelmts = PROTECT(H5ToR_single_step(cd_nelmts, h5_datatype[DT_size_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  size_helper = guess_nelem(R_cd_values, h5_datatype[DT_unsigned]);
-  R_cd_values = PROTECT(H5ToR_single_step(cd_values, h5_datatype[DT_unsigned], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  if(name==NULL) {
-    R_name = PROTECT(NEW_CHARACTER(0));
-    vars_protected++;
-  }
-  else {
-    R_name = PROTECT(mkString(name));
-    vars_protected++;
-  }
-  size_helper = guess_nelem(R_filter_config, h5_datatype[DT_unsigned]);
-  R_filter_config = PROTECT(H5ToR_single_step(filter_config, h5_datatype[DT_unsigned], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  SEXP __ret_list;
-  PROTECT(__ret_list = allocVector(VECSXP, 6));
-  SET_VECTOR_ELT(__ret_list, 0, R_return_val);
-  SET_VECTOR_ELT(__ret_list, 1, R_flags);
-  SET_VECTOR_ELT(__ret_list, 2, R_cd_nelmts);
-  SET_VECTOR_ELT(__ret_list, 3, R_cd_values);
-  SET_VECTOR_ELT(__ret_list, 4, R_name);
-  SET_VECTOR_ELT(__ret_list, 5, R_filter_config);
-  SEXP __ret_list_names;
-  PROTECT(__ret_list_names = allocVector(STRSXP, 6));
-  SET_STRING_ELT(__ret_list_names, 0, mkChar("return_val"));
-  SET_STRING_ELT(__ret_list_names, 1, mkChar("flags"));
-  SET_STRING_ELT(__ret_list_names, 2, mkChar("cd_nelmts"));
-  SET_STRING_ELT(__ret_list_names, 3, mkChar("cd_values"));
-  SET_STRING_ELT(__ret_list_names, 4, mkChar("name"));
-  SET_STRING_ELT(__ret_list_names, 5, mkChar("filter_config"));
-  SET_NAMES(__ret_list, __ret_list_names);
-  vars_protected += 2;
-  UNPROTECT(vars_protected);
-  return(__ret_list);
-}
-
 /* H5_DLL herr_t H5Pget_filter_by_id2(hid_t plist_id, H5Z_filter_t id, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config); */
 SEXP R_H5Pget_filter_by_id2(SEXP R_plist_id, SEXP R_id, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config){
   hsize_t size_helper;
@@ -1875,6 +1767,114 @@ SEXP R_H5Pget_filter_by_id2(SEXP R_plist_id, SEXP R_id, SEXP R_flags, SEXP R_cd_
     vars_protected++;
   }
   herr_t return_val = H5Pget_filter_by_id2(plist_id, id, flags, cd_nelmts, cd_values, namelen, name, filter_config);
+  SEXP R_return_val= R_NilValue;
+  R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+  vars_protected++;
+  size_helper = guess_nelem(R_flags, h5_datatype[DT_unsigned_int]);
+  R_flags = PROTECT(H5ToR_single_step(flags, h5_datatype[DT_unsigned_int], size_helper, H5TOR_CONV_INT64_NOLOSS));
+  vars_protected++;
+  size_helper = guess_nelem(R_cd_nelmts, h5_datatype[DT_size_t]);
+  R_cd_nelmts = PROTECT(H5ToR_single_step(cd_nelmts, h5_datatype[DT_size_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
+  vars_protected++;
+  size_helper = guess_nelem(R_cd_values, h5_datatype[DT_unsigned]);
+  R_cd_values = PROTECT(H5ToR_single_step(cd_values, h5_datatype[DT_unsigned], size_helper, H5TOR_CONV_INT64_NOLOSS));
+  vars_protected++;
+  if(name==NULL) {
+    R_name = PROTECT(NEW_CHARACTER(0));
+    vars_protected++;
+  }
+  else {
+    R_name = PROTECT(mkString(name));
+    vars_protected++;
+  }
+  size_helper = guess_nelem(R_filter_config, h5_datatype[DT_unsigned]);
+  R_filter_config = PROTECT(H5ToR_single_step(filter_config, h5_datatype[DT_unsigned], size_helper, H5TOR_CONV_INT64_NOLOSS));
+  vars_protected++;
+  SEXP __ret_list;
+  PROTECT(__ret_list = allocVector(VECSXP, 6));
+  SET_VECTOR_ELT(__ret_list, 0, R_return_val);
+  SET_VECTOR_ELT(__ret_list, 1, R_flags);
+  SET_VECTOR_ELT(__ret_list, 2, R_cd_nelmts);
+  SET_VECTOR_ELT(__ret_list, 3, R_cd_values);
+  SET_VECTOR_ELT(__ret_list, 4, R_name);
+  SET_VECTOR_ELT(__ret_list, 5, R_filter_config);
+  SEXP __ret_list_names;
+  PROTECT(__ret_list_names = allocVector(STRSXP, 6));
+  SET_STRING_ELT(__ret_list_names, 0, mkChar("return_val"));
+  SET_STRING_ELT(__ret_list_names, 1, mkChar("flags"));
+  SET_STRING_ELT(__ret_list_names, 2, mkChar("cd_nelmts"));
+  SET_STRING_ELT(__ret_list_names, 3, mkChar("cd_values"));
+  SET_STRING_ELT(__ret_list_names, 4, mkChar("name"));
+  SET_STRING_ELT(__ret_list_names, 5, mkChar("filter_config"));
+  SET_NAMES(__ret_list, __ret_list_names);
+  vars_protected += 2;
+  UNPROTECT(vars_protected);
+  return(__ret_list);
+}
+
+/* H5_DLL H5Z_filter_t H5Pget_filter2(hid_t plist_id, unsigned filter, unsigned int *flags, size_t *cd_nelmts, unsigned cd_values[], size_t namelen, char name[], unsigned *filter_config ); */
+SEXP R_H5Pget_filter2(SEXP R_plist_id, SEXP R_filter, SEXP R_flags, SEXP R_cd_nelmts, SEXP R_cd_values, SEXP R_namelen, SEXP R_name, SEXP R_filter_config){
+  hsize_t size_helper;
+  SEXP R_helper = R_NilValue;
+  int vars_protected=0;
+  R_flags = PROTECT(duplicate(R_flags));
+  vars_protected++;
+  R_cd_nelmts = PROTECT(duplicate(R_cd_nelmts));
+  vars_protected++;
+  R_cd_values = PROTECT(duplicate(R_cd_values));
+  vars_protected++;
+  R_name = PROTECT(duplicate(R_name));
+  vars_protected++;
+  R_filter_config = PROTECT(duplicate(R_filter_config));
+  vars_protected++;
+  hid_t plist_id = SEXP_to_longlong(R_plist_id, 0);
+  unsigned filter = SEXP_to_longlong(R_filter, 0);
+  unsigned int* flags;
+  if(XLENGTH(R_flags) == 0) {
+    flags = NULL;
+  }
+  else {
+    R_helper = PROTECT(RToH5(R_flags, h5_datatype[DT_unsigned_int], XLENGTH(R_flags)));
+    flags= (unsigned int*) VOIDPTR(R_helper);
+    vars_protected++;
+  }
+  size_t* cd_nelmts;
+  if(XLENGTH(R_cd_nelmts) == 0) {
+    cd_nelmts = NULL;
+  }
+  else {
+    R_helper = PROTECT(RToH5(R_cd_nelmts, h5_datatype[DT_size_t], XLENGTH(R_cd_nelmts)));
+    cd_nelmts= (size_t*) VOIDPTR(R_helper);
+    vars_protected++;
+  }
+  unsigned* cd_values;
+  if(XLENGTH(R_cd_values) == 0) {
+    cd_values = NULL;
+  }
+  else {
+    R_helper = PROTECT(RToH5(R_cd_values, h5_datatype[DT_unsigned], XLENGTH(R_cd_values)));
+    cd_values= (unsigned*) VOIDPTR(R_helper);
+    vars_protected++;
+  }
+  size_t namelen = SEXP_to_longlong(R_namelen, 0);
+  char* name;
+  if(XLENGTH(R_name) == 0) {
+    name = NULL;
+  }
+  else {
+    name = R_alloc(strlen(CHAR(STRING_ELT(R_name, 0))) + 1, 1);
+    strcpy(name, CHAR(STRING_ELT(R_name, 0)));
+  }
+  unsigned* filter_config;
+  if(XLENGTH(R_filter_config) == 0) {
+    filter_config = NULL;
+  }
+  else {
+    R_helper = PROTECT(RToH5(R_filter_config, h5_datatype[DT_unsigned], XLENGTH(R_filter_config)));
+    filter_config= (unsigned*) VOIDPTR(R_helper);
+    vars_protected++;
+  }
+  H5Z_filter_t return_val = H5Pget_filter2(plist_id, filter, flags, cd_nelmts, cd_values, namelen, name, filter_config);
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;

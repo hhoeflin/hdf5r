@@ -198,6 +198,8 @@ typedef enum {
   DT_char,
   DT_double,
   DT_float,
+  DT_H5_index_t,
+  DT_H5_iter_order_t,
   DT_H5C_cache_decr_mode,
   DT_H5C_cache_flash_incr_mode,
   DT_H5C_cache_incr_mode,
@@ -214,25 +216,23 @@ typedef enum {
   DT_H5E_direction_t,
   DT_H5E_type_t,
   DT_H5F_close_degree_t,
-  DT_H5FD_file_image_op_t,
   DT_H5F_file_space_type_t,
   DT_H5F_libver_t,
   DT_H5F_mem_t,
   DT_H5F_scope_t,
+  DT_H5FD_file_image_op_t,
   DT_H5G_obj_t,
   DT_H5G_storage_type_t,
-  DT_H5_index_t,
-  DT_H5_iter_order_t,
   DT_H5I_type_t,
-  DT_H5LT_lang_t,
   DT_H5L_type_t,
+  DT_H5LT_lang_t,
   DT_H5O_mcdt_search_ret_t,
   DT_H5O_type_t,
   DT_H5PL_type_t,
   DT_H5R_type_t,
   DT_H5S_class_t,
-  DT_H5S_seloper_t,
   DT_H5S_sel_type,
+  DT_H5S_seloper_t,
   DT_H5T_bkg_t,
   DT_H5T_class_t,
   DT_H5T_cmd_t,
@@ -250,8 +250,9 @@ typedef enum {
   DT_H5Z_EDC_t,
   DT_H5Z_SO_scale_type_t,
   DT_H5L_info_helper_t,
-  DT_H5AC_cache_config_t,
+  DT_H5_ih_info_t,
   DT_H5A_info_t,
+  DT_H5AC_cache_config_t,
   DT_H5D_info_t,
   DT_H5E_error1_t,
   DT_H5E_error2_t,
@@ -264,7 +265,6 @@ typedef enum {
   DT_H5F_retry_info_t,
   DT_H5F_sect_info_t,
   DT_H5G_info_t,
-  DT_H5_ih_info_t,
   DT_H5L_info_t,
   DT_H5ls_info_t,
   DT_H5O_hdr_info_helper_msg_t,
@@ -289,6 +289,12 @@ hid_t h5_datatype[DT_LAST_ITEM];
  * Enums
  * 
  *************************************************************************/
+
+/* typedef enum H5_index_t { H5_INDEX_UNKNOWN = -1, H5_INDEX_NAME, H5_INDEX_CRT_ORDER, H5_INDEX_N } H5_index_t; */
+hid_t create_DT_H5_index_t(void);
+
+/* typedef enum { H5_ITER_UNKNOWN = -1, H5_ITER_INC, H5_ITER_DEC, H5_ITER_NATIVE, H5_ITER_N } H5_iter_order_t; */
+hid_t create_DT_H5_iter_order_t(void);
 
 /* typedef enum H5C_cache_decr_mode{ H5C_decr__off, H5C_decr__threshold, H5C_decr__age_out, H5C_decr__age_out_with_threshold} H5C_cache_decr_mode; */
 hid_t create_DT_H5C_cache_decr_mode(void);
@@ -338,9 +344,6 @@ hid_t create_DT_H5E_type_t(void);
 /* typedef enum H5F_close_degree_t { H5F_CLOSE_DEFAULT = 0, H5F_CLOSE_WEAK = 1, H5F_CLOSE_SEMI = 2, H5F_CLOSE_STRONG = 3} H5F_close_degree_t; */
 hid_t create_DT_H5F_close_degree_t(void);
 
-/* typedef enum { H5FD_FILE_IMAGE_OP_NO_OP, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE, H5FD_FILE_IMAGE_OP_FILE_OPEN, H5FD_FILE_IMAGE_OP_FILE_RESIZE, H5FD_FILE_IMAGE_OP_FILE_CLOSE} H5FD_file_image_op_t; */
-hid_t create_DT_H5FD_file_image_op_t(void);
-
 /* typedef enum H5F_file_space_type_t { H5F_FILE_SPACE_DEFAULT = 0, H5F_FILE_SPACE_ALL_PERSIST = 1, H5F_FILE_SPACE_ALL = 2, H5F_FILE_SPACE_AGGR_VFD = 3, H5F_FILE_SPACE_VFD = 4, H5F_FILE_SPACE_NTYPES } H5F_file_space_type_t; */
 hid_t create_DT_H5F_file_space_type_t(void);
 
@@ -353,26 +356,23 @@ hid_t create_DT_H5F_mem_t(void);
 /* typedef enum H5F_scope_t { H5F_SCOPE_LOCAL = 0, H5F_SCOPE_GLOBAL = 1 } H5F_scope_t; */
 hid_t create_DT_H5F_scope_t(void);
 
+/* typedef enum { H5FD_FILE_IMAGE_OP_NO_OP, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET, H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE, H5FD_FILE_IMAGE_OP_FILE_OPEN, H5FD_FILE_IMAGE_OP_FILE_RESIZE, H5FD_FILE_IMAGE_OP_FILE_CLOSE} H5FD_file_image_op_t; */
+hid_t create_DT_H5FD_file_image_op_t(void);
+
 /* typedef enum H5G_obj_t { H5G_UNKNOWN = -1, H5G_GROUP, H5G_DATASET, H5G_TYPE, H5G_LINK, H5G_UDLINK, H5G_RESERVED_5, H5G_RESERVED_6, H5G_RESERVED_7 } H5G_obj_t; */
 hid_t create_DT_H5G_obj_t(void);
 
 /* typedef enum H5G_storage_type_t { H5G_STORAGE_TYPE_UNKNOWN = -1, H5G_STORAGE_TYPE_SYMBOL_TABLE, H5G_STORAGE_TYPE_COMPACT, H5G_STORAGE_TYPE_DENSE } H5G_storage_type_t; */
 hid_t create_DT_H5G_storage_type_t(void);
 
-/* typedef enum H5_index_t { H5_INDEX_UNKNOWN = -1, H5_INDEX_NAME, H5_INDEX_CRT_ORDER, H5_INDEX_N } H5_index_t; */
-hid_t create_DT_H5_index_t(void);
-
-/* typedef enum { H5_ITER_UNKNOWN = -1, H5_ITER_INC, H5_ITER_DEC, H5_ITER_NATIVE, H5_ITER_N } H5_iter_order_t; */
-hid_t create_DT_H5_iter_order_t(void);
-
 /* typedef enum H5I_type_t { H5I_UNINIT = (-2), H5I_BADID = (-1), H5I_FILE = 1, H5I_GROUP, H5I_DATATYPE, H5I_DATASPACE, H5I_DATASET, H5I_ATTR, H5I_REFERENCE, H5I_VFL, H5I_GENPROP_CLS, H5I_GENPROP_LST, H5I_ERROR_CLASS, H5I_ERROR_MSG, H5I_ERROR_STACK, H5I_NTYPES } H5I_type_t; */
 hid_t create_DT_H5I_type_t(void);
 
-/* typedef enum H5LT_lang_t { H5LT_LANG_ERR = -1, H5LT_DDL = 0, H5LT_C = 1, H5LT_FORTRAN = 2, H5LT_NO_LANG = 3 } H5LT_lang_t; */
-hid_t create_DT_H5LT_lang_t(void);
-
 /* typedef enum { H5L_TYPE_ERROR = (-1), H5L_TYPE_HARD = 0, H5L_TYPE_SOFT = 1, H5L_TYPE_EXTERNAL = 64, H5L_TYPE_MAX = 255 } H5L_type_t; */
 hid_t create_DT_H5L_type_t(void);
+
+/* typedef enum H5LT_lang_t { H5LT_LANG_ERR = -1, H5LT_DDL = 0, H5LT_C = 1, H5LT_FORTRAN = 2, H5LT_NO_LANG = 3 } H5LT_lang_t; */
+hid_t create_DT_H5LT_lang_t(void);
 
 /* typedef enum H5O_mcdt_search_ret_t { H5O_MCDT_SEARCH_ERROR = -1, H5O_MCDT_SEARCH_CONT, H5O_MCDT_SEARCH_STOP } H5O_mcdt_search_ret_t; */
 hid_t create_DT_H5O_mcdt_search_ret_t(void);
@@ -389,11 +389,11 @@ hid_t create_DT_H5R_type_t(void);
 /* typedef enum H5S_class_t { H5S_NO_CLASS = -1, H5S_SCALAR = 0, H5S_SIMPLE = 1, H5S_NULL = 2 } H5S_class_t; */
 hid_t create_DT_H5S_class_t(void);
 
-/* typedef enum H5S_seloper_t { H5S_SELECT_NOOP = -1, H5S_SELECT_SET = 0, H5S_SELECT_OR, H5S_SELECT_AND, H5S_SELECT_XOR, H5S_SELECT_NOTB, H5S_SELECT_NOTA, H5S_SELECT_APPEND, H5S_SELECT_PREPEND, H5S_SELECT_INVALID } H5S_seloper_t; */
-hid_t create_DT_H5S_seloper_t(void);
-
 /* typedef enum { H5S_SEL_ERROR = -1, H5S_SEL_NONE = 0, H5S_SEL_POINTS = 1, H5S_SEL_HYPERSLABS = 2, H5S_SEL_ALL = 3, H5S_SEL_N }H5S_sel_type; */
 hid_t create_DT_H5S_sel_type(void);
+
+/* typedef enum H5S_seloper_t { H5S_SELECT_NOOP = -1, H5S_SELECT_SET = 0, H5S_SELECT_OR, H5S_SELECT_AND, H5S_SELECT_XOR, H5S_SELECT_NOTB, H5S_SELECT_NOTA, H5S_SELECT_APPEND, H5S_SELECT_PREPEND, H5S_SELECT_INVALID } H5S_seloper_t; */
+hid_t create_DT_H5S_seloper_t(void);
 
 /* typedef enum H5T_bkg_t { H5T_BKG_NO = 0, H5T_BKG_TEMP = 1, H5T_BKG_YES = 2 } H5T_bkg_t; */
 hid_t create_DT_H5T_bkg_t(void);
@@ -449,11 +449,14 @@ hid_t create_DT_H5Z_SO_scale_type_t(void);
  * 
  *************************************************************************/
 
-/* typedef struct H5AC_cache_config_t{ int version; hbool_t rpt_fcn_enabled; hbool_t open_trace_file; hbool_t close_trace_file; char trace_file_name[H5AC__MAX_TRACE_FILE_NAME_LEN + 1]; hbool_t evictions_enabled; hbool_t set_initial_size; size_t initial_size; double min_clean_fraction; size_t max_size; size_t min_size; long int epoch_length; enum H5C_cache_incr_mode incr_mode; double lower_hr_threshold; double increment; hbool_t apply_max_increment; size_t max_increment; enum H5C_cache_flash_incr_mode flash_incr_mode; double flash_multiple; double flash_threshold; enum H5C_cache_decr_mode decr_mode; double upper_hr_threshold; double decrement; hbool_t apply_max_decrement; size_t max_decrement; int epochs_before_eviction; hbool_t apply_empty_reserve; double empty_reserve; size_t dirty_bytes_threshold; int metadata_write_strategy} H5AC_cache_config_t; */
-hid_t create_DT_H5AC_cache_config_t(void);
+/* typedef struct H5_ih_info_t { hsize_t index_size; hsize_t heap_size} H5_ih_info_t; */
+hid_t create_DT_H5_ih_info_t(void);
 
 /* typedef struct { hbool_t corder_valid; H5O_msg_crt_idx_t corder; H5T_cset_t cset; hsize_t data_size} H5A_info_t; */
 hid_t create_DT_H5A_info_t(void);
+
+/* typedef struct H5AC_cache_config_t{ int version; hbool_t rpt_fcn_enabled; hbool_t open_trace_file; hbool_t close_trace_file; char trace_file_name[H5AC__MAX_TRACE_FILE_NAME_LEN + 1]; hbool_t evictions_enabled; hbool_t set_initial_size; size_t initial_size; double min_clean_fraction; size_t max_size; size_t min_size; long int epoch_length; enum H5C_cache_incr_mode incr_mode; double lower_hr_threshold; double increment; hbool_t apply_max_increment; size_t max_increment; enum H5C_cache_flash_incr_mode flash_incr_mode; double flash_multiple; double flash_threshold; enum H5C_cache_decr_mode decr_mode; double upper_hr_threshold; double decrement; hbool_t apply_max_decrement; size_t max_decrement; int epochs_before_eviction; hbool_t apply_empty_reserve; double empty_reserve; size_t dirty_bytes_threshold; int metadata_write_strategy} H5AC_cache_config_t; */
+hid_t create_DT_H5AC_cache_config_t(void);
 
 /* typedef struct H5D_info_t { int rank; char* dims; char* maxdims; H5T_class_t type_class; H5S_class_t space_class} H5D_info_t; */
 hid_t create_DT_H5D_info_t(void);
@@ -491,16 +494,13 @@ hid_t create_DT_H5F_sect_info_t(void);
 /* typedef struct H5G_info_t { H5G_storage_type_t storage_type; hsize_t nlinks; int64_t max_corder; hbool_t mounted} H5G_info_t; */
 hid_t create_DT_H5G_info_t(void);
 
-/* typedef struct H5_ih_info_t { hsize_t index_size; hsize_t heap_size} H5_ih_info_t; */
-hid_t create_DT_H5_ih_info_t(void);
-
 /* typedef union H5L_info_helper_t { haddr_t address; size_t val_size} H5L_info_helper_t;  */
 hid_t create_DT_H5L_info_helper_t(void);
 
 /* typedef struct H5L_info_t { H5L_type_t type; hbool_t corder_valid; int64_t corder; H5T_cset_t cset; H5L_info_helper_t u} H5L_info_t; */
 hid_t create_DT_H5L_info_t(void);
 
-/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5O_info_t object; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
+/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5I_type_t type; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
 hid_t create_DT_H5ls_info_t(void);
 
 /* typedef struct H5O_hdr_info_helper_msg_t { uint64_t present; uint64_t shared} H5O_hdr_info_helper_msg_t;  */

@@ -1,9 +1,22 @@
 #ifndef _EXPORT_AUTO_H_
 #define _EXPORT_AUTO_H_
+R_CallMethodDef library_WRAPPER_AUTO_H5[] = {
+{"R_H5check_version", (DL_FUNC) &R_H5check_version, 3},
+{"R_H5close", (DL_FUNC) &R_H5close, 0},
+{"R_H5dont_atexit", (DL_FUNC) &R_H5dont_atexit, 0},
+{"R_H5free_memory", (DL_FUNC) &R_H5free_memory, 2},
+{"R_H5garbage_collect", (DL_FUNC) &R_H5garbage_collect, 0},
+{"R_H5get_libversion", (DL_FUNC) &R_H5get_libversion, 3},
+{"R_H5is_library_threadsafe", (DL_FUNC) &R_H5is_library_threadsafe, 1},
+{"R_H5open", (DL_FUNC) &R_H5open, 0},
+{"R_H5set_free_list_limits", (DL_FUNC) &R_H5set_free_list_limits, 6},
+{NULL, NULL, 0}
+};
+
 R_CallMethodDef library_WRAPPER_AUTO_H5A[] = {
 {"R_H5Aclose", (DL_FUNC) &R_H5Aclose, 1},
-{"R_H5Acreate2", (DL_FUNC) &R_H5Acreate2, 6},
 {"R_H5Acreate_by_name", (DL_FUNC) &R_H5Acreate_by_name, 8},
+{"R_H5Acreate2", (DL_FUNC) &R_H5Acreate2, 6},
 {"R_H5Adelete", (DL_FUNC) &R_H5Adelete, 2},
 {"R_H5Adelete_by_idx", (DL_FUNC) &R_H5Adelete_by_idx, 6},
 {"R_H5Adelete_by_name", (DL_FUNC) &R_H5Adelete_by_name, 4},
@@ -31,23 +44,10 @@ R_CallMethodDef library_WRAPPER_AUTO_H5A[] = {
 {NULL, NULL, 0}
 };
 
-R_CallMethodDef library_WRAPPER_AUTO_H5[] = {
-{"R_H5check_version", (DL_FUNC) &R_H5check_version, 3},
-{"R_H5close", (DL_FUNC) &R_H5close, 0},
-{"R_H5dont_atexit", (DL_FUNC) &R_H5dont_atexit, 0},
-{"R_H5free_memory", (DL_FUNC) &R_H5free_memory, 2},
-{"R_H5garbage_collect", (DL_FUNC) &R_H5garbage_collect, 0},
-{"R_H5get_libversion", (DL_FUNC) &R_H5get_libversion, 3},
-{"R_H5is_library_threadsafe", (DL_FUNC) &R_H5is_library_threadsafe, 1},
-{"R_H5open", (DL_FUNC) &R_H5open, 0},
-{"R_H5set_free_list_limits", (DL_FUNC) &R_H5set_free_list_limits, 6},
-{NULL, NULL, 0}
-};
-
 R_CallMethodDef library_WRAPPER_AUTO_H5D[] = {
 {"R_H5Dclose", (DL_FUNC) &R_H5Dclose, 1},
-{"R_H5Dcreate2", (DL_FUNC) &R_H5Dcreate2, 7},
 {"R_H5Dcreate_anon", (DL_FUNC) &R_H5Dcreate_anon, 5},
+{"R_H5Dcreate2", (DL_FUNC) &R_H5Dcreate2, 7},
 {"R_H5Ddebug", (DL_FUNC) &R_H5Ddebug, 1},
 {"R_H5Dfill", (DL_FUNC) &R_H5Dfill, 6},
 {"R_H5Dflush", (DL_FUNC) &R_H5Dflush, 1},
@@ -173,8 +173,8 @@ R_CallMethodDef library_WRAPPER_AUTO_H5FDSTDIO[] = {
 
 R_CallMethodDef library_WRAPPER_AUTO_H5G[] = {
 {"R_H5Gclose", (DL_FUNC) &R_H5Gclose, 1},
-{"R_H5Gcreate2", (DL_FUNC) &R_H5Gcreate2, 5},
 {"R_H5Gcreate_anon", (DL_FUNC) &R_H5Gcreate_anon, 3},
+{"R_H5Gcreate2", (DL_FUNC) &R_H5Gcreate2, 5},
 {"R_H5Gflush", (DL_FUNC) &R_H5Gflush, 1},
 {"R_H5Gget_create_plist", (DL_FUNC) &R_H5Gget_create_plist, 1},
 {"R_H5Gget_info", (DL_FUNC) &R_H5Gget_info, 2},
@@ -369,8 +369,8 @@ R_CallMethodDef library_WRAPPER_AUTO_H5P[] = {
 {"R_H5Pget_file_space", (DL_FUNC) &R_H5Pget_file_space, 3},
 {"R_H5Pget_fill_time", (DL_FUNC) &R_H5Pget_fill_time, 2},
 {"R_H5Pget_fill_value", (DL_FUNC) &R_H5Pget_fill_value, 4},
-{"R_H5Pget_filter2", (DL_FUNC) &R_H5Pget_filter2, 8},
 {"R_H5Pget_filter_by_id2", (DL_FUNC) &R_H5Pget_filter_by_id2, 8},
+{"R_H5Pget_filter2", (DL_FUNC) &R_H5Pget_filter2, 8},
 {"R_H5Pget_gc_references", (DL_FUNC) &R_H5Pget_gc_references, 2},
 {"R_H5Pget_hyper_vector_size", (DL_FUNC) &R_H5Pget_hyper_vector_size, 2},
 {"R_H5Pget_istore_k", (DL_FUNC) &R_H5Pget_istore_k, 2},
@@ -523,34 +523,11 @@ R_CallMethodDef library_WRAPPER_AUTO_H5S[] = {
 {NULL, NULL, 0}
 };
 
-R_CallMethodDef library_WRAPPER_AUTO_H5TB[] = {
-{"R_H5TBadd_records_from", (DL_FUNC) &R_H5TBadd_records_from, 6},
-{"R_H5TBAget_fill", (DL_FUNC) &R_H5TBAget_fill, 4},
-{"R_H5TBAget_title", (DL_FUNC) &R_H5TBAget_title, 2},
-{"R_H5TBappend_records", (DL_FUNC) &R_H5TBappend_records, 7},
-{"R_H5TBcombine_tables", (DL_FUNC) &R_H5TBcombine_tables, 5},
-{"R_H5TBdelete_field", (DL_FUNC) &R_H5TBdelete_field, 3},
-{"R_H5TBdelete_record", (DL_FUNC) &R_H5TBdelete_record, 4},
-{"R_H5TBget_field_info", (DL_FUNC) &R_H5TBget_field_info, 6},
-{"R_H5TBget_table_info", (DL_FUNC) &R_H5TBget_table_info, 4},
-{"R_H5TBinsert_field", (DL_FUNC) &R_H5TBinsert_field, 7},
-{"R_H5TBinsert_record", (DL_FUNC) &R_H5TBinsert_record, 9},
-{"R_H5TBmake_table", (DL_FUNC) &R_H5TBmake_table, 14},
-{"R_H5TBread_fields_index", (DL_FUNC) &R_H5TBread_fields_index, 11},
-{"R_H5TBread_fields_name", (DL_FUNC) &R_H5TBread_fields_name, 10},
-{"R_H5TBread_records", (DL_FUNC) &R_H5TBread_records, 9},
-{"R_H5TBread_table", (DL_FUNC) &R_H5TBread_table, 7},
-{"R_H5TBwrite_fields_index", (DL_FUNC) &R_H5TBwrite_fields_index, 10},
-{"R_H5TBwrite_fields_name", (DL_FUNC) &R_H5TBwrite_fields_name, 9},
-{"R_H5TBwrite_records", (DL_FUNC) &R_H5TBwrite_records, 8},
-{NULL, NULL, 0}
-};
-
 R_CallMethodDef library_WRAPPER_AUTO_H5T[] = {
 {"R_H5Tarray_create2", (DL_FUNC) &R_H5Tarray_create2, 3},
 {"R_H5Tclose", (DL_FUNC) &R_H5Tclose, 1},
-{"R_H5Tcommit2", (DL_FUNC) &R_H5Tcommit2, 6},
 {"R_H5Tcommit_anon", (DL_FUNC) &R_H5Tcommit_anon, 4},
+{"R_H5Tcommit2", (DL_FUNC) &R_H5Tcommit2, 6},
 {"R_H5Tcommitted", (DL_FUNC) &R_H5Tcommitted, 1},
 {"R_H5Tcompiler_conv", (DL_FUNC) &R_H5Tcompiler_conv, 2},
 {"R_H5Tconvert", (DL_FUNC) &R_H5Tconvert, 8},
@@ -611,6 +588,29 @@ R_CallMethodDef library_WRAPPER_AUTO_H5T[] = {
 {"R_H5Tset_strpad", (DL_FUNC) &R_H5Tset_strpad, 2},
 {"R_H5Tset_tag", (DL_FUNC) &R_H5Tset_tag, 2},
 {"R_H5Tvlen_create", (DL_FUNC) &R_H5Tvlen_create, 1},
+{NULL, NULL, 0}
+};
+
+R_CallMethodDef library_WRAPPER_AUTO_H5TB[] = {
+{"R_H5TBadd_records_from", (DL_FUNC) &R_H5TBadd_records_from, 6},
+{"R_H5TBAget_fill", (DL_FUNC) &R_H5TBAget_fill, 4},
+{"R_H5TBAget_title", (DL_FUNC) &R_H5TBAget_title, 2},
+{"R_H5TBappend_records", (DL_FUNC) &R_H5TBappend_records, 7},
+{"R_H5TBcombine_tables", (DL_FUNC) &R_H5TBcombine_tables, 5},
+{"R_H5TBdelete_field", (DL_FUNC) &R_H5TBdelete_field, 3},
+{"R_H5TBdelete_record", (DL_FUNC) &R_H5TBdelete_record, 4},
+{"R_H5TBget_field_info", (DL_FUNC) &R_H5TBget_field_info, 6},
+{"R_H5TBget_table_info", (DL_FUNC) &R_H5TBget_table_info, 4},
+{"R_H5TBinsert_field", (DL_FUNC) &R_H5TBinsert_field, 7},
+{"R_H5TBinsert_record", (DL_FUNC) &R_H5TBinsert_record, 9},
+{"R_H5TBmake_table", (DL_FUNC) &R_H5TBmake_table, 14},
+{"R_H5TBread_fields_index", (DL_FUNC) &R_H5TBread_fields_index, 11},
+{"R_H5TBread_fields_name", (DL_FUNC) &R_H5TBread_fields_name, 10},
+{"R_H5TBread_records", (DL_FUNC) &R_H5TBread_records, 9},
+{"R_H5TBread_table", (DL_FUNC) &R_H5TBread_table, 7},
+{"R_H5TBwrite_fields_index", (DL_FUNC) &R_H5TBwrite_fields_index, 10},
+{"R_H5TBwrite_fields_name", (DL_FUNC) &R_H5TBwrite_fields_name, 9},
+{"R_H5TBwrite_records", (DL_FUNC) &R_H5TBwrite_records, 8},
 {NULL, NULL, 0}
 };
 

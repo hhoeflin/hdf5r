@@ -3,10 +3,10 @@
 #include "global.h"
 /* H5_DLL herr_t H5Aclose(hid_t attr_id); */
 SEXP R_H5Aclose(SEXP R_attr_id);
-/* H5_DLL hid_t H5Acreate2(hid_t loc_id, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id); */
-SEXP R_H5Acreate2(SEXP R_loc_id, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id);
 /* H5_DLL hid_t H5Acreate_by_name(hid_t loc_id, const char *obj_name, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id, hid_t lapl_id); */
 SEXP R_H5Acreate_by_name(SEXP R_loc_id, SEXP R_obj_name, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id, SEXP R_lapl_id);
+/* H5_DLL hid_t H5Acreate2(hid_t loc_id, const char *attr_name, hid_t type_id, hid_t space_id, hid_t acpl_id, hid_t aapl_id); */
+SEXP R_H5Acreate2(SEXP R_loc_id, SEXP R_attr_name, SEXP R_type_id, SEXP R_space_id, SEXP R_acpl_id, SEXP R_aapl_id);
 /* H5_DLL herr_t H5Adelete(hid_t loc_id, const char *name); */
 SEXP R_H5Adelete(SEXP R_loc_id, SEXP R_name);
 /* H5_DLL herr_t H5Adelete_by_idx(hid_t loc_id, const char *obj_name, H5_index_t idx_type, H5_iter_order_t order, hsize_t n, hid_t lapl_id); */
