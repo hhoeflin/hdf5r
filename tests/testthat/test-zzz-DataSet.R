@@ -3,8 +3,8 @@ context("h5-DataSet-createDataset")
 fname <- tempfile(fileext=".h5")
 
 test_that("DataSet-createDataset",{
-    if(file.exists(fname)) file.remove(fname)
-    file <- h5file(fname, "a")
+  if(file.exists(fname)) file.remove(fname)
+  file <- h5file(fname, "a")
 
   f <- function() dset1 <- createDataSet(file, "testmat_n")
   expect_that(f(), throws_error("If a sample robj is not provided, then dtype has to be given"))

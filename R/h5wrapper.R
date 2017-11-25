@@ -131,7 +131,7 @@ list.groups <- function(object, path = "/", recursive = TRUE, ...) {
   obj <- object
   if (path != "/") obj <- object[[path]]
   df <- obj$ls(... ,recursive = recursive)
-  df[df$object.type == "H5O_TYPE_GROUP", 1]
+  df[df$obj_type == "H5I_GROUP", 1]
 }
 
 #' @rdname list-groups-datasets
@@ -140,7 +140,7 @@ list.datasets <- function(object, path = "/", recursive = TRUE, ...) {
   obj <- object
   if (path != "/") obj <- object[[path]]
   df <- obj$ls(... ,recursive = recursive)
-  df[df$object.type == "H5O_TYPE_DATASET", 1]
+  df[df$obj_type == "H5I_DATASET", 1]
 }
 
 GetDimensions <- function(data) {

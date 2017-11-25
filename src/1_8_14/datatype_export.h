@@ -464,7 +464,7 @@ hid_t create_DT_H5L_info_helper_t(void);
 /* typedef struct H5L_info_t { H5L_type_t type; hbool_t corder_valid; int64_t corder; H5T_cset_t cset; H5L_info_helper_t u} H5L_info_t; */
 hid_t create_DT_H5L_info_t(void);
 
-/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5O_info_t object; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
+/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int obj_type_success; H5I_type_t obj_type; int num_attrs; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
 hid_t create_DT_H5ls_info_t(void);
 
 /* typedef struct H5O_hdr_info_helper_msg_t { uint64_t present; uint64_t shared} H5O_hdr_info_helper_msg_t;  */

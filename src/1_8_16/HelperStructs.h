@@ -44,8 +44,9 @@ typedef struct H5ls_info_t {
   char* name;
   int link_success;
   H5L_info_t link;
-  int object_success;
-  H5O_info_t object;
+  int obj_type_success;
+  H5I_type_t obj_type;
+  int num_attrs;
   int group_success;
   H5G_info_t group;
   int dataset_success;

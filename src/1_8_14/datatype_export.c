@@ -2302,14 +2302,15 @@ hid_t create_DT_H5L_info_t(void) {
   return(dtype_id);
 }
 
-/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int object_success; H5O_info_t object; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
+/* typedef struct H5ls_info_t { char* name; int link_success; H5L_info_t link; int obj_type_success; H5I_type_t obj_type; int num_attrs; int group_success; H5G_info_t group; int dataset_success; H5D_info_t dataset; int type_success; H5T_class_t committed_type} H5ls_info_t; */
 hid_t create_DT_H5ls_info_t(void) {
   hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(H5ls_info_t));
   H5Tinsert(dtype_id, "name", HOFFSET(H5ls_info_t, name), h5_datatype[DT_char]);
   H5Tinsert(dtype_id, "link_success", HOFFSET(H5ls_info_t, link_success), h5_datatype[DT_int]);
   H5Tinsert(dtype_id, "link", HOFFSET(H5ls_info_t, link), h5_datatype[DT_H5L_info_t]);
-  H5Tinsert(dtype_id, "object_success", HOFFSET(H5ls_info_t, object_success), h5_datatype[DT_int]);
-  H5Tinsert(dtype_id, "object", HOFFSET(H5ls_info_t, object), h5_datatype[DT_H5O_info_t]);
+  H5Tinsert(dtype_id, "obj_type_success", HOFFSET(H5ls_info_t, obj_type_success), h5_datatype[DT_int]);
+  H5Tinsert(dtype_id, "obj_type", HOFFSET(H5ls_info_t, obj_type), h5_datatype[DT_H5I_type_t]);
+  H5Tinsert(dtype_id, "num_attrs", HOFFSET(H5ls_info_t, num_attrs), h5_datatype[DT_int]);
   H5Tinsert(dtype_id, "group_success", HOFFSET(H5ls_info_t, group_success), h5_datatype[DT_int]);
   H5Tinsert(dtype_id, "group", HOFFSET(H5ls_info_t, group), h5_datatype[DT_H5G_info_t]);
   H5Tinsert(dtype_id, "dataset_success", HOFFSET(H5ls_info_t, dataset_success), h5_datatype[DT_int]);

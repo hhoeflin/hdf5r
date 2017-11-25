@@ -40,16 +40,16 @@ test_that("Print functions work as expected", {
                                                  "\nAccess type: H5F_ACC_RDWR\n",
                                                  "Attributes: attr1, attr2\n",
                                                  "Listing:\n",
-                                                 " name    object.type dataset.dims dataset.type_class\n",
-                                                 " test H5O_TYPE_GROUP         <NA>               <NA>"), fixed=TRUE)
+                                                 " name  obj_type dataset.dims dataset.type_class\n",
+                                                 " test H5I_GROUP         <NA>               <NA>"), fixed=TRUE)
 
     #H5Group also prints the name of the group
     expect_output(h5group$print(), regexp=paste0("Class: H5Group\nFilename: ",
                                                  normalizePath(test_file, mustWork=FALSE),
                                                  "\nGroup: /test\nAttributes: grp_attr\n",
                                                  "Listing:\n",
-                                                 "      name      object.type dataset.dims dataset.type_class\n",
-                                                 " test_dset H5O_TYPE_DATASET  5 x 10 x 15          H5T_FLOAT"), fixed=TRUE)
+                                                 "      name    obj_type dataset.dims dataset.type_class\n",
+                                                 " test_dset H5I_DATASET  5 x 10 x 15          H5T_FLOAT"), fixed=TRUE)
 
     ## create a dataset inside the group
     expect_output(h5dset$print(), regexp=paste0("Class: H5D\n",

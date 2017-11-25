@@ -241,7 +241,7 @@ print_attributes <- function(obj, max_to_print) {
 ##' @keywords internal
 print_listing <- function(obj, max_to_print) {
     listing <- obj$ls(recursive=FALSE, detailed=FALSE)
-    listing <- listing[, c("name", "object.type", "dataset.dims", "dataset.type_class")]
+    listing <- listing[, c("name", "obj_type", "dataset.dims", "dataset.type_class")]
     if(nrow(listing) > 0) {
         cat("Listing:\n")
         if(nrow(listing) <= max_to_print) {
