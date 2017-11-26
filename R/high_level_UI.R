@@ -151,10 +151,9 @@ names.H5File <- names.H5Group
 h5attributes <- function(x) {
     ## return a list with the names and content of all attributes
     ## first get number of attributes; used deprecated attr_get_number;
-    ## reason is that H5Oget_info can be slow on large datasets
+    ## reason is that H5Oget_info can be slow on large datasets (but should be ok on files)
     if(inherits(x, "H5File")) {
-        root_group <- x[["/"]]
-        num_attrs <- root_group$attr_get_number()
+        num_attrs <- x$obj_info()$num_attrs
     }
     else {
         num_attrs <- x$attr_get_number()
@@ -174,10 +173,9 @@ h5attributes <- function(x) {
 h5attr_names <- function(x) {
     ## get the number of attributes
     ## first get number of attributes; used deprecated attr_get_number;
-    ## reason is that H5Oget_info can be slow on large datasets
+    ## reason is that H5Oget_info can be slow on large datasets (but should be ok on files)
     if(inherits(x, "H5File")) {
-        root_group <- x[["/"]]
-        num_attrs <- root_group$attr_get_number()
+        num_attrs <- x$obj_info()$num_attrs
     }
     else {
         num_attrs <- x$attr_get_number()
