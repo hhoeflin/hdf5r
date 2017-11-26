@@ -88,6 +88,10 @@ test_that("Basic dataset function", {
     expect_equal(file.h5$attr_name_by_idx(0, "sub"), "int64")
     expect_equal(file.h5$attr_name_by_idx(1, "sub"), "int64_copy_1")
     expect_equal(file.h5$attr_name_by_idx(2, "sub"), "int64_copy_2")
+
+    ## check that from the group we can retrieve the correct number of attributes
+    group_sub <- file.h5[["sub"]]
+    expect_equal(group_sub$attr_get_number(), 3)
     
     ## now delete each of them in one of the 3 possible ways
     file.h5$open("sub")$attr_delete("int64")

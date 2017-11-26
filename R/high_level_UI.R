@@ -150,8 +150,16 @@ names.H5File <- names.H5Group
 ##' @export
 h5attributes <- function(x) {
     ## return a list with the names and content of all attributes
-    obj_info <- x$obj_info()
-    attr_data <- vector("list", length=obj_info$num_attrs)
+    ## first get number of attributes; used deprecated attr_get_number;
+    ## reason is that H5Oget_info can be slow on large datasets
+    if(inherits(x, "H5File")) {
+        root_group <- x[["/"]]
+        num_attrs <- root_group$attr_get_number()
+    }
+    else {
+        num_attrs <- x$attr_get_number()
+    }
+    attr_data <- vector("list", length=num_attrs)
     names(attr_data) <- h5attr_names(x)
 
     for(i in seq_along(attr_data)) {
@@ -165,8 +173,16 @@ h5attributes <- function(x) {
 ##' @export
 h5attr_names <- function(x) {
     ## get the number of attributes
-    obj_info <- x$obj_info()
-    attr_names <- character(obj_info$num_attrs)
+    ## first get number of attributes; used deprecated attr_get_number;
+    ## reason is that H5Oget_info can be slow on large datasets
+    if(inherits(x, "H5File")) {
+        root_group <- x[["/"]]
+        num_attrs <- root_group$attr_get_number()
+    }
+    else {
+        num_attrs <- x$attr_get_number()
+    }
+    attr_names <- character(num_attrs)
     for(i in seq_along(attr_names)) {
         attr_names[i] <- x$attr_name_by_idx(i - 1, ".")
     }

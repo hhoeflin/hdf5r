@@ -1166,6 +1166,12 @@ commonFGDT <- list(
             stop("Problem getting attribute name by index")
         }
         return(res$name)
+    },
+    attr_get_number=function() {
+        "This function implements the HDF5-API function H5Aget_num_attrs."
+        "Please see the documentation at \\url{https://support.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-NumAttrs} for details."
+        res <- .Call("R_H5Aget_num_attrs", self$id, PACKAGE="hdf5r")
+        return(res$return_val)
     }
 )
 
