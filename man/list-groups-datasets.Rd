@@ -4,20 +4,30 @@
 \alias{list-groups-datasets}
 \alias{list.groups}
 \alias{list.datasets}
+\alias{list.objects}
 \title{List Groups and Datasets in object}
 \usage{
-list.groups(object, path = "/", recursive = TRUE, ...)
+list.groups(object, path = "/", full.names = FALSE, recursive = TRUE, ...)
 
-list.datasets(object, path = "/", recursive = TRUE, ...)
+list.datasets(object, path = "/", full.names = FALSE, recursive = TRUE,
+  ...)
+
+list.objects(object, object.type = c("H5O_TYPE_UNKNOWN", "H5O_TYPE_GROUP",
+  "H5O_TYPE_DATASET", "H5O_TYPE_NAMED_DATATYPE", "H5O_TYPE_NTYPES"),
+  path = "/", full.names = FALSE, recursive = TRUE, ...)
 }
 \arguments{
 \item{object}{\code{CommonFG}; Object implementing the CommonFG Interface (e.g. \code{\link{H5File}}, \code{\link{H5Group}}).}
 
 \item{path}{character; Path named to be used for iteration.}
 
+\item{full.names}{character; Specify if absolute DataSet path names should be returned.}
+
 \item{recursive}{logical; Specify if object should be traversed recursively.}
 
 \item{...}{Additional Parameters passed to \code{$ls()}}
+
+\item{object.type}{character; Object type to be returned.}
 }
 \value{
 \code{\link{character}}
