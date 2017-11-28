@@ -12,8 +12,7 @@ list.groups(object, path = "/", full.names = FALSE, recursive = TRUE, ...)
 list.datasets(object, path = "/", full.names = FALSE, recursive = TRUE,
   ...)
 
-list.objects(object, object.type = c("H5O_TYPE_UNKNOWN", "H5O_TYPE_GROUP",
-  "H5O_TYPE_DATASET", "H5O_TYPE_NAMED_DATATYPE", "H5O_TYPE_NTYPES"),
+list.objects(object, obj_type = c("H5I_GROUP", "H5I_DATASET", "H5I_DATATYPE"),
   path = "/", full.names = FALSE, recursive = TRUE, ...)
 }
 \arguments{

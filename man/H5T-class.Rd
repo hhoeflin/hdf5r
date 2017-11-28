@@ -240,6 +240,11 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A
 This function implements the HDF5-API function H5Aget_name_by_idx.
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx} for details.}
 
+\item{\code{attr_get_number()}}{
+
+This function implements the HDF5-API function H5Aget_num_attrs.
+Please see the documentation at \url{https://support.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-NumAttrs} for details.}
+
 \item{\code{create_reference(name = ".", space = NULL)}}{
 
 This function implements the HDF5-API function H5Rcreate. If \code{space=NULL} then a \code{H5R_OBJECT} reference
