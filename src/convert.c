@@ -19,15 +19,6 @@
 
 #include "convert.h"
 
-// the following is needed for HDF5 version 1.8.12 to work with the code; H5free_memory did not exist; 
-// it is therefore here simply defined as being the free function
-#if _DEFINE_H5FREE_MEMORY_ == 1
-void H5free_memory(void *ptr) {
-  free(ptr);
-  return;
-}
-#endif // _DEFINE_H5FREE_MEMORY_
-
 /*********************************************************************************
  * Functions for converting an R object to HDF5
  *********************************************************************************/
