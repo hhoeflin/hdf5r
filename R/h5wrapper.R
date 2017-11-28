@@ -120,7 +120,7 @@ function(name) {
 #' @param object \code{CommonFG}; Object implementing the CommonFG Interface (e.g. \code{\link{H5File}}, \code{\link{H5Group}}).
 #' @param path character; Path named to be used for iteration.
 #' @param full.names character; Specify if absolute DataSet path names should be returned.
-#' @param object.type character; Object type to be returned.
+#' @param obj_type character; Object type to be returned.
 #' @param recursive logical; Specify if object should be traversed recursively.
 #' @param ... Additional Parameters passed to \code{$ls()}
 #' @return \code{\link{character}}

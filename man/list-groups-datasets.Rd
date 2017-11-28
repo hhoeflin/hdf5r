@@ -26,7 +26,7 @@ list.objects(object, obj_type = c("H5I_GROUP", "H5I_DATASET", "H5I_DATATYPE"),
 
 \item{...}{Additional Parameters passed to \code{$ls()}}
 
-\item{object.type}{character; Object type to be returned.}
+\item{obj_type}{character; Object type to be returned.}
 }
 \value{
 \code{\link{character}}
