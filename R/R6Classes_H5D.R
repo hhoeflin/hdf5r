@@ -617,7 +617,7 @@ H5D <- R6Class("H5D",
                        ref_obj$ref <- res$ref
                        return(ref_obj)
                    },
-                   print=function(..., max.attributes){
+                   print=function(..., max.attributes = 10){
                           "Prints information for the dataset"
                           "@param ... ignored"
                           "@param max.attributes Maximum number of attribute names to print"
