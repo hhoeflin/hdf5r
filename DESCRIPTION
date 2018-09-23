@@ -13,7 +13,7 @@ Description: 'HDF5' is a data model, library and file format for storing
     <https://support.hdfgroup.org/HDF5/doc/RM/RM_H5Front.html> using R6 classes. 
     Additionally, functionality is added so that 'HDF5' objects behave very 
     similar to their corresponding R counterparts.
-URL:  https://hhoeflin.github.io/hdf5r, https://github.com/hhoeflin/hdf5r
+URL: https://hhoeflin.github.io/hdf5r, https://github.com/hhoeflin/hdf5r
 BugReports: https://github.com/hhoeflin/hdf5r/issues
 License: Apache License 2.0 | file LICENSE
 Copyright: For the hdf5r package: Novartis Institute for BioMedical Research
@@ -36,3 +36,28 @@ SystemRequirements: HDF5 (>= 1.8.13)
 VignetteBuilder: knitr
 NeedsCompilation: yes
 RoxygenNote: 6.0.1.9001
+Collate: 
+    'Common_functions.R'
+    'Compound.R'
+    'H5constants.R'
+    'Helper_functions.R'
+    'Misc.R'
+    'R6Classes.R'
+    'R6Classes_H5A.R'
+    'R6Classes_H5D.R'
+    'R6Classes_H5File.R'
+    'R6Classes_H5Group.R'
+    'R6Classes_H5P.R'
+    'R6Classes_H5R.R'
+    'R6Classes_H5S.R'
+    'R6Classes_H5T.R'
+    'adapt_during_onLoad.R'
+    'convert.R'
+    'factor_ext.R'
+    'globalVariables.R'
+    'h5errorHandling.R'
+    'h5wrapper.R'
+    'hdf5r.R'
+    'high_level_UI.R'
+    'open_objs.R'
+    'zzz.R'

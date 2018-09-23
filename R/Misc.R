@@ -27,6 +27,7 @@
 ##' @return Version of the underlying HDF5 API as a string
 ##' @author Holger Hoefling
 ##' @importFrom utils packageVersion
+##' @include Helper_functions.R
 ##' @export
 h5version <- function(verbose=TRUE) {
     h5api_libversion <- .Call("R_H5get_libversion", request_empty(1), request_empty(1), request_empty(1), PACKAGE='hdf5r')

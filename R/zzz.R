@@ -40,6 +40,9 @@
     ## need to set the size of the ref_obj for use in functions
     ref_obj_size$H5R_OBJECT <- h5types$H5T_STD_REF_OBJ$get_size()
     ref_obj_size$H5R_DATASET_REGION <- h5types$H5T_STD_REF_DSETREG$get_size()
+
+    # adapt function calls to new functions in version 1.10.3
+    adapt_classes()
     
     return(invisible())
     

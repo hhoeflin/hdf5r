@@ -221,7 +221,7 @@ This function implements the HDF5-API function H5Rcreate. The parameters are int
 The function always create \code{H5R_DATASET_REGION} references
 Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create} for details.}
 
-\item{\code{print(..., max.attributes)}}{
+\item{\code{print(..., max.attributes = 10)}}{
 
 Prints information for the dataset
 
