@@ -21,6 +21,7 @@ env:
     - HDF5_VERSION=1.8.17
     - HDF5_VERSION=1.8.21
     - HDF5_VERSION=1.10.1
+    - HDF5_VERSION=1.10.2
     - HDF5_VERSION=1.10.3
 
 matrix:

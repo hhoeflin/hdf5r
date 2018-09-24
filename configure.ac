@@ -49,6 +49,12 @@ if test "$hdf5_version_sufficient" = "yes"; then
   AX_COMPARE_VERSION(
 	[$HDF5_VERSION], 
 	[ge], 
+	[1.10.2], 
+	[HDF5_VERSION_USE="1_10_2"])
+
+  AX_COMPARE_VERSION(
+	[$HDF5_VERSION], 
+	[ge], 
 	[1.10.3], 
 	[HDF5_VERSION_USE="1_10_3"])
 fi
