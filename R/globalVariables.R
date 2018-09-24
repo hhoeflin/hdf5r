@@ -23,3 +23,4 @@
 ## This is a hack to ensure that the warnings about non-visible bindings don't show up anymore
 globalVariables("Category")
 globalVariables("Name")
+globalVariables("self")
