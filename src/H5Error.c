@@ -89,7 +89,7 @@ herr_t _errorCollector( hid_t estack_id, void * stream) {
     client_data.pos = strlen(client_data.err_msg);
     ssize_t initial_pos = client_data.pos;
 
-    herr_t eee = H5Ewalk(estack_id, H5E_WALK_DOWNWARD, &custom_print_cb, &client_data);
+    herr_t eee = H5Ewalk2(estack_id, H5E_WALK_DOWNWARD, &custom_print_cb, &client_data);
     if(eee < 0) {
       client_data.err_msg = "Error walking the error stack!";
       client_data.pos = strlen(client_data.err_msg);
@@ -120,15 +120,15 @@ herr_t _errorCollector( hid_t estack_id, void * stream) {
 
 
 SEXP R_H5error() {
-  H5E_auto_t err_func;
+  H5E_auto2_t err_func;
   void *err_func_data;
   herr_t err;
-  err = H5Eget_auto (H5E_DEFAULT, &err_func, &err_func_data);
+  err = H5Eget_auto2 (H5E_DEFAULT, &err_func, &err_func_data);
   if(err < 0) {
     error("Error retrieving current error handler");
   }
-  H5E_auto_t myfct = &_errorCollector;
-  err = H5Eset_auto (H5E_DEFAULT, myfct, err_func_data);
+  H5E_auto2_t myfct = &_errorCollector;
+  err = H5Eset_auto2 (H5E_DEFAULT, myfct, err_func_data);
   if(err < 0) {
     error("Error setting custom error handler");
   }

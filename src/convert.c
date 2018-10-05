@@ -2121,7 +2121,7 @@ SEXP get_array_dim(hid_t dtype_id) {
 
   int total_num_dims = XLENGTH(dim);
   hsize_t cur_array_dim[array_rank];
-  H5Tget_array_dims(dtype_id, cur_array_dim);
+  H5Tget_array_dims2(dtype_id, cur_array_dim);
 
   for(int i=0; i < array_rank; ++i) {
     INTEGER(dim)[total_num_dims - 1 - i] = cur_array_dim[i];
