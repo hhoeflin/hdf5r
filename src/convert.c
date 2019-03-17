@@ -2077,8 +2077,8 @@ bool is_robj_compound(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
     // have to treat a data frame differently, as its length is the number of columns
     if(inherits(Robj_item, "data.frame")) {
       SEXP attr;
-      PROTECT(attr = GET_ATTR(Robj_item, install("row.names")));
-      unprotect_counter++;
+      PROTECT(attr = GET_ATTR(Robj_item, PROTECT(install("row.names"))));
+      unprotect_counter+=2;
       if(XLENGTH(attr) != nelem) {
         warning("Number of row names not equal to number of nelem\n");
         ret_val = false;
@@ -2506,7 +2506,7 @@ SEXP convert_int_to_int64(SEXP int_vec) {
   SEXP bit64_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("bit64")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
   PROTECT(result = eval(PROTECT(lang2(install("as.integer64.integer"), int_vec)), bit64_ns));
-  UNPROTECT(5);
+  UNPROTECT(6);
 
   return(result);    
 }
@@ -2533,11 +2533,11 @@ SEXP new_H5R_R6_class(char * class_name, SEXP num, SEXP id) {
   // int errorOccured; don't need that here; but otherwise, R_tryEval is the equivalent of try in R
 
   // first get the namespace of the hdf5r package
-  SEXP hdf5r_ns = PROTECT(eval(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r"))), R_GlobalEnv));
+  SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
   SEXP r6_class_new = PROTECT(eval(PROTECT(lang3(install("$"), install(class_name), install("new"))), hdf5r_ns));
   result = PROTECT(eval(PROTECT(lang3(r6_class_new, num, id)), hdf5r_ns));
-  UNPROTECT(7);
+  UNPROTECT(8);
 
   return(result);    
 
