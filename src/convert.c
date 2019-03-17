@@ -2068,7 +2068,7 @@ bool is_robj_compound(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   SEXP Robj_item;
   SEXP dim;
   int unprotect_counter=0;
-  bool ret_val = true
+  bool ret_val = true;
   for(int i=0; i< LENGTH(list_names); ++i) {
     PROTECT(Robj_item = VECTOR_ELT(_Robj, i));
     unprotect_counter++;
