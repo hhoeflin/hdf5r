@@ -13,4 +13,4 @@ config.log
 config.status
 test.h5
 *.Rcheck
-.tar.gz
+*.tar.gz

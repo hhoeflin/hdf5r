@@ -296,9 +296,10 @@ SEXP RToH5_INTEGER(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
 	return(Rval);
       }
       else {
-	PROTECT(Rval = convert_double_to_int64(_Robj));
-	UNPROTECT(1);
-	return(Rval = RToH5_INTEGER(Rval, dtype_id, nelem));
+        PROTECT(Rval = convert_double_to_int64(_Robj));
+        PROTECT(Rval = RToH5_INTEGER(Rval, dtype_id, nelem));
+        UNPROTECT(2);
+        return(Rval);
       }
     } 
     else {
@@ -346,8 +347,9 @@ SEXP RToH5_INTEGER(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
     // and then run everything again
     if(dtype_sign == H5T_SGN_2 && dtype_size > 4) {
       PROTECT(Rval = convert_int_to_int64(_Robj));
-      UNPROTECT(1);
-      return(Rval = RToH5_INTEGER(Rval, dtype_id, nelem));
+      PROTECT(Rval = RToH5_INTEGER(Rval, dtype_id, nelem));
+      UNPROTECT(2);
+      return(Rval);
     }
     else {
       // needs to convert to other integer; make sure to allocate enough space (if the output is larger than int)
@@ -418,7 +420,11 @@ SEXP RToH5_FLOAT(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   }
   case INTSXP: {
     // if it is integer, coerce to float, and then call the same function again;
-    return(Rval = RToH5_FLOAT(AS_NUMERIC(_Robj), dtype_id, nelem));
+    SEXP _Robj_coerced;
+    PROTECT(_Robj_coerced = AS_NUMERIC(_Robj));
+    PROTECT(Rval = RToH5_FLOAT(_Robj_coerced, dtype_id, nelem));
+    UNPROTECT(2);
+    return(Rval);
   }
   default:
     error("In RToH5_FLOAT can't convert type of object passed\n");
@@ -427,6 +433,7 @@ SEXP RToH5_FLOAT(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
 }
 
 SEXP RToH5_STRING(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
+  int unprotect_counter=0;
   // check that R is actually a string
   if(!isString(_Robj)) {
     error("For STRING enum type, an R object of type character has to be passed\n");
@@ -437,7 +444,6 @@ SEXP RToH5_STRING(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   }
   hsize_t dtype_size = H5Tget_size(dtype_id);
   SEXP Rval;
-  bool convertedToUTF8 = false;
 
   // get an array of sufficient size and store it in there; but first check if the strings are of variable size
   htri_t isVariable = H5Tis_variable_str(dtype_id);
@@ -454,13 +460,14 @@ SEXP RToH5_STRING(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   // now if the character encoding is UTF8, force the input to be changed to UTF8
   if(char_enc == H5T_CSET_UTF8) {
     PROTECT(_Robj = string_to_UTF8(_Robj));
-    convertedToUTF8 = true;
+    unprotect_counter++;
   }
 
   if(isVariable>0) {
     // variable length string
     // in this case just need an array of pointers to the strings we need
     PROTECT(Rval = NEW_RAW(nelem * dtype_size));
+    unprotect_counter++;
     const char ** dataptr = (const char **) RAW(Rval);
     for(R_xlen_t i = 0; i < nelem; ++i) {
       dataptr[i] = CHAR(STRING_ELT(_Robj, i)); // copy the pointers to the data strings (are pointers to const char *)
@@ -473,6 +480,7 @@ SEXP RToH5_STRING(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
     // fixed length string
     // in this case will copy the content of the strings itself
     PROTECT(Rval = NEW_RAW(nelem * dtype_size));
+    unprotect_counter++;
     char * dataptr = (char *) RAW(Rval);
     for(R_xlen_t i = 0; i < nelem; ++i) {
       strncpy(dataptr, CHAR(STRING_ELT(_Robj, i)), dtype_size);
@@ -480,12 +488,7 @@ SEXP RToH5_STRING(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
     }
   }
 
-  if(convertedToUTF8) {
-    UNPROTECT(2);
-  }
-  else {
-    UNPROTECT(1);
-  }
+  UNPROTECT(unprotect_counter);
   return(Rval);
 }
 
@@ -500,9 +503,9 @@ SEXP RToH5_OPAQUE(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
 
 SEXP RToH5_REFERENCE(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   // simply return the ref_obj contained in the object
-  SEXP hdf5r_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("hdf5r")), R_GlobalEnv));
-  SEXP result = PROTECT(eval(lang3(install("$"), _Robj, install("ref")), hdf5r_ns));
-  UNPROTECT(2);
+  SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
+  SEXP result = PROTECT(eval(PROTECT(lang3(PROTECT(install("$")), _Robj, PROTECT(install("ref")))), hdf5r_ns));
+  UNPROTECT(8);
   return(result);
 }
 
@@ -925,14 +928,16 @@ SEXP H5ToR_Post_ENUM(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags) {
       R_xlen_t num_vals = XLENGTH(values);
       SEXP index_vec = PROTECT(NEW_INTEGER(num_vals));
       vars_protected++;
-      R_orderVector(INTEGER(index_vec), num_vals, Rf_lang1(values), true, false);
+      SEXP order_arglist = PROTECT(Rf_lang1(values));
+      vars_protected++;
+      R_orderVector(INTEGER(index_vec), num_vals, order_arglist, true, false);
       SEXP levels_ordered = PROTECT(NEW_CHARACTER(num_vals));
       vars_protected++;
       SEXP values_ordered = PROTECT(NEW_INTEGER(num_vals));
       vars_protected++;
       for(R_xlen_t i =0; i < num_vals; ++i) {
         SET_STRING_ELT(levels_ordered, i, STRING_ELT(levels, INTEGER(index_vec)[i]));
-	INTEGER(values_ordered)[i] = INTEGER(values)[INTEGER(index_vec)[i]];
+        INTEGER(values_ordered)[i] = INTEGER(values)[INTEGER(index_vec)[i]];
       }
       
       // check if values are a consecutive sequence
@@ -1128,9 +1133,9 @@ SEXP H5ToR_Post_REFERENCE(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags,
   }
   
   // now assign the reference data into it
-  SEXP hdf5r_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("hdf5r")), R_GlobalEnv));
-  eval(lang3(install("set_ref.H5R"), result, _Robj), hdf5r_ns);
-  UNPROTECT(4);
+  SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
+  eval(PROTECT(lang3(install("set_ref.H5R"), result, _Robj)), hdf5r_ns);
+  UNPROTECT(8);
   
   return(result);
 
@@ -2061,34 +2066,45 @@ bool is_robj_compound(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
 
   // check that all list elements have the same length
   SEXP Robj_item;
+  SEXP dim;
+  int unprotect_counter=0;
+  bool ret_val = true
   for(int i=0; i< LENGTH(list_names); ++i) {
     PROTECT(Robj_item = VECTOR_ELT(_Robj, i));
+    unprotect_counter++;
+    PROTECT(dim = GET_ATTR(Robj_item, R_DimSymbol));
+    unprotect_counter++;
     // have to treat a data frame differently, as its length is the number of columns
     if(inherits(Robj_item, "data.frame")) {
-      if(XLENGTH(GET_ATTR(Robj_item, install("row.names"))) != nelem) {
-	warning("Number of row names not equal to number of nelem\n");
-	return(false);
+      SEXP attr;
+      PROTECT(attr = GET_ATTR(Robj_item, install("row.names")));
+      unprotect_counter++;
+      if(XLENGTH(attr) != nelem) {
+        warning("Number of row names not equal to number of nelem\n");
+        ret_val = false;
       }
     }
-    else if(!isNull(GET_ATTR(Robj_item, R_DimSymbol))) { // has a dimension, so is an array or matrix
+    else if(!isNull(dim)) { // has a dimension, so is an array or matrix
       // if it is an array, the length does not correspond to the number of rows
-      SEXP dim;
-      PROTECT(dim = GET_ATTR(Robj_item, R_DimSymbol));
       if(INTEGER(dim)[0]!=nelem) {
-	warning("Has a dimension, but not the number of rows as expected\n");
-	return(false);
+        warning("Has a dimension, but not the number of rows as expected\n");
+        ret_val = false;
       }
-      UNPROTECT(1);
     }
     else {
       if(XLENGTH(Robj_item) != nelem) {
-	warning("Not all elements of the list have the same length\n");
-	return(false);
+        warning("Not all elements of the list have the same length\n");
+        ret_val = false;
       }
     }
-    UNPROTECT(1);
+    // loop done - unprotect items
+    UNPROTECT(unprotect_counter);
+    unprotect_counter = 0;
+    if(!ret_val) { // was set to false soemwhere in if statements; return now
+        return(false);
+    }
   }
-
+  // nothing to UNPROTECT here; has been taken care of in the loop
   return(true);
 }
 
@@ -2112,7 +2128,8 @@ SEXP get_array_dim(hid_t dtype_id) {
     // copy it and allocate space for array_rank more 
     PROTECT(dim = allocVector(INTSXP, array_rank + XLENGTH(super_dim)));
     memcpy(INTEGER(dim), INTEGER(super_dim), sizeof(int) * XLENGTH(super_dim));
-    UNPROTECT_PTR(super_dim);
+    UNPROTECT(2); /* super_dim, dim */
+    PROTECT(dim);
   }
   else {
     PROTECT(dim = allocVector(INTSXP, array_rank));
@@ -2224,9 +2241,9 @@ R_xlen_t guess_nelem(SEXP _Robj, hid_t dtype_id) {
     return(XLENGTH(_Robj));
     break;
   case H5T_REFERENCE: {
-    SEXP hdf5r_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("hdf5r")), R_GlobalEnv));
-    SEXP robj_len = PROTECT(eval(lang3(install("$"), _Robj, install("length")), hdf5r_ns));
-    UNPROTECT(2);
+    SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
+    SEXP robj_len = PROTECT(eval(PROTECT(lang3(install("$"), _Robj, install("length"))), hdf5r_ns));
+    UNPROTECT(6);
     return(SEXP_to_xlen(robj_len));
   }	      
   default:
@@ -2412,16 +2429,17 @@ SEXP convert_uint64_using_flags(SEXP val, int flags) {
 
 SEXP set_dim_attribute(SEXP x, SEXP dim) {
   // need to distinguish if it is an H5R object
-  SEXP hdf5r_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("hdf5r")), R_GlobalEnv));
+  SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
   
   if(inherits(x, "H5R")) {
-    eval(lang3(install("dim<-"), x, dim), hdf5r_ns);
+    eval(PROTECT(lang3(install("dim<-"), x, dim)), hdf5r_ns);
+    UNPROTECT(1);
   }
   else {
     setAttrib(x, R_DimSymbol, dim);
   }
     
-  UNPROTECT(1);  
+  UNPROTECT(4);  
   return(x);
 }
     
@@ -2459,20 +2477,20 @@ SEXP convert_double_to_int64(SEXP dbl_vec) {
 
   // int errorOccured; don't need that here; but otherwise, R_tryEval is the equivalent of try in R
   // first get the namespace of the bit64 package
-  SEXP bit64_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("bit64")), R_GlobalEnv));
+  SEXP bit64_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("bit64")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
-  PROTECT(result = eval(lang2(install("as.integer64.double"), dbl_vec), bit64_ns));
-  UNPROTECT(2);
+  PROTECT(result = eval(PROTECT(lang2(install("as.integer64.double"), dbl_vec)), bit64_ns));
+  UNPROTECT(6);
   return(result);    
 }
 
 
 SEXP convert_int64_to_double(SEXP int64_vec) {
   SEXP result;
-  SEXP bit64_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("bit64")), R_GlobalEnv));
+  SEXP bit64_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("bit64")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
-  PROTECT(result = eval(lang2(install("as.double.integer64"), int64_vec), bit64_ns));
-  UNPROTECT(2);
+  PROTECT(result = eval(PROTECT(lang2(install("as.double.integer64"), int64_vec)), bit64_ns));
+  UNPROTECT(6);
 
   return(result);    
   
@@ -2485,10 +2503,10 @@ SEXP convert_int_to_int64(SEXP int_vec) {
   // int errorOccured; don't need that here; but otherwise, R_tryEval is the equivalent of try in R
 
   // first get the namespace of the bit64 package
-  SEXP bit64_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("bit64")), R_GlobalEnv));
+  SEXP bit64_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("bit64")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
-  PROTECT(result = eval(lang2(install("as.integer64.integer"), int_vec), bit64_ns));
-  UNPROTECT(2);
+  PROTECT(result = eval(PROTECT(lang2(install("as.integer64.integer"), int_vec)), bit64_ns));
+  UNPROTECT(5);
 
   return(result);    
 }
@@ -2499,10 +2517,10 @@ SEXP convert_int64_to_int(SEXP int64_vec) {
   // int errorOccured; don't need that here; but otherwise, R_tryEval is the equivalent of try in R
 
   // first get the namespace of the bit64 package
-  SEXP bit64_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("bit64")), R_GlobalEnv));
+  SEXP bit64_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("bit64")))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
-  PROTECT(result = eval(lang2(install("as.integer.integer64"), int64_vec), bit64_ns));
-  UNPROTECT(2);
+  PROTECT(result = eval(PROTECT(lang2(install("as.integer.integer64"), int64_vec)), bit64_ns));
+  UNPROTECT(6);
 
   return(result);    
 }
@@ -2515,11 +2533,11 @@ SEXP new_H5R_R6_class(char * class_name, SEXP num, SEXP id) {
   // int errorOccured; don't need that here; but otherwise, R_tryEval is the equivalent of try in R
 
   // first get the namespace of the hdf5r package
-  SEXP hdf5r_ns = PROTECT(eval(lang2(install("getNamespace"), mkString("hdf5r")), R_GlobalEnv));
+  SEXP hdf5r_ns = PROTECT(eval(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r"))), R_GlobalEnv));
   // now use the namespace to call the as.integer64.double function
-  SEXP r6_class_new = PROTECT(eval(lang3(install("$"), install(class_name), install("new")), hdf5r_ns));
-  result = PROTECT(eval(lang3(r6_class_new, num, id), hdf5r_ns));
-  UNPROTECT(3);
+  SEXP r6_class_new = PROTECT(eval(PROTECT(lang3(install("$"), install(class_name), install("new"))), hdf5r_ns));
+  result = PROTECT(eval(PROTECT(lang3(r6_class_new, num, id)), hdf5r_ns));
+  UNPROTECT(7);
 
   return(result);    
 

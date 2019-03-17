@@ -58,7 +58,8 @@ is.H5R_DATASET_REGION(x)
 \method{format}{H5R}(x, ...)
 
 \method{as.data.frame}{H5R}(x, row.names = NULL, optional = FALSE, ...,
-  nm = paste(deparse(substitute(x), width.cutoff = 500L), collapse = " "))
+  nm = paste(deparse(substitute(x), width.cutoff = 500L), collapse =
+  " "))
 
 \method{as.vector}{H5R}(x, mode = "any")
 }

@@ -35,7 +35,7 @@ Suggests:
 SystemRequirements: HDF5 (>= 1.8.13)
 VignetteBuilder: knitr
 NeedsCompilation: yes
-RoxygenNote: 6.0.1.9001
+RoxygenNote: 6.1.1.9000
 Collate: 
     'Common_functions.R'
     'Compound.R'

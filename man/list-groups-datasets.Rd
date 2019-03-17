@@ -7,13 +7,15 @@
 \alias{list.objects}
 \title{List Groups and Datasets in object}
 \usage{
-list.groups(object, path = "/", full.names = FALSE, recursive = TRUE, ...)
-
-list.datasets(object, path = "/", full.names = FALSE, recursive = TRUE,
+list.groups(object, path = "/", full.names = FALSE, recursive = TRUE,
   ...)
 
-list.objects(object, obj_type = c("H5I_GROUP", "H5I_DATASET", "H5I_DATATYPE"),
-  path = "/", full.names = FALSE, recursive = TRUE, ...)
+list.datasets(object, path = "/", full.names = FALSE,
+  recursive = TRUE, ...)
+
+list.objects(object, obj_type = c("H5I_GROUP", "H5I_DATASET",
+  "H5I_DATATYPE"), path = "/", full.names = FALSE, recursive = TRUE,
+  ...)
 }
 \arguments{
 \item{object}{\code{CommonFG}; Object implementing the CommonFG Interface (e.g. \code{\link{H5File}}, \code{\link{H5Group}}).}
