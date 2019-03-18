@@ -26,12 +26,12 @@ Create a new class of type \code{\link{H5P_FILE_ACCESS}}
 \item{\code{set_cache(rdcc_nslots = 521, rdcc_nbytes = 2^20, rdcc_w0 = 0.75)}}{
 
 This function implements the HDF5-API function H5Pset_cache.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCache} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CACHE} for details.}
 
 \item{\code{get_cache()}}{
 
 This function implements the HDF5-API function H5Pget_cache.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCache} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CACHE} for details.}
 }}
 
 \seealso{

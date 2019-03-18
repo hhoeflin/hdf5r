@@ -28,7 +28,7 @@ Create a variable length datatype
 \item{\code{get_super()}}{
 
 This function implements the HDF5-API function H5Tget_super.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSuper} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_SUPER} for details.}
 
 \item{\code{describe()}}{
 

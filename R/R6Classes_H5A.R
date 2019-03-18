@@ -53,7 +53,7 @@ H5A <- R6Class("H5A",
                public=list(
                    get_info=function() {
                        "This function implements the HDF5-API function H5Aget_info."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO} for details."
 
                        res <- .Call("R_H5Aget_info", self$id, request_empty(1), PACKAGE="hdf5r")
                        if(res$return_val < 0) {
@@ -63,7 +63,7 @@ H5A <- R6Class("H5A",
                    },
                    attr_name=function() {
                        "This function implements the HDF5-API function H5Aget_name."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetName} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME} for details."
 
                        ## get size of the name
                        name_size <- .Call("R_H5Aget_name", self$id, 0, character(0), PACKAGE="hdf5r")$return_val
@@ -83,7 +83,7 @@ H5A <- R6Class("H5A",
                    },
                    get_space=function() {
                        "This function implements the HDF5-API function H5Aget_space."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetSpace} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_SPACE} for details."
 
                        id <- .Call("R_H5Aget_space", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -93,7 +93,7 @@ H5A <- R6Class("H5A",
                    },
                    get_type=function(native=TRUE) {
                        "This function implements the HDF5-API function H5Aget_type."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetType} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_TYPE} for details."
 
                        id <- .Call("R_H5Aget_type", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -114,7 +114,7 @@ H5A <- R6Class("H5A",
                    },
                    get_storage_size=function() {
                        "This function implements the HDF5-API function H5Aget_storage_size."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetStorageSize} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_STORAGE_SIZE} for details."
 
                        size <- .Call("R_H5Aget_storage_size", self$id, PACKAGE="hdf5r")$return_val
                        return(size)
@@ -122,7 +122,7 @@ H5A <- R6Class("H5A",
                    read_low_level=function(buffer, mem_type, duplicate_buffer=FALSE) {
                        "Only for advanced users. See documentation for \\code{read} instead."
                        "This function implements the HDF5-API function H5Aread."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Read} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_READ} for details."
 
                        check_class(mem_type, "H5T")
                        res <- .Call("R_H5Aread", self$id, mem_type$id, buffer, duplicate_buffer, PACKAGE="hdf5r")
@@ -183,7 +183,7 @@ H5A <- R6Class("H5A",
                    write_low_level=function(buffer, mem_type) {
                        "Only for advanced users. See documentation for \\code{write} instead."
                        "This function implements the HDF5-API function H5Awrite."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Write} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5A_WRITE} for details."
 
                        check_class(mem_type, "H5T")
                        res <- .Call("R_H5Awrite", self$id, mem_type$id, buffer, PACKAGE="hdf5r")

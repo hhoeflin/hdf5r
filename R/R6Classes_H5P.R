@@ -132,14 +132,14 @@ H5P <- R6Class("H5P",
                    },
                    get_class=function() {
                        "This function implements the HDF5-API function H5Pget_class."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetClass} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CLASS} for details."
 
                        id <- .Call("R_H5Pget_class", self$id, PACKAGE="hdf5r")$return_val
                        return(H5P_CLASS$new(id=id))
                    },
                    get_class_name=function() {
                        "This function implements the HDF5-API function H5Pget_class_name."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetClassName} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CLASS_NAME} for details."
 
                        cls <- self$get_class()
                        cls_name <- .Call("R_H5Pget_class_name", cls$id, PACKAGE="hdf5r")$return_val
@@ -147,14 +147,14 @@ H5P <- R6Class("H5P",
                    },
                    copy=function() {
                        "This function implements the HDF5-API function H5Pcopy."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Copy} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_COPY} for details."
 
                        propid <- .Call("R_H5Pcopy", self$id, PACKAGE="hdf5r")$return_val
                        return(H5P_factory(id=propid))
                    },
                    equal=function(cmp) {
                        "This function implements the HDF5-API function H5Pequal."
-                       "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Equal} for details."
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_EQUAL} for details."
 
                        if(!inherits(cmp, "H5P")) {
                            stop("cmp has to be of class H5P")
@@ -220,7 +220,7 @@ H5P_CLASS <- R6Class("H5P_CLASS",
                      public=list(
                          equal=function(cmp) {
                              "This function implements the HDF5-API function H5Pequal."
-                             "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-Equal} for details."
+                             "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_EQUAL} for details."
 
                              if(inherits(cmp, "H5P_CLASS")) {
                                  cls_id <- cmp$id
@@ -273,7 +273,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   set_userblock=function(size) {
                                       "This function implements the HDF5-API function H5Pset_userblock."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetUserblock} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_USERBLOCK} for details."
 
                                       ## ensure that it is a power of 2 with exponen >= 9
                                       log2_size <- log2(size)
@@ -291,7 +291,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   get_userblock=function() {
                                       "This function implements the HDF5-API function H5Pget_userblock."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetUserblock} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_USERBLOCK} for details."
 
                                       res <- .Call("R_H5Pget_userblock", self$id, request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -301,7 +301,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   set_sizes=function(sizeof_addr, sizeof_size) {
                                       "This function implements the HDF5-API function H5Pset_sizes."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSizes} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SIZES} for details."
 
                                       if(!sizeof_addr %in% c(0, 2, 4, 8, 16)) {
                                           stop(paste("sizeof_addr has to be one of 0, 2, 4, 8, or 16"))
@@ -317,7 +317,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   get_sizes=function() {
                                       "This function implements the HDF5-API function H5Pget_sizes."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetSizes} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_SIZES} for details."
 
                                       res <- .Call("R_H5Pget_sizes", self$id, request_empty(1), request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -327,14 +327,14 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   set_sym_k=function(ik, lk) {
                                       "This function implements the HDF5-API function H5Pset_sym_k."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSymK} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SYM_K} for details."
 
                                       herr <- .Call("R_H5Pset_sym_k", self$id, ik, lk, PACKAGE="hdf5r")$return_val
                                       return(invisible(self))
                                   },
                                   get_sym_k=function() {
                                       "This function implements the HDF5-API function H5Pget_sym_k."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetSymK} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_SYM_K} for details."
 
                                       res <- .Call("R_H5Pget_sym_k", self$id, request_empty(1), request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -344,14 +344,14 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   set_istore_k=function(ik) {
                                       "This function implements the HDF5-API function H5Pset_istore_k."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetIstoreK} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ISTORE_K} for details."
 
                                       herr <- .Call("R_H5Pset_istore_k", self$id, ik, PACKAGE="hdf5r")$return_val
                                       return(invisible(self))
                                   },
                                   get_istore_k=function() {
                                       "This function implements the HDF5-API function H5Pget_istore_k."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetIstoreK} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ISTORE_K} for details."
 
                                       res <- .Call("R_H5Pget_istore_k", self$id, request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -361,7 +361,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   set_file_space=function(strategy, threshold) {
                                       "This function implements the HDF5-API function H5Pset_file_space."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFileSpae} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FILE_SPAE} for details."
 
                                       if(compareVersion(h5version(verbose=FALSE), "1.10.0") < 0) {
                                           stop("Function only available for 1.10.0 or higher")
@@ -373,7 +373,7 @@ H5P_FILE_CREATE <-  R6Class("H5P_FILE_CREATE",
                                   },
                                   get_file_space=function() {
                                       "This function implements the HDF5-API function H5Pget_file_space."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFileSpace} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_FILE_SPACE} for details."
 
                                       if(compareVersion(h5version(verbose=FALSE), "1.10.0") < 0) {
                                           stop("Function only available for 1.10.0 or higher")
@@ -420,7 +420,7 @@ H5P_FILE_ACCESS <-  R6Class("H5P_FILE_ACCESS",
                                   },
                                   set_cache=function(rdcc_nslots=521, rdcc_nbytes=2^20, rdcc_w0=0.75) {
                                       "This function implements the HDF5-API function H5Pset_cache."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCache} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CACHE} for details."
 
                                       herr <- .Call("R_H5Pset_cache", self$id, 0, rdcc_nslots, rdcc_nbytes, rdcc_w0, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -430,7 +430,7 @@ H5P_FILE_ACCESS <-  R6Class("H5P_FILE_ACCESS",
                                   },
                                   get_cache=function() {
                                       "This function implements the HDF5-API function H5Pget_cache."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCache} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CACHE} for details."
 
                                       res <- .Call("R_H5Pget_cache", self$id, 0, request_empty(1), request_empty(1), request_empty(1),
                                                     PACKAGE="hdf5r")
@@ -471,7 +471,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_layout=function(layout=h5const$H5D_CHUNKED) {
                                       "This function implements the HDF5-API function H5Pset_layout."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetLayout} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_LAYOUT} for details."
 
                                       herr <- .Call("R_H5Pset_layout", self$id, layout, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -481,7 +481,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_layout=function() {
                                       "This function implements the HDF5-API function H5Pget_layout."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetLayout} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_LAYOUT} for details."
 
                                       layout <- .Call("R_H5Pget_layout", self$id, PACKAGE="hdf5r")$return_val
                                       if(layout < 0) {
@@ -491,7 +491,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_chunk=function(chunk) {
                                       "This function implements the HDF5-API function H5Pset_chunk."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetChunk} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CHUNK} for details."
 
                                       herr <- .Call("R_H5Pset_chunk", self$id, length(chunk), rev(chunk), PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -502,7 +502,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   get_chunk=function(max_ndims) {
                                       "This function implements the HDF5-API function H5Pget_chunk."
                                       "If the layout is not chunked, returns NA."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetChunk} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CHUNK} for details."
 
                                       layout <- self$get_layout()
                                       if(as.character(layout)!="H5D_CHUNKED") {
@@ -516,7 +516,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_deflate=function(level) {
                                       "This function implements the HDF5-API function H5Pset_deflate."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetDeflate} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_DEFLATE} for details."
 
                                       if(level < 0 || level > 9) {
                                           stop("Compression level has to be between 0 and 9")
@@ -529,7 +529,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_fill_value=function(dtype, value) {
                                       "This function implements the HDF5-API function H5Pset_fill_value."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFillValue} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FILL_VALUE} for details."
 
                                       check_class(dtype, "H5T")
                                       ## value needs to be converted to an h5 object
@@ -542,7 +542,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_fill_value=function(dtype) {
                                       "This function implements the HDF5-API function H5Pget_fill_value."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFillValue} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_FILL_VALUE} for details."
 
                                       check_class(dtype, "H5T")
                                       value_h5 <- H5ToR_Pre(dtype, 1)
@@ -554,7 +554,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_fill_time=function(fill_time=h5const$H5D_FILL_TIME_IFSET) {
                                       "This function implements the HDF5-API function H5Pset_fill_time."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFillTime} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FILL_TIME} for details."
 
                                       herr <- .Call("R_H5Pset_fill_time", self$id, fill_time, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -564,7 +564,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_fill_time=function() {
                                       "This function implements the HDF5-API function H5Pget_fill_time."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFillTime} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_FILL_TIME} for details."
 
                                       res <- .Call("R_H5Pget_fill_time", self$id, request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -574,7 +574,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_alloc_time=function(alloc_time=h5const$H5D_ALLOC_TIME_DEFAULT) {
                                       "This function implements the HDF5-API function H5Pset_alloc_time."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAllocTime} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ALLOC_TIME} for details."
 
                                       herr <- .Call("R_H5Pset_alloc_time", self$id, alloc_time, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -584,7 +584,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_alloc_time=function() {
                                       "This function implements the HDF5-API function H5Pget_alloc_time."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAllocTime} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ALLOC_TIME} for details."
 
                                       res <- .Call("R_H5Pget_alloc_time", self$id, request_empty(1), PACKAGE="hdf5r")
                                       if(res$return_val < 0) {
@@ -594,7 +594,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_filter=function(filter=h5const$H5Z_FILTER_DEFLATE, flags=h5const$H5Z_FLAG_OPTIONAL, cd_values=integer(0)) {
                                       "This function implements the HDF5-API function H5Pset_filter."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFilter} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FILTER} for details."
 
                                       herr <- .Call("R_H5Pset_filter", self$id, filter, flags, length(cd_values), cd_values,
                                                     PACKAGE="hdf5r")$return_val
@@ -605,7 +605,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   all_filters_avail=function() {
                                       "This function implements the HDF5-API function H5Pall_filters_avail."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-AllFiltersAvail} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_ALL_FILTERS_AVAIL} for details."
 
                                       htri <- .Call("R_H5Pall_filters_avail", self$id, PACKAGE="hdf5r")$return_val
                                       if(htri < 0) {
@@ -615,7 +615,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_nfilters=function() {
                                       "This function implements the HDF5-API function H5Pget_nfilters."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetNfilters} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_NFILTERS} for details."
 
                                       nfilters <- .Call("R_H5Pget_nfilters", self$id, PACKAGE="hdf5r")$return_val
                                       if(nfilters < 0) {
@@ -625,7 +625,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_filter=function(idx) {
                                       "This function implements the HDF5-API function H5Pget_filter2."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFilter2} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_FILTER2} for details."
 
                                       num_filters <- self$get_nfilters()
                                       if(idx < 0 || idx >= num_filters) {
@@ -654,7 +654,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   modify_filter=function(filter=h5const$H5Z_FILTER_DEFLATE, flags=h5const$H5Z_FLAG_OPTIONAL, cd_values=integer(0)) {
                                       "This function implements the HDF5-API function H5Pmodify_filter."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-ModifyFilter} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_MODIFY_FILTER} for details."
 
                                       herr <- .Call("R_H5Pmodify_filter", self$id, filter, flags, length(cd_values), cd_values,
                                                     PACKAGE="hdf5r")$return_val
@@ -665,7 +665,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   remove_filter=function(filter=h5const$H5Z_FILTER_ALL) {
                                       "This function implements the HDF5-API function H5Premove_filter."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-RemoveFilter} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_REMOVE_FILTER} for details."
 
                                       herr <- .Call("R_H5Premove_filter", self$id, filter, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -675,7 +675,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_fletcher32=function() {
                                       "This function implements the HDF5-API function H5Pset_fletcher32."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFletcher32} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FLETCHER32} for details."
 
                                       herr <- .Call("R_H5Pset_fletcher32", self$id, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -685,7 +685,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_nbit=function() {
                                       "This function implements the HDF5-API function H5Pset_nbit."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetNbit} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_NBIT} for details."
 
                                       herr <- .Call("R_H5Pset_nbit", self$id, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -695,7 +695,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_scaleoffset=function(scale_type=h5const$H5Z_SO_FLOAT_DSCALE, scale_factor=0) {
                                       "This function implements the HDF5-API function H5Pset_scaleoffset."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetScaleoffset} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SCALEOFFSET} for details."
 
                                       herr <- .Call("R_H5Pset_scaleoffset", self$id, scale_type, scale_factor, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -705,7 +705,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_shuffle=function() {
                                       "This function implements the HDF5-API function H5Pset_shuffle."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetShuffle} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SHUFFLE} for details."
 
                                       herr <- .Call("R_H5Pset_shuffle", self$id, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -715,7 +715,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_szip=function() {
                                       "This function implements the HDF5-API function H5Pset_szip."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSzip} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SZIP} for details."
 
                                       herr <- .Call("R_H5Pset_szip", self$id, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -725,7 +725,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   set_external=function(filename, offset, size) {
                                       "This function implements the HDF5-API function H5Pset_external."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetExternal} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_EXTERNAL} for details."
 
                                       herr <- .Call("R_H5Pset_external", self$id, filename, offset, size, PACKAGE="hdf5r")$return_val
                                       if(herr < 0) {
@@ -735,7 +735,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_external_count=function() {
                                       "This function implements the HDF5-API function H5Pget_external_count."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetExternalCount} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_EXTERNAL_COUNT} for details."
 
                                       count <- .Call("R_H5Pget_external_count", self$id, PACKAGE="hdf5r")$return_val
                                       if(count < 0) {
@@ -745,7 +745,7 @@ H5P_DATASET_CREATE <- R6Class("H5P_DATASET_CREATE",
                                   },
                                   get_external=function(idx) {
                                       "This function implements the HDF5-API function H5Pget_external."
-                                      "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetExternal} for details."
+                                      "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_EXTERNAL} for details."
 
                                       num_external <- self$get_external_count()
                                       if(idx < 0 || idx >= num_external) {
@@ -789,7 +789,7 @@ H5P_DATASET_ACCESS <- R6Class("H5P_DATASET_ACCESS",
                                },
                                set_chunk_cache=function(rdcc_nslots=-1, rdcc_nbytes=-1, rdcc_w0=-1) {
                                    "This function implements the HDF5-API function H5Pset_chunk_cache."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetChunkCache} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CHUNK_CACHE} for details."
 
                                    herr <- .Call("R_H5Pset_chunk_cache", self$id, rdcc_nslots, rdcc_nbytes, rdcc_w0, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -799,7 +799,7 @@ H5P_DATASET_ACCESS <- R6Class("H5P_DATASET_ACCESS",
                                },
                                get_chunk_cache=function() {
                                    "This function implements the HDF5-API function H5Pget_chunk_cache."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetChunkCache} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CHUNK_CACHE} for details."
 
                                    res <- .Call("R_H5Pget_chunk_cache", self$id, request_empty(1), request_empty(1),
                                                 request_empty(1), PACKAGE="hdf5r")
@@ -839,7 +839,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                set_buffer=function(size=2^20) {
                                    "This function implements the HDF5-API function H5Pset_buffer."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBuffer} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_BUFFER} for details."
 
                                    tconv <- raw(0)
                                    bkg <- raw(0)
@@ -851,7 +851,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                set_edc_check=function(check=h5const$H5Z_ENABLE_EDC) {
                                    "This function implements the HDF5-API function H5Pset_edc_check."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetEdcCheck} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_EDC_CHECK} for details."
 
                                    herr <- .Call("R_H5Pset_edc_check", self$id, check, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -861,7 +861,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                get_edc_check=function() {
                                    "This function implements the HDF5-API function H5Pget_edc_check."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetEdcCheck} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_EDC_CHECK} for details."
 
                                    check <- .Call("R_H5Pget_edc_check", self$id, PACKAGE="hdf5r")$return_val
                                    if(check < 0) {
@@ -871,7 +871,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                set_hyper_vector_size=function(size=2^10) {
                                    "This function implements the HDF5-API function H5Pset_hyper_vector_size."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetHyperVectorSize} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_HYPER_VECTOR_SIZE} for details."
 
                                    herr <- .Call("R_H5Pset_hyper_vector_size", self$id, size, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -881,7 +881,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                get_hyper_vector_size=function() {
                                    "This function implements the HDF5-API function H5Pget_hyper_vector_size."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetHyperVectorSize} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_HYPER_VECTOR_SIZE} for details."
 
                                    res <- .Call("R_H5Pget_hyper_vector_size", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -891,7 +891,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                set_btree_ratios=function(left, middle, right) {
                                    "This function implements the HDF5-API function H5Pset_btree_ratios."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBtreeRatios} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_BTREE_RATIOS} for details."
 
                                    herr <- .Call("R_H5Pset_btree_ratios", self$id, left, middle, right, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -901,7 +901,7 @@ H5P_DATASET_XFER <- R6Class("H5P_DATASET_XFER",
                                },
                                get_btree_ratios=function() {
                                    "This function implements the HDF5-API function H5Pget_btree_ratios."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetBtreeRatios} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_BTREE_RATIOS} for details."
 
                                    res <- .Call("R_H5Pget_btree_ratios", self$id, request_empty(1), request_empty(1),
                                                 request_empty(1), PACKAGE="hdf5r")
@@ -943,7 +943,7 @@ H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
                                },
                                set_char_encoding=function(encoding=h5const$H5T_CSET_UTF8) {
                                    "This function implements the HDF5-API function H5Pset_char_encoding."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCharEncoding} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CHAR_ENCODING} for details."
 
                                    herr <- .Call("R_H5Pset_char_encoding", self$id, encoding, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -953,7 +953,7 @@ H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
                                },
                                get_char_encoding=function() {
                                    "This function implements the HDF5-API function H5Pget_char_encoding."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCharEncoding} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CHAR_ENCODING} for details."
 
                                    res <- .Call("R_H5Pget_char_encoding", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -963,7 +963,7 @@ H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
                                },
                                set_create_intermediate_group=function(create=TRUE) {
                                    "This function implements the HDF5-API function H5Pset_create_intermediate_group."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCreateIntermediateGroup} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CREATE_INTERMEDIATE_GROUP} for details."
 
                                    herr <- .Call("R_H5Pset_create_intermediate_group", self$id, create, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -973,7 +973,7 @@ H5P_LINK_CREATE <- R6Class("H5P_LINK_CREATE",
                                },
                                get_create_intermediate_group=function() {
                                    "This function implements the HDF5-API function H5Pget_create_intermediate_group."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCreateIntermediateGroup} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CREATE_INTERMEDIATE_GROUP} for details."
 
                                    res <- .Call("R_H5Pget_create_intermediate_group", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1012,7 +1012,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                set_nlinks=function(nlinks) {
                                    "This function implements the HDF5-API function H5Pset_nlinks."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetNlinks} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_NLINKS} for details."
 
                                    herr <- .Call("R_H5Pset_nlinks", self$id, nlinks, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1022,7 +1022,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                get_nlinks=function() {
                                    "This function implements the HDF5-API function H5Pget_nlinks."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetNlinks} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_NLINKS} for details."
 
                                    res <- .Call("R_H5Pget_nlinks", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1032,7 +1032,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                set_elink_prefix=function(elink_prefix) {
                                    "This function implements the HDF5-API function H5Pset_elink_prefix."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetElinkPrefix} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ELINK_PREFIX} for details."
 
                                    herr <- .Call("R_H5Pset_elink_prefix", self$id, elink_prefix, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1042,7 +1042,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                get_elink_prefix=function() {
                                    "This function implements the HDF5-API function H5Pget_elink_prefix."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetElinkPrefix} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ELINK_PREFIX} for details."
 
                                    prefix_size <- .Call("R_H5Pget_elink_prefix", self$id, character(0), 0, PACKAGE="hdf5r")$return_val
                                    if(prefix_size < 0) {
@@ -1057,7 +1057,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                set_elink_acc_flags=function(elink_acc_flags=h5const$H5F_ACC_RDWR) {
                                    "This function implements the HDF5-API function H5Pset_elink_acc_flags."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetElinkAccFlags} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ELINK_ACC_FLAGS} for details."
 
                                    herr <- .Call("R_H5Pset_elink_acc_flags", self$id, elink_acc_flags, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1067,7 +1067,7 @@ H5P_LINK_ACCESS <- R6Class("H5P_LINK_ACCESS",
                                },
                                get_elink_acc_flags=function() {
                                    "This function implements the HDF5-API function H5Pget_elink_acc_flags."
-                                   "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetElinkAccFlags} for details."
+                                   "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ELINK_ACC_FLAGS} for details."
 
                                    res <- .Call("R_H5Pget_elink_acc_flags", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1108,7 +1108,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    super$initialize(id)
                                },
                                set_obj_track_times=function(track_times=TRUE) {
-                                   "This function implements the HDF5-API function H5Pset_obj_track_times. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetObjTrackTimes} for details."
+                                   "This function implements the HDF5-API function H5Pset_obj_track_times. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_OBJ_TRACK_TIMES} for details."
 
                                    herr <- .Call("R_H5Pset_obj_track_times", self$id, track_times, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1117,7 +1117,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    return(invisible(self))
                                },
                                get_obj_track_times=function() {
-                                   "This function implements the HDF5-API function H5Pget_obj_track_times. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetObjTrackTimes} for details."
+                                   "This function implements the HDF5-API function H5Pget_obj_track_times. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_OBJ_TRACK_TIMES} for details."
 
                                    res <- .Call("R_H5Pget_obj_track_times", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1126,7 +1126,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    return(as.logical(res$track_times))
                                },
                                set_attr_phase_change=function(max_compact, min_dense) {
-                                   "This function implements the HDF5-API function H5Pset_attr_phase_change. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAttrPhaseChange} for details."
+                                   "This function implements the HDF5-API function H5Pset_attr_phase_change. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ATTR_PHASE_CHANGE} for details."
 
                                    herr <- .Call("R_H5Pset_attr_phase_change", self$id, max_compact, min_dense, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1135,7 +1135,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    return(invisible(self))
                                },
                                get_attr_phase_change=function() {
-                                   "This function implements the HDF5-API function H5Pget_attr_phase_change. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAttrPhaseChange} for details."
+                                   "This function implements the HDF5-API function H5Pget_attr_phase_change. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ATTR_PHASE_CHANGE} for details."
 
                                    res <- .Call("R_H5Pget_attr_phase_change", self$id, request_empty(1), request_empty(1),PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1144,7 +1144,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    return(list(max_compact=res$max_compact, min_dense=res$min_dense))
                                },
                                set_attr_creation_order=function(crt_order_flags=0) {
-                                   "This function implements the HDF5-API function H5Pset_attr_creation_order. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetAttrCreationOrder} for details."
+                                   "This function implements the HDF5-API function H5Pset_attr_creation_order. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ATTR_CREATION_ORDER} for details."
 
                                    herr <- .Call("R_H5Pset_attr_creation_order", self$id, crt_order_flags, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1153,7 +1153,7 @@ H5P_OBJECT_CREATE <- R6Class("H5P_OBJECT_CREATE",
                                    return(invisible(self))
                                },
                                get_attr_creation_order=function() {
-                                   "This function implements the HDF5-API function H5Pget_attr_creation_order. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetAttrCreationOrder} for details."
+                                   "This function implements the HDF5-API function H5Pget_attr_creation_order. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ATTR_CREATION_ORDER} for details."
 
                                    res <- .Call("R_H5Pget_attr_creation_order", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1192,7 +1192,7 @@ H5P_OBJECT_COPY <- R6Class("H5P_OBJECT_COPY",
                                    super$initialize(id)
                                },
                                set_copy_obj=function(copy_options=0) {
-                                   "This function implements the HDF5-API function H5Pset_copy_object. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCopyObject} for details."
+                                   "This function implements the HDF5-API function H5Pset_copy_object. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_COPY_OBJECT} for details."
 
                                    herr <- .Call("R_H5Pset_copy_object", self$id, copy_options, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1201,7 +1201,7 @@ H5P_OBJECT_COPY <- R6Class("H5P_OBJECT_COPY",
                                    return(invisible(self))
                                },
                                get_copy_obj=function() {
-                                   "This function implements the HDF5-API function H5Pget_copy_object. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCopyObject} for details."
+                                   "This function implements the HDF5-API function H5Pget_copy_object. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_COPY_OBJECT} for details."
 
                                    res <- .Call("R_H5Pget_copy_object", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {
@@ -1240,7 +1240,7 @@ H5P_ATTRIBUTE_CREATE <- R6Class("H5P_ATTRIBUTE_CREATE",
                                    super$initialize(id)
                                },
                                set_char_encoding=function(encoding=h5const$H5T_CSET_UTF8) {
-                                   "This function implements the HDF5-API function H5Pset_char_encoding. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCharEncoding} for details."
+                                   "This function implements the HDF5-API function H5Pset_char_encoding. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CHAR_ENCODING} for details."
 
                                    herr <- .Call("R_H5Pset_char_encoding", self$id, encoding, PACKAGE="hdf5r")$return_val
                                    if(herr < 0) {
@@ -1249,7 +1249,7 @@ H5P_ATTRIBUTE_CREATE <- R6Class("H5P_ATTRIBUTE_CREATE",
                                    return(invisible(self))
                                },
                                get_char_encoding=function() {
-                                   "This function implements the HDF5-API function H5Pget_char_encoding. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCharEncoding} for details."
+                                   "This function implements the HDF5-API function H5Pget_char_encoding. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CHAR_ENCODING} for details."
 
                                    res <- .Call("R_H5Pget_char_encoding", self$id, request_empty(1), PACKAGE="hdf5r")
                                    if(res$return_val < 0) {

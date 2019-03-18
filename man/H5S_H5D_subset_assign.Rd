@@ -38,8 +38,8 @@ subset_assign_h5.H5D(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT,
 \item{...}{Used for other dimension of the object}
 
 \item{op}{Operation to perform on the \code{\link{H5S}}. Look into the HDF5 online help
-\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectElements} and
-\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectHyperslab}}
+\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_ELEMENTS} and
+\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_HYPERSLAB}}
 
 \item{envir}{The environment in which the dimension indices \code{d1, ...} are to be evaluated. Usually the environment from
 where the function is called}

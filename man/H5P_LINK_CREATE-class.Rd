@@ -26,22 +26,22 @@ Create a new class of type \code{\link{H5P_LINK_CREATE}}
 \item{\code{set_char_encoding(encoding = h5const$H5T_CSET_UTF8)}}{
 
 This function implements the HDF5-API function H5Pset_char_encoding.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCharEncoding} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CHAR_ENCODING} for details.}
 
 \item{\code{get_char_encoding()}}{
 
 This function implements the HDF5-API function H5Pget_char_encoding.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCharEncoding} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CHAR_ENCODING} for details.}
 
 \item{\code{set_create_intermediate_group(create = TRUE)}}{
 
 This function implements the HDF5-API function H5Pset_create_intermediate_group.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCreateIntermediateGroup} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_CREATE_INTERMEDIATE_GROUP} for details.}
 
 \item{\code{get_create_intermediate_group()}}{
 
 This function implements the HDF5-API function H5Pget_create_intermediate_group.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCreateIntermediateGroup} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_CREATE_INTERMEDIATE_GROUP} for details.}
 }}
 
 \seealso{

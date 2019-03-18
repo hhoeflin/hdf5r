@@ -34,12 +34,12 @@ Internal use only}
 \item{\code{get_class()}}{
 
 This function implements the HDF5-API function H5Tget_class.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetClass} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_CLASS} for details.}
 
 \item{\code{get_size(...)}}{
 
 This function implements the HDF5-API function H5Tget_size.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSize} for details.
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_SIZE} for details.
 
 \strong{Parameters}
 \describe{
@@ -49,62 +49,62 @@ Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T
 \item{\code{set_size(size)}}{
 
 This function implements the HDF5-API function H5Tset_size.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetSize} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_SIZE} for details.}
 
 \item{\code{set_precision(precision)}}{
 
 This function implements the HDF5-API function H5Tset_precision.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetPrecision} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_PRECISION} for details.}
 
 \item{\code{get_precision()}}{
 
 This function implements the HDF5-API function H5Tget_precision.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetPrecision} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_PRECISION} for details.}
 
 \item{\code{set_order(order)}}{
 
 This function implements the HDF5-API function H5Tset_order.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetOrder} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_ORDER} for details.}
 
 \item{\code{get_order()}}{
 
 This function implements the HDF5-API function H5Tget_order.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetOrder} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_ORDER} for details.}
 
 \item{\code{set_offset(offset)}}{
 
 This function implements the HDF5-API function H5Tset_offset.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetOffset} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_OFFSET} for details.}
 
 \item{\code{get_offset()}}{
 
 This function implements the HDF5-API function H5Tget_offset.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetOffset} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_OFFSET} for details.}
 
 \item{\code{set_pad(pad)}}{
 
 This function implements the HDF5-API function H5Tset_pad.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetPad} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_PAD} for details.}
 
 \item{\code{get_pad()}}{
 
 This function implements the HDF5-API function H5Tget_pad.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetPad} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_PAD} for details.}
 
 \item{\code{copy()}}{
 
 This function implements the HDF5-API function H5Tcopy.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Copy} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_COPY} for details.}
 
 \item{\code{is_committed()}}{
 
 This function implements the HDF5-API function H5Tcommitted.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Committed} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_COMMITTED} for details.}
 
 \item{\code{equal(dtype)}}{
 
 This function implements the HDF5-API function H5Tequal.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Equal} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_EQUAL} for details.}
 
 \item{\code{is_vlen()}}{
 
@@ -114,17 +114,17 @@ after reading a dataset, memory has to be freed}
 \item{\code{detect_class(dtype_class)}}{
 
 This function implements the HDF5-API function H5Tdetect_class.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-DetectClass} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_DETECT_CLASS} for details.}
 
 \item{\code{get_native_type(direction = h5const$H5T_DIR_ASCEND)}}{
 
 This function implements the HDF5-API function H5Tget_native_type.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetNativeType} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_NATIVE_TYPE} for details.}
 
 \item{\code{get_create_plist()}}{
 
 This function implements the HDF5-API function H5Tget_create_plist.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetCreatePlist} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_CREATE_PLIST} for details.}
 
 \item{\code{to_text(lang_type = h5const$H5LT_DDL)}}{
 
@@ -143,102 +143,102 @@ Prints information for the group
 \item{\code{obj_info(remove_internal_use_only = TRUE)}}{
 
 This function implements the HDF5-API function H5Oget_info.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO} for details.}
 
 \item{\code{get_obj_name()}}{
 
 This function implements the HDF5-API function H5Iget_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5I_GET_NAME} for details.}
 
 \item{\code{create_attr(attr_name, robj = NULL, dtype = NULL, space = NULL)}}{
 
 This function implements the HDF5-API function H5Acreate2.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Create2} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_CREATE2} for details.}
 
 \item{\code{attr_open(attr_name)}}{
 
 This function implements the HDF5-API function H5Aopen.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Open} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_OPEN} for details.}
 
 \item{\code{create_attr_by_name(attr_name, obj_name, robj = NULL,
   dtype = NULL, space = NULL,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Acreate_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-CreateByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_CREATE_BY_NAME} for details.}
 
 \item{\code{attr_open_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aopen_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_NAME} for details.}
 
 \item{\code{attr_open_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aopen_by_idx.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByIdx} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_IDX} for details.}
 
 \item{\code{attr_exists_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aexists_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-ExistsByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS_BY_NAME} for details.}
 
 \item{\code{attr_exists(attr_name)}}{
 
 This function implements the HDF5-API function H5Aexists.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Exists} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS} for details.}
 
 \item{\code{attr_rename_by_name(old_attr_name, new_attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Arename_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-RenameByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_RENAME_BY_NAME} for details.}
 
 \item{\code{attr_rename(old_attr_name, new_attr_name)}}{
 
 This function implements the HDF5-API function H5Arename.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Rename} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_RENAME} for details.}
 
 \item{\code{attr_delete(attr_name)}}{
 
 This function implements the HDF5-API function H5Adelete.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Delete} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_DELETE} for details.}
 
 \item{\code{attr_delete_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Adelete_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_NAME} for details.}
 
 \item{\code{attr_delete_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Adelete_by_idx.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByIdx} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_IDX} for details.}
 
 \item{\code{attr_info_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aget_info_by_name.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByName} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_NAME} for details.}
 
 \item{\code{attr_info_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aget_info_by_idx.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByIdx} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_IDX} for details.}
 
 \item{\code{attr_name_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Aget_name_by_idx.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME_BY_IDX} for details.}
 
 \item{\code{attr_get_number()}}{
 
@@ -249,7 +249,7 @@ Please see the documentation at \url{https://support.hdfgroup.org/HDF5/doc/RM/RM
 
 This function implements the HDF5-API function H5Rcreate. If \code{space=NULL} then a \code{H5R_OBJECT} reference
 is created, otherwise a \code{H5R_DATASET_REGION} reference
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5R_CREATE} for details.}
 }}
 
 \examples{

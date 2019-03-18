@@ -120,7 +120,7 @@ H5RefClass <- R6Class("H5RefClass",
                           },
                           is_valid=function() {
                               "This function implements the HDF5-API function H5Iis_valid."
-                              "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-IsValid} for details."
+                              "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5I_IS_VALID} for details."
                               "Additionally, the R-object representing the HDF5-id can be invalidated as well. In this"
                               "case, the class id is set to \\code{NA} and \\code{is_valid} returns \\code{FALSE}."
                               

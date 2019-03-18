@@ -6,13 +6,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to the hdf5r package • hdf5r</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to the hdf5r package">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
-<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hdf5r</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.8000</span>
       </span>
     </div>
 
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -55,7 +56,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/hhoeflin/hdf5r">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -84,7 +85,7 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      <p>Overview on how to use the simple as well as advanced facilities of HDF5 using the <strong>hdf5r</strong> package</p>
+      Overview on how to use the simple as well as advanced facilities of HDF5 using the <strong>hdf5r</strong> package
     </div>
     
 <hr>
@@ -115,43 +116,43 @@
 <h2 class="hasAnchor">
 <a href="#creating-files-groups-and-datasets" class="anchor"></a>Creating files, groups and datasets</h2>
 <p>But first things first. We create a random filename in a temporary directory and create a file with read/write access, deleting it if it already exists (it won’t - tempfile gives us a name of a file that doesn’t exist yet).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(hdf5r)
-test_filename &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext =</span> <span class="st">".h5"</span>)
-file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_filename, <span class="dt">mode =</span> <span class="st">"w"</span>)
-file.h5</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hdf5r)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">test_filename &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>(<span class="dt">fileext =</span> <span class="st">".h5"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_filename, <span class="dt">mode =</span> <span class="st">"w"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">file.h5</a></code></pre></div>
 <pre><code>## Class: H5File
-## Filename: /tmp/Rtmp3lI7Tm/file126a1b61986d.h5
+## Filename: /tmp/Rtmp3GIvZk/fileb382a6bc658.h5
 ## Access type: H5F_ACC_RDWR</code></pre>
 <p>Now that we have this, we will create 2 groups, one for the <strong>mtcars</strong> dataset and one for the <strong>nycflights13</strong> dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"mtcars"</span>)
-flights.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"flights"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">mtcars.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"mtcars"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">flights.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"flights"</span>)</a></code></pre></div>
 <p>Into these groups, we will now write the datasets</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(datasets)
-<span class="kw">library</span>(nycflights13)
-<span class="kw">library</span>(reshape2)
-mtcars.grp[[<span class="st">"mtcars"</span>]] &lt;-<span class="st"> </span>datasets<span class="op">::</span>mtcars
-flights.grp[[<span class="st">"weather"</span>]] &lt;-<span class="st"> </span>nycflights13<span class="op">::</span>weather
-flights.grp[[<span class="st">"flights"</span>]] &lt;-<span class="st"> </span>nycflights13<span class="op">::</span>flights</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(datasets)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(nycflights13)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(reshape2)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">mtcars.grp[[<span class="st">"mtcars"</span>]] &lt;-<span class="st"> </span>datasets<span class="op">::</span>mtcars</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">flights.grp[[<span class="st">"weather"</span>]] &lt;-<span class="st"> </span>nycflights13<span class="op">::</span>weather</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">flights.grp[[<span class="st">"flights"</span>]] &lt;-<span class="st"> </span>nycflights13<span class="op">::</span>flights</a></code></pre></div>
 <p>Out of the weather data, we extract the information on the wind-direction and wind-speed and will save it as a matrix with the hours in the columns and the days in the rows (only for weather station <em>EWR</em>, the others are not complete).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather_wind_dir &lt;-<span class="st"> </span><span class="kw">subset</span>(nycflights13<span class="op">::</span>weather, origin <span class="op">==</span><span class="st"> "EWR"</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">"year"</span>, 
-    <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"wind_dir"</span>))
-weather_wind_dir &lt;-<span class="st"> </span><span class="kw">na.exclude</span>(weather_wind_dir)
-weather_wind_dir<span class="op">$</span>wind_dir &lt;-<span class="st"> </span><span class="kw">as.integer</span>(weather_wind_dir<span class="op">$</span>wind_dir)
-weather_wind_dir &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/reshape2/topics/cast">acast</a></span>(weather_wind_dir, year <span class="op">+</span><span class="st"> </span>month <span class="op">+</span><span class="st"> </span>day <span class="op">~</span><span class="st"> </span>hour, <span class="dt">value.var =</span> <span class="st">"wind_dir"</span>)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">weather_wind_dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/subset">subset</a></span>(nycflights13<span class="op">::</span>weather, origin <span class="op">==</span><span class="st"> "EWR"</span>, <span class="dt">select =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"year"</span>, </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"wind_dir"</span>))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">weather_wind_dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/na.fail">na.exclude</a></span>(weather_wind_dir)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">weather_wind_dir<span class="op">$</span>wind_dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer</a></span>(weather_wind_dir<span class="op">$</span>wind_dir)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">weather_wind_dir &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/reshape2/topics/cast">acast</a></span>(weather_wind_dir, year <span class="op">+</span><span class="st"> </span>month <span class="op">+</span><span class="st"> </span>day <span class="op">~</span><span class="st"> </span>hour, <span class="dt">value.var =</span> <span class="st">"wind_dir"</span>)</a></code></pre></div>
 <pre><code>## Aggregation function missing: defaulting to length</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights.grp[[<span class="st">"wind_dir"</span>]] &lt;-<span class="st"> </span>weather_wind_dir</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">flights.grp[[<span class="st">"wind_dir"</span>]] &lt;-<span class="st"> </span>weather_wind_dir</a></code></pre></div>
 <p>and</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather_wind_speed &lt;-<span class="st"> </span><span class="kw">subset</span>(nycflights13<span class="op">::</span>weather, origin <span class="op">==</span><span class="st"> "EWR"</span>, <span class="dt">select =</span> <span class="kw">c</span>(<span class="st">"year"</span>, 
-    <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"wind_speed"</span>))
-weather_wind_speed &lt;-<span class="st"> </span><span class="kw">na.exclude</span>(weather_wind_speed)
-weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/reshape2/topics/cast">acast</a></span>(weather_wind_speed, year <span class="op">+</span><span class="st"> </span>month <span class="op">+</span><span class="st"> </span>day <span class="op">~</span><span class="st"> </span>hour, <span class="dt">value.var =</span> <span class="st">"wind_speed"</span>)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/subset">subset</a></span>(nycflights13<span class="op">::</span>weather, origin <span class="op">==</span><span class="st"> "EWR"</span>, <span class="dt">select =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"year"</span>, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">    <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"wind_speed"</span>))</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/na.fail">na.exclude</a></span>(weather_wind_speed)</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/reshape2/topics/cast">acast</a></span>(weather_wind_speed, year <span class="op">+</span><span class="st"> </span>month <span class="op">+</span><span class="st"> </span>day <span class="op">~</span><span class="st"> </span>hour, <span class="dt">value.var =</span> <span class="st">"wind_speed"</span>)</a></code></pre></div>
 <pre><code>## Aggregation function missing: defaulting to length</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights.grp[[<span class="st">"wind_speed"</span>]] &lt;-<span class="st"> </span>weather_wind_speed</code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">flights.grp[[<span class="st">"wind_speed"</span>]] &lt;-<span class="st"> </span>weather_wind_speed</a></code></pre></div>
 <p>For completeness, we also attach the row and column names as attributes:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"colnames"</span>) &lt;-<span class="st"> </span><span class="kw">colnames</span>(weather_wind_dir)
-<span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw">rownames</span>(weather_wind_dir)
-<span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_speed"</span>]], <span class="st">"colnames"</span>) &lt;-<span class="st"> </span><span class="kw">colnames</span>(weather_wind_speed)
-<span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_speed"</span>]], <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw">rownames</span>(weather_wind_speed)</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"colnames"</span>) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>(weather_wind_dir)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(weather_wind_dir)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_speed"</span>]], <span class="st">"colnames"</span>) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">colnames</a></span>(weather_wind_speed)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_speed"</span>]], <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(weather_wind_speed)</a></code></pre></div>
 </div>
 <div id="getting-information-about-different-objects" class="section level2">
 <h2 class="hasAnchor">
@@ -160,12 +161,12 @@ weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="http:
 <h3 class="hasAnchor">
 <a href="#content-of-files-and-groups" class="anchor"></a>Content of files and groups</h3>
 <p>With respect to groups and files, we also want to have a simple way to extract the contents. With the <strong>names</strong> function, we can get all names of objects in a group or in the root directory of a file</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(file.h5)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(file.h5)</a></code></pre></div>
 <pre><code>## [1] "flights" "mtcars"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(flights.grp)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/names">names</a></span>(flights.grp)</a></code></pre></div>
 <pre><code>## [1] "flights"    "weather"    "wind_dir"   "wind_speed"</code></pre>
 <p>Another option that gives more information is <strong>ls</strong>, a method of the classes <strong>H5File</strong> and <strong>H5Group</strong></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights.grp<span class="op">$</span><span class="kw">ls</span>()</code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">flights.grp<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls</a></span>()</a></code></pre></div>
 <pre><code>##         name     link.type    obj_type num_attrs group.nlinks
 ## 1    flights H5L_TYPE_HARD H5I_DATASET         0           NA
 ## 2    weather H5L_TYPE_HARD H5I_DATASET         0           NA
@@ -186,13 +187,13 @@ weather_wind_speed &lt;-<span class="st"> </span><span class="kw"><a href="http:
 <h3 class="hasAnchor">
 <a href="#information-on-attributes-datatypes-and-datasets" class="anchor"></a>Information on attributes, datatypes and datasets</h3>
 <p>If you have an HDF5-File, it is of course important to look up various information not only about groups, but also about the information contained in it. First, we want to get more information about the dataset. <strong>ls</strong> on the group already gives a lot of information about the datatype, the size, the maximum size etc. However there are also other, more direct, ways to get the same information. In order to investigate the datatype we can</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather_ds &lt;-<span class="st"> </span>flights.grp[[<span class="st">"weather"</span>]]
-weather_ds_type &lt;-<span class="st"> </span>weather_ds<span class="op">$</span><span class="kw">get_type</span>()
-weather_ds_type<span class="op">$</span><span class="kw">get_class</span>()</code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">weather_ds &lt;-<span class="st"> </span>flights.grp[[<span class="st">"weather"</span>]]</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">weather_ds_type &lt;-<span class="st"> </span>weather_ds<span class="op">$</span><span class="kw">get_type</span>()</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">weather_ds_type<span class="op">$</span><span class="kw">get_class</span>()</a></code></pre></div>
 <pre><code>## [1] H5T_COMPOUND
 ## 13 Levels: H5T_NO_CLASS H5T_INTEGER H5T_FLOAT H5T_TIME ... H5T_NCLASSES
 ## 13 Values: -1 0 1 2 ... 11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(weather_ds_type<span class="op">$</span><span class="kw">to_text</span>())</code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(weather_ds_type<span class="op">$</span><span class="kw">to_text</span>())</a></code></pre></div>
 <pre><code>## H5T_COMPOUND {
 ##       H5T_STRING {
 ##          STRSIZE H5T_VARIABLE;
@@ -216,17 +217,17 @@ weather_ds_type<span class="op">$</span><span class="kw">get_class</span>()</cod
 ##       H5T_IEEE_F64LE "time_hour" : 104;
 ##    }</code></pre>
 <p>telling us that our dataset consists of a <em>H5T_COMPOUND</em> datatype and prints more detailed information on its content of every column. Regarding the size of the dataset and the size of the chunks (datasets are by default chunked; more about this below) we do:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather_ds<span class="op">$</span>dims
-weather_ds<span class="op">$</span>maxdims
-weather_ds<span class="op">$</span>chunk_dims</code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">weather_ds<span class="op">$</span>dims</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">weather_ds<span class="op">$</span>maxdims</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">weather_ds<span class="op">$</span>chunk_dims</a></code></pre></div>
 <pre><code>## [1] 26115
 ## [1] Inf
 ## [1] 73</code></pre>
 <p>In order to get information on attributes we also have various function available. Which attributes are attached to an object we can see with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/h5attributes.html">h5attr_names</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]])</code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw"><a href="../reference/h5attributes.html">h5attr_names</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]])</a></code></pre></div>
 <pre><code>## [1] "colnames" "rownames"</code></pre>
 <p>and the content of one attribute can be extracted with <strong>h5attr</strong>, the content of all of them with a list as <strong>h5attributes</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"colnames"</span>)</code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw"><a href="../reference/h5attributes.html">h5attr</a></span>(flights.grp[[<span class="st">"wind_dir"</span>]], <span class="st">"colnames"</span>)</a></code></pre></div>
 <pre><code>##  [1] "0"  "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9"  "10" "11" "12" "13"
 ## [15] "14" "15" "16" "17" "18" "19" "20" "21" "22" "23"</code></pre>
 </div>
@@ -235,16 +236,18 @@ weather_ds<span class="op">$</span>chunk_dims</code></pre></div>
 <a href="#detailed-information-about-various-objects" class="anchor"></a>Detailed information about various objects</h3>
 <p>In HDF5, there are also various ways of getting more detailed information about objects. The most detailed methods for this are</p>
 <ul>
-<li>**get_obj_<a href="info:**" class="uri">info:**</a> Various information on the number of attributes, the type of the object, the reference count, access times (if set to be recorded) and other more technical information</li>
-<li>**get_link_<a href="info:**" class="uri">info:**</a> For links, mainly yields information on the link type, i.e. hard link or soft link. The difference between them and how to create them will be discussed further below.</li>
 <li>
-<strong>get_group_<a href="info:**" class="uri">info:**</a> Information about the storage type of the group, if a file is mounted to the group and the number of items in the group. For the casual user, the most interesting information is the number of items in the group, which can also be retrieved using the </strong>names** function. For very large groups, this way is however more efficient.</li>
+<strong>get_obj_info:</strong> Various information on the number of attributes, the type of the object, the reference count, access times (if set to be recorded) and other more technical information</li>
+<li>
+<strong>get_link_info:</strong> For links, mainly yields information on the link type, i.e. hard link or soft link. The difference between them and how to create them will be discussed further below.</li>
+<li>
+<strong>get_group_info:</strong> Information about the storage type of the group, if a file is mounted to the group and the number of items in the group. For the casual user, the most interesting information is the number of items in the group, which can also be retrieved using the <strong>names</strong> function. For very large groups, this way is however more efficient.</li>
 <li>
 <strong>get_file_name:</strong> For an <em>H5File</em> or <em>H5Group</em>, <em>H5D</em> or <em>H5T</em> (where D is for dataset and T stands for a committed type) object, returns the name of the file it is in.</li>
 <li>
 <strong>get_obj_name:</strong> Similar as <em>get_file_name</em>, applies to the same object, but returns the path <strong>inside</strong> the file to the object</li>
 <li>
-<strong>file_<a href="info:**" class="uri">info:**</a> It extracts relatively technical information about a file. It can only be applied to an object of class </strong>H5File**. This function is usually not of interest to the casual user</li>
+<strong>file_info:</strong> It extracts relatively technical information about a file. It can only be applied to an object of class <strong>H5File</strong>. This function is usually not of interest to the casual user</li>
 </ul>
 <p>Most of these are somewhat advanced. They key information can usually also be extracted with one of the “higher-level” methods shown above, but sometimes the <em>info</em> methods are more efficient.</p>
 </div>
@@ -253,7 +256,7 @@ weather_ds<span class="op">$</span>chunk_dims</code></pre></div>
 <h2 class="hasAnchor">
 <a href="#assigning-data-into-datasets-and-deleting-datasets" class="anchor"></a>Assigning data into datasets and deleting datasets</h2>
 <p>Of course we also want to to be able to read out data, change it, extend the dataset and also delete it again. Reading out the data works just as it does for regular R arrays and data frames. However, HDF5-tables only have one dimension, not two. It is currently not possible to selectively read columns - all of them have to be read at the same time. For arrays, any data point can be read on its without restrictions</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">weather_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">weather_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>##   origin year month day hour  temp  dewp humid wind_dir wind_speed
 ## 1    EWR 2013     1   1    1 39.02 26.06 59.37      270   10.35702
 ## 2    EWR 2013     1   1    2 39.02 26.96 61.63      250    8.05546
@@ -266,8 +269,8 @@ weather_ds<span class="op">$</span>chunk_dims</code></pre></div>
 ## 3        NA      0   1012.5    10 1357027200
 ## 4        NA      0   1012.2    10 1357030800
 ## 5        NA      0   1011.9    10 1357034400</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wind_dir_ds &lt;-<span class="st"> </span>flights.grp[[<span class="st">"wind_dir"</span>]]
-wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">wind_dir_ds &lt;-<span class="st"> </span>flights.grp[[<span class="st">"wind_dir"</span>]]</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, ]</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
 ## [1,]    0    1    1    1    1    1    1    1    1     1     1     1     0
 ## [2,]    1    1    1    1    1    1    1    1    1     1     1     1     1
@@ -277,14 +280,14 @@ wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">3
 ## [2,]     1     1     1     1     1     1     1     1     1     1     1
 ## [3,]     1     1     1     1     1     1     1     1     1     1     1</code></pre>
 <p>Let us replace one row. Currently, vector-recycling is not enabled, so you have to ensure that your replacements have the correct size. Recycling may be enabled in the future.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wind_dir_ds[<span class="dv">1</span>, ] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dv">24</span>)
-wind_dir_ds[<span class="dv">1</span>, ]</code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">wind_dir_ds[<span class="dv">1</span>, ] &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">1</span>, <span class="dv">24</span>)</a>
+<a class="sourceLine" id="cb32-2" data-line-number="2">wind_dir_ds[<span class="dv">1</span>, ]</a></code></pre></div>
 <pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code></pre>
 <p>It is also possible to add data outside the dimensions of the dataset as long as they are within the <em>maxdims</em>. The dataset will be expanded to accommodate the new data. When the expansion of the dataset leads to unassigned points, they are filled with the default fill value. The default fill value can be obtained using</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wind_dir_ds<span class="op">$</span><span class="kw">get_fill_value</span>()</code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">wind_dir_ds<span class="op">$</span><span class="kw">get_fill_value</span>()</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">wind_dir_ds[<span class="dv">1</span>, <span class="dv">25</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
-wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]</code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">wind_dir_ds[<span class="dv">1</span>, <span class="dv">25</span>] &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ]</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
 ## [1,]    1    1    1    1    1    1    1    1    1     1     1     1     1
 ## [2,]    1    1    1    1    1    1    1    1    1     1     1     1     1
@@ -295,8 +298,8 @@ wind_dir_ds[<span class="dv">1</span><span class="op">:</span><span class="dv">2
 ## [1,]     1
 ## [2,]     0</code></pre>
 <p>Now that we have expanded the dataset to have a 25th column, filled with 0s except for the first column, it only remains to show how to delete a dataset. However note: Deleting a dataset does not lead to a reduction in HDF5 file size, but the internal space can be re-used for other datasets later.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">flights.grp<span class="op">$</span><span class="kw">link_delete</span>(<span class="st">"wind_dir"</span>)
-flights.grp<span class="op">$</span><span class="kw">ls</span>()</code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">flights.grp<span class="op">$</span><span class="kw">link_delete</span>(<span class="st">"wind_dir"</span>)</a>
+<a class="sourceLine" id="cb38-2" data-line-number="2">flights.grp<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls</a></span>()</a></code></pre></div>
 <pre><code>##         name     link.type    obj_type num_attrs group.nlinks
 ## 1    flights H5L_TYPE_HARD H5I_DATASET         0           NA
 ## 2    weather H5L_TYPE_HARD H5I_DATASET         0           NA
@@ -316,7 +319,7 @@ flights.grp<span class="op">$</span><span class="kw">ls</span>()</code></pre></d
 <p>As a last step, we want to close the file. For this, we have 2 options, the <strong>close</strong> and <strong>close_all</strong> methods of an h5-file. There are some non-obvious differences for novice users between the two. <strong>close</strong> will close the file, but groups and datatsets that are already open, will stay open. Furthermore, as along as any object is still open, the file cannot be re-opened in the regular fashion as HDF5 prevents a file from being opened more than once.</p>
 <p>However, it can be quite cumbersome to close all objects associated with a file - that is if we even have still access to them. We may have created an object, discarded it, but the garbage collector hasn’t closed it yet.</p>
 <p>In order to make this process simpler for the end-user, <strong>close_all</strong> closes the file as well as all objects associated with the file. Any R6-classes pointing to the object will automatically be invalidated. This way, if it is needed, the file can be re-opened again.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file.h5<span class="op">$</span><span class="kw">close_all</span>()</code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">file.h5<span class="op">$</span><span class="kw">close_all</span>()</a></code></pre></div>
 <p>As a rule - it is recommended to work in the following fashion. Open a file with <strong>H5File$new</strong> and store the resulting R6-class object. Do not discard this object. The current default behavior is to close the file, but not the objects inside the file if the garbage collector is triggered. This is done in order not to interfere with other open objects later, but as explained can prevent the the re-opening of the file later. Therefore, do not discard the R6-class pointing to a file - and close it later again using the **close_all* method in order to ensure that all IDs using the file are being closed as well.</p>
 <hr>
 </div>
@@ -331,42 +334,42 @@ flights.grp<span class="op">$</span><span class="kw">ls</span>()</code></pre></d
 <a href="#creating-datasets" class="anchor"></a>Creating datasets</h2>
 <p>As we have already seen above, a dataset can be created by simply assigning an appropriate R object under a given name into a group or a file. The automatic algorithm then uses the size of the assigned object to determine the size of the HDF5 dataset, it makes assumptions about “chunking” that have an influence on the storage efficiency as well as the maximum possible size of the dataset.</p>
 <p>However, we have much more control if we specify these things “by hand”. In the following example, we will create a dataset consisting of 2 bit unsigned integers (i.e. capable of storing values from 0 to 3). We will set the size of the dataset as well as the space and the chunk-size ourselves. As a first step, lets create the custom datatype</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">uint2_dt &lt;-<span class="st"> </span>h5types<span class="op">$</span>H5T_NATIVE_UINT32<span class="op">$</span><span class="kw">set_size</span>(<span class="dv">1</span>)<span class="op">$</span><span class="kw">set_precision</span>(<span class="dv">2</span>)<span class="op">$</span><span class="kw">set_sign</span>(h5const<span class="op">$</span>H5T_SGN_NONE)</code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">uint2_dt &lt;-<span class="st"> </span>h5types<span class="op">$</span>H5T_NATIVE_UINT32<span class="op">$</span><span class="kw">set_size</span>(<span class="dv">1</span>)<span class="op">$</span><span class="kw">set_precision</span>(<span class="dv">2</span>)<span class="op">$</span><span class="kw">set_sign</span>(h5const<span class="op">$</span>H5T_SGN_NONE)</a></code></pre></div>
 <p>Here we use a built-in constant and datatype. All constants can be accessed using <strong>h5const<span class="math inline">\(&lt;const_name&gt;** and all built-in types are accesses with **h5types\)</span><type_name></type_name></strong>. An overview of all existing constants can be retrieved with <strong>h5const<span class="math inline">\(overview** and all existing types are shown by **h5types\)</span>overview</strong>.</p>
 <p>Next we define the space that we will use for the dataset, where we want 10 columns and 10 rows. The number of columns will always be fixed, but the number of rows should be able to increase to infinity.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">space_ds &lt;-<span class="st"> </span>H5S<span class="op">$</span><span class="kw">new</span>(<span class="dt">dims =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">10</span>), <span class="dt">maxdims =</span> <span class="kw">c</span>(<span class="ot">Inf</span>, <span class="dv">10</span>))</code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">space_ds &lt;-<span class="st"> </span>H5S<span class="op">$</span><span class="kw">new</span>(<span class="dt">dims =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">10</span>, <span class="dv">10</span>), <span class="dt">maxdims =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">Inf</span>, <span class="dv">10</span>))</a></code></pre></div>
 <p>Next, we have to define with which properties the dataset should be created. We will set a default fill value of 1, enable n-bit filtering but no compression and set the chunk size to (10, 10).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds_create_pl_nbit &lt;-<span class="st"> </span>H5P_DATASET_CREATE<span class="op">$</span><span class="kw">new</span>()
-ds_create_pl_nbit<span class="op">$</span><span class="kw">set_chunk</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">10</span>))<span class="op">$</span><span class="kw">set_fill_value</span>(uint2_dt, <span class="dv">1</span>)<span class="op">$</span><span class="kw">set_nbit</span>()</code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">ds_create_pl_nbit &lt;-<span class="st"> </span>H5P_DATASET_CREATE<span class="op">$</span><span class="kw">new</span>()</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">ds_create_pl_nbit<span class="op">$</span><span class="kw">set_chunk</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">10</span>, <span class="dv">10</span>))<span class="op">$</span><span class="kw">set_fill_value</span>(uint2_dt, <span class="dv">1</span>)<span class="op">$</span><span class="kw">set_nbit</span>()</a></code></pre></div>
 <p>Now lets put all this together and create a dataset.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">uint2.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"uint2"</span>)
-uint2_ds_nbit &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"nbit_filter"</span>, <span class="dt">space =</span> space_ds, 
-    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_nbit, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, 
-    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)
-uint2_ds_nbit[, ] &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-uint2_ds_nbit<span class="op">$</span><span class="kw">get_storage_size</span>()</code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">uint2.grp &lt;-<span class="st"> </span>file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"uint2"</span>)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">uint2_ds_nbit &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"nbit_filter"</span>, <span class="dt">space =</span> space_ds, </a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_nbit, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb44-4" data-line-number="4">    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb44-5" data-line-number="5">uint2_ds_nbit[, ] &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="dv">0</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">100</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb44-6" data-line-number="6">uint2_ds_nbit<span class="op">$</span><span class="kw">get_storage_size</span>()</a></code></pre></div>
 <pre><code>## [1] 26</code></pre>
 <p>And not lets compare what happens if we don’t have any filter, only compression and nbit as well as compression</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ds_create_pl_nbit_deflate &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">set_deflate</span>(<span class="dv">9</span>)
-ds_create_pl_deflate &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">remove_filter</span>()<span class="op">$</span><span class="kw">set_deflate</span>(<span class="dv">9</span>)
-ds_create_pl_none &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">remove_filter</span>()
-uint2_ds_nbit_deflate &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"nbit_deflate_filter"</span>, 
-    <span class="dt">space =</span> space_ds, <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_nbit_deflate, 
-    <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)
-uint2_ds_nbit_deflate[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]
-uint2_ds_deflate &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"deflate_filter"</span>, <span class="dt">space =</span> space_ds, 
-    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_deflate, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, 
-    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)
-uint2_ds_deflate[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]
-uint2_ds_none &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"none_filter"</span>, <span class="dt">space =</span> space_ds, 
-    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_none, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, 
-    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)
-uint2_ds_none[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]</code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">ds_create_pl_nbit_deflate &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">set_deflate</span>(<span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">ds_create_pl_deflate &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">remove_filter</span>()<span class="op">$</span><span class="kw">set_deflate</span>(<span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">ds_create_pl_none &lt;-<span class="st"> </span>ds_create_pl_nbit<span class="op">$</span><span class="kw">copy</span>()<span class="op">$</span><span class="kw">remove_filter</span>()</a>
+<a class="sourceLine" id="cb46-4" data-line-number="4">uint2_ds_nbit_deflate &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"nbit_deflate_filter"</span>, </a>
+<a class="sourceLine" id="cb46-5" data-line-number="5">    <span class="dt">space =</span> space_ds, <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_nbit_deflate, </a>
+<a class="sourceLine" id="cb46-6" data-line-number="6">    <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb46-7" data-line-number="7">uint2_ds_nbit_deflate[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]</a>
+<a class="sourceLine" id="cb46-8" data-line-number="8">uint2_ds_deflate &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"deflate_filter"</span>, <span class="dt">space =</span> space_ds, </a>
+<a class="sourceLine" id="cb46-9" data-line-number="9">    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_deflate, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb46-10" data-line-number="10">    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb46-11" data-line-number="11">uint2_ds_deflate[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]</a>
+<a class="sourceLine" id="cb46-12" data-line-number="12">uint2_ds_none &lt;-<span class="st"> </span>uint2.grp<span class="op">$</span><span class="kw">create_dataset</span>(<span class="dt">name =</span> <span class="st">"none_filter"</span>, <span class="dt">space =</span> space_ds, </a>
+<a class="sourceLine" id="cb46-13" data-line-number="13">    <span class="dt">dtype =</span> uint2_dt, <span class="dt">dataset_create_pl =</span> ds_create_pl_none, <span class="dt">chunk_dim =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb46-14" data-line-number="14">    <span class="dt">gzip_level =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb46-15" data-line-number="15">uint2_ds_none[, ] &lt;-<span class="st"> </span>uint2_ds_nbit[, ]</a></code></pre></div>
 <p>With the sizes of the datasets</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">uint2_ds_nbit_deflate<span class="op">$</span><span class="kw">get_storage_size</span>()
-uint2_ds_nbit<span class="op">$</span><span class="kw">get_storage_size</span>()
-uint2_ds_deflate<span class="op">$</span><span class="kw">get_storage_size</span>()
-uint2_ds_none<span class="op">$</span><span class="kw">get_storage_size</span>()</code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">uint2_ds_nbit_deflate<span class="op">$</span><span class="kw">get_storage_size</span>()</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">uint2_ds_nbit<span class="op">$</span><span class="kw">get_storage_size</span>()</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">uint2_ds_deflate<span class="op">$</span><span class="kw">get_storage_size</span>()</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">uint2_ds_none<span class="op">$</span><span class="kw">get_storage_size</span>()</a></code></pre></div>
 <pre><code>## [1] 35
 ## [1] 26
 ## [1] 54
@@ -385,8 +388,8 @@ uint2_ds_none<span class="op">$</span><span class="kw">get_storage_size</span>()
 <h3 class="hasAnchor">
 <a href="#strings" class="anchor"></a>Strings</h3>
 <p>HDF5 itself provides access to both C-type strings and FORTRAN type strings. As R internally uses C-strings, only C-type strings are supported (i.e. strings that are NULL delimited). In terms of the size of the strings, there are fixed and variable length strings available.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">str_fixed_len &lt;-<span class="st"> </span>H5T_STRING<span class="op">$</span><span class="kw">new</span>(<span class="dt">size =</span> <span class="dv">20</span>)
-str_var_length &lt;-<span class="st"> </span>H5T_STRING<span class="op">$</span><span class="kw">new</span>(<span class="dt">size =</span> <span class="ot">Inf</span>)</code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">str_fixed_len &lt;-<span class="st"> </span>H5T_STRING<span class="op">$</span><span class="kw">new</span>(<span class="dt">size =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">str_var_length &lt;-<span class="st"> </span>H5T_STRING<span class="op">$</span><span class="kw">new</span>(<span class="dt">size =</span> <span class="ot">Inf</span>)</a></code></pre></div>
 <p>These two types of strings have implications for efficiency and usability. For obvious reasons, variable length strings are more convenient as they are never too small hold a piece of information. However, internally in HDF5, these aren’t stored in the dataset itself - only a pointer to the HDF5-internal heap is stored. This has 2 implications:</p>
 <ul>
 <li>Retrieving the string is somewhat slower</li>
@@ -398,25 +401,25 @@ str_var_length &lt;-<span class="st"> </span>H5T_STRING<span class="op">$</span>
 <h3 class="hasAnchor">
 <a href="#enum" class="anchor"></a>Enum</h3>
 <p>The equivalent to factors in R are <strong>ENUM</strong> datatypes. These are stored internally as integers, but each integer has a string label attached to it. In contrast to R-factor variables, the integer values do not have to start at 1 and do not have to to consecutive either. In order to support this more flexible datatype also optimally on the R side, hdf5r comes with the <strong>factor_extended</strong> class. In the HDF5 API - each enum level is inserted one at a time. As this is rather inconvenient for a vector-oriented language like R, this functionality has not been exposed. We instead provide an R6-class constructor that lets us set all labels and values in one go.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">enum_example &lt;-<span class="st"> </span>H5T_ENUM<span class="op">$</span><span class="kw">new</span>(<span class="kw">c</span>(<span class="st">"Label 1"</span>, <span class="st">"Label 2"</span>, <span class="st">"Label 3"</span>), <span class="dt">values =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, 
-    <span class="dv">5</span>, <span class="dv">10</span>))</code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">enum_example &lt;-<span class="st"> </span>H5T_ENUM<span class="op">$</span><span class="kw">new</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Label 1"</span>, <span class="st">"Label 2"</span>, <span class="st">"Label 3"</span>), <span class="dt">values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb50-2" data-line-number="2">    <span class="dv">5</span>, <span class="dv">10</span>))</a></code></pre></div>
 <p>For efficiency reasons, an integer datatype is automatically generated that provides exactly the needed precision in order to store the values of the enum. Given an enum, variable, we can also find out what labels and values it has</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">enum_example<span class="op">$</span><span class="kw">get_labels</span>()
-enum_example<span class="op">$</span><span class="kw">get_values</span>()</code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">enum_example<span class="op">$</span><span class="kw">get_labels</span>()</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">enum_example<span class="op">$</span><span class="kw">get_values</span>()</a></code></pre></div>
 <pre><code>## [1] "Label 1" "Label 2" "Label 3"
 ## [1] -3  5 10</code></pre>
 <p>In addition, we can also get the datatype back that the enum is based on</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">enum_example<span class="op">$</span><span class="kw">get_super</span>()</code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">enum_example<span class="op">$</span><span class="kw">get_super</span>()</a></code></pre></div>
 <pre><code>## Class: H5T_INTEGER
 ## Datatype: undefined integer</code></pre>
 <div id="logical-values" class="section level4">
 <h4 class="hasAnchor">
 <a href="#logical-values" class="anchor"></a>Logical values</h4>
 <p>A logical variable is a special case of an enum. It is internally based on a 1-byte unsigned integer that has a precision of 1-bit (so an n-bit filter will only store a single bit). Its internal values are 0 and 1 with labels <em>FALSE</em> and <em>TRUE</em> respectively. As a class, it is represented as an H5T_ENUM</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logical_example &lt;-<span class="st"> </span>H5T_LOGICAL<span class="op">$</span><span class="kw">new</span>(<span class="dt">include_NA =</span> <span class="ot">TRUE</span>)
-## we could also use h5types$H5T_LOGICAL or h5types$H5T_LOGICAL_NA
-logical_example<span class="op">$</span><span class="kw">get_labels</span>()
-logical_example<span class="op">$</span><span class="kw">get_values</span>()</code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1">logical_example &lt;-<span class="st"> </span>H5T_LOGICAL<span class="op">$</span><span class="kw">new</span>(<span class="dt">include_NA =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">## we could also use h5types$H5T_LOGICAL or h5types$H5T_LOGICAL_NA</a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">logical_example<span class="op">$</span><span class="kw">get_labels</span>()</a>
+<a class="sourceLine" id="cb55-4" data-line-number="4">logical_example<span class="op">$</span><span class="kw">get_values</span>()</a></code></pre></div>
 <pre><code>## [1] "FALSE" "TRUE"  "NA"   
 ## [1] 0 1 2</code></pre>
 <p>Note that doLogical has precedence over the <em>labels</em> parameter.</p>
@@ -426,16 +429,16 @@ logical_example<span class="op">$</span><span class="kw">get_values</span>()</co
 <h3 class="hasAnchor">
 <a href="#compounds-tables" class="anchor"></a>Compounds (Tables)</h3>
 <p>Tables are represented as <em>COMPOUND</em> HDF5 objects, which are the equivalent of C-struct. As R does not know this datatype natively, it has to be converted from structs to the list-based construct of R data-frames. Similar as with ENUMs, we don’t expose the underlying C-API that builds the compound on element at a time but instead provide constructors that create it in one go.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cpd_example &lt;-<span class="st"> </span>H5T_COMPOUND<span class="op">$</span><span class="kw">new</span>(<span class="kw">c</span>(<span class="st">"Double_col"</span>, <span class="st">"Int_col"</span>, <span class="st">"Logical_col"</span>), <span class="dt">dtypes =</span> <span class="kw">list</span>(h5types<span class="op">$</span>H5T_NATIVE_DOUBLE, 
-    h5types<span class="op">$</span>H5T_NATIVE_INT, logical_example))</code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1">cpd_example &lt;-<span class="st"> </span>H5T_COMPOUND<span class="op">$</span><span class="kw">new</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Double_col"</span>, <span class="st">"Int_col"</span>, <span class="st">"Logical_col"</span>), <span class="dt">dtypes =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(h5types<span class="op">$</span>H5T_NATIVE_DOUBLE, </a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">    h5types<span class="op">$</span>H5T_NATIVE_INT, logical_example))</a></code></pre></div>
 <p>and similar to enums, we can also get back the column names, the classes of the datatypes as well as identifiers for the datatypes itself.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cpd_example<span class="op">$</span><span class="kw">get_cpd_labels</span>()</code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">cpd_example<span class="op">$</span><span class="kw">get_cpd_labels</span>()</a></code></pre></div>
 <pre><code>## [1] "Double_col"  "Int_col"     "Logical_col"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cpd_example<span class="op">$</span><span class="kw">get_cpd_classes</span>()</code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1">cpd_example<span class="op">$</span><span class="kw">get_cpd_classes</span>()</a></code></pre></div>
 <pre><code>## [1] H5T_FLOAT   H5T_INTEGER H5T_ENUM   
 ## 13 Levels: H5T_NO_CLASS H5T_INTEGER H5T_FLOAT H5T_TIME ... H5T_NCLASSES
 ## 13 Values: -1 0 1 2 ... 11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cpd_example<span class="op">$</span><span class="kw">get_cpd_types</span>()</code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1">cpd_example<span class="op">$</span><span class="kw">get_cpd_types</span>()</a></code></pre></div>
 <pre><code>## [[1]]
 ## Class: H5T_FLOAT
 ## Datatype: H5T_IEEE_F64LE
@@ -453,7 +456,7 @@ logical_example<span class="op">$</span><span class="kw">get_values</span>()</co
 ##       "NA"               2;
 ##    }</code></pre>
 <p>A textual description is also available</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(cpd_example<span class="op">$</span><span class="kw">to_text</span>())</code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(cpd_example<span class="op">$</span><span class="kw">to_text</span>())</a></code></pre></div>
 <pre><code>## H5T_COMPOUND {
 ##       H5T_IEEE_F64LE "Double_col" : 0;
 ##       H5T_STD_I32LE "Int_col" : 8;
@@ -468,9 +471,9 @@ logical_example<span class="op">$</span><span class="kw">get_values</span>()</co
 <h4 class="hasAnchor">
 <a href="#complex-values" class="anchor"></a>Complex values</h4>
 <p>We also have a way of representing complex variables, these are a compound object consisting of two double precision floating point columns. This also matches nicely the fact that internally in R, complex values are represented as a struct of doubles.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cplx_example &lt;-<span class="st"> </span>H5T_COMPLEX<span class="op">$</span><span class="kw">new</span>()
-cplx_example<span class="op">$</span><span class="kw">get_cpd_labels</span>()
-cplx_example<span class="op">$</span><span class="kw">get_cpd_classes</span>()</code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">cplx_example &lt;-<span class="st"> </span>H5T_COMPLEX<span class="op">$</span><span class="kw">new</span>()</a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">cplx_example<span class="op">$</span><span class="kw">get_cpd_labels</span>()</a>
+<a class="sourceLine" id="cb66-3" data-line-number="3">cplx_example<span class="op">$</span><span class="kw">get_cpd_classes</span>()</a></code></pre></div>
 <pre><code>## [1] "Real"      "Imaginary"
 ## [1] H5T_FLOAT H5T_FLOAT
 ## 13 Levels: H5T_NO_CLASS H5T_INTEGER H5T_FLOAT H5T_TIME ... H5T_NCLASSES
@@ -481,10 +484,10 @@ cplx_example<span class="op">$</span><span class="kw">get_cpd_classes</span>()</
 <h3 class="hasAnchor">
 <a href="#arrays" class="anchor"></a>Arrays</h3>
 <p>A special datatype is the <strong>H5T_ARRAY</strong>. As datasets are itself arrays, they are not needed to represent arrays itself. Rather, the are useful in cases where one datatype is wrapped inside another, so mainly if a column of a compound object is supposed to be an array. So lets create an array and put it into a compound object together with some other columns</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">array_example &lt;-<span class="st"> </span>H5T_ARRAY<span class="op">$</span><span class="kw">new</span>(<span class="dt">dims =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">dtype_base =</span> h5types<span class="op">$</span>H5T_NATIVE_INT)
-cpd_several &lt;-<span class="st"> </span>H5T_COMPOUND<span class="op">$</span><span class="kw">new</span>(<span class="kw">c</span>(<span class="st">"STRING_fixed"</span>, <span class="st">"Double"</span>, <span class="st">"Complex"</span>, <span class="st">"Array"</span>), 
-    <span class="dt">dtypes =</span> <span class="kw">list</span>(str_fixed_len, h5types<span class="op">$</span>H5T_NATIVE_DOUBLE, cplx_example, array_example))
-<span class="kw">cat</span>(cpd_several<span class="op">$</span><span class="kw">to_text</span>())</code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1">array_example &lt;-<span class="st"> </span>H5T_ARRAY<span class="op">$</span><span class="kw">new</span>(<span class="dt">dims =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">dtype_base =</span> h5types<span class="op">$</span>H5T_NATIVE_INT)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2">cpd_several &lt;-<span class="st"> </span>H5T_COMPOUND<span class="op">$</span><span class="kw">new</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"STRING_fixed"</span>, <span class="st">"Double"</span>, <span class="st">"Complex"</span>, <span class="st">"Array"</span>), </a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">    <span class="dt">dtypes =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(str_fixed_len, h5types<span class="op">$</span>H5T_NATIVE_DOUBLE, cplx_example, array_example))</a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(cpd_several<span class="op">$</span><span class="kw">to_text</span>())</a></code></pre></div>
 <pre><code>## H5T_COMPOUND {
 ##       H5T_STRING {
 ##          STRSIZE 20;
@@ -502,11 +505,11 @@ cpd_several &lt;-<span class="st"> </span>H5T_COMPOUND<span class="op">$</span><
 ##       } "Array" : 44;
 ##    }</code></pre>
 <p>And to see what this would look like as an R object</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj_empty &lt;-<span class="st"> </span><span class="kw"><a href="../reference/create_empty.html">create_empty</a></span>(<span class="dv">1</span>, cpd_several)
-obj_empty</code></pre></div>
-<pre><code>## Warning in format.data.frame(x, digits = digits, na.encode = FALSE):
-## corrupt data frame: columns will be truncated or padded with NAs</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">obj_empty<span class="op">$</span>Array</code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1">obj_empty &lt;-<span class="st"> </span><span class="kw"><a href="../reference/create_empty.html">create_empty</a></span>(<span class="dv">1</span>, cpd_several)</a>
+<a class="sourceLine" id="cb70-2" data-line-number="2">obj_empty</a></code></pre></div>
+<pre><code>## Warning in format.data.frame(if (omit) x[seq_len(n0), , drop = FALSE] else
+## x, : corrupt data frame: columns will be truncated or padded with NAs</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1">obj_empty<span class="op">$</span>Array</a></code></pre></div>
 <pre><code>##   STRING_fixed Double Complex Array
 ## 1                   0    0+0i     0
 ##  [1] 0 0 0 0 0 0 0 0 0 0 0 0</code></pre>
@@ -515,7 +518,7 @@ obj_empty</code></pre></div>
 <h3 class="hasAnchor">
 <a href="#variable-length-data-types" class="anchor"></a>Variable length data types</h3>
 <p>And last, there are also variable length datatypes - corresponding to a list in R where each item of the list has the same datatype (general R list, where each item can have a different type cannot be represented in HDF5).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vlen_example &lt;-<span class="st"> </span>H5T_VLEN<span class="op">$</span><span class="kw">new</span>(<span class="dt">dtype_base =</span> cpd_several)</code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">vlen_example &lt;-<span class="st"> </span>H5T_VLEN<span class="op">$</span><span class="kw">new</span>(<span class="dt">dtype_base =</span> cpd_several)</a></code></pre></div>
 <p>This would represent a list where each item is a table with an arbitrary number of rows.</p>
 <hr>
 </div>
@@ -652,9 +655,8 @@ obj_empty</code></pre></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
 </div>
 

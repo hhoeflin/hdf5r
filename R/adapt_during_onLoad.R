@@ -6,7 +6,7 @@ adapt_classes <- function() {
         commonFG_adapt <- list(
             obj_info_by_idx=function(n, group_name=".", index_field=h5const$H5_INDEX_NAME, order=h5const$H5_ITER_NATIVE, remove_internal_use_only=TRUE) {
                 "This function implements the HDF5-API function H5Oget_info_by_idx."
-                "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByIdx} for details."
+                "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_IDX} for details."
                 if(group_name!="." && !self$exists(group_name)) {
                     stop(paste(group_name, " does not exist"))
                 }
@@ -29,7 +29,7 @@ adapt_classes <- function() {
             },
             obj_info_by_name=function(object_name, remove_internal_use_only=TRUE) {
                 "This function implements the HDF5-API function H5Oget_info_by_name."
-                "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByName} for details."
+                "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_NAME} for details."
                 
                 if(!self$exists(object_name)) {
                     stop(paste(object_name, " does not exist"))
@@ -54,7 +54,7 @@ adapt_classes <- function() {
         commonFGDT_adapt <- list(
             obj_info=function(remove_internal_use_only=TRUE) {
                 "This function implements the HDF5-API function H5Oget_info."
-                "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo} for details."
+                "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO} for details."
                 
                                         # request all info; could also make this more efficient
                 if(remove_internal_use_only) {

@@ -36,102 +36,102 @@ or a \code{scalar} or \code{null} space. See the HDF5 user guide on spaces to ex
 
 \item{\code{copy()}}{
 
-This function implements the HDF5-API function H5Scopy. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Copy} for details.}
+This function implements the HDF5-API function H5Scopy. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_COPY} for details.}
 
 \item{\code{encode()}}{
 
-This function implements the HDF5-API function H5Sencode. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Encode} for details.}
+This function implements the HDF5-API function H5Sencode. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_ENCODE} for details.}
 
 \item{\code{is_simple()}}{
 
-This function implements the HDF5-API function H5Sis_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-IsSimple} for details.}
+This function implements the HDF5-API function H5Sis_simple. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_IS_SIMPLE} for details.}
 
 \item{\code{get_simple_extent_ndims()}}{
 
-This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNdims} for details.}
+This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_NDIMS} for details.}
 
 \item{\code{offset_simple(offset)}}{
 
-This function implements the HDF5-API function H5Soffset_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-OffsetSimple} for details.}
+This function implements the HDF5-API function H5Soffset_simple. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_OFFSET_SIMPLE} for details.}
 
 \item{\code{get_simple_extent_dims()}}{
 
-This function implements the HDF5-API function H5Sget_simple_extent_dims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentDims} for details.}
+This function implements the HDF5-API function H5Sget_simple_extent_dims. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_DIMS} for details.}
 
 \item{\code{get_simple_extent_npoints()}}{
 
-This function implements the HDF5-API function H5Sget_simple_extent_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNpoints} for details.}
+This function implements the HDF5-API function H5Sget_simple_extent_npoints. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_NPOINTS} for details.}
 
 \item{\code{get_simple_extent_type()}}{
 
-This function implements the HDF5-API function H5Sget_simple_extent_type. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentType} for details.}
+This function implements the HDF5-API function H5Sget_simple_extent_type. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_TYPE} for details.}
 
 \item{\code{extent_copy(h5s_source)}}{
 
-This function implements the HDF5-API function H5Sextent_copy. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentCopy} for details.}
+This function implements the HDF5-API function H5Sextent_copy. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_EXTENT_COPY} for details.}
 
 \item{\code{extent_equal(h5s_cmp)}}{
 
-This function implements the HDF5-API function H5Sextent_equal. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentEqual} for details.}
+This function implements the HDF5-API function H5Sextent_equal. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_EXTENT_EQUAL} for details.}
 
 \item{\code{set_extent_simple(dims, maxdims)}}{
 
-This function implements the HDF5-API function H5Sset_extent_simple. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentSimple} for details.}
+This function implements the HDF5-API function H5Sset_extent_simple. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SET_EXTENT_SIMPLE} for details.}
 
 \item{\code{set_extent_none()}}{
 
-This function implements the HDF5-API function H5Sset_extent_none. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentNone} for details.}
+This function implements the HDF5-API function H5Sset_extent_none. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SET_EXTENT_NONE} for details.}
 
 \item{\code{get_select_type()}}{
 
-This function implements the HDF5-API function H5Sget_select_type. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectType} for details.}
+This function implements the HDF5-API function H5Sget_select_type. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_TYPE} for details.}
 
 \item{\code{get_select_npoints()}}{
 
-This function implements the HDF5-API function H5Sget_select_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectNpoints} for details.}
+This function implements the HDF5-API function H5Sget_select_npoints. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_NPOINTS} for details.}
 
 \item{\code{get_select_hyper_nblocks()}}{
 
-This function implements the HDF5-API function H5Sget_select_hyper_nblocks. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperNblocks} for details.}
+This function implements the HDF5-API function H5Sget_select_hyper_nblocks. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_HYPER_NBLOCKS} for details.}
 
 \item{\code{get_select_hyper_blocklist(startblock = 0,
   numblocks = (self$get_select_hyper_nblocks() - startblock))}}{
 
-This function implements the HDF5-API function H5Sget_select_hyper_blocklist. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperBlocklist} for details.}
+This function implements the HDF5-API function H5Sget_select_hyper_blocklist. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_HYPER_BLOCKLIST} for details.}
 
 \item{\code{get_select_elem_npoints()}}{
 
-This function implements the HDF5-API function H5Sget_select_elem_npoints. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemNpoints} for details.}
+This function implements the HDF5-API function H5Sget_select_elem_npoints. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_ELEM_NPOINTS} for details.}
 
 \item{\code{get_select_elem_pointlist(startpoint = 0,
   numpoints = (self$get_select_elem_npoints() - startpoint))}}{
 
-This function implements the HDF5-API function H5Sget_select_elem_pointlist. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemPointlist} for details.}
+This function implements the HDF5-API function H5Sget_select_elem_pointlist. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_ELEM_POINTLIST} for details.}
 
 \item{\code{get_select_bounds()}}{
 
-This function implements the HDF5-API function H5Sget_select_bounds. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectBounds} for details.}
+This function implements the HDF5-API function H5Sget_select_bounds. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_BOUNDS} for details.}
 
 \item{\code{select_all()}}{
 
-This function implements the HDF5-API function H5Sselect_all. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectAll} for details.}
+This function implements the HDF5-API function H5Sselect_all. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_ALL} for details.}
 
 \item{\code{select_none()}}{
 
-This function implements the HDF5-API function H5Sselect_none. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectNone} for details.}
+This function implements the HDF5-API function H5Sselect_none. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_NONE} for details.}
 
 \item{\code{select_valid()}}{
 
-This function implements the HDF5-API function H5Sselect_valid. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectValid} for details.}
+This function implements the HDF5-API function H5Sselect_valid. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_VALID} for details.}
 
 \item{\code{select_elements(coord, op = h5const$H5S_SELECT_SET, byrow = TRUE)}}{
 
-This function implements the HDF5-API function H5Sselect_elements. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectElements} for details.}
+This function implements the HDF5-API function H5Sselect_elements. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_ELEMENTS} for details.}
 
 \item{\code{select_hyperslab(start, count, stride = NULL, block = NULL,
   op = h5const$H5S_SELECT_SET)}}{
 
-This function implements the HDF5-API function H5Sselect_hyperslab. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectHyperslab} for details.}
+This function implements the HDF5-API function H5Sselect_hyperslab. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_HYPERSLAB} for details.}
 
 \item{\code{subset(args, op = h5const$H5S_SELECT_SET, envir = parent.frame())}}{
 
@@ -166,7 +166,7 @@ Get the maximal dimensions of the space.Return NULL if the space is not simple (
 
 \item{\code{rank()}}{
 
-This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNdims} for details.}
+This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_NDIMS} for details.}
 }}
 
 \examples{

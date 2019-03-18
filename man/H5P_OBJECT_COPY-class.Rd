@@ -25,11 +25,11 @@ Create a new class of type \code{\link{H5P_OBJECT_COPY}}
 
 \item{\code{set_copy_obj(copy_options = 0)}}{
 
-This function implements the HDF5-API function H5Pset_copy_object. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetCopyObject} for details.}
+This function implements the HDF5-API function H5Pset_copy_object. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_COPY_OBJECT} for details.}
 
 \item{\code{get_copy_obj()}}{
 
-This function implements the HDF5-API function H5Pget_copy_object. Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetCopyObject} for details.}
+This function implements the HDF5-API function H5Pget_copy_object. Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_COPY_OBJECT} for details.}
 }}
 
 \seealso{
