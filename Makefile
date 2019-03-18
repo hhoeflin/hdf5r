@@ -59,8 +59,9 @@ src/Makevars.in > src/Makevars.win
 	rm src/Makevars.win
 
 roxygen: $(R_FILES)
-	$(R) 'devtools::document()'
-	
+    $(R) 'devtools::load_all(".", reset=TRUE, recompile = FALSE, export_all=FALSE)'
+	$(R) 'devtools::document(".")'
+
 $(RCPPEXPORTS): compileAttributes
 	
 compileAttributes: $(SRC_FILES)
