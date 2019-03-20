@@ -2047,29 +2047,33 @@ bool is_robj_compound(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
     return(false);
   }
   // check that the list is named and has the same names in the same order as dtype
-  SEXP list_names = GET_NAMES(_Robj);
+  SEXP list_names;
+  PROTECT(list_names = GET_NAMES(_Robj));
   if(LENGTH(list_names) != dtype_num_members) {
     warning("Not a named list\n");
+    UNPROTECT(1);
     return(false);
   }
-  for(int i=0; i< LENGTH(list_names); ++i) {
+  for(int i=0; i< dtype_num_members; ++i) {
     member_name = H5Tget_member_name(dtype_id, i);
     if(strcmp(CHAR(STRING_ELT(list_names, i)), member_name)) { // does not match
       H5free_memory(member_name);
       warning("Names of list elements are not the same as compound\n");
+      UNPROTECT(1);
       return(false);
     }
     else {
       H5free_memory(member_name);
     }
   }
-
+  UNPROTECT(1);
+    
   // check that all list elements have the same length
   SEXP Robj_item;
   SEXP dim;
   int unprotect_counter=0;
   bool ret_val = true;
-  for(int i=0; i< LENGTH(list_names); ++i) {
+  for(int i=0; i< dtype_num_members; ++i) {
     PROTECT(Robj_item = VECTOR_ELT(_Robj, i));
     unprotect_counter++;
     PROTECT(dim = GET_ATTR(Robj_item, R_DimSymbol));
