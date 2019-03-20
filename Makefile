@@ -30,8 +30,8 @@ HDF5R_LIBS=-L${WLIB} -lhdf5 -lhdf5_hl -lz -lm
 HDF5R_CFLAGS=-I${WINC}/hdf5 -I${WINC}/hdf5_hl -I${WINC}/cmakeconf -I${HDF5_VERSION_USE} -I.
 # Makevars end
 
-.PHONY: all build check manual install clean compileAttributes \
-	build-cran check-cran doc
+.PHONY: all build check manual install clean compileAttributes roxygen\
+	build-cran check-cran doc 
 
 all: 
 	install

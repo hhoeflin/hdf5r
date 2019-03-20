@@ -9,17 +9,18 @@
 <title>Class for representing HDF5 attributes — H5A-class • hdf5r</title>
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -39,7 +40,8 @@ groups, datasets and committed datatypes using the functions documented in h5att
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -63,7 +65,7 @@ groups, datasets and committed datatypes using the functions documented in h5att
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hdf5r</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.8000</span>
       </span>
     </div>
 
@@ -71,7 +73,7 @@ groups, datasets and committed datatypes using the functions documented in h5att
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -89,7 +91,7 @@ groups, datasets and committed datatypes using the functions documented in h5att
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/hhoeflin/hdf5r">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,18 +134,18 @@ however with the notable exception that attributes always have to be read and wr
     
     <dl class='dl-horizontal'>
 <dt><code>get_info()</code></dt><dd><p>This function implements the HDF5-API function H5Aget_info.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfo</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO</a> for details.</p></dd>
     <dt><code>attr_name()</code></dt><dd><p>This function implements the HDF5-API function H5Aget_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME</a> for details.</p></dd>
     <dt><code>get_space()</code></dt><dd><p>This function implements the HDF5-API function H5Aget_space.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetSpace'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetSpace</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_SPACE'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_SPACE</a> for details.</p></dd>
     <dt><code>get_type(native = TRUE)</code></dt><dd><p>This function implements the HDF5-API function H5Aget_type.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetType'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetType</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_TYPE'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_TYPE</a> for details.</p></dd>
     <dt><code>get_storage_size()</code></dt><dd><p>This function implements the HDF5-API function H5Aget_storage_size.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetStorageSize'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetStorageSize</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_STORAGE_SIZE'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_STORAGE_SIZE</a> for details.</p></dd>
     <dt><code>read_low_level(buffer, mem_type, duplicate_buffer = FALSE)</code></dt><dd><p>Only for advanced users. See documentation for <code>read</code> instead.
 This function implements the HDF5-API function H5Aread.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Read'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Read</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_READ'>https://portal.hdfgroup.org/display/HDF5/H5A_READ</a> for details.</p></dd>
     <dt><code>read(flags = getOption("hdf5r.h5tor_default"), drop = TRUE)</code></dt><dd><p>Reads the data of the attribute and returns it as an R-object
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
@@ -152,31 +154,31 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
 </dl></p></dd>
     <dt><code>write_low_level(buffer, mem_type)</code></dt><dd><p>Only for advanced users. See documentation for <code>write</code> instead.
 This function implements the HDF5-API function H5Awrite.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Write'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Write</a> for details.</p></dd>
-    <dt><code>write(robj, mem_type = NULL,
-  flush = getOption("hdf5r.flush_on_write"))</code></dt><dd><p>Writes the data of <code>robj</code> to the attribute
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_WRITE'>https://portal.hdfgroup.org/display/HDF5/H5A_WRITE</a> for details.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/write'>write(robj, mem_type = NULL,
+  flush = getOption("hdf5r.flush_on_write"))</a></code></dt><dd><p>Writes the data of <code>robj</code> to the attribute
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
 <dt>robj</dt><dd><p>The object to write into the attribute</p></dd>
 <dt>mem_type</dt><dd><p>The memory data type to use when transferring from HDF5 to intermediate storage. This is an 
 advanced development feature and may be removed in the future.</p></dd>
 </dl></p></dd>
-    <dt><code>print(...)</code></dt><dd><p>Prints information for the dataset
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print(...)</a></code></dt><dd><p>Prints information for the dataset
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
 <dt>...</dt><dd><p>ignored</p></dd>
 </dl></p></dd>
-    <dt><code>flush(scope = h5const$H5F_SCOPE_GLOBAL)</code></dt><dd><p>This function implements the HDF5-API function H5Fflush.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush</a> for details.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/connections'>flush(scope = h5const$H5F_SCOPE_GLOBAL)</a></code></dt><dd><p>This function implements the HDF5-API function H5Fflush.
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_FLUSH'>https://portal.hdfgroup.org/display/HDF5/H5F_FLUSH</a> for details.</p></dd>
     <dt><code>get_filename()</code></dt><dd><p>This function implements the HDF5-API function H5Fget_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_GET_NAME'>https://portal.hdfgroup.org/display/HDF5/H5F_GET_NAME</a> for details.</p></dd>
 </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fname</span> <span class='kw'>&lt;-</span> <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".h5"</span>)
+    <pre class="examples"><div class='input'><span class='no'>fname</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".h5"</span>)
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='no'>H5File</span>$<span class='fu'>new</span>(<span class='no'>fname</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"a"</span>)
-<span class='fu'><a href='h5attributes.html'>h5attr</a></span>(<span class='no'>file</span>, <span class='st'>"attr_numeric"</span>) <span class='kw'>&lt;-</span> <span class='fu'>rnorm</span>(<span class='fl'>10</span>)
+<span class='fu'><a href='h5attributes.html'>h5attr</a></span>(<span class='no'>file</span>, <span class='st'>"attr_numeric"</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Normal'>rnorm</a></span>(<span class='fl'>10</span>)
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='no'>file</span>$<span class='fu'>attr_open</span>(<span class='st'>"attr_numeric"</span>)
 <span class='no'>a</span>$<span class='fu'>get_info</span>()</div><div class='output co'>#&gt;   corder_valid corder cset data_size
 #&gt; 1            0      0    0        80</div><div class='input'><span class='no'>a</span>$<span class='fu'>attr_name</span>()</div><div class='output co'>#&gt; [1] "attr_numeric"</div><div class='input'><span class='no'>a</span>$<span class='fu'>get_space</span>()</div><div class='output co'>#&gt; Class: H5S
@@ -184,11 +186,11 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
 #&gt; Dims: 10
 #&gt; Maxdims: 10</div><div class='input'><span class='no'>a</span>$<span class='fu'>get_type</span>()</div><div class='output co'>#&gt; Class: H5T_FLOAT
 #&gt; Datatype: H5T_IEEE_F64LE</div><div class='input'><span class='no'>a</span>$<span class='fu'>get_storage_size</span>()</div><div class='output co'>#&gt; [1] 80</div><div class='input'><span class='no'>a</span>$<span class='fu'>read</span>()</div><div class='output co'>#&gt;  [1] -1.400043517  0.255317055 -2.437263611 -0.005571287  0.621552721
-#&gt;  [6]  1.148411606 -1.821817661 -0.247325302 -0.244199607 -0.282705449</div><div class='input'><span class='no'>a</span>$<span class='fu'>write</span>(<span class='fl'>10</span>:<span class='fl'>1</span>)
-<span class='no'>a</span>$<span class='fu'>print</span>()</div><div class='output co'>#&gt; Class: H5A
+#&gt;  [6]  1.148411606 -1.821817661 -0.247325302 -0.244199607 -0.282705449</div><div class='input'><span class='no'>a</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/write'>write</a></span>(<span class='fl'>10</span>:<span class='fl'>1</span>)
+<span class='no'>a</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>()</div><div class='output co'>#&gt; Class: H5A
 #&gt; Attribute: attr_numeric
 #&gt; Datatype: H5T_IEEE_F64LE
-#&gt; Space: Type=Simple     Dims=10     Maxdims=10</div><div class='input'><span class='no'>a</span>$<span class='fu'>close</span>()
+#&gt; Space: Type=Simple     Dims=10     Maxdims=10</div><div class='input'><span class='no'>a</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/connections'>close</a></span>()
 <span class='no'>file</span>$<span class='fu'>close_all</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -205,9 +207,7 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
     </ul>
 
     <h2>Author</h2>
-    
-Holger Hoefling
-
+    <p>Holger Hoefling</p>
   </div>
 </div>
 
@@ -217,9 +217,8 @@ Holger Hoefling
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
    </div>
 

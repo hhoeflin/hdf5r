@@ -21,12 +21,12 @@ For a complete list of types see \code{h5types$overview}.
 \item{\code{set_sign(sign)}}{
 
 This function implements the HDF5-API function H5Tset_sign.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetSign} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_SIGN} for details.}
 
 \item{\code{get_sign()}}{
 
 This function implements the HDF5-API function H5Tget_sign.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSign} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_SIGN} for details.}
 
 \item{\code{describe()}}{
 

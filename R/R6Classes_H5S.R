@@ -102,13 +102,13 @@ H5S <- R6Class("H5S",
                        super$initialize(id)
                    },
                    copy=function() {
-                       "This function implements the HDF5-API function H5Scopy. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Copy} for details."
+                       "This function implements the HDF5-API function H5Scopy. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_COPY} for details."
 
                        id <- .Call("R_H5Scopy", self$id, PACKAGE = "hdf5r")$return_val
                        return(H5S$new(id=id))
                    },
                    encode=function() {
-                       "This function implements the HDF5-API function H5Sencode. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-Encode} for details."
+                       "This function implements the HDF5-API function H5Sencode. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_ENCODE} for details."
 
                        ## first retrieve the size of the buffer necessary
                        nalloc <- .Call("R_H5Sencode", self$id, raw(0), numeric(1), FALSE, PACKAGE = "hdf5r")$nalloc
@@ -122,7 +122,7 @@ H5S <- R6Class("H5S",
                        return(res$buf)
                    },
                    is_simple=function() {
-                       "This function implements the HDF5-API function H5Sis_simple. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-IsSimple} for details."
+                       "This function implements the HDF5-API function H5Sis_simple. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_IS_SIMPLE} for details."
 
                        res <- .Call("R_H5Sis_simple", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -131,7 +131,7 @@ H5S <- R6Class("H5S",
                        return(as.logical(res))
                    },
                    get_simple_extent_ndims=function() {
-                       "This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNdims} for details."
+                       "This function implements the HDF5-API function H5Sget_simple_extent_ndims. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_NDIMS} for details."
 
                        ndims <- .Call("R_H5Sget_simple_extent_ndims", self$id, PACKAGE = "hdf5r")$return_val
                        if(ndims < 0) {
@@ -140,7 +140,7 @@ H5S <- R6Class("H5S",
                        return(ndims)
                    },
                    offset_simple=function(offset) {
-                       "This function implements the HDF5-API function H5Soffset_simple. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-OffsetSimple} for details."
+                       "This function implements the HDF5-API function H5Soffset_simple. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_OFFSET_SIMPLE} for details."
 
                        rank <- self$get_simple_extent_ndims()
                        if(length(offset)==0) {
@@ -156,12 +156,12 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    get_simple_extent_dims=function() {
-                       "This function implements the HDF5-API function H5Sget_simple_extent_dims. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentDims} for details."
+                       "This function implements the HDF5-API function H5Sget_simple_extent_dims. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_DIMS} for details."
 
                        return(standalone_H5S_get_simple_extent_dims(self$id))
                    },
                    get_simple_extent_npoints=function() {
-                       "This function implements the HDF5-API function H5Sget_simple_extent_npoints. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentNpoints} for details."
+                       "This function implements the HDF5-API function H5Sget_simple_extent_npoints. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_NPOINTS} for details."
 
                        res <- .Call("R_H5Sget_simple_extent_npoints", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -170,12 +170,12 @@ H5S <- R6Class("H5S",
                        return(res)
                    },
                    get_simple_extent_type=function() {
-                       "This function implements the HDF5-API function H5Sget_simple_extent_type. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSimpleExtentType} for details."
+                       "This function implements the HDF5-API function H5Sget_simple_extent_type. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SIMPLE_EXTENT_TYPE} for details."
 
                        return(.Call("R_H5Sget_simple_extent_type", self$id, PACKAGE = "hdf5r")$return_val)
                    },
                    extent_copy=function(h5s_source) {
-                       "This function implements the HDF5-API function H5Sextent_copy. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentCopy} for details."
+                       "This function implements the HDF5-API function H5Sextent_copy. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_EXTENT_COPY} for details."
 
                        if(!inherits(h5s_source, "H5S")) {
                            stop("h5s_source has to be of class H5S")
@@ -187,7 +187,7 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    extent_equal=function(h5s_cmp) {
-                       "This function implements the HDF5-API function H5Sextent_equal. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-ExtentEqual} for details."
+                       "This function implements the HDF5-API function H5Sextent_equal. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_EXTENT_EQUAL} for details."
 
                        if(!inherits(h5s_cmp, "H5S")) {
                            stop("h5s_source has to be of class H5S")
@@ -199,7 +199,7 @@ H5S <- R6Class("H5S",
                        return(as.logical(res))
                    },
                    set_extent_simple=function(dims, maxdims) {
-                       "This function implements the HDF5-API function H5Sset_extent_simple. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentSimple} for details."
+                       "This function implements the HDF5-API function H5Sset_extent_simple. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SET_EXTENT_SIMPLE} for details."
 
                        rank <- length(dims)
                        if(rank ==0) {
@@ -218,7 +218,7 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    set_extent_none=function() {
-                       "This function implements the HDF5-API function H5Sset_extent_none. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SetExtentNone} for details."
+                       "This function implements the HDF5-API function H5Sset_extent_none. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SET_EXTENT_NONE} for details."
 
                        res <- .Call("R_H5Sset_extent_none", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -227,7 +227,7 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    get_select_type=function() {
-                       "This function implements the HDF5-API function H5Sget_select_type. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectType} for details."
+                       "This function implements the HDF5-API function H5Sget_select_type. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_TYPE} for details."
 
                        res <- .Call("R_H5Sget_select_type", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -236,7 +236,7 @@ H5S <- R6Class("H5S",
                        return(res)
                    },
                    get_select_npoints=function() {
-                       "This function implements the HDF5-API function H5Sget_select_npoints. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectNpoints} for details."
+                       "This function implements the HDF5-API function H5Sget_select_npoints. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_NPOINTS} for details."
 
                        res <- .Call("R_H5Sget_select_npoints", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -245,7 +245,7 @@ H5S <- R6Class("H5S",
                        return(res)
                    },
                    get_select_hyper_nblocks=function() {
-                       "This function implements the HDF5-API function H5Sget_select_hyper_nblocks. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperNblocks} for details."
+                       "This function implements the HDF5-API function H5Sget_select_hyper_nblocks. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_HYPER_NBLOCKS} for details."
 
                        res <- .Call("R_H5Sget_select_hyper_nblocks", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -254,7 +254,7 @@ H5S <- R6Class("H5S",
                        return(res)
                    },
                    get_select_hyper_blocklist=function(startblock=0, numblocks=(self$get_select_hyper_nblocks() - startblock)) {
-                       "This function implements the HDF5-API function H5Sget_select_hyper_blocklist. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectHyperBlocklist} for details."
+                       "This function implements the HDF5-API function H5Sget_select_hyper_blocklist. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_HYPER_BLOCKLIST} for details."
 
                        rank <- self$get_simple_extent_ndims()
                        ## create a buffer; a buffer of double values provides enough space; function will handle
@@ -276,7 +276,7 @@ H5S <- R6Class("H5S",
                        return(buffer)
                    },
                    get_select_elem_npoints=function() {
-                       "This function implements the HDF5-API function H5Sget_select_elem_npoints. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemNpoints} for details."
+                       "This function implements the HDF5-API function H5Sget_select_elem_npoints. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_ELEM_NPOINTS} for details."
 
                        res <- .Call("R_H5Sget_select_elem_npoints", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -285,7 +285,7 @@ H5S <- R6Class("H5S",
                        return(res)
                    },
                    get_select_elem_pointlist=function(startpoint=0, numpoints=(self$get_select_elem_npoints() - startpoint)) {
-                       "This function implements the HDF5-API function H5Sget_select_elem_pointlist. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectElemPointlist} for details."
+                       "This function implements the HDF5-API function H5Sget_select_elem_pointlist. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_ELEM_POINTLIST} for details."
 
                        rank <- self$get_simple_extent_ndims()
                        ## create a buffer; a buffer of double values provides enough space; function will handle
@@ -309,7 +309,7 @@ H5S <- R6Class("H5S",
                        return(buffer)
                    },
                    get_select_bounds=function() {
-                       "This function implements the HDF5-API function H5Sget_select_bounds. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-GetSelectBounds} for details."
+                       "This function implements the HDF5-API function H5Sget_select_bounds. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_GET_SELECT_BOUNDS} for details."
 
                        rank <- self$get_simple_extent_ndims()
                        start <- integer(rank)
@@ -324,7 +324,7 @@ H5S <- R6Class("H5S",
                        return(list(start=start, end=end))
                    },                   
                    select_all=function() {
-                       "This function implements the HDF5-API function H5Sselect_all. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectAll} for details."
+                       "This function implements the HDF5-API function H5Sselect_all. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_ALL} for details."
 
                        res <- .Call("R_H5Sselect_all", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -333,7 +333,7 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    select_none=function() {
-                       "This function implements the HDF5-API function H5Sselect_none. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectNone} for details."
+                       "This function implements the HDF5-API function H5Sselect_none. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_NONE} for details."
 
                        res <- .Call("R_H5Sselect_none", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -342,7 +342,7 @@ H5S <- R6Class("H5S",
                        return(invisible(self))
                    },
                    select_valid=function() {
-                       "This function implements the HDF5-API function H5Sselect_valid. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectValid} for details."
+                       "This function implements the HDF5-API function H5Sselect_valid. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_VALID} for details."
 
                        res <- .Call("R_H5Sselect_valid", self$id, PACKAGE = "hdf5r")$return_val
                        if(res < 0) {
@@ -351,14 +351,14 @@ H5S <- R6Class("H5S",
                        return(as.logical(res))
                    },
                    select_elements=function(coord, op=h5const$H5S_SELECT_SET, byrow=TRUE) {
-                       "This function implements the HDF5-API function H5Sselect_elements. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectElements} for details."
+                       "This function implements the HDF5-API function H5Sselect_elements. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_ELEMENTS} for details."
 
                        standalone_H5S_select_elements(self$id, coord=coord, op=op, byrow=byrow)
                        return(invisible(self))
 
                    },
                    select_hyperslab=function(start, count, stride=NULL, block=NULL, op=h5const$H5S_SELECT_SET) {
-                       "This function implements the HDF5-API function H5Sselect_hyperslab. Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5S.html#Dataspace-SelectHyperslab} for details."
+                       "This function implements the HDF5-API function H5Sselect_hyperslab. Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5S_SELECT_HYPERSLAB} for details."
 
                        standalone_H5S_select_hyperslab(id=self$id, start=start, count=count, stride=stride, block=block, op=op)
                        return(invisible(self))

@@ -26,37 +26,37 @@ Create a new class of type \code{\link{H5P_DATASET_XFER}}
 \item{\code{set_buffer(size = 2^20)}}{
 
 This function implements the HDF5-API function H5Pset_buffer.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBuffer} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_BUFFER} for details.}
 
 \item{\code{set_edc_check(check = h5const$H5Z_ENABLE_EDC)}}{
 
 This function implements the HDF5-API function H5Pset_edc_check.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetEdcCheck} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_EDC_CHECK} for details.}
 
 \item{\code{get_edc_check()}}{
 
 This function implements the HDF5-API function H5Pget_edc_check.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetEdcCheck} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_EDC_CHECK} for details.}
 
 \item{\code{set_hyper_vector_size(size = 2^10)}}{
 
 This function implements the HDF5-API function H5Pset_hyper_vector_size.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetHyperVectorSize} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_HYPER_VECTOR_SIZE} for details.}
 
 \item{\code{get_hyper_vector_size()}}{
 
 This function implements the HDF5-API function H5Pget_hyper_vector_size.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetHyperVectorSize} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_HYPER_VECTOR_SIZE} for details.}
 
 \item{\code{set_btree_ratios(left, middle, right)}}{
 
 This function implements the HDF5-API function H5Pset_btree_ratios.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetBtreeRatios} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_BTREE_RATIOS} for details.}
 
 \item{\code{get_btree_ratios()}}{
 
 This function implements the HDF5-API function H5Pget_btree_ratios.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetBtreeRatios} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_BTREE_RATIOS} for details.}
 }}
 
 \seealso{

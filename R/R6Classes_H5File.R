@@ -191,7 +191,7 @@ H5File <- R6Class("H5File",
                       },
                       get_obj_count=function(types=h5const$H5F_OBJ_ALL) {
                           "This function implements the HDF5-API function H5Fget_obj_count."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetObjCount} for details."
+                          "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5F_GET_OBJ_COUNT} for details."
                           count <- .Call("R_H5Fget_obj_count", self$id, types, PACKAGE = "hdf5r")$return_val
                           if(count < 0) {
                               stop("Couldn't get object count in file")
@@ -200,7 +200,7 @@ H5File <- R6Class("H5File",
                       },
                       get_obj_ids=function(types=h5const$H5F_OBJ_ALL) {
                           "This function implements the HDF5-API function H5Fget_obj_ids."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetObjIds} for details."
+                          "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5F_GET_OBJ_IDS} for details."
 
                           count <- self$get_obj_count(types=types)
                           res <- .Call("R_H5Fget_obj_ids", self$id, types, count, request_empty(count), PACKAGE = "hdf5r")
@@ -212,7 +212,7 @@ H5File <- R6Class("H5File",
                       },
                       get_filesize=function() {
                           "This function implements the HDF5-API function H5Fget_filesize."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetFilesize} for details."
+                          "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5F_GET_FILESIZE} for details."
 
                           res <- .Call("R_H5Fget_filesize", self$id, request_empty(1), PACKAGE = "hdf5r")
                           if(res$return_val < 0) {
@@ -222,7 +222,7 @@ H5File <- R6Class("H5File",
                       },
                       file_info=function() {
                           "This function implements the HDF5-API function H5Fget_info2."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetInfo2} for details."
+                          "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5F_GET_INFO2} for details."
                           "Please note that the returned information differs if HDF5 Version 1.8.16 or HDF5 Version >= 1.10.0 is being used"
 
                           if(is.loaded("R_H5Fget_info2", PACKAGE = "hdf5r")) {
@@ -242,7 +242,7 @@ H5File <- R6Class("H5File",
                       },
                       get_intent=function() {
                           "This function implements the HDF5-API function H5Fget_intent."
-                          "Please see the documentation at \\url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetIntent} for details."
+                          "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5F_GET_INTENT} for details."
 
                           res <- .Call("R_H5Fget_intent", self$id, request_empty(1), PACKAGE="hdf5r")
                           if(res$return_val < 0) {

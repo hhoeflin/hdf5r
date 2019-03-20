@@ -19,42 +19,42 @@ floating point number can then be manipulated.
 \item{\code{set_fields(spos, epos, esize, mpos, msize)}}{
 
 This function implements the HDF5-API function H5Tset_fields.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetFields} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_FIELDS} for details.}
 
 \item{\code{get_fields()}}{
 
 This function implements the HDF5-API function H5Tget_fields.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetFields} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_FIELDS} for details.}
 
 \item{\code{set_ebias(ebias)}}{
 
 This function implements the HDF5-API function H5Tset_ebias.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetEbias} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_EBIAS} for details.}
 
 \item{\code{get_ebias()}}{
 
 This function implements the HDF5-API function H5Tget_ebias.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetEbias} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_EBIAS} for details.}
 
 \item{\code{set_norm(norm)}}{
 
 This function implements the HDF5-API function H5Tset_norm.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetNorm} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_NORM} for details.}
 
 \item{\code{get_norm()}}{
 
 This function implements the HDF5-API function H5Tget_norm.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetNorm} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_NORM} for details.}
 
 \item{\code{set_inpad(inpad)}}{
 
 This function implements the HDF5-API function H5Tset_inpad.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-SetInpad} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_SET_INPAD} for details.}
 
 \item{\code{get_inpad()}}{
 
 This function implements the HDF5-API function H5Tget_inpad.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetInpad} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_INPAD} for details.}
 
 \item{\code{describe()}}{
 

@@ -9,17 +9,18 @@
 <title>Class for representing HDF5 groups — H5Group-class • hdf5r</title>
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -39,7 +40,8 @@ be created. For the most parts, groups behave like files, so please also look at
 
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -63,7 +65,7 @@ be created. For the most parts, groups behave like files, so please also look at
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hdf5r</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.8000</span>
       </span>
     </div>
 
@@ -71,7 +73,7 @@ be created. For the most parts, groups behave like files, so please also look at
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -89,7 +91,7 @@ be created. For the most parts, groups behave like files, so please also look at
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/hhoeflin/hdf5r">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,65 +128,65 @@ be created. For the most parts, groups behave like files, so please also look at
 
     
     <dl class='dl-horizontal'>
-<dt><code>print(..., max.attributes = 10, max.listing = 10)</code></dt><dd><p>Prints information for the group
+<dt><code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print(..., max.attributes = 10, max.listing = 10)</a></code></dt><dd><p>Prints information for the group
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
 <dt>max.attributes</dt><dd><p>Maximum number of attribute names to print</p></dd>
 <dt>max.listing</dt><dd><p>Maximum number of ls-items to print</p></dd>
 <dt>...</dt><dd><p>ignored</p></dd>
 </dl></p></dd>
-    <dt><code>open(name, link_access_pl = h5const$H5P_DEFAULT,
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/connections'>open(name, link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>Opens groups, datasets or types using the appropriate HDF5-API functions. Please see the documentation at
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-Open'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-Open</a> for datasets, 
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open</a> for types and 
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Open</a> for general objects.</p></dd>
+  type_access_pl = h5const$H5P_DEFAULT)</a></code></dt><dd><p>Opens groups, datasets or types using the appropriate HDF5-API functions. Please see the documentation at
+<a href='https://portal.hdfgroup.org/display/HDF5/H5D_OPEN'>https://portal.hdfgroup.org/display/HDF5/H5D_OPEN</a> for datasets, 
+<a href='https://portal.hdfgroup.org/display/HDF5/H5O_OPEN'>https://portal.hdfgroup.org/display/HDF5/H5O_OPEN</a> for types and 
+<a href='https://portal.hdfgroup.org/display/HDF5/H5O_OPEN'>https://portal.hdfgroup.org/display/HDF5/H5O_OPEN</a> for general objects.</p></dd>
     <dt><code>open_by_idx(n, group_name = ".",
   index_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Oopen_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-OpenByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-OpenByIdx</a> for details.</p></dd>
-    <dt><code>ls(recursive = FALSE, detailed = FALSE,
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_OPEN_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5O_OPEN_BY_IDX</a> for details.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/ls'>ls(recursive = FALSE, detailed = FALSE,
   index_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>Returns the contents of a file or group as a data.frame.</p></dd>
-    <dt><code>exists(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lexists.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists</a> for details.</p></dd>
+  type_access_pl = h5const$H5P_DEFAULT)</a></code></dt><dd><p>Returns the contents of a file or group as a data.frame.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/exists'>exists(name, link_access_pl = h5const$H5P_DEFAULT)</a></code></dt><dd><p>This function implements the HDF5-API function H5Lexists.
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_EXISTS'>https://portal.hdfgroup.org/display/HDF5/H5L_EXISTS</a> for details.</p></dd>
     <dt><code>path_valid(path, check_object_valid = TRUE)</code></dt><dd><p>This function implements the HDF5-API function H5LTpath_valid.
 Please see the documentation at <a href='https://support.hdfgroup.org/HDF5/doc/HL/RM_H5LT.html#H5LTpath_valid'>https://support.hdfgroup.org/HDF5/doc/HL/RM_H5LT.html#H5LTpath_valid</a> for details.</p></dd>
     <dt><code>link(obj, new_link_name, link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Olink.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Link'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Link</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_LINK'>https://portal.hdfgroup.org/display/HDF5/H5O_LINK</a> for details.</p></dd>
     <dt><code>obj_copy_to(dst_loc, dst_name, src_name,
   object_copy_pl = h5const$H5P_DEFAULT,
   link_create_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Ocopy.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_COPY'>https://portal.hdfgroup.org/display/HDF5/H5O_COPY</a> for details.</p></dd>
     <dt><code>obj_copy_from(src_loc, src_name, dst_name,
   object_copy_pl = h5const$H5P_DEFAULT,
   link_create_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Ocopy.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-Copy</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_COPY'>https://portal.hdfgroup.org/display/HDF5/H5O_COPY</a> for details.</p></dd>
     <dt><code>obj_info_by_idx(n, group_name = ".",
   index_field = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE, remove_internal_use_only = TRUE)</code></dt><dd><p>This function implements the HDF5-API function H5Oget_info_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_IDX</a> for details.</p></dd>
     <dt><code>obj_info_by_name(object_name, remove_internal_use_only = TRUE)</code></dt><dd><p>This function implements the HDF5-API function H5Oget_info_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfoByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO_BY_NAME</a> for details.</p></dd>
     <dt><code>group_info()</code></dt><dd><p>This function implements the HDF5-API function H5Gget_info.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfo'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfo</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO'>https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO</a> for details.</p></dd>
     <dt><code>group_info_by_name(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Gget_info_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO_BY_NAME</a> for details.</p></dd>
     <dt><code>group_info_by_idx(n, group_name = ".",
   index_field = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Gget_info_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-GetInfoByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5G_GET_INFO_BY_IDX</a> for details.</p></dd>
     <dt><code>create_group(name, link_create_pl = h5const$H5P_DEFAULT,
   group_create_pl = h5const$H5P_DEFAULT,
   group_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Gcreate2 and H5Gcreate_anon (if name is NULL). Please see the documentation at
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-Create2'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-Create2</a> for regular groups and
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-CreateAnon'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5G.html#Group-CreateAnon</a> for anonymous groups for details.</p></dd>
+<a href='https://portal.hdfgroup.org/display/HDF5/H5G_CREATE2'>https://portal.hdfgroup.org/display/HDF5/H5G_CREATE2</a> for regular groups and
+<a href='https://portal.hdfgroup.org/display/HDF5/H5G_CREATE_ANON'>https://portal.hdfgroup.org/display/HDF5/H5G_CREATE_ANON</a> for anonymous groups for details.</p></dd>
     <dt><code>create_dataset(name, robj = NULL, dtype = NULL, space = NULL,
   dims = NULL, chunk_dims = "auto", gzip_level = 4,
   link_create_pl = h5const$H5P_DEFAULT,
@@ -192,8 +194,8 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
   dataset_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function is the main interface to create a new dataset. Its parameters allow for customization of the default
 behavior, i.e. in order to get a specific datatype, a certain chunk size or dataset dimensionality.
 Also note that this function implements the HDF5-API function H5Dcreate2 and H5Dcreate_anon (if name is NULL). Please see the documentation at
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-Create2'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-Create2</a> for regular groups and
-<a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-CreateAnon'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5D.html#Dataset-CreateAnon</a> for anonymous groups for details.
+<a href='https://portal.hdfgroup.org/display/HDF5/H5D_CREATE2'>https://portal.hdfgroup.org/display/HDF5/H5D_CREATE2</a> for regular groups and
+<a href='https://portal.hdfgroup.org/display/HDF5/H5D_CREATE_ANON'>https://portal.hdfgroup.org/display/HDF5/H5D_CREATE_ANON</a> for anonymous groups for details.
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
 <dt>name</dt><dd><p>The name of the new dataset. If missing, an anonymous dataset is created</p></dd>
@@ -216,125 +218,125 @@ at the level given here. If set to NULL, then gzip is not set (but could be set 
     <dt><code>commit(name, dtype, link_create_pl = h5const$H5P_DEFAULT,
   type_create_pl = h5const$H5P_DEFAULT,
   type_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Tcommit2.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Commit2'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-Commit2</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5T_COMMIT2'>https://portal.hdfgroup.org/display/HDF5/H5T_COMMIT2</a> for details.</p></dd>
     <dt><code>link_create_hard(obj_loc, obj_name, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lcreate_hard.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateHard'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateHard</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_HARD'>https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_HARD</a> for details.</p></dd>
     <dt><code>link_create_soft(target_path, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lcreate_soft.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateSoft'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateSoft</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_SOFT'>https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_SOFT</a> for details.</p></dd>
     <dt><code>link_create_external(target_filename, target_obj_name, link_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lcreate_external.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateExternal'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-CreateExternal</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_EXTERNAL'>https://portal.hdfgroup.org/display/HDF5/H5L_CREATE_EXTERNAL</a> for details.</p></dd>
     <dt><code>link_exists(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lexists.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Exists</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_EXISTS'>https://portal.hdfgroup.org/display/HDF5/H5L_EXISTS</a> for details.</p></dd>
     <dt><code>link_move_from(src_loc, src_name, dst_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lmove.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_MOVE'>https://portal.hdfgroup.org/display/HDF5/H5L_MOVE</a> for details.</p></dd>
     <dt><code>link_move_to(dst_loc, dst_name, src_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lmove.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Move</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_MOVE'>https://portal.hdfgroup.org/display/HDF5/H5L_MOVE</a> for details.</p></dd>
     <dt><code>link_copy_from(src_loc, src_name, dst_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lcopy.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_COPY'>https://portal.hdfgroup.org/display/HDF5/H5L_COPY</a> for details.</p></dd>
     <dt><code>link_copy_to(dst_loc, dst_name, src_name,
   link_create_pl = h5const$H5P_DEFAULT,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lcopy.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Copy</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_COPY'>https://portal.hdfgroup.org/display/HDF5/H5L_COPY</a> for details.</p></dd>
     <dt><code>link_delete(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Ldelete.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Delete'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-Delete</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_DELETE'>https://portal.hdfgroup.org/display/HDF5/H5L_DELETE</a> for details.</p></dd>
     <dt><code>link_delete_by_idx(n, group_name = ".",
   index_field = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Ldelete_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-DeleteByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-DeleteByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_DELETE_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5L_DELETE_BY_IDX</a> for details.</p></dd>
     <dt><code>link_info(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lget_info.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfo'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfo</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_GET_INFO'>https://portal.hdfgroup.org/display/HDF5/H5L_GET_INFO</a> for details.</p></dd>
     <dt><code>link_info_by_idx(n, group_name = ".",
   index_field = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lget_info_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfoByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetInfoByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_GET_INFO_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5L_GET_INFO_BY_IDX</a> for details.</p></dd>
     <dt><code>link_value(name, link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lget_val.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetVal'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetVal</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_GET_VAL'>https://portal.hdfgroup.org/display/HDF5/H5L_GET_VAL</a> for details.</p></dd>
     <dt><code>link_value_by_idx(n, group_name = ".",
   index_field = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lget_val_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetValByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetValByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_GET_VAL_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5L_GET_VAL_BY_IDX</a> for details.</p></dd>
     <dt><code>link_name_by_idx(n, group_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Lget_name_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetNameByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5L.html#Link-GetNameByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5L_GET_NAME_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5L_GET_NAME_BY_IDX</a> for details.</p></dd>
     <dt><code>mount(name, child)</code></dt><dd><p>This function implements the HDF5-API function H5Fmount.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Mount'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Mount</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_MOUNT'>https://portal.hdfgroup.org/display/HDF5/H5F_MOUNT</a> for details.</p></dd>
     <dt><code>unmount(name)</code></dt><dd><p>This function implements the HDF5-API function H5Funmount.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Unmount'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Unmount</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_UNMOUNT'>https://portal.hdfgroup.org/display/HDF5/H5F_UNMOUNT</a> for details.</p></dd>
     <dt><code>create_reference(name = ".", space = NULL)</code></dt><dd><p>This function implements the HDF5-API function H5Rcreate. If <code>space=NULL</code> then a <code>H5R_OBJECT</code> reference
 is created, otherwise a <code>H5R_DATASET_REGION</code> reference
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5R.html#Reference-Create</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5R_CREATE'>https://portal.hdfgroup.org/display/HDF5/H5R_CREATE</a> for details.</p></dd>
     <dt><code>obj_info(remove_internal_use_only = TRUE)</code></dt><dd><p>This function implements the HDF5-API function H5Oget_info.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5O.html#Object-GetInfo</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO'>https://portal.hdfgroup.org/display/HDF5/H5O_GET_INFO</a> for details.</p></dd>
     <dt><code>get_obj_name()</code></dt><dd><p>This function implements the HDF5-API function H5Iget_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5I.html#Identify-GetName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5I_GET_NAME'>https://portal.hdfgroup.org/display/HDF5/H5I_GET_NAME</a> for details.</p></dd>
     <dt><code>create_attr(attr_name, robj = NULL, dtype = NULL, space = NULL)</code></dt><dd><p>This function implements the HDF5-API function H5Acreate2.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Create2'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Create2</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_CREATE2'>https://portal.hdfgroup.org/display/HDF5/H5A_CREATE2</a> for details.</p></dd>
     <dt><code>attr_open(attr_name)</code></dt><dd><p>This function implements the HDF5-API function H5Aopen.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Open'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Open</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_OPEN'>https://portal.hdfgroup.org/display/HDF5/H5A_OPEN</a> for details.</p></dd>
     <dt><code>create_attr_by_name(attr_name, obj_name, robj = NULL,
   dtype = NULL, space = NULL,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Acreate_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-CreateByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-CreateByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_CREATE_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_CREATE_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_open_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aopen_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_open_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aopen_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-OpenByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5A_OPEN_BY_IDX</a> for details.</p></dd>
     <dt><code>attr_exists_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aexists_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-ExistsByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-ExistsByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_exists(attr_name)</code></dt><dd><p>This function implements the HDF5-API function H5Aexists.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Exists'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Exists</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS'>https://portal.hdfgroup.org/display/HDF5/H5A_EXISTS</a> for details.</p></dd>
     <dt><code>attr_rename_by_name(old_attr_name, new_attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Arename_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-RenameByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-RenameByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_RENAME_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_RENAME_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_rename(old_attr_name, new_attr_name)</code></dt><dd><p>This function implements the HDF5-API function H5Arename.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Rename'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Rename</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_RENAME'>https://portal.hdfgroup.org/display/HDF5/H5A_RENAME</a> for details.</p></dd>
     <dt><code>attr_delete(attr_name)</code></dt><dd><p>This function implements the HDF5-API function H5Adelete.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Delete'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-Delete</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_DELETE'>https://portal.hdfgroup.org/display/HDF5/H5A_DELETE</a> for details.</p></dd>
     <dt><code>attr_delete_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Adelete_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_delete_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Adelete_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-DeleteByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5A_DELETE_BY_IDX</a> for details.</p></dd>
     <dt><code>attr_info_by_name(attr_name, obj_name,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aget_info_by_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByName</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_NAME'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_NAME</a> for details.</p></dd>
     <dt><code>attr_info_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aget_info_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetInfoByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_INFO_BY_IDX</a> for details.</p></dd>
     <dt><code>attr_name_by_idx(n, obj_name, idx_type = h5const$H5_INDEX_NAME,
   order = h5const$H5_ITER_NATIVE,
   link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>This function implements the HDF5-API function H5Aget_name_by_idx.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-GetNameByIdx</a> for details.</p></dd>
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME_BY_IDX'>https://portal.hdfgroup.org/display/HDF5/H5A_GET_NAME_BY_IDX</a> for details.</p></dd>
     <dt><code>attr_get_number()</code></dt><dd><p>This function implements the HDF5-API function H5Aget_num_attrs.
 Please see the documentation at <a href='https://support.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-NumAttrs'>https://support.hdfgroup.org/HDF5/doc/RM/RM_H5A.html#Annot-NumAttrs</a> for details.</p></dd>
-    <dt><code>flush(scope = h5const$H5F_SCOPE_GLOBAL)</code></dt><dd><p>This function implements the HDF5-API function H5Fflush.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-Flush</a> for details.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/connections'>flush(scope = h5const$H5F_SCOPE_GLOBAL)</a></code></dt><dd><p>This function implements the HDF5-API function H5Fflush.
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_FLUSH'>https://portal.hdfgroup.org/display/HDF5/H5F_FLUSH</a> for details.</p></dd>
     <dt><code>get_filename()</code></dt><dd><p>This function implements the HDF5-API function H5Fget_name.
-Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html#File-GetName</a> for details.</p></dd>
-    <dt><code>names(link_access_pl = h5const$H5P_DEFAULT)</code></dt><dd><p>Returns the names of the items in the group or at the root of the file
+Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF5/H5F_GET_NAME'>https://portal.hdfgroup.org/display/HDF5/H5F_GET_NAME</a> for details.</p></dd>
+    <dt><code><a href='https://www.rdocumentation.org/packages/base/topics/names'>names(link_access_pl = h5const$H5P_DEFAULT)</a></code></dt><dd><p>Returns the names of the items in the group or at the root of the file
     <strong>Parameters</strong>
 <dl class='dl-horizontal'>
 <dt>link_access_pl</dt><dd><p>The link-access property list. See <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html'>https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html</a> for more detail.</p></dd>
@@ -343,12 +345,12 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>fname</span> <span class='kw'>&lt;-</span> <span class='fu'>tempfile</span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".h5"</span>)
+    <pre class="examples"><div class='input'><span class='no'>fname</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>(<span class='kw'>fileext</span> <span class='kw'>=</span> <span class='st'>".h5"</span>)
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='no'>H5File</span>$<span class='fu'>new</span>(<span class='no'>fname</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"a"</span>)
 <span class='no'>group</span> <span class='kw'>&lt;-</span> <span class='no'>file</span>$<span class='fu'>create_group</span>(<span class='st'>"testgroup"</span>)
-<span class='no'>group</span>$<span class='fu'>print</span>()</div><div class='output co'>#&gt; Class: H5Group
-#&gt; Filename: /tmp/RtmpCQ9cIm/file12507e80c1cc.h5
-#&gt; Group: /testgroup</div><div class='input'><span class='no'>group</span>$<span class='fu'>close</span>()
+<span class='no'>group</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>()</div><div class='output co'>#&gt; Class: H5Group
+#&gt; Filename: /tmp/RtmpBaWGpg/fileaef46c3beae.h5
+#&gt; Group: /testgroup</div><div class='input'><span class='no'>group</span>$<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/connections'>close</a></span>()
 <span class='no'>file</span>$<span class='fu'>close_all</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -363,9 +365,7 @@ Please see the documentation at <a href='https://www.hdfgroup.org/HDF5/doc/RM/RM
     </ul>
 
     <h2>Author</h2>
-    
-Holger Hoefling
-
+    <p>Holger Hoefling</p>
   </div>
 </div>
 
@@ -375,9 +375,8 @@ Holger Hoefling
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
    </div>
 

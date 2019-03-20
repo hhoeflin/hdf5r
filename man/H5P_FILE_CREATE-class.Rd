@@ -26,52 +26,52 @@ Create a new class of type \code{\link{H5P_FILE_CREATE}}
 \item{\code{set_userblock(size)}}{
 
 This function implements the HDF5-API function H5Pset_userblock.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetUserblock} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_USERBLOCK} for details.}
 
 \item{\code{get_userblock()}}{
 
 This function implements the HDF5-API function H5Pget_userblock.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetUserblock} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_USERBLOCK} for details.}
 
 \item{\code{set_sizes(sizeof_addr, sizeof_size)}}{
 
 This function implements the HDF5-API function H5Pset_sizes.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSizes} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SIZES} for details.}
 
 \item{\code{get_sizes()}}{
 
 This function implements the HDF5-API function H5Pget_sizes.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetSizes} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_SIZES} for details.}
 
 \item{\code{set_sym_k(ik, lk)}}{
 
 This function implements the HDF5-API function H5Pset_sym_k.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetSymK} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_SYM_K} for details.}
 
 \item{\code{get_sym_k()}}{
 
 This function implements the HDF5-API function H5Pget_sym_k.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetSymK} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_SYM_K} for details.}
 
 \item{\code{set_istore_k(ik)}}{
 
 This function implements the HDF5-API function H5Pset_istore_k.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetIstoreK} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_ISTORE_K} for details.}
 
 \item{\code{get_istore_k()}}{
 
 This function implements the HDF5-API function H5Pget_istore_k.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetIstoreK} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_ISTORE_K} for details.}
 
 \item{\code{set_file_space(strategy, threshold)}}{
 
 This function implements the HDF5-API function H5Pset_file_space.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-SetFileSpae} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_SET_FILE_SPAE} for details.}
 
 \item{\code{get_file_space()}}{
 
 This function implements the HDF5-API function H5Pget_file_space.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5P.html#Property-GetFileSpace} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5P_GET_FILE_SPACE} for details.}
 }}
 
 \seealso{

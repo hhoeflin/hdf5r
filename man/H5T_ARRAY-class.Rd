@@ -32,17 +32,17 @@ Create an array datatype.
 \item{\code{get_array_ndims()}}{
 
 This function implements the HDF5-API function H5Tget_array_ndims.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetArrayNdims} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_ARRAY_NDIMS} for details.}
 
 \item{\code{get_array_dims()}}{
 
 This function implements the HDF5-API function H5Tget_array_dims2.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetArrayDims2} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_ARRAY_DIMS2} for details.}
 
 \item{\code{get_super()}}{
 
 This function implements the HDF5-API function H5Tget_super.
-Please see the documentation at \url{https://www.hdfgroup.org/HDF5/doc/RM/RM_H5T.html#Datatype-GetSuper} for details.}
+Please see the documentation at \url{https://portal.hdfgroup.org/display/HDF5/H5T_GET_SUPER} for details.}
 
 \item{\code{describe()}}{
 

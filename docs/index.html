@@ -6,9 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interface to the 'HDF5' Binary Data Format • hdf5r</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Interface to the 'HDF5' Binary Data Format">
 <meta property="og:description" content="'HDF5' is a data model, library and file format for storing 
     and managing large amounts of data. This package provides a nearly
@@ -17,7 +18,7 @@
     Additionally, functionality is added so that 'HDF5' objects behave very 
     similar to their corresponding R counterparts.">
 <meta name="twitter:card" content="summary">
-<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -35,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hdf5r</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.8000</span>
       </span>
     </div>
 
@@ -43,7 +44,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -60,7 +61,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/hhoeflin/hdf5r">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -75,7 +76,7 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-    
+
 <table class="table">
 <thead><tr class="header">
 <th>Check</th>
@@ -151,9 +152,9 @@
 <h2 class="hasAnchor">
 <a href="#basic-install" class="anchor"></a>Basic Install</h2>
 <p>The latest release version of <strong>hdf5r</strong> can be installed from any CRAN <a href="https://cran.r-project.org/mirrors.html">Mirror</a> using the R command</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"hdf5r"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"hdf5r"</span>)</a></code></pre></div>
 <p>For the latest development version from Github you can use</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"hhoeflin/hdf5r"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"hhoeflin/hdf5r"</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="getting-started" class="section level1">
@@ -163,51 +164,51 @@
 <h2 class="hasAnchor">
 <a href="#how-to-get-help" class="anchor"></a>How to Get Help</h2>
 <p>The package provides most of the regular HDF5-API in addition to a number of convenience functions. As such, the number of available methods is quite large. As the package uses R6 classes, all applicable methods for a class are contained in that class. The easiest way to get an overview of the available methods is to call the <em>methods</em> method.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">native_int_type &lt;-<span class="st"> </span>h5types<span class="op">$</span>H5T_NATIVE_INT
-native_int_type<span class="op">$</span><span class="kw">methods</span>()</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">native_int_type &lt;-<span class="st"> </span>h5types<span class="op">$</span>H5T_NATIVE_INT</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">native_int_type<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/methods">methods</a></span>()</a></code></pre></div>
 <p>Of course, there is also the regular R help that you can call for each class. These help pages tend to be long, as they also document all methods of that class.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">"H5T-class"</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/help">help</a></span>(<span class="st">"H5T-class"</span>)</a></code></pre></div>
 <p>Last, I very much recomment reading the included vignette. You can view all vignettes included in the pacakge with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="dt">package=</span><span class="st">"hdf5r"</span>)</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/vignette">vignette</a></span>(<span class="dt">package=</span><span class="st">"hdf5r"</span>)</a></code></pre></div>
 <p>and call up the introduction vignette with</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="st">"hdf5r"</span>, <span class="dt">package=</span><span class="st">"hdf5r"</span>)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/vignette">vignette</a></span>(<span class="st">"hdf5r"</span>, <span class="dt">package=</span><span class="st">"hdf5r"</span>)</a></code></pre></div>
 </div>
 <div id="simple-code-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#simple-code-example" class="anchor"></a>Simple Code Example</h2>
 <p>If you don’t have time to read the vignette, which contains more code example, here is a very brief code example to create a file, write some data and read it back again.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">test_file &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="dt">fileext=</span><span class="st">".h5"</span>)
-file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_file, <span class="dt">mode=</span><span class="st">"w"</span>)
-
-<span class="kw">data</span>(cars)
-file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"test"</span>)
-file.h5[[<span class="st">"test/cars"</span>]] &lt;-<span class="st"> </span>cars
-cars_ds &lt;-<span class="st"> </span>file.h5[[<span class="st">"test/cars"</span>]]
-<span class="kw"><a href="reference/h5attributes.html">h5attr</a></span>(cars_ds, <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw">rownames</span>(cars)
-
-## Close the file at the end
-## the 'close' method closes only the file-id, but leaves object inside the file open
-## This may prevent re-opening of the file. 'close_all' closes the file and all objects in it
-file.h5<span class="op">$</span><span class="kw">close_all</span>()</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## now re-open it 
-file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_file, <span class="dt">mode=</span><span class="st">"r+"</span>)
-
-## lets look at the content
-file.h5<span class="op">$</span><span class="kw">ls</span>(<span class="dt">recursive=</span><span class="ot">TRUE</span>)
-
-cars_ds &lt;-<span class="st"> </span>file.h5[[<span class="st">"test/cars"</span>]]
-## note that for now tables in HDF5 are 1-dimensional, not 2-dimensional
-mycars &lt;-<span class="st"> </span>cars_ds[]
-<span class="kw"><a href="reference/h5attributes.html">h5attr_names</a></span>(cars_ds)
-<span class="kw"><a href="reference/h5attributes.html">h5attr</a></span>(cars_ds, <span class="st">"rownames"</span>)
-
-file.h5<span class="op">$</span><span class="kw">close_all</span>()</code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">test_file &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/tempfile">tempfile</a></span>(<span class="dt">fileext=</span><span class="st">".h5"</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_file, <span class="dt">mode=</span><span class="st">"w"</span>)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(cars)</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">file.h5<span class="op">$</span><span class="kw">create_group</span>(<span class="st">"test"</span>)</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">file.h5[[<span class="st">"test/cars"</span>]] &lt;-<span class="st"> </span>cars</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">cars_ds &lt;-<span class="st"> </span>file.h5[[<span class="st">"test/cars"</span>]]</a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="kw"><a href="reference/h5attributes.html">h5attr</a></span>(cars_ds, <span class="st">"rownames"</span>) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(cars)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">## Close the file at the end</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">## the 'close' method closes only the file-id, but leaves object inside the file open</a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">## This may prevent re-opening of the file. 'close_all' closes the file and all objects in it</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">file.h5<span class="op">$</span><span class="kw">close_all</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">## now re-open it </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">file.h5 &lt;-<span class="st"> </span>H5File<span class="op">$</span><span class="kw">new</span>(test_file, <span class="dt">mode=</span><span class="st">"r+"</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">## lets look at the content</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">file.h5<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls</a></span>(<span class="dt">recursive=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">cars_ds &lt;-<span class="st"> </span>file.h5[[<span class="st">"test/cars"</span>]]</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">## note that for now tables in HDF5 are 1-dimensional, not 2-dimensional</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">mycars &lt;-<span class="st"> </span>cars_ds[]</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="kw"><a href="reference/h5attributes.html">h5attr_names</a></span>(cars_ds)</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="kw"><a href="reference/h5attributes.html">h5attr</a></span>(cars_ds, <span class="st">"rownames"</span>)</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">file.h5<span class="op">$</span><span class="kw">close_all</span>()</a></code></pre></div>
 </div>
 </div>
 <div id="bit-integers" class="section level1">
 <h1 class="hasAnchor">
 <a href="#bit-integers" class="anchor"></a>64-bit Integers</h1>
-<p>Please note that for 64-bit signed integers, the bit64 package is used. For technical reasons, it is possible for a function that is not bit64-aware to misrepresent 64bit values from the bit64 package as ‘doubles’ of a completely different value. Therefore, please be advised to ensure that the functions you are using are bit64-aware or cast the values to regular numeric values (but be aware - this may result in a loss of precision). For illustration of this issue see the difference between <code>print(as.integer64(1))</code> and <code>cat(as.integer64(1), "\n")</code>. Another possible source of issues can be <code>matrix(as.integer64(1))</code> or <code>min(as.integer64(1), as.integer64(2))</code>, among possibly others. By default, hdf5r tries to return regular R objects (integer or double) wherever this is possible without loss of precision. If you need 64bit integers, proceed with care keeping these issues in mind.</p>
+<p>Please note that for 64-bit signed integers, the bit64 package is used. For technical reasons, it is possible for a function that is not bit64-aware to misrepresent 64bit values from the bit64 package as ‘doubles’ of a completely different value. Therefore, please be advised to ensure that the functions you are using are bit64-aware or cast the values to regular numeric values (but be aware - this may result in a loss of precision). For illustration of this issue see the difference between <code><a href="https://www.rdocumentation.org/packages/base/topics/print">print(as.integer64(1))</a></code> and <code><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat(as.integer64(1), "\n")</a></code>. Another possible source of issues can be <code><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix(as.integer64(1))</a></code> or <code><a href="https://www.rdocumentation.org/packages/base/topics/Extremes">min(as.integer64(1), as.integer64(2))</a></code>, among possibly others. By default, hdf5r tries to return regular R objects (integer or double) wherever this is possible without loss of precision. If you need 64bit integers, proceed with care keeping these issues in mind.</p>
 </div>
 <div id="license" class="section level1">
 <h1 class="hasAnchor">
@@ -231,7 +232,7 @@ file.h5<span class="op">$</span><span class="kw">close_all</span>()</code></pre>
 
   </div>
 
-  <div class="col-md-3" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
@@ -262,15 +263,13 @@ file.h5<span class="op">$</span><span class="kw">close_all</span>()</code></pre>
   </div>
 </div>
 
-
       <footer><div class="copyright">
   <p>Developed by Holger Hoefling, Mario Annau.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
 </div>
 
