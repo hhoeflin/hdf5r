@@ -1,13 +1,10 @@
 WRAP = 1_8_16
 VERSION = 1.8.16
-LIB_HDF5 = ../windows/hdf5-$(VERSION)
+RWINLIB = ../windows/hdf5-$(VERSION)
+PKG_LIBS = -L${RWINLIB}/lib-4.9.3${R_ARCH} -lhdf5 -lhdf5_hl -lz -lm 
+PKG_CPPFLAGS = -I${RWINLIB}/include -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
 
-PKG_LIBS = -L${LIB_HDF5}/lib-4.9.3${R_ARCH} -lhdf5 -lhdf5_hl -lz -lm 
-PKG_CFLAGS=-I${LIB_HDF5}/include -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
-
-.PHONY: clean all winlibs
-
-all: clean winlibs $(SHLIB)
+all: winlibs
 
 OBJECTS = $(WRAP)/const_export.o $(WRAP)/datatype_export.o $(WRAP)/Wrapper_auto_H5A.o \
 	$(WRAP)/Wrapper_auto_H5.o $(WRAP)/Wrapper_auto_H5D.o $(WRAP)/Wrapper_auto_H5DS.o $(WRAP)/Wrapper_auto_H5E.o \
@@ -22,5 +19,5 @@ winlibs:
 	@echo "Linking to HDF5 $(RWINLIB)"
 	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R" $(VERSION)
 
-clean:
-	rm -f $(SHLIB) $(OBJECTS)
+.PHONY: all winlibs
+
