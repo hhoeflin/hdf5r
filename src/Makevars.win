@@ -1,8 +1,8 @@
-WRAP = 1_10_3
-VERSION = 1.10.5
+WRAP = 1_8_16
+VERSION = 1.8.16
 LIB_HDF5 = ../windows/hdf5-$(VERSION)
 
-PKG_LIBS = -L${LIB_HDF5}/lib${R_ARCH} -lhdf5 -lhdf5_hl -lz -lm 
+PKG_LIBS = -L${LIB_HDF5}/lib-4.9.3${R_ARCH} -lhdf5 -lhdf5_hl -lz -lm 
 PKG_CFLAGS=-I${LIB_HDF5}/include -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
 
 .PHONY: clean all winlibs
