@@ -1,0 +1,26 @@
+WRAP = 1_10_3
+VERSION = 1.10.5
+LIB_HDF5 = ../windows/hdf5-$(VERSION)
+
+PKG_LIBS = -L${LIB_HDF5}/lib${R_ARCH} -lhdf5 -lhdf5_hl -lz -lm 
+PKG_CFLAGS=-I${LIB_HDF5}/include -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
+
+.PHONY: clean all winlibs
+
+all: clean winlibs $(SHLIB)
+
+OBJECTS = $(WRAP)/const_export.o $(WRAP)/datatype_export.o $(WRAP)/Wrapper_auto_H5A.o \
+	$(WRAP)/Wrapper_auto_H5.o $(WRAP)/Wrapper_auto_H5D.o $(WRAP)/Wrapper_auto_H5DS.o $(WRAP)/Wrapper_auto_H5E.o \
+	$(WRAP)/Wrapper_auto_H5F.o $(WRAP)/Wrapper_auto_H5G.o $(WRAP)/Wrapper_auto_H5I.o $(WRAP)/Wrapper_auto_H5IM.o \
+	$(WRAP)/Wrapper_auto_H5L.o $(WRAP)/Wrapper_auto_H5LT.o $(WRAP)/Wrapper_auto_H5O.o $(WRAP)/Wrapper_auto_H5P.o \
+	$(WRAP)/Wrapper_auto_H5R.o $(WRAP)/Wrapper_auto_H5S.o $(WRAP)/Wrapper_auto_H5TB.o $(WRAP)/Wrapper_auto_H5T.o \
+	$(WRAP)/Wrapper_auto_H5Z.o $(WRAP)/Wrapper_auto_H5FDcore.o $(WRAP)/Wrapper_auto_H5FDfamily.o \
+	$(WRAP)/Wrapper_auto_H5FDlog.o $(WRAP)/Wrapper_auto_H5FDsec2.o $(WRAP)/Wrapper_auto_H5FDstdio.o \
+	convert.o hdf5r_init.o H5Error.o H5ls.o Wrapper_manual_H5T.o
+
+winlibs:
+	@echo "Linking to HDF5 $(RWINLIB)"
+	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R" $(VERSION)
+
+clean:
+	rm -f $(SHLIB) $(OBJECTS)
