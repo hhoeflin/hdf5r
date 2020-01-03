@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# unset the CFLAGS here due to too long log size
+PKG_CFLAGS=""
+
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then # use homebrew version
   brew update
   brew install hdf5
@@ -10,6 +13,6 @@ else # install from source
   tar -xzf "hdf5-$HDF5_VERSION.tar.gz"
   cd "hdf5-$HDF5_VERSION"
   ./configure --prefix=/usr/local
-  sudo make install | tail -n100
+  sudo make install
   cd ../hdf5r
 fi
