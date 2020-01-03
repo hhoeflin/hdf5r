@@ -10,6 +10,6 @@ else # install from source
   tar -xzf "hdf5-$HDF5_VERSION.tar.gz"
   cd "hdf5-$HDF5_VERSION"
   ./configure --prefix=/usr/local
-  sudo make install > /dev/null 2> /dev/null
+  sudo make install 2>&1 | tail -n200
   cd ../hdf5r
 fi
