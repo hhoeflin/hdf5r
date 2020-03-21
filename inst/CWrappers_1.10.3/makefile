@@ -26,5 +26,5 @@ clean:
 	rm -r output_code output store src_nocomments *.Rout
 
 copy:
-	mkdir -p ../../src/1_10_0
-	cp output_code/*.h output_code/*.c ../../src/1_10_0
+	mkdir -p ../../src/1_10_3
+	cp output_code/*.h output_code/*.c ../../src/1_10_3
