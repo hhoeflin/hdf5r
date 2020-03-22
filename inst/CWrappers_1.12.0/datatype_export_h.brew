@@ -1,0 +1,68 @@
+/**************************************************************************
+ * 
+ * Copyright 2016 Novartis Institutes for BioMedical Research Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *************************************************************************/
+
+
+
+#ifndef _DATATYPE_EXPORT_H
+#define _DATATYPE_EXPORT_H
+
+#include "global.h"
+#include <stdbool.h>
+#include <ctype.h>
+#include <string.h>
+#include "HelperStructs.h"
+
+#define issigned(t) (((t)(-1)) < 0)
+
+hid_t get_h5_equiv(int size, bool sign);
+  
+
+// initialize all the data types; to be called on package load from R
+SEXP init_dtypes(void);
+// create a dataframe with all type information
+SEXP show_all_types_data_frame(void);
+
+typedef enum {
+<%=dt_all_names_no_LDOUBLE%>,
+#if H5_SIZEOF_LONG_DOUBLE !=0
+  DT_H5T_NATIVE_LDOUBLE,
+#endif
+  DT_LAST_ITEM
+} DT_enum;
+
+
+extern hid_t h5_datatype[DT_LAST_ITEM];
+
+
+
+/*************************************************************************
+ * 
+ * Enums
+ * 
+ *************************************************************************/
+<%=enum_create_func_def%>
+
+/*************************************************************************
+ * 
+ * Structs
+ * 
+ *************************************************************************/
+<%=struct_create_func_def%>
+
+
+
+#endif

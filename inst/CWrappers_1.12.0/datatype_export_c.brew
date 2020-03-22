@@ -1,0 +1,123 @@
+/**************************************************************************
+ * 
+ * Copyright 2016 Novartis Institutes for BioMedical Research Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *************************************************************************/
+
+
+
+#include "datatype_export.h"
+
+hid_t h5_datatype[DT_LAST_ITEM];
+
+hid_t get_h5_equiv(int size, bool sign) {
+  switch(size) {
+  case 1: {
+    if(sign) {
+      return(H5T_NATIVE_INT8);
+    }
+    else {
+      return(H5T_NATIVE_UINT8);
+    }
+  }
+  case 2: {
+    if(sign) {
+      return(H5T_NATIVE_INT16);
+    }
+    else {
+      return(H5T_NATIVE_UINT16);
+    }
+  }
+  case 4: {
+    if(sign) {
+      return(H5T_NATIVE_INT32);
+    }
+    else {
+      return(H5T_NATIVE_UINT32);
+    }
+  }
+  case 8: {
+    if(sign) {
+      return(H5T_NATIVE_INT64);
+    }
+    else {
+      return(H5T_NATIVE_UINT64);
+    }
+  }
+  default:
+    error("Unknown size\n");
+  }
+}
+
+
+SEXP print_dtypes_array() {
+  Rprintf("New -------------------------------------\n");
+  for(int i=0; i < DT_LAST_ITEM; ++i) {
+    Rprintf("%d: %I64d\n", i, h5_datatype[i]);
+  }
+  return(R_NilValue);
+}
+
+SEXP init_dtypes(void) {
+  // The predefined hdf5 datatypes
+<%=builtin_types_init_no_LDOUBLE%>
+#if H5_SIZEOF_LONG_DOUBLE !=0
+  h5_datatype[DT_H5T_NATIVE_LDOUBLE] = H5T_NATIVE_LDOUBLE;
+#endif
+  // the C_API_types 
+<%=c_api_types_init_no_char_float%>
+  // the string and double datatypes
+  h5_datatype[DT_char] = H5Tcopy(H5T_C_S1); 
+  H5Tset_size(h5_datatype[DT_char], H5T_VARIABLE); 
+  h5_datatype[DT_double] = H5T_NATIVE_DOUBLE;
+  h5_datatype[DT_float] = H5T_NATIVE_FLOAT;
+  // the enums
+<%=enum_init%>
+  // the structs; the following are out of order, as more basic structs need to be created first
+  // for DT_H5L_info_helper_t careful; not a struct but a union; only address specified, not size
+  // will only work properly in both cases if haddr_t and size_t are the same type
+<%=struct_init%>
+  return(R_NilValue);
+}
+
+
+
+
+
+/*************************************************************************
+ * 
+ * Create the dataframe with all the type information
+ * 
+ *************************************************************************/
+
+<%=show_all_types_code%>
+
+
+/*************************************************************************
+ * 
+ * Enums
+ * 
+ *************************************************************************/
+<%=create_enum_types_code%>
+
+
+
+/*************************************************************************
+ * 
+ * Structs
+ * 
+ *************************************************************************/
+
+<%=create_struct_types_code%>
+

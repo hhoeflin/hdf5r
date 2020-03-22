@@ -1,0 +1,6 @@
+In order to run the source code, the appropriate HDF5 public header files
+have to be place in the "headers" subdirectory. There are several ways 
+to obtain the necessary header files. One way is to install the 
+appropriate version of HDF5 (here 1.10.0) and copy all header files
+in the include directory of the installation (use which h5cc to locate the install path)
+If on linux, install the packages that contain the development hearders
