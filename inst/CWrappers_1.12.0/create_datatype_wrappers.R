@@ -135,13 +135,13 @@ code_for_datatype_for_struct_c <- function(struct_info) {
     
     struct_name <- unique(struct_info$category_name)
     code <- c(code, paste0("hid_t create_DT_", struct_name, "(void) {"))
-    code <- c(code, paste0('  Rprintf("Creating DT_', struct_name, '\\n");'))
+#    code <- c(code, paste0('  Rprintf("Creating DT_', struct_name, '\\n");'))
     
     code <- c(code, paste0("  hid_t dtype_id = H5Tcreate(H5T_COMPOUND, sizeof(", struct_name, "));"))
 
     for(i in seq_len(nrow(struct_info))) {
         h5_dt_name <- paste0("DT_", gsub("\\s+", "_", struct_info$type_bare[i]))
-    	code <- c(code, paste0('  Rprintf("  Working on: ', struct_info$name[i], ' with h5type ', h5_dt_name, '\\n");'))
+#    	code <- c(code, paste0('  Rprintf("  Working on: ', struct_info$name[i], ' with h5type ', h5_dt_name, '\\n");'))
         code <- c(code, paste0("  H5Tinsert(dtype_id, \"", struct_info$name[i],
                   "\", HOFFSET(", struct_name, ", ", struct_info$name[i], "), h5_datatype[", h5_dt_name, "]);"))
     }
