@@ -1,0 +1,300 @@
+
+/**************************************************************************
+ * 
+ * Copyright 2016 Novartis Institutes for BioMedical Research Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *************************************************************************/
+
+
+
+
+
+#include "const_export.h"
+
+SEXP show_all_const_data_frame(void) {
+  SEXP df = PROTECT(allocVector(VECSXP, 3));
+  SET_VECTOR_ELT(df, 0, NEW_CHARACTER(CONST_LAST_ITEM));
+  SET_VECTOR_ELT(df, 1, NEW_CHARACTER(CONST_LAST_ITEM));
+  SEXP R_const = PROTECT(NEW_NUMERIC(CONST_LAST_ITEM));
+  SET_CLASS(R_const, ScalarString(mkChar("integer64")));
+  SET_VECTOR_ELT(df, 2, R_const);
+  SEXP df_rownames = PROTECT(NEW_INTEGER(CONST_LAST_ITEM));
+  for(R_xlen_t i = 0; i < CONST_LAST_ITEM; ++i) {
+    INTEGER(df_rownames)[i] = i + 1;
+  }
+  SET_CLASS(df, mkString("data.frame"));
+  SET_ATTR(df, install("row.names"), df_rownames);
+  SEXP df_names = PROTECT(NEW_CHARACTER(3));
+  SET_STRING_ELT(df_names, 0, mkChar("Category"));
+  SET_STRING_ELT(df_names, 1, mkChar("Name"));
+  SET_STRING_ELT(df_names, 2, mkChar("Constant"));
+  SET_NAMES(df, df_names);
+  SEXP R_categ = VECTOR_ELT(df, 0);
+  SEXP R_name = VECTOR_ELT(df, 1);
+  R_const = VECTOR_ELT(df, 2);
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_TRUNC, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_TRUNC, mkChar("H5F_ACC_TRUNC"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_TRUNC] = (long long) H5F_ACC_TRUNC;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_EXCL, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_EXCL, mkChar("H5F_ACC_EXCL"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_EXCL] = (long long) H5F_ACC_EXCL;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_DEBUG, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_DEBUG, mkChar("H5F_ACC_DEBUG"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_DEBUG] = (long long) H5F_ACC_DEBUG;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_RDONLY, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_RDONLY, mkChar("H5F_ACC_RDONLY"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_RDONLY] = (long long) H5F_ACC_RDONLY;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_RDWR, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_RDWR, mkChar("H5F_ACC_RDWR"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_RDWR] = (long long) H5F_ACC_RDWR;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_DEFAULT, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_DEFAULT, mkChar("H5F_ACC_DEFAULT"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_DEFAULT] = (long long) H5F_ACC_DEFAULT;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_SWMR_WRITE, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_SWMR_WRITE, mkChar("H5F_ACC_SWMR_WRITE"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_SWMR_WRITE] = (long long) H5F_ACC_SWMR_WRITE;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_ACC_SWMR_READ, mkChar("H5F_ACC"));
+  SET_STRING_ELT(R_name, CONST_H5F_ACC_SWMR_READ, mkChar("H5F_ACC_SWMR_READ"));
+  ((long long *) REAL(R_const))[CONST_H5F_ACC_SWMR_READ] = (long long) H5F_ACC_SWMR_READ;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DEFAULT, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DEFAULT, mkChar("H5P_DEFAULT"));
+  ((long long *) REAL(R_const))[CONST_H5P_DEFAULT] = (long long) H5P_DEFAULT;
+
+  SET_STRING_ELT(R_categ, CONST_H5S_ALL, mkChar("H5S"));
+  SET_STRING_ELT(R_name, CONST_H5S_ALL, mkChar("H5S_ALL"));
+  ((long long *) REAL(R_const))[CONST_H5S_ALL] = (long long) H5S_ALL;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_NONE, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_NONE, mkChar("H5TOR_CONV_NONE"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_NONE] = (long long) H5TOR_CONV_NONE;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_INT64_INT_NOLOSS, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_INT64_INT_NOLOSS, mkChar("H5TOR_CONV_INT64_INT_NOLOSS"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_INT64_INT_NOLOSS] = (long long) H5TOR_CONV_INT64_INT_NOLOSS;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_INT64_FLOAT_NOLOSS, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_INT64_FLOAT_NOLOSS, mkChar("H5TOR_CONV_INT64_FLOAT_NOLOSS"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_INT64_FLOAT_NOLOSS] = (long long) H5TOR_CONV_INT64_FLOAT_NOLOSS;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_INT64_FLOAT_FORCE, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_INT64_FLOAT_FORCE, mkChar("H5TOR_CONV_INT64_FLOAT_FORCE"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_INT64_FLOAT_FORCE] = (long long) H5TOR_CONV_INT64_FLOAT_FORCE;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_UINT64_NA, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_UINT64_NA, mkChar("H5TOR_CONV_UINT64_NA"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_UINT64_NA] = (long long) H5TOR_CONV_UINT64_NA;
+
+  SET_STRING_ELT(R_categ, CONST_H5TOR_CONV_INT64_NOLOSS, mkChar("H5TOR"));
+  SET_STRING_ELT(R_name, CONST_H5TOR_CONV_INT64_NOLOSS, mkChar("H5TOR_CONV_INT64_NOLOSS"));
+  ((long long *) REAL(R_const))[CONST_H5TOR_CONV_INT64_NOLOSS] = (long long) H5TOR_CONV_INT64_NOLOSS;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_FILE, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_FILE, mkChar("H5F_OBJ_FILE"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_FILE] = (long long) H5F_OBJ_FILE;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_DATASET, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_DATASET, mkChar("H5F_OBJ_DATASET"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_DATASET] = (long long) H5F_OBJ_DATASET;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_GROUP, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_GROUP, mkChar("H5F_OBJ_GROUP"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_GROUP] = (long long) H5F_OBJ_GROUP;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_DATATYPE, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_DATATYPE, mkChar("H5F_OBJ_DATATYPE"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_DATATYPE] = (long long) H5F_OBJ_DATATYPE;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_ATTR, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_ATTR, mkChar("H5F_OBJ_ATTR"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_ATTR] = (long long) H5F_OBJ_ATTR;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_ALL, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_ALL, mkChar("H5F_OBJ_ALL"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_ALL] = (long long) H5F_OBJ_ALL;
+
+  SET_STRING_ELT(R_categ, CONST_H5F_OBJ_LOCAL, mkChar("H5F_OBJ"));
+  SET_STRING_ELT(R_name, CONST_H5F_OBJ_LOCAL, mkChar("H5F_OBJ_LOCAL"));
+  ((long long *) REAL(R_const))[CONST_H5F_OBJ_LOCAL] = (long long) H5F_OBJ_LOCAL;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_ATTRIBUTE_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_ATTRIBUTE_CREATE, mkChar("H5P_ATTRIBUTE_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_ATTRIBUTE_CREATE] = (long long) H5P_ATTRIBUTE_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DATASET_ACCESS, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DATASET_ACCESS, mkChar("H5P_DATASET_ACCESS"));
+  ((long long *) REAL(R_const))[CONST_H5P_DATASET_ACCESS] = (long long) H5P_DATASET_ACCESS;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DATASET_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DATASET_CREATE, mkChar("H5P_DATASET_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_DATASET_CREATE] = (long long) H5P_DATASET_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DATASET_XFER, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DATASET_XFER, mkChar("H5P_DATASET_XFER"));
+  ((long long *) REAL(R_const))[CONST_H5P_DATASET_XFER] = (long long) H5P_DATASET_XFER;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DATATYPE_ACCESS, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DATATYPE_ACCESS, mkChar("H5P_DATATYPE_ACCESS"));
+  ((long long *) REAL(R_const))[CONST_H5P_DATATYPE_ACCESS] = (long long) H5P_DATATYPE_ACCESS;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_DATATYPE_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_DATATYPE_CREATE, mkChar("H5P_DATATYPE_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_DATATYPE_CREATE] = (long long) H5P_DATATYPE_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_FILE_ACCESS, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_FILE_ACCESS, mkChar("H5P_FILE_ACCESS"));
+  ((long long *) REAL(R_const))[CONST_H5P_FILE_ACCESS] = (long long) H5P_FILE_ACCESS;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_FILE_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_FILE_CREATE, mkChar("H5P_FILE_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_FILE_CREATE] = (long long) H5P_FILE_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_FILE_MOUNT, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_FILE_MOUNT, mkChar("H5P_FILE_MOUNT"));
+  ((long long *) REAL(R_const))[CONST_H5P_FILE_MOUNT] = (long long) H5P_FILE_MOUNT;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_GROUP_ACCESS, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_GROUP_ACCESS, mkChar("H5P_GROUP_ACCESS"));
+  ((long long *) REAL(R_const))[CONST_H5P_GROUP_ACCESS] = (long long) H5P_GROUP_ACCESS;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_GROUP_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_GROUP_CREATE, mkChar("H5P_GROUP_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_GROUP_CREATE] = (long long) H5P_GROUP_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_LINK_ACCESS, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_LINK_ACCESS, mkChar("H5P_LINK_ACCESS"));
+  ((long long *) REAL(R_const))[CONST_H5P_LINK_ACCESS] = (long long) H5P_LINK_ACCESS;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_LINK_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_LINK_CREATE, mkChar("H5P_LINK_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_LINK_CREATE] = (long long) H5P_LINK_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_OBJECT_COPY, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_OBJECT_COPY, mkChar("H5P_OBJECT_COPY"));
+  ((long long *) REAL(R_const))[CONST_H5P_OBJECT_COPY] = (long long) H5P_OBJECT_COPY;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_OBJECT_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_OBJECT_CREATE, mkChar("H5P_OBJECT_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_OBJECT_CREATE] = (long long) H5P_OBJECT_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_STRING_CREATE, mkChar("H5P"));
+  SET_STRING_ELT(R_name, CONST_H5P_STRING_CREATE, mkChar("H5P_STRING_CREATE"));
+  ((long long *) REAL(R_const))[CONST_H5P_STRING_CREATE] = (long long) H5P_STRING_CREATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_ALL, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_ALL, mkChar("H5Z_FILTER_ALL"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_ALL] = (long long) H5Z_FILTER_ALL;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_DEFLATE, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_DEFLATE, mkChar("H5Z_FILTER_DEFLATE"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_DEFLATE] = (long long) H5Z_FILTER_DEFLATE;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_SHUFFLE, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_SHUFFLE, mkChar("H5Z_FILTER_SHUFFLE"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_SHUFFLE] = (long long) H5Z_FILTER_SHUFFLE;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_FLETCHER32, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_FLETCHER32, mkChar("H5Z_FILTER_FLETCHER32"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_FLETCHER32] = (long long) H5Z_FILTER_FLETCHER32;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_SZIP, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_SZIP, mkChar("H5Z_FILTER_SZIP"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_SZIP] = (long long) H5Z_FILTER_SZIP;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_NBIT, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_NBIT, mkChar("H5Z_FILTER_NBIT"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_NBIT] = (long long) H5Z_FILTER_NBIT;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FILTER_SCALEOFFSET, mkChar("H5Z_FILTER"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FILTER_SCALEOFFSET, mkChar("H5Z_FILTER_SCALEOFFSET"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FILTER_SCALEOFFSET] = (long long) H5Z_FILTER_SCALEOFFSET;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FLAG_OPTIONAL, mkChar("H5Z_FLAG"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FLAG_OPTIONAL, mkChar("H5Z_FLAG_OPTIONAL"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FLAG_OPTIONAL] = (long long) H5Z_FLAG_OPTIONAL;
+
+  SET_STRING_ELT(R_categ, CONST_H5Z_FLAG_MANDATORY, mkChar("H5Z_FLAG"));
+  SET_STRING_ELT(R_name, CONST_H5Z_FLAG_MANDATORY, mkChar("H5Z_FLAG_MANDATORY"));
+  ((long long *) REAL(R_const))[CONST_H5Z_FLAG_MANDATORY] = (long long) H5Z_FLAG_MANDATORY;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_CRT_ORDER_TRACKED, mkChar("H5P_CRT_ORDER"));
+  SET_STRING_ELT(R_name, CONST_H5P_CRT_ORDER_TRACKED, mkChar("H5P_CRT_ORDER_TRACKED"));
+  ((long long *) REAL(R_const))[CONST_H5P_CRT_ORDER_TRACKED] = (long long) H5P_CRT_ORDER_TRACKED;
+
+  SET_STRING_ELT(R_categ, CONST_H5P_CRT_ORDER_INDEXED, mkChar("H5P_CRT_ORDER"));
+  SET_STRING_ELT(R_name, CONST_H5P_CRT_ORDER_INDEXED, mkChar("H5P_CRT_ORDER_INDEXED"));
+  ((long long *) REAL(R_const))[CONST_H5P_CRT_ORDER_INDEXED] = (long long) H5P_CRT_ORDER_INDEXED;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_SHALLOW_HIERARCHY_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_SHALLOW_HIERARCHY_FLAG, mkChar("H5O_COPY_SHALLOW_HIERARCHY_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_SHALLOW_HIERARCHY_FLAG] = (long long) H5O_COPY_SHALLOW_HIERARCHY_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_EXPAND_SOFT_LINK_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_EXPAND_SOFT_LINK_FLAG, mkChar("H5O_COPY_EXPAND_SOFT_LINK_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_EXPAND_SOFT_LINK_FLAG] = (long long) H5O_COPY_EXPAND_SOFT_LINK_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_EXPAND_EXT_LINK_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_EXPAND_EXT_LINK_FLAG, mkChar("H5O_COPY_EXPAND_EXT_LINK_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_EXPAND_EXT_LINK_FLAG] = (long long) H5O_COPY_EXPAND_EXT_LINK_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_EXPAND_REFERENCE_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_EXPAND_REFERENCE_FLAG, mkChar("H5O_COPY_EXPAND_REFERENCE_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_EXPAND_REFERENCE_FLAG] = (long long) H5O_COPY_EXPAND_REFERENCE_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_WITHOUT_ATTR_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_WITHOUT_ATTR_FLAG, mkChar("H5O_COPY_WITHOUT_ATTR_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_WITHOUT_ATTR_FLAG] = (long long) H5O_COPY_WITHOUT_ATTR_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG, mkChar("H5O_COPY"));
+  SET_STRING_ELT(R_name, CONST_H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG, mkChar("H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG"));
+  ((long long *) REAL(R_const))[CONST_H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG] = (long long) H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_BASIC, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_BASIC, mkChar("H5O_INFO_BASIC"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_BASIC] = (long long) H5O_INFO_BASIC;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_TIME, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_TIME, mkChar("H5O_INFO_TIME"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_TIME] = (long long) H5O_INFO_TIME;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_NUM_ATTRS, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_NUM_ATTRS, mkChar("H5O_INFO_NUM_ATTRS"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_NUM_ATTRS] = (long long) H5O_INFO_NUM_ATTRS;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_HDR, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_HDR, mkChar("H5O_INFO_HDR"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_HDR] = (long long) H5O_INFO_HDR;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_META_SIZE, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_META_SIZE, mkChar("H5O_INFO_META_SIZE"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_META_SIZE] = (long long) H5O_INFO_META_SIZE;
+
+  SET_STRING_ELT(R_categ, CONST_H5O_INFO_ALL, mkChar("H5O_INFO"));
+  SET_STRING_ELT(R_name, CONST_H5O_INFO_ALL, mkChar("H5O_INFO_ALL"));
+  ((long long *) REAL(R_const))[CONST_H5O_INFO_ALL] = (long long) H5O_INFO_ALL;
+
+  SET_STRING_ELT(R_categ, CONST_H5D_CHUNK_CACHE_W0_DEFAULT, mkChar("H5D_CHUNK"));
+  SET_STRING_ELT(R_name, CONST_H5D_CHUNK_CACHE_W0_DEFAULT, mkChar("H5D_CHUNK_CACHE_W0_DEFAULT"));
+  ((long long *) REAL(R_const))[CONST_H5D_CHUNK_CACHE_W0_DEFAULT] = (long long) H5D_CHUNK_CACHE_W0_DEFAULT;
+  UNPROTECT(4);
+  return(df);
+}
