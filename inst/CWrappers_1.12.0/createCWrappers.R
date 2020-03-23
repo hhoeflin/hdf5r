@@ -473,11 +473,38 @@ excluded_funcs_needs_parallel <- c("H5Fget_mpi_atomicity", "H5Fset_mpi_atomicity
                                    "H5Pget_coll_metadata_write", "H5Pget_mpio_actual_chunk_opt_mode", "H5Pget_mpio_actual_io_mode",
                                    "H5Pget_mpio_no_collective_cause", "H5Pset_all_coll_metadata_ops", "H5Pset_coll_metadata_write")
 
-excluded_funcs_manual <- NULL
+# note: commented lines are excluded as they can't be wrapped anyway; they have functions as
+# parameters that can't be used from inside R
+func_mapping_112 <- rbind(
+    data.frame(func_name="H5Lget_info1", func_mapped="H5Lget_info", exclude="H5Lget_info2", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Lget_info_by_idx1", func_mapped="H5Lget_info_by_idx", exclude="H5Lget_info_by_idx2", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Literate1", func_mapped="H5Literate", exclude="H5Literate2", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Literate_by_name1", func_mapped="H5Literate_by_name", exclude="H5Literate_by_name2", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Lvisit1", func_mapped="H5Lvisit", exclude="H5Lvisit2", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Lvisit_by_name1", func_mapped="H5Lvisit_by_name", exclude="H5Lvisit_by_name2", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Oget_info1", func_mapped="H5Oget_info", exclude="H5Oget_info3", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Oget_info_by_idx1", func_mapped="H5Oget_info_by_idx", exclude="H5Oget_info_by_idx3", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Oget_info_by_name1", func_mapped="H5Oget_info_by_name", exclude="H5Oget_info_by_name3", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Ovisit1", func_mapped="H5Ovisit", exclude="H5Ovisit3", stringsAsFactors=FALSE),
+#    data.frame(func_name="H5Ovisit_by_name1", func_mapped="H5Ovisit_by_name", exclude="H5Ovisit_by_name3", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Sencode1", func_mapped="H5Sencode", exclude="H5Sencode2", stringsAsFactors=FALSE),
+    data.frame(func_name="H5Pencode1", func_mapped="H5Pencode", exclude="H5Pencode2", stringsAsFactors=FALSE)
+)
 
 
+api_info_all <- subset(api_info_all, !(func_name %in% c(excluded_funcs_obsolete, func_mapping_112$exclude, excluded_funcs_not_used, excluded_funcs_needs_parallel)))
 
-api_info_all <- subset(api_info_all, !(func_name %in% c(excluded_funcs_obsolete, excluded_funcs_manual, excluded_funcs_not_used, excluded_funcs_needs_parallel)))
+# ensure that all functions that are to be mapped exists
+func_from_not_found <- setdiff(func_mapping_112$func_name, api_info_all$func_name)
+if(length(func_from_not_found) > 0) {
+    stop(paste("Some functions for mapping could not be found: ", paste(func_from_not_found, collapse=", ")))
+}
+
+# map the function names
+api_info_all <- dplyr::left_join(api_info_all, func_mapping_112)
+has_map <- !is.na(api_info_all$func_mapped)
+api_info_all$func_name[has_map] <- api_info_all$func_mapped[has_map]
+api_info_all$func_mapped <- NULL
 
 h5_file_start <- function(filename) {
     filename <- gsub("public", "", filename)

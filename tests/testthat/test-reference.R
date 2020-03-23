@@ -20,7 +20,6 @@
 
 
 context("HDF5 Reference objects")
-
 test_that("Subsetting raw vector with c code", {
 
     ## test reading and writing of a subset of a raw vector using C code

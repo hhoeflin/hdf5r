@@ -1,4 +1,4 @@
-AC_INIT([hdf5r], 0.1.0, [hoeflin@gmail.com])
+AC_INIT([hdf5r], 0.1.0, [hhoeflin@gmail.com])
 
 dnl Grab that macro that checks for HDF5 availability
 m4_include([inst/m4/ax_lib_hdf5.m4])
@@ -58,15 +58,28 @@ if test "$hdf5_version_sufficient" = "yes"; then
 	[1.10.3], 
 	[HDF5_VERSION_USE="1_10_3"])
 	
-	AX_COMPARE_VERSION(
+  AX_COMPARE_VERSION(
 	[$HDF5_VERSION], 
 	[ge], 
 	[1.10.4], 
 	[HDF5_VERSION_USE="1_10_3"])
+	
+  AX_COMPARE_VERSION(
+	[$HDF5_VERSION], 
+	[ge], 
+	[1.12.0], 
+	[HDF5_VERSION_USE="1_12_0"])
+  
+  AX_COMPARE_VERSION(
+	[$HDF5_VERSION], 
+	[ge], 
+	[1.12.0], 
+	[HDF5_API_VERS_USE="-DH5_USE_110_API"],
+    [HDF5_API_VERS_USE=""])
 fi
 
 AC_SUBST(HDF5_VERSION_USE)
-
+AC_SUBST(HDF5_API_VERS_USE)
 AC_SUBST(DEFINE_H5FREE_MEMORY)
 
 
