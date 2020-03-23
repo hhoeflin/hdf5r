@@ -23,7 +23,7 @@ env:
     - HDF5_VERSION=1.10.1
     - HDF5_VERSION=1.10.2
     - HDF5_VERSION=1.10.3
-    - HDF5_VERSION=1.10.4
+    - HDF5_VERSION=1.10.5
     - HDF5_VERSION=1.12.0
 
 matrix:
@@ -31,7 +31,7 @@ matrix:
     - os: osx
   include:
     - os: osx
-      env: HDF5_VERSION=1.10.3
+      env: HDF5_VERSION=1.12.0
   fast_finish: true
   
 warnings_are_errors: true
