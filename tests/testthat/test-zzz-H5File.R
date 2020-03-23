@@ -34,59 +34,59 @@ test_that("H5File-FileMode-param-a",{
 	h5close(file)
 
 	# Open existing file for append
-	expect_that(file.exists(fname), is_true())
+	expect_true(file.exists(fname))
 	file <- h5file(fname, "a")
 	expect_that(file, is_a("H5File"))
-	expect_that(existsGroup(file, "testgroup"), is_true())
+	expect_true(existsGroup(file, "testgroup"))
 	group2 <- createGroup(file, "testgroup2")
 	h5close(group2)
 	h5close(file)
 })
 
 test_that("H5File-FileMode-param-w-",{
-	expect_that(file.exists(fname), is_true())
+	expect_true(file.exists(fname))
 	f <- function() file <- h5file(fname, "w-")
 	expect_that(f(), throws_error("Unable to open file"))
-	expect_that(file.remove(fname), is_true())
+	expect_true(file.remove(fname))
 
 	file <- h5file(fname, "w-")
 	expect_that(file$mode, is_identical_to("w-"))
 	expect_that(normalizePath(file$filename, mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
 	group1 <- createGroup(file, "testgroup1")
-	expect_that(existsGroup(file, "testgroup1"), is_true())
+	expect_true(existsGroup(file, "testgroup1"))
 	h5close(group1)
 	h5close(file)
 })
 
 test_that("H5File-FileMode-param-w",{
-  expect_that(file.exists(fname), is_true())
+  expect_true(file.exists(fname))
   # Seems HDF5 since 1.8.15 does not detect that file does exist but is already
   # closed, see also https://www.hdfgroup.org/HDF5/doc/RM/RM_H5F.html
   # We therefore need to delete file
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 
   file <- h5file(fname, "w")
   expect_that(file$mode, is_identical_to("w"))
   expect_that(normalizePath(file$filename, mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
-  expect_that(existsGroup(file, "testgroup1"), is_false())
+  expect_false(existsGroup(file, "testgroup1"))
   group2 <- createGroup(file, "testgroup1")
   h5close(group2)
   h5close(file)
 
-  expect_that(file.exists(fname), is_true())
+  expect_true(file.exists(fname))
   # See above
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 
   file <- h5file(fname, "w")
   expect_that(file$mode, is_identical_to("w"))
   expect_that(normalizePath(file$filename, mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
-  expect_that(existsGroup(file, "testgroup1"), is_false())
+  expect_false(existsGroup(file, "testgroup1"))
   h5close(file)
 
 })
 
 test_that("H5File-FileMode-param-r",{
-	expect_that(file.exists(fname), is_true())
+	expect_true(file.exists(fname))
   file <- h5file(fname, "r")
   expect_that(file$mode, is_identical_to("r"))
 
@@ -99,7 +99,7 @@ test_that("H5File-FileMode-param-r",{
   expect_that(normalizePath(file$filename, mustWork=FALSE), is_identical_to(normalizePath(fname, mustWork=FALSE)))
   h5close(file)
 
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
   f <- function() file <- h5file(fname, "r")
   expect_that(f(), throws_error("Unable to open file"))
 })
@@ -116,11 +116,11 @@ test_that("H5File-FileMode-param-r+",{
   h5close(file)
 
   file <- h5file(fname, "r+")
-  expect_that(existsGroup(file, "testgroup"), is_true())
+  expect_true(existsGroup(file, "testgroup"))
   expect_that(group1, is_a("H5Group"))
   h5close(group1)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 
@@ -134,7 +134,7 @@ test_that("H5File-show",{
   h5close(group2)
   h5close(group3)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("H5File-is-h5file",{
@@ -144,13 +144,13 @@ test_that("H5File-is-h5file",{
   h5close(group1)
   h5close(file)
 
-  expect_that(is.h5file(fname), is_true())
-  expect_warning(expect_that(is.h5file("abc"), is_false()))
+  expect_true(is.h5file(fname))
+  expect_warning(expect_false(is.h5file("abc")))
   fnametxt <- "test.txt"
   writeLines("abc", fnametxt)
-  expect_that(is.h5file(fnametxt), is_false())
-  expect_that(file.remove(fname), is_true())
-  expect_that(file.remove(fnametxt), is_true())
+  expect_false(is.h5file(fnametxt))
+  expect_true(file.remove(fname))
+  expect_true(file.remove(fnametxt))
 })
 
 test_that("H5File-flush",{

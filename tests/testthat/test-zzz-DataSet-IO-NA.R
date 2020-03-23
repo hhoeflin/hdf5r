@@ -64,5 +64,5 @@ test_that("DataSet-Vector-NA",{
   
   h5close(group)
   h5close(file)		
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })

@@ -33,7 +33,7 @@ test_that("H5File-Subset-Group",{
   # expect_that(group5@location, is_identical_to("/test1/test2/test3/test4/test5"))
   # h5close(group5)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("H5File-Subset-DataSet",{
@@ -90,6 +90,6 @@ test_that("H5File-Subset-DataSet",{
   # set subsets
   # TODO: include test cases
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 

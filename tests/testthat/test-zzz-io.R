@@ -41,6 +41,6 @@ test_that("datatypes-IO",{
 	h5close(group3)
 	h5close(file2)
 	
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 

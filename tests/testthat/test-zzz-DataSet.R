@@ -10,7 +10,7 @@ test_that("DataSet-createDataset",{
   expect_that(f(), throws_error("If a sample robj is not provided, then dtype has to be given"))
 
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-createDataset-chunksize",{
@@ -44,7 +44,7 @@ test_that("DataSet-createDataset-chunksize",{
   # expect_that(ds_chunk@datatype, is_identical_to("i"))
   # h5close(ds_chunk)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-createDataset-maxdimensions",{
@@ -76,7 +76,7 @@ test_that("DataSet-createDataset-maxdimensions",{
   h5close(dset_md_10_10)
 
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-createDataset-compression",{
@@ -98,7 +98,7 @@ test_that("DataSet-createDataset-compression",{
   }
 
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-list-dataset",{
@@ -149,7 +149,7 @@ test_that("DataSet-list-dataset",{
   expect_that(list.datasets(testgroup), is_identical_to(ex))
   h5close(testgroup)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-list-dataset",{
@@ -170,7 +170,7 @@ test_that("DataSet-list-dataset",{
   expect_that(list.datasets(file, recursive = FALSE), is_identical_to(character(0)))
 
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 
 })
 

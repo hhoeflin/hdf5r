@@ -44,7 +44,7 @@ test_that("DataSet-extend",{
 
   h5close(dset2)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-extend-matrix-rbind",{  
@@ -78,7 +78,7 @@ test_that("DataSet-extend-matrix-rbind",{
   expect_that(readDataSet(dset2), is_identical_to(rbind(testmat_n, testmat_n)))
   h5close(dset2)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-extend-matrix-cbind",{  
@@ -113,7 +113,7 @@ test_that("DataSet-extend-matrix-cbind",{
   expect_that(readDataSet(dset2), is_identical_to(cbind(testmat_n, testmat_n)))
   h5close(dset2)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-extend-vector-c",{  
@@ -137,7 +137,7 @@ test_that("DataSet-extend-vector-c",{
   expect_that(readDataSet(dset1), is_identical_to(testmat_n_extend))
   h5close(dset1)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 

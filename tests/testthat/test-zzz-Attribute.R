@@ -62,7 +62,7 @@ test_that("Attribute-Errors", {
   h5close(dset)
   h5close(group)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })      
       
 test_that("Attribute-H5Type-File", {      
@@ -120,7 +120,7 @@ test_that("Attribute-H5Type-File", {
   h5close(group)
   h5close(dset)
   h5close(file) 
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })    
 
 test_that("Attribute-list-attributes", {      
@@ -161,7 +161,7 @@ test_that("Attribute-list-attributes", {
   #     is_identical_to(c("groupattr1", "groupattr2", "groupattr3")))
 
   h5close(file) 
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("Bug_AttributeGroupSubset", {        
@@ -174,7 +174,7 @@ test_that("Bug_AttributeGroupSubset", {
 
   h5attr(file[["testdataset"]], "test") <- 1:10
   h5close(file) 
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("Attribute-Bug-Scalar-Issue09",{	

@@ -23,7 +23,7 @@ test_that("H5Group-param",{
   expect_that(group1, is_a("H5Group"))
   h5close(groupn)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("H5Group-createGroup",{
@@ -47,11 +47,11 @@ test_that("H5Group-createGroup",{
 })
 
 test_that("H5Group-openLocation",{
-  expect_that(file.exists(fname), is_true())
+  expect_true(file.exists(fname))
   file <- h5file(fname, "r")
   # Fail for nested (non-existent) group name
   f <- function() group1 <- openLocation(file, "/testgroup/test")
-  expect_that(f(), throws_error("component not found"))
+  expect_that(f(), throws_error()) # error message varies between versions
 
   group3 <- openLocation(file, "/testgroup3")
   expect_that(group3, is_a("H5Group"))
@@ -76,11 +76,11 @@ test_that("H5Group-openLocation",{
 })
 
 test_that("H5Group-openGroup",{
-  expect_that(file.exists(fname), is_true())
+  expect_true(file.exists(fname))
   file <- h5file(fname, "r")
   # Fail for nested (non-existent) group name
   f <- function() group1 <- openGroup(file, "/testgroup/test")
-  expect_that(f(), throws_error("component not found"))
+  expect_that(f(), throws_error()) # specific message check removed as message varies
   
   group3 <- openGroup(file, "/testgroup3")
   expect_that(group3, is_a("H5Group"))
@@ -105,18 +105,18 @@ test_that("H5Group-openGroup",{
 })
 
 test_that("H5Group-existsGroup",{
-  expect_that(file.exists(fname), is_true())
+  expect_true(file.exists(fname))
   file <- h5file(fname, "r")
   # Fail for nested (non-existent) group name
-  expect_that(existsGroup(file, "/testgroup/test"), is_false())
-  expect_that(existsGroup(file, "/testgroup3"), is_true())
-  expect_that(existsGroup(file, "/testgroup3/test"), is_true())
+  expect_false(existsGroup(file, "/testgroup/test"))
+  expect_true(existsGroup(file, "/testgroup3"))
+  expect_true(existsGroup(file, "/testgroup3/test"))
 
   group3 <- openLocation(file, "/testgroup3")
-  expect_that(existsGroup(group3, "test"), is_true())
+  expect_true(existsGroup(group3, "test"))
   h5close(group3)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("CommonFG-list-groups",{
@@ -125,7 +125,7 @@ test_that("CommonFG-list-groups",{
 
   # TODO(mario): Adjust error message if object[[path]] is nonexistent
   f <- function() list.groups(file, path = "a/be/bu")
-  expect_that(f(), throws_error("component not found"))
+  expect_that(f(), throws_error()) # specific error message removed as message varies
   expect_that(list.groups(file), is_identical_to(character(0)))
 
   g1 <- createGroup(file, "testgroup")
@@ -163,7 +163,7 @@ test_that("CommonFG-list-groups",{
   h5close(testgroup)
 
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("CommonFG-unlink",{
@@ -186,15 +186,15 @@ test_that("CommonFG-unlink",{
       is_identical_to(ex))
 
   # unlink dataset
-  expect_that(h5unlink(file, "testgroup"), is_true())
-  expect_that(h5unlink(file, "testgroup2/testset"), is_true())
+  expect_true(h5unlink(file, "testgroup"))
+  expect_true(h5unlink(file, "testgroup2/testset"))
   expect_that(list.datasets(file, recursive = TRUE),
       is_identical_to(character(0)))
   expect_that(list.groups(file, recursive = TRUE),
       is_identical_to("testgroup2"))
 
   # remove last group
-  expect_that(h5unlink(file, "testgroup2"), is_true())
+  expect_true(h5unlink(file, "testgroup2"))
   expect_that(list.groups(file, recursive = TRUE),
       is_identical_to(character(0)))
 
@@ -235,5 +235,5 @@ test_that("CommonFG-unlink",{
   expect_that(res, is_identical_to(c(TRUE, TRUE, TRUE, FALSE)))
   h5close(file)
 
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })

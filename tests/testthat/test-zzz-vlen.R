@@ -78,7 +78,7 @@ test_that("DataSet-VLEN-Vector",{
   expect_that(testlist_c_in[], is_identical_to(testlist_c))
   h5close(testlist_c_in)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
 
 test_that("DataSet-VLEN-Vector-Attribute",{
@@ -125,5 +125,5 @@ test_that("DataSet-VLEN-Vector-Attribute",{
   
   h5close(testgroup)
   h5close(file)
-  expect_that(file.remove(fname), is_true())
+  expect_true(file.remove(fname))
 })
