@@ -205,6 +205,15 @@ install_types_const <- function(h5types, h5const) {
         }
     }
 
+    # if we use HDF5 version 1.12 or higher, we have
+    # H5R_OBJECT1 and H5R_OBJECT2, not H5R_OBJECT
+    # H5R_DATASET_REGION1 and H5R_DATASET_REGION2, not H5R_DATASET_REGION
+    if(compareVersion(h5version(verbose=FALSE), "1.12.0") >= 0) {
+        h5const[["H5R_OBJECT"]] <- h5const$H5R_OBJECT1
+        lockBinding("H5R_OBJECT", h5const)
+        h5const[["H5R_DATASET_REGION"]] <- h5const$H5R_DATASET_REGION1
+        lockBinding("H5R_DATASET_REGION", h5const)
+    }
     ## and each constant individually
     lockEnvironment(h5const)
     
