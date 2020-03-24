@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hdf5r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2</span>
       </span>
     </div>
 
@@ -117,11 +117,16 @@
 </tr>
 </tbody>
 </table>
+<div id="note" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#note" class="anchor"></a>Note</h1></div>
+<p><strong>Please note that the newest version of hdf5 1.12.0 is currently not supported. Use version 1.10.x until a fix is released</strong></p>
 <p><strong>hdf5r</strong> is an R interface to the <a href="https://www.hdfgroup.org/HDF5/">HDF5</a> library. It is implemented using <a href="https://CRAN.R-project.org/package=R6">R6</a> classes based on the <a href="https://support.hdfgroup.org/HDF5/doc/RM/RM_H5Front.html">HDF5-C-API</a>. The package supports all data-types as specified by HDF5 (including references) and provides many convenience functions yet also an extensive selection of the native HDF5-C-API functions. <strong>hdf5r</strong> is available on <a href="https://github.com/hhoeflin/hdf5r">Github</a> and has already been released on <a href="https://CRAN.R-project.org/package=hdf5r">CRAN</a> for all major platforms (Windows, OS X, Linux). It is also tested using several hundred assertions.</p>
 <p><a href="https://www.hdfgroup.org/HDF5/">HDF5</a> is an excellent library and data model to store huge amounts of data in a binary file format. Supporting most major platforms and programming languages it can be used to exchange data files in a language independent format. Compared to R’s integrated <em>save()</em> and <em>load()</em> functions it also supports access to only parts of the binary data files and can therefore be used to process data not fitting into memory.</p>
+</div>
 <div id="install" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#install" class="anchor"></a>Install</h1></div>
+<h1 class="hasAnchor">
+<a href="#install" class="anchor"></a>Install</h1>
 <p><strong>hdf5r</strong> is available for all major platforms, namely Linux, OS X and Windows. The package is compatible with HDF5 version 1.8.13 or higher (also Version 1.10.0).</p>
 <div id="requirements" class="section level2">
 <h2 class="hasAnchor">

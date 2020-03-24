@@ -71,7 +71,7 @@ Each constant can be accessed using $ and the name of the constant. See the exam
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hdf5r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2</span>
       </span>
     </div>
 
@@ -216,7 +216,7 @@ The constants all start with the term <code>H5TOR</code>. There are currently po
 #&gt; 62                           H5O_INFO
 #&gt; 63                          H5D_CHUNK
 #&gt; 1100                       H5_index_t
-#&gt; 284                        H5_index_t
+#&gt; 2100                       H5_index_t
 #&gt; 3                          H5_index_t
 #&gt; 410                        H5_index_t
 #&gt; 510                   H5_iter_order_t
@@ -242,9 +242,9 @@ The constants all start with the term <code>H5TOR</code>. There are currently po
 #&gt; 2510                H5D_chunk_index_t
 #&gt; 2610                H5D_chunk_index_t
 #&gt; 2710                H5D_chunk_index_t
-#&gt; 285                 H5D_chunk_index_t
-#&gt; 291                 H5D_chunk_index_t
-#&gt; 301                   H5D_fill_time_t
+#&gt; 2810                H5D_chunk_index_t
+#&gt; 2910                H5D_chunk_index_t
+#&gt; 304                   H5D_fill_time_t
 #&gt; 311                   H5D_fill_time_t
 #&gt; 321                   H5D_fill_time_t
 #&gt; 331                   H5D_fill_time_t
@@ -275,75 +275,75 @@ The constants all start with the term <code>H5TOR</code>. There are currently po
 #&gt; 581    H5D_mpio_no_collective_cause_t
 #&gt; 591    H5D_mpio_no_collective_cause_t
 #&gt; 601    H5D_mpio_no_collective_cause_t
-#&gt; 611                H5D_space_status_t
+#&gt; 611    H5D_mpio_no_collective_cause_t
 #&gt; 621                H5D_space_status_t
 #&gt; 631                H5D_space_status_t
 #&gt; 64                 H5D_space_status_t
-#&gt; 65                     H5D_vds_view_t
+#&gt; 65                 H5D_space_status_t
 #&gt; 66                     H5D_vds_view_t
 #&gt; 67                     H5D_vds_view_t
-#&gt; 68                    H5E_direction_t
+#&gt; 68                     H5D_vds_view_t
 #&gt; 69                    H5E_direction_t
-#&gt; 70                         H5E_type_t
+#&gt; 70                    H5E_direction_t
 #&gt; 71                         H5E_type_t
-#&gt; 72                 H5F_close_degree_t
-#&gt; 73                 H5F_close_degree_t
-#&gt; 74                 H5F_close_degree_t
-#&gt; 75                 H5F_close_degree_t
-#&gt; 76              H5F_file_space_type_t
-#&gt; 77              H5F_file_space_type_t
-#&gt; 78              H5F_file_space_type_t
-#&gt; 79              H5F_file_space_type_t
-#&gt; 80              H5F_file_space_type_t
+#&gt; 72                         H5E_type_t
+#&gt; 73                      H5ES_status_t
+#&gt; 74                      H5ES_status_t
+#&gt; 75                      H5ES_status_t
+#&gt; 76                      H5ES_status_t
+#&gt; 77                 H5F_close_degree_t
+#&gt; 78                 H5F_close_degree_t
+#&gt; 79                 H5F_close_degree_t
+#&gt; 80                 H5F_close_degree_t
 #&gt; 81              H5F_file_space_type_t
-#&gt; 82              H5F_fspace_strategy_t
-#&gt; 83              H5F_fspace_strategy_t
-#&gt; 84              H5F_fspace_strategy_t
-#&gt; 85              H5F_fspace_strategy_t
-#&gt; 86              H5F_fspace_strategy_t
-#&gt; 87                       H5F_libver_t
-#&gt; 88                       H5F_libver_t
-#&gt; 89                       H5F_libver_t
-#&gt; 90                       H5F_libver_t
-#&gt; 91                       H5F_libver_t
-#&gt; 92                          H5F_mem_t
-#&gt; 93                          H5F_mem_t
-#&gt; 94                          H5F_mem_t
-#&gt; 95                          H5F_mem_t
-#&gt; 96                          H5F_mem_t
-#&gt; 97                          H5F_mem_t
+#&gt; 82              H5F_file_space_type_t
+#&gt; 83              H5F_file_space_type_t
+#&gt; 84              H5F_file_space_type_t
+#&gt; 85              H5F_file_space_type_t
+#&gt; 86              H5F_file_space_type_t
+#&gt; 87              H5F_fspace_strategy_t
+#&gt; 88              H5F_fspace_strategy_t
+#&gt; 89              H5F_fspace_strategy_t
+#&gt; 90              H5F_fspace_strategy_t
+#&gt; 91              H5F_fspace_strategy_t
+#&gt; 92                       H5F_libver_t
+#&gt; 93                       H5F_libver_t
+#&gt; 94                       H5F_libver_t
+#&gt; 95                       H5F_libver_t
+#&gt; 96                       H5F_libver_t
+#&gt; 97                       H5F_libver_t
 #&gt; 98                          H5F_mem_t
 #&gt; 99                          H5F_mem_t
 #&gt; 100                         H5F_mem_t
-#&gt; 101                       H5F_scope_t
-#&gt; 102                       H5F_scope_t
-#&gt; 103              H5FD_file_image_op_t
-#&gt; 104              H5FD_file_image_op_t
-#&gt; 105              H5FD_file_image_op_t
-#&gt; 106              H5FD_file_image_op_t
-#&gt; 107              H5FD_file_image_op_t
-#&gt; 108              H5FD_file_image_op_t
+#&gt; 101                         H5F_mem_t
+#&gt; 102                         H5F_mem_t
+#&gt; 103                         H5F_mem_t
+#&gt; 104                         H5F_mem_t
+#&gt; 105                         H5F_mem_t
+#&gt; 106                         H5F_mem_t
+#&gt; 107                       H5F_scope_t
+#&gt; 108                       H5F_scope_t
 #&gt; 109              H5FD_file_image_op_t
 #&gt; 110              H5FD_file_image_op_t
-#&gt; 111                         H5G_obj_t
-#&gt; 112                         H5G_obj_t
-#&gt; 113                         H5G_obj_t
-#&gt; 114                         H5G_obj_t
-#&gt; 115                         H5G_obj_t
-#&gt; 116                         H5G_obj_t
+#&gt; 111              H5FD_file_image_op_t
+#&gt; 112              H5FD_file_image_op_t
+#&gt; 113              H5FD_file_image_op_t
+#&gt; 114              H5FD_file_image_op_t
+#&gt; 115              H5FD_file_image_op_t
+#&gt; 116              H5FD_file_image_op_t
 #&gt; 117                         H5G_obj_t
 #&gt; 118                         H5G_obj_t
 #&gt; 119                         H5G_obj_t
-#&gt; 120                H5G_storage_type_t
-#&gt; 121                H5G_storage_type_t
-#&gt; 122                H5G_storage_type_t
-#&gt; 123                H5G_storage_type_t
-#&gt; 124                        H5I_type_t
-#&gt; 125                        H5I_type_t
-#&gt; 126                        H5I_type_t
-#&gt; 127                        H5I_type_t
-#&gt; 128                        H5I_type_t
-#&gt; 129                        H5I_type_t
+#&gt; 120                         H5G_obj_t
+#&gt; 121                         H5G_obj_t
+#&gt; 122                         H5G_obj_t
+#&gt; 123                         H5G_obj_t
+#&gt; 124                         H5G_obj_t
+#&gt; 125                         H5G_obj_t
+#&gt; 126                H5G_storage_type_t
+#&gt; 127                H5G_storage_type_t
+#&gt; 128                H5G_storage_type_t
+#&gt; 129                H5G_storage_type_t
 #&gt; 130                        H5I_type_t
 #&gt; 131                        H5I_type_t
 #&gt; 132                        H5I_type_t
@@ -354,496 +354,536 @@ The constants all start with the term <code>H5TOR</code>. There are currently po
 #&gt; 137                        H5I_type_t
 #&gt; 138                        H5I_type_t
 #&gt; 139                        H5I_type_t
-#&gt; 140                        H5L_type_t
-#&gt; 141                        H5L_type_t
-#&gt; 142                        H5L_type_t
-#&gt; 143                        H5L_type_t
-#&gt; 144                        H5L_type_t
-#&gt; 145                       H5LT_lang_t
-#&gt; 146                       H5LT_lang_t
-#&gt; 147                       H5LT_lang_t
-#&gt; 148                       H5LT_lang_t
-#&gt; 149                       H5LT_lang_t
-#&gt; 150             H5O_mcdt_search_ret_t
-#&gt; 151             H5O_mcdt_search_ret_t
-#&gt; 152             H5O_mcdt_search_ret_t
-#&gt; 153                        H5O_type_t
-#&gt; 154                        H5O_type_t
-#&gt; 155                        H5O_type_t
-#&gt; 156                        H5O_type_t
-#&gt; 157                        H5O_type_t
-#&gt; 158                       H5PL_type_t
-#&gt; 159                       H5PL_type_t
-#&gt; 160                       H5PL_type_t
-#&gt; 161                        H5R_type_t
-#&gt; 162                        H5R_type_t
-#&gt; 163                        H5R_type_t
-#&gt; 164                        H5R_type_t
-#&gt; 165                       H5S_class_t
-#&gt; 166                       H5S_class_t
-#&gt; 167                       H5S_class_t
-#&gt; 168                       H5S_class_t
-#&gt; 169                      H5S_sel_type
-#&gt; 170                      H5S_sel_type
-#&gt; 171                      H5S_sel_type
-#&gt; 172                      H5S_sel_type
-#&gt; 173                      H5S_sel_type
-#&gt; 174                      H5S_sel_type
-#&gt; 175                     H5S_seloper_t
-#&gt; 176                     H5S_seloper_t
-#&gt; 177                     H5S_seloper_t
-#&gt; 178                     H5S_seloper_t
-#&gt; 179                     H5S_seloper_t
-#&gt; 180                     H5S_seloper_t
-#&gt; 181                     H5S_seloper_t
-#&gt; 182                     H5S_seloper_t
-#&gt; 183                     H5S_seloper_t
-#&gt; 184                     H5S_seloper_t
-#&gt; 185                         H5T_bkg_t
-#&gt; 186                         H5T_bkg_t
-#&gt; 187                         H5T_bkg_t
-#&gt; 188                       H5T_class_t
-#&gt; 189                       H5T_class_t
-#&gt; 190                       H5T_class_t
-#&gt; 191                       H5T_class_t
-#&gt; 192                       H5T_class_t
-#&gt; 193                       H5T_class_t
-#&gt; 194                       H5T_class_t
-#&gt; 195                       H5T_class_t
-#&gt; 196                       H5T_class_t
-#&gt; 197                       H5T_class_t
-#&gt; 198                       H5T_class_t
-#&gt; 199                       H5T_class_t
-#&gt; 200                       H5T_class_t
-#&gt; 201                         H5T_cmd_t
-#&gt; 202                         H5T_cmd_t
-#&gt; 203                         H5T_cmd_t
-#&gt; 204                 H5T_conv_except_t
-#&gt; 205                 H5T_conv_except_t
-#&gt; 206                 H5T_conv_except_t
-#&gt; 207                 H5T_conv_except_t
-#&gt; 208                 H5T_conv_except_t
-#&gt; 209                 H5T_conv_except_t
-#&gt; 210                 H5T_conv_except_t
-#&gt; 211                    H5T_conv_ret_t
-#&gt; 212                    H5T_conv_ret_t
-#&gt; 213                    H5T_conv_ret_t
-#&gt; 214                        H5T_cset_t
-#&gt; 215                        H5T_cset_t
-#&gt; 216                        H5T_cset_t
-#&gt; 217                        H5T_cset_t
-#&gt; 218                        H5T_cset_t
-#&gt; 219                        H5T_cset_t
-#&gt; 220                        H5T_cset_t
-#&gt; 221                        H5T_cset_t
-#&gt; 222                        H5T_cset_t
-#&gt; 223                        H5T_cset_t
-#&gt; 224                        H5T_cset_t
-#&gt; 225                        H5T_cset_t
-#&gt; 226                        H5T_cset_t
+#&gt; 140                        H5I_type_t
+#&gt; 141                        H5I_type_t
+#&gt; 142                        H5I_type_t
+#&gt; 143                        H5I_type_t
+#&gt; 144                        H5I_type_t
+#&gt; 145                        H5I_type_t
+#&gt; 146                        H5I_type_t
+#&gt; 147                        H5I_type_t
+#&gt; 148                        H5L_type_t
+#&gt; 149                        H5L_type_t
+#&gt; 150                        H5L_type_t
+#&gt; 151                        H5L_type_t
+#&gt; 152                        H5L_type_t
+#&gt; 153                       H5LT_lang_t
+#&gt; 154                       H5LT_lang_t
+#&gt; 155                       H5LT_lang_t
+#&gt; 156                       H5LT_lang_t
+#&gt; 157                       H5LT_lang_t
+#&gt; 158             H5O_mcdt_search_ret_t
+#&gt; 159             H5O_mcdt_search_ret_t
+#&gt; 160             H5O_mcdt_search_ret_t
+#&gt; 161                        H5O_type_t
+#&gt; 162                        H5O_type_t
+#&gt; 163                        H5O_type_t
+#&gt; 164                        H5O_type_t
+#&gt; 165                        H5O_type_t
+#&gt; 166                        H5O_type_t
+#&gt; 167                       H5PL_type_t
+#&gt; 168                       H5PL_type_t
+#&gt; 169                       H5PL_type_t
+#&gt; 170                       H5PL_type_t
+#&gt; 171                        H5R_type_t
+#&gt; 172                        H5R_type_t
+#&gt; 173                        H5R_type_t
+#&gt; 174                        H5R_type_t
+#&gt; 175                        H5R_type_t
+#&gt; 176                        H5R_type_t
+#&gt; 177                        H5R_type_t
+#&gt; 178                       H5S_class_t
+#&gt; 179                       H5S_class_t
+#&gt; 180                       H5S_class_t
+#&gt; 181                       H5S_class_t
+#&gt; 182                      H5S_sel_type
+#&gt; 183                      H5S_sel_type
+#&gt; 184                      H5S_sel_type
+#&gt; 185                      H5S_sel_type
+#&gt; 186                      H5S_sel_type
+#&gt; 187                      H5S_sel_type
+#&gt; 188                     H5S_seloper_t
+#&gt; 189                     H5S_seloper_t
+#&gt; 190                     H5S_seloper_t
+#&gt; 191                     H5S_seloper_t
+#&gt; 192                     H5S_seloper_t
+#&gt; 193                     H5S_seloper_t
+#&gt; 194                     H5S_seloper_t
+#&gt; 195                     H5S_seloper_t
+#&gt; 196                     H5S_seloper_t
+#&gt; 197                     H5S_seloper_t
+#&gt; 198                         H5T_bkg_t
+#&gt; 199                         H5T_bkg_t
+#&gt; 200                         H5T_bkg_t
+#&gt; 201                       H5T_class_t
+#&gt; 202                       H5T_class_t
+#&gt; 203                       H5T_class_t
+#&gt; 204                       H5T_class_t
+#&gt; 205                       H5T_class_t
+#&gt; 206                       H5T_class_t
+#&gt; 207                       H5T_class_t
+#&gt; 208                       H5T_class_t
+#&gt; 209                       H5T_class_t
+#&gt; 210                       H5T_class_t
+#&gt; 211                       H5T_class_t
+#&gt; 212                       H5T_class_t
+#&gt; 213                       H5T_class_t
+#&gt; 214                         H5T_cmd_t
+#&gt; 215                         H5T_cmd_t
+#&gt; 216                         H5T_cmd_t
+#&gt; 217                 H5T_conv_except_t
+#&gt; 218                 H5T_conv_except_t
+#&gt; 219                 H5T_conv_except_t
+#&gt; 220                 H5T_conv_except_t
+#&gt; 221                 H5T_conv_except_t
+#&gt; 222                 H5T_conv_except_t
+#&gt; 223                 H5T_conv_except_t
+#&gt; 224                    H5T_conv_ret_t
+#&gt; 225                    H5T_conv_ret_t
+#&gt; 226                    H5T_conv_ret_t
 #&gt; 227                        H5T_cset_t
 #&gt; 228                        H5T_cset_t
 #&gt; 229                        H5T_cset_t
 #&gt; 230                        H5T_cset_t
-#&gt; 231                   H5T_direction_t
-#&gt; 232                   H5T_direction_t
-#&gt; 233                   H5T_direction_t
-#&gt; 234                        H5T_norm_t
-#&gt; 235                        H5T_norm_t
-#&gt; 236                        H5T_norm_t
-#&gt; 237                        H5T_norm_t
-#&gt; 238                       H5T_order_t
-#&gt; 239                       H5T_order_t
-#&gt; 240                       H5T_order_t
-#&gt; 241                       H5T_order_t
-#&gt; 242                       H5T_order_t
-#&gt; 243                       H5T_order_t
-#&gt; 244                         H5T_pad_t
-#&gt; 245                         H5T_pad_t
-#&gt; 246                         H5T_pad_t
-#&gt; 247                         H5T_pad_t
-#&gt; 248                         H5T_pad_t
-#&gt; 249                        H5T_pers_t
-#&gt; 250                        H5T_pers_t
-#&gt; 251                        H5T_pers_t
-#&gt; 252                        H5T_sign_t
-#&gt; 253                        H5T_sign_t
-#&gt; 254                        H5T_sign_t
-#&gt; 255                        H5T_sign_t
-#&gt; 256                         H5T_str_t
-#&gt; 257                         H5T_str_t
-#&gt; 258                         H5T_str_t
-#&gt; 259                         H5T_str_t
-#&gt; 260                         H5T_str_t
-#&gt; 261                         H5T_str_t
-#&gt; 262                         H5T_str_t
-#&gt; 263                         H5T_str_t
-#&gt; 264                         H5T_str_t
-#&gt; 265                         H5T_str_t
-#&gt; 266                         H5T_str_t
-#&gt; 267                         H5T_str_t
-#&gt; 268                         H5T_str_t
+#&gt; 231                        H5T_cset_t
+#&gt; 232                        H5T_cset_t
+#&gt; 233                        H5T_cset_t
+#&gt; 234                        H5T_cset_t
+#&gt; 235                        H5T_cset_t
+#&gt; 236                        H5T_cset_t
+#&gt; 237                        H5T_cset_t
+#&gt; 238                        H5T_cset_t
+#&gt; 239                        H5T_cset_t
+#&gt; 240                        H5T_cset_t
+#&gt; 241                        H5T_cset_t
+#&gt; 242                        H5T_cset_t
+#&gt; 243                        H5T_cset_t
+#&gt; 244                   H5T_direction_t
+#&gt; 245                   H5T_direction_t
+#&gt; 246                   H5T_direction_t
+#&gt; 247                        H5T_norm_t
+#&gt; 248                        H5T_norm_t
+#&gt; 249                        H5T_norm_t
+#&gt; 250                        H5T_norm_t
+#&gt; 251                       H5T_order_t
+#&gt; 252                       H5T_order_t
+#&gt; 253                       H5T_order_t
+#&gt; 254                       H5T_order_t
+#&gt; 255                       H5T_order_t
+#&gt; 256                       H5T_order_t
+#&gt; 257                         H5T_pad_t
+#&gt; 258                         H5T_pad_t
+#&gt; 259                         H5T_pad_t
+#&gt; 260                         H5T_pad_t
+#&gt; 261                         H5T_pad_t
+#&gt; 262                        H5T_pers_t
+#&gt; 263                        H5T_pers_t
+#&gt; 264                        H5T_pers_t
+#&gt; 265                        H5T_sign_t
+#&gt; 266                        H5T_sign_t
+#&gt; 267                        H5T_sign_t
+#&gt; 268                        H5T_sign_t
 #&gt; 269                         H5T_str_t
 #&gt; 270                         H5T_str_t
 #&gt; 271                         H5T_str_t
 #&gt; 272                         H5T_str_t
-#&gt; 273                   H5Z_cb_return_t
-#&gt; 274                   H5Z_cb_return_t
-#&gt; 275                   H5Z_cb_return_t
-#&gt; 276                   H5Z_cb_return_t
-#&gt; 277                         H5Z_EDC_t
-#&gt; 278                         H5Z_EDC_t
-#&gt; 279                         H5Z_EDC_t
-#&gt; 280                         H5Z_EDC_t
-#&gt; 281               H5Z_SO_scale_type_t
-#&gt; 282               H5Z_SO_scale_type_t
-#&gt; 283               H5Z_SO_scale_type_t
-#&gt;                                            Name           Constant
-#&gt; 1                                 H5F_ACC_TRUNC                  2
-#&gt; 2                                  H5F_ACC_EXCL                  4
-#&gt; 4                                H5F_ACC_RDONLY                  0
-#&gt; 5                                  H5F_ACC_RDWR                  1
-#&gt; 6                               H5F_ACC_DEFAULT              65535
-#&gt; 7                            H5F_ACC_SWMR_WRITE                 32
-#&gt; 8                             H5F_ACC_SWMR_READ                 64
-#&gt; 9                                   H5P_DEFAULT                  0
-#&gt; 10                                      H5S_ALL                  0
-#&gt; 11                              H5TOR_CONV_NONE                  0
-#&gt; 12                  H5TOR_CONV_INT64_INT_NOLOSS                  1
-#&gt; 13                H5TOR_CONV_INT64_FLOAT_NOLOSS                  2
-#&gt; 14                 H5TOR_CONV_INT64_FLOAT_FORCE                  4
-#&gt; 15                         H5TOR_CONV_UINT64_NA                  8
-#&gt; 16                      H5TOR_CONV_INT64_NOLOSS                  3
-#&gt; 17                                 H5F_OBJ_FILE                  1
-#&gt; 18                              H5F_OBJ_DATASET                  2
-#&gt; 19                                H5F_OBJ_GROUP                  4
-#&gt; 20                             H5F_OBJ_DATATYPE                  8
-#&gt; 21                                 H5F_OBJ_ATTR                 16
-#&gt; 22                                  H5F_OBJ_ALL                 31
-#&gt; 23                                H5F_OBJ_LOCAL                 32
-#&gt; 24                         H5P_ATTRIBUTE_CREATE 648518346341351439
-#&gt; 25                           H5P_DATASET_ACCESS 648518346341351434
-#&gt; 26                           H5P_DATASET_CREATE 648518346341351433
-#&gt; 27                             H5P_DATASET_XFER 648518346341351435
-#&gt; 28                          H5P_DATATYPE_ACCESS 648518346341351438
-#&gt; 29                          H5P_DATATYPE_CREATE 648518346341351437
-#&gt; 30                              H5P_FILE_ACCESS 648518346341351432
-#&gt; 31                              H5P_FILE_CREATE 648518346341351431
-#&gt; 32                               H5P_FILE_MOUNT 648518346341351436
-#&gt; 33                             H5P_GROUP_ACCESS 648518346341351430
-#&gt; 34                             H5P_GROUP_CREATE 648518346341351428
-#&gt; 35                              H5P_LINK_ACCESS 648518346341351427
-#&gt; 36                              H5P_LINK_CREATE 648518346341351441
-#&gt; 37                              H5P_OBJECT_COPY 648518346341351429
-#&gt; 38                            H5P_OBJECT_CREATE 648518346341351425
-#&gt; 39                            H5P_STRING_CREATE 648518346341351426
-#&gt; 40                               H5Z_FILTER_ALL                  0
-#&gt; 41                           H5Z_FILTER_DEFLATE                  1
-#&gt; 42                           H5Z_FILTER_SHUFFLE                  2
-#&gt; 43                        H5Z_FILTER_FLETCHER32                  3
-#&gt; 44                              H5Z_FILTER_SZIP                  4
-#&gt; 45                              H5Z_FILTER_NBIT                  5
-#&gt; 46                       H5Z_FILTER_SCALEOFFSET                  6
-#&gt; 47                            H5Z_FLAG_OPTIONAL                  1
-#&gt; 48                           H5Z_FLAG_MANDATORY                  0
-#&gt; 49                        H5P_CRT_ORDER_TRACKED                  1
-#&gt; 50                        H5P_CRT_ORDER_INDEXED                  2
-#&gt; 51              H5O_COPY_SHALLOW_HIERARCHY_FLAG                  1
-#&gt; 52               H5O_COPY_EXPAND_SOFT_LINK_FLAG                  2
-#&gt; 53                H5O_COPY_EXPAND_EXT_LINK_FLAG                  4
-#&gt; 54               H5O_COPY_EXPAND_REFERENCE_FLAG                  8
-#&gt; 55                   H5O_COPY_WITHOUT_ATTR_FLAG                 16
-#&gt; 56          H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG                 64
-#&gt; 57                               H5O_INFO_BASIC                  1
-#&gt; 58                                H5O_INFO_TIME                  2
-#&gt; 59                           H5O_INFO_NUM_ATTRS                  4
-#&gt; 60                                 H5O_INFO_HDR                  8
-#&gt; 61                           H5O_INFO_META_SIZE                 16
-#&gt; 62                                 H5O_INFO_ALL                 31
-#&gt; 63                   H5D_CHUNK_CACHE_W0_DEFAULT                 -1
-#&gt; 1100                           H5_INDEX_UNKNOWN                 -1
-#&gt; 284                               H5_INDEX_NAME                  0
-#&gt; 3                            H5_INDEX_CRT_ORDER                  1
-#&gt; 410                                  H5_INDEX_N                  2
-#&gt; 510                             H5_ITER_UNKNOWN                 -1
-#&gt; 610                                 H5_ITER_INC                  0
-#&gt; 710                                 H5_ITER_DEC                  1
-#&gt; 810                              H5_ITER_NATIVE                  2
-#&gt; 910                                   H5_ITER_N                  3
-#&gt; 1010                              H5C_decr__off                  0
-#&gt; 1110                        H5C_decr__threshold                  1
-#&gt; 1210                          H5C_decr__age_out                  2
-#&gt; 1310           H5C_decr__age_out_with_threshold                  3
-#&gt; 1410                        H5C_flash_incr__off                  0
-#&gt; 1510                  H5C_flash_incr__add_space                  1
-#&gt; 1610                              H5C_incr__off                  0
-#&gt; 1710                        H5C_incr__threshold                  1
-#&gt; 1810                       H5D_ALLOC_TIME_ERROR                 -1
-#&gt; 1910                     H5D_ALLOC_TIME_DEFAULT                  0
-#&gt; 2010                       H5D_ALLOC_TIME_EARLY                  1
-#&gt; 2110                        H5D_ALLOC_TIME_LATE                  2
-#&gt; 2210                        H5D_ALLOC_TIME_INCR                  3
-#&gt; 2310                        H5D_CHUNK_IDX_BTREE                  0
-#&gt; 2410                       H5D_CHUNK_IDX_SINGLE                  1
-#&gt; 2510                         H5D_CHUNK_IDX_NONE                  2
-#&gt; 2610                       H5D_CHUNK_IDX_FARRAY                  3
-#&gt; 2710                       H5D_CHUNK_IDX_EARRAY                  4
-#&gt; 285                           H5D_CHUNK_IDX_BT2                  5
-#&gt; 291                        H5D_CHUNK_IDX_NTYPES                  6
-#&gt; 301                         H5D_FILL_TIME_ERROR                 -1
-#&gt; 311                         H5D_FILL_TIME_ALLOC                  0
-#&gt; 321                         H5D_FILL_TIME_NEVER                  1
-#&gt; 331                         H5D_FILL_TIME_IFSET                  2
-#&gt; 341                        H5D_FILL_VALUE_ERROR                 -1
-#&gt; 351                    H5D_FILL_VALUE_UNDEFINED                  0
-#&gt; 361                      H5D_FILL_VALUE_DEFAULT                  1
-#&gt; 371                 H5D_FILL_VALUE_USER_DEFINED                  2
-#&gt; 381                            H5D_LAYOUT_ERROR                 -1
-#&gt; 391                                 H5D_COMPACT                  0
-#&gt; 401                              H5D_CONTIGUOUS                  1
-#&gt; 411                                 H5D_CHUNKED                  2
-#&gt; 421                                 H5D_VIRTUAL                  3
-#&gt; 431                                H5D_NLAYOUTS                  4
-#&gt; 441              H5D_MPIO_NO_CHUNK_OPTIMIZATION                  0
-#&gt; 451                         H5D_MPIO_LINK_CHUNK                  1
-#&gt; 461                        H5D_MPIO_MULTI_CHUNK                  2
-#&gt; 471                      H5D_MPIO_NO_COLLECTIVE                  0
-#&gt; 481                  H5D_MPIO_CHUNK_INDEPENDENT                  1
-#&gt; 491                   H5D_MPIO_CHUNK_COLLECTIVE                  2
-#&gt; 501                        H5D_MPIO_CHUNK_MIXED                  3
-#&gt; 511              H5D_MPIO_CONTIGUOUS_COLLECTIVE                  4
-#&gt; 521                         H5D_MPIO_COLLECTIVE                  0
-#&gt; 531                    H5D_MPIO_SET_INDEPENDENT                  1
-#&gt; 541                H5D_MPIO_DATATYPE_CONVERSION                  2
-#&gt; 551                    H5D_MPIO_DATA_TRANSFORMS                  4
-#&gt; 561     H5D_MPIO_MPI_OPT_TYPES_ENV_VAR_DISABLED                  8
-#&gt; 571    H5D_MPIO_NOT_SIMPLE_OR_SCALAR_DATASPACES                 16
-#&gt; 581  H5D_MPIO_NOT_CONTIGUOUS_OR_CHUNKED_DATASET                 32
-#&gt; 591  H5D_MPIO_PARALLEL_FILTERED_WRITES_DISABLED                 64
-#&gt; 601            H5D_MPIO_NO_COLLECTIVE_MAX_CAUSE                256
-#&gt; 611                      H5D_SPACE_STATUS_ERROR                 -1
-#&gt; 621              H5D_SPACE_STATUS_NOT_ALLOCATED                  0
-#&gt; 631             H5D_SPACE_STATUS_PART_ALLOCATED                  1
-#&gt; 64                   H5D_SPACE_STATUS_ALLOCATED                  2
-#&gt; 65                                H5D_VDS_ERROR                 -1
-#&gt; 66                        H5D_VDS_FIRST_MISSING                  0
-#&gt; 67                       H5D_VDS_LAST_AVAILABLE                  1
-#&gt; 68                              H5E_WALK_UPWARD                  0
-#&gt; 69                            H5E_WALK_DOWNWARD                  1
-#&gt; 70                                    H5E_MAJOR                  0
-#&gt; 71                                    H5E_MINOR                  1
-#&gt; 72                            H5F_CLOSE_DEFAULT                  0
-#&gt; 73                               H5F_CLOSE_WEAK                  1
-#&gt; 74                               H5F_CLOSE_SEMI                  2
-#&gt; 75                             H5F_CLOSE_STRONG                  3
-#&gt; 76                       H5F_FILE_SPACE_DEFAULT                  0
-#&gt; 77                   H5F_FILE_SPACE_ALL_PERSIST                  1
-#&gt; 78                           H5F_FILE_SPACE_ALL                  2
-#&gt; 79                      H5F_FILE_SPACE_AGGR_VFD                  3
-#&gt; 80                           H5F_FILE_SPACE_VFD                  4
-#&gt; 81                        H5F_FILE_SPACE_NTYPES                  5
-#&gt; 82                 H5F_FSPACE_STRATEGY_FSM_AGGR                  0
-#&gt; 83                     H5F_FSPACE_STRATEGY_PAGE                  1
-#&gt; 84                     H5F_FSPACE_STRATEGY_AGGR                  2
-#&gt; 85                     H5F_FSPACE_STRATEGY_NONE                  3
-#&gt; 86                   H5F_FSPACE_STRATEGY_NTYPES                  4
-#&gt; 87                             H5F_LIBVER_ERROR                 -1
-#&gt; 88                          H5F_LIBVER_EARLIEST                  0
-#&gt; 89                               H5F_LIBVER_V18                  1
-#&gt; 90                              H5F_LIBVER_V110                  2
-#&gt; 91                           H5F_LIBVER_NBOUNDS                  3
-#&gt; 92                              H5FD_MEM_NOLIST                 -1
-#&gt; 93                             H5FD_MEM_DEFAULT                  0
-#&gt; 94                               H5FD_MEM_SUPER                  1
-#&gt; 95                               H5FD_MEM_BTREE                  2
-#&gt; 96                                H5FD_MEM_DRAW                  3
-#&gt; 97                               H5FD_MEM_GHEAP                  4
-#&gt; 98                               H5FD_MEM_LHEAP                  5
-#&gt; 99                                H5FD_MEM_OHDR                  6
-#&gt; 100                             H5FD_MEM_NTYPES                  7
-#&gt; 101                             H5F_SCOPE_LOCAL                  0
-#&gt; 102                            H5F_SCOPE_GLOBAL                  1
-#&gt; 103                    H5FD_FILE_IMAGE_OP_NO_OP                  0
-#&gt; 104        H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET                  1
-#&gt; 105       H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY                  2
-#&gt; 106        H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET                  3
-#&gt; 107      H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE                  4
-#&gt; 108                H5FD_FILE_IMAGE_OP_FILE_OPEN                  5
-#&gt; 109              H5FD_FILE_IMAGE_OP_FILE_RESIZE                  6
-#&gt; 110               H5FD_FILE_IMAGE_OP_FILE_CLOSE                  7
-#&gt; 111                                 H5G_UNKNOWN                 -1
-#&gt; 112                                   H5G_GROUP                  0
-#&gt; 113                                 H5G_DATASET                  1
-#&gt; 114                                    H5G_TYPE                  2
-#&gt; 115                                    H5G_LINK                  3
-#&gt; 116                                  H5G_UDLINK                  4
-#&gt; 117                              H5G_RESERVED_5                  5
-#&gt; 118                              H5G_RESERVED_6                  6
-#&gt; 119                              H5G_RESERVED_7                  7
-#&gt; 120                    H5G_STORAGE_TYPE_UNKNOWN                 -1
-#&gt; 121               H5G_STORAGE_TYPE_SYMBOL_TABLE                  0
-#&gt; 122                    H5G_STORAGE_TYPE_COMPACT                  1
-#&gt; 123                      H5G_STORAGE_TYPE_DENSE                  2
-#&gt; 124                                  H5I_UNINIT                 -2
-#&gt; 125                                   H5I_BADID                 -1
-#&gt; 126                                    H5I_FILE                  1
-#&gt; 127                                   H5I_GROUP                  2
-#&gt; 128                                H5I_DATATYPE                  3
-#&gt; 129                               H5I_DATASPACE                  4
-#&gt; 130                                 H5I_DATASET                  5
-#&gt; 131                                    H5I_ATTR                  6
-#&gt; 132                               H5I_REFERENCE                  7
-#&gt; 133                                     H5I_VFL                  8
-#&gt; 134                             H5I_GENPROP_CLS                  9
-#&gt; 135                             H5I_GENPROP_LST                 10
-#&gt; 136                             H5I_ERROR_CLASS                 11
-#&gt; 137                               H5I_ERROR_MSG                 12
-#&gt; 138                             H5I_ERROR_STACK                 13
-#&gt; 139                                  H5I_NTYPES                 14
-#&gt; 140                              H5L_TYPE_ERROR                 -1
-#&gt; 141                               H5L_TYPE_HARD                  0
-#&gt; 142                               H5L_TYPE_SOFT                  1
-#&gt; 143                           H5L_TYPE_EXTERNAL                 64
-#&gt; 144                                H5L_TYPE_MAX                255
-#&gt; 145                               H5LT_LANG_ERR                 -1
-#&gt; 146                                    H5LT_DDL                  0
-#&gt; 147                                      H5LT_C                  1
-#&gt; 148                                H5LT_FORTRAN                  2
-#&gt; 149                                H5LT_NO_LANG                  3
-#&gt; 150                       H5O_MCDT_SEARCH_ERROR                 -1
-#&gt; 151                        H5O_MCDT_SEARCH_CONT                  0
-#&gt; 152                        H5O_MCDT_SEARCH_STOP                  1
-#&gt; 153                            H5O_TYPE_UNKNOWN                 -1
-#&gt; 154                              H5O_TYPE_GROUP                  0
-#&gt; 155                            H5O_TYPE_DATASET                  1
-#&gt; 156                     H5O_TYPE_NAMED_DATATYPE                  2
-#&gt; 157                             H5O_TYPE_NTYPES                  3
-#&gt; 158                             H5PL_TYPE_ERROR                 -1
-#&gt; 159                            H5PL_TYPE_FILTER                  0
-#&gt; 160                              H5PL_TYPE_NONE                  1
-#&gt; 161                                 H5R_BADTYPE                 -1
-#&gt; 162                                  H5R_OBJECT                  0
-#&gt; 163                          H5R_DATASET_REGION                  1
-#&gt; 164                                 H5R_MAXTYPE                  2
-#&gt; 165                                H5S_NO_CLASS                 -1
-#&gt; 166                                  H5S_SCALAR                  0
-#&gt; 167                                  H5S_SIMPLE                  1
-#&gt; 168                                    H5S_NULL                  2
-#&gt; 169                               H5S_SEL_ERROR                 -1
-#&gt; 170                                H5S_SEL_NONE                  0
-#&gt; 171                              H5S_SEL_POINTS                  1
-#&gt; 172                          H5S_SEL_HYPERSLABS                  2
-#&gt; 173                                 H5S_SEL_ALL                  3
-#&gt; 174                                   H5S_SEL_N                  4
-#&gt; 175                             H5S_SELECT_NOOP                 -1
-#&gt; 176                              H5S_SELECT_SET                  0
-#&gt; 177                               H5S_SELECT_OR                  1
-#&gt; 178                              H5S_SELECT_AND                  2
-#&gt; 179                              H5S_SELECT_XOR                  3
-#&gt; 180                             H5S_SELECT_NOTB                  4
-#&gt; 181                             H5S_SELECT_NOTA                  5
-#&gt; 182                           H5S_SELECT_APPEND                  6
-#&gt; 183                          H5S_SELECT_PREPEND                  7
-#&gt; 184                          H5S_SELECT_INVALID                  8
-#&gt; 185                                  H5T_BKG_NO                  0
-#&gt; 186                                H5T_BKG_TEMP                  1
-#&gt; 187                                 H5T_BKG_YES                  2
-#&gt; 188                                H5T_NO_CLASS                 -1
-#&gt; 189                                 H5T_INTEGER                  0
-#&gt; 190                                   H5T_FLOAT                  1
-#&gt; 191                                    H5T_TIME                  2
-#&gt; 192                                  H5T_STRING                  3
-#&gt; 193                                H5T_BITFIELD                  4
-#&gt; 194                                  H5T_OPAQUE                  5
-#&gt; 195                                H5T_COMPOUND                  6
-#&gt; 196                               H5T_REFERENCE                  7
-#&gt; 197                                    H5T_ENUM                  8
-#&gt; 198                                    H5T_VLEN                  9
-#&gt; 199                                   H5T_ARRAY                 10
-#&gt; 200                                H5T_NCLASSES                 11
-#&gt; 201                               H5T_CONV_INIT                  0
-#&gt; 202                               H5T_CONV_CONV                  1
-#&gt; 203                               H5T_CONV_FREE                  2
-#&gt; 204                    H5T_CONV_EXCEPT_RANGE_HI                  0
-#&gt; 205                   H5T_CONV_EXCEPT_RANGE_LOW                  1
-#&gt; 206                   H5T_CONV_EXCEPT_PRECISION                  2
-#&gt; 207                    H5T_CONV_EXCEPT_TRUNCATE                  3
-#&gt; 208                        H5T_CONV_EXCEPT_PINF                  4
-#&gt; 209                        H5T_CONV_EXCEPT_NINF                  5
-#&gt; 210                         H5T_CONV_EXCEPT_NAN                  6
-#&gt; 211                              H5T_CONV_ABORT                 -1
-#&gt; 212                          H5T_CONV_UNHANDLED                  0
-#&gt; 213                            H5T_CONV_HANDLED                  1
-#&gt; 214                              H5T_CSET_ERROR                 -1
-#&gt; 215                              H5T_CSET_ASCII                  0
-#&gt; 216                               H5T_CSET_UTF8                  1
-#&gt; 217                         H5T_CSET_RESERVED_2                  2
-#&gt; 218                         H5T_CSET_RESERVED_3                  3
-#&gt; 219                         H5T_CSET_RESERVED_4                  4
-#&gt; 220                         H5T_CSET_RESERVED_5                  5
-#&gt; 221                         H5T_CSET_RESERVED_6                  6
-#&gt; 222                         H5T_CSET_RESERVED_7                  7
-#&gt; 223                         H5T_CSET_RESERVED_8                  8
-#&gt; 224                         H5T_CSET_RESERVED_9                  9
-#&gt; 225                        H5T_CSET_RESERVED_10                 10
-#&gt; 226                        H5T_CSET_RESERVED_11                 11
-#&gt; 227                        H5T_CSET_RESERVED_12                 12
-#&gt; 228                        H5T_CSET_RESERVED_13                 13
-#&gt; 229                        H5T_CSET_RESERVED_14                 14
-#&gt; 230                        H5T_CSET_RESERVED_15                 15
-#&gt; 231                             H5T_DIR_DEFAULT                  0
-#&gt; 232                              H5T_DIR_ASCEND                  1
-#&gt; 233                             H5T_DIR_DESCEND                  2
-#&gt; 234                              H5T_NORM_ERROR                 -1
-#&gt; 235                            H5T_NORM_IMPLIED                  0
-#&gt; 236                             H5T_NORM_MSBSET                  1
-#&gt; 237                               H5T_NORM_NONE                  2
-#&gt; 238                             H5T_ORDER_ERROR                 -1
-#&gt; 239                                H5T_ORDER_LE                  0
-#&gt; 240                                H5T_ORDER_BE                  1
-#&gt; 241                               H5T_ORDER_VAX                  2
-#&gt; 242                             H5T_ORDER_MIXED                  3
-#&gt; 243                              H5T_ORDER_NONE                  4
-#&gt; 244                               H5T_PAD_ERROR                 -1
-#&gt; 245                                H5T_PAD_ZERO                  0
-#&gt; 246                                 H5T_PAD_ONE                  1
-#&gt; 247                          H5T_PAD_BACKGROUND                  2
-#&gt; 248                                    H5T_NPAD                  3
-#&gt; 249                           H5T_PERS_DONTCARE                 -1
-#&gt; 250                               H5T_PERS_HARD                  0
-#&gt; 251                               H5T_PERS_SOFT                  1
-#&gt; 252                               H5T_SGN_ERROR                 -1
-#&gt; 253                                H5T_SGN_NONE                  0
-#&gt; 254                                   H5T_SGN_2                  1
-#&gt; 255                                    H5T_NSGN                  2
-#&gt; 256                               H5T_STR_ERROR                 -1
-#&gt; 257                            H5T_STR_NULLTERM                  0
-#&gt; 258                             H5T_STR_NULLPAD                  1
-#&gt; 259                            H5T_STR_SPACEPAD                  2
-#&gt; 260                          H5T_STR_RESERVED_3                  3
-#&gt; 261                          H5T_STR_RESERVED_4                  4
-#&gt; 262                          H5T_STR_RESERVED_5                  5
-#&gt; 263                          H5T_STR_RESERVED_6                  6
-#&gt; 264                          H5T_STR_RESERVED_7                  7
-#&gt; 265                          H5T_STR_RESERVED_8                  8
-#&gt; 266                          H5T_STR_RESERVED_9                  9
-#&gt; 267                         H5T_STR_RESERVED_10                 10
-#&gt; 268                         H5T_STR_RESERVED_11                 11
-#&gt; 269                         H5T_STR_RESERVED_12                 12
-#&gt; 270                         H5T_STR_RESERVED_13                 13
-#&gt; 271                         H5T_STR_RESERVED_14                 14
-#&gt; 272                         H5T_STR_RESERVED_15                 15
-#&gt; 273                                H5Z_CB_ERROR                 -1
-#&gt; 274                                 H5Z_CB_FAIL                  0
-#&gt; 275                                 H5Z_CB_CONT                  1
-#&gt; 276                                   H5Z_CB_NO                  2
-#&gt; 277                               H5Z_ERROR_EDC                 -1
-#&gt; 278                             H5Z_DISABLE_EDC                  0
-#&gt; 279                              H5Z_ENABLE_EDC                  1
-#&gt; 280                                  H5Z_NO_EDC                  2
-#&gt; 281                         H5Z_SO_FLOAT_DSCALE                  0
-#&gt; 282                         H5Z_SO_FLOAT_ESCALE                  1
-#&gt; 283                                  H5Z_SO_INT                  2</div><div class='input'><span class='no'>h5const</span>$<span class='no'>H5F_ACC_RDWR</span></div><div class='output co'>#&gt; [1] H5F_ACC_RDWR
+#&gt; 273                         H5T_str_t
+#&gt; 274                         H5T_str_t
+#&gt; 275                         H5T_str_t
+#&gt; 276                         H5T_str_t
+#&gt; 277                         H5T_str_t
+#&gt; 278                         H5T_str_t
+#&gt; 279                         H5T_str_t
+#&gt; 280                         H5T_str_t
+#&gt; 281                         H5T_str_t
+#&gt; 282                         H5T_str_t
+#&gt; 283                         H5T_str_t
+#&gt; 284                         H5T_str_t
+#&gt; 285                         H5T_str_t
+#&gt; 286                    H5VL_map_get_t
+#&gt; 287                    H5VL_map_get_t
+#&gt; 288                    H5VL_map_get_t
+#&gt; 289                    H5VL_map_get_t
+#&gt; 290                    H5VL_map_get_t
+#&gt; 291               H5VL_map_specific_t
+#&gt; 292               H5VL_map_specific_t
+#&gt; 293                   H5Z_cb_return_t
+#&gt; 294                   H5Z_cb_return_t
+#&gt; 295                   H5Z_cb_return_t
+#&gt; 296                   H5Z_cb_return_t
+#&gt; 297                         H5Z_EDC_t
+#&gt; 298                         H5Z_EDC_t
+#&gt; 299                         H5Z_EDC_t
+#&gt; 300                         H5Z_EDC_t
+#&gt; 301               H5Z_SO_scale_type_t
+#&gt; 302               H5Z_SO_scale_type_t
+#&gt; 303               H5Z_SO_scale_type_t
+#&gt;                                                   Name           Constant
+#&gt; 1                                        H5F_ACC_TRUNC                  2
+#&gt; 2                                         H5F_ACC_EXCL                  4
+#&gt; 4                                       H5F_ACC_RDONLY                  0
+#&gt; 5                                         H5F_ACC_RDWR                  1
+#&gt; 6                                      H5F_ACC_DEFAULT              65535
+#&gt; 7                                   H5F_ACC_SWMR_WRITE                 32
+#&gt; 8                                    H5F_ACC_SWMR_READ                 64
+#&gt; 9                                          H5P_DEFAULT                  0
+#&gt; 10                                             H5S_ALL                  0
+#&gt; 11                                     H5TOR_CONV_NONE                  0
+#&gt; 12                         H5TOR_CONV_INT64_INT_NOLOSS                  1
+#&gt; 13                       H5TOR_CONV_INT64_FLOAT_NOLOSS                  2
+#&gt; 14                        H5TOR_CONV_INT64_FLOAT_FORCE                  4
+#&gt; 15                                H5TOR_CONV_UINT64_NA                  8
+#&gt; 16                             H5TOR_CONV_INT64_NOLOSS                  3
+#&gt; 17                                        H5F_OBJ_FILE                  1
+#&gt; 18                                     H5F_OBJ_DATASET                  2
+#&gt; 19                                       H5F_OBJ_GROUP                  4
+#&gt; 20                                    H5F_OBJ_DATATYPE                  8
+#&gt; 21                                        H5F_OBJ_ATTR                 16
+#&gt; 22                                         H5F_OBJ_ALL                 31
+#&gt; 23                                       H5F_OBJ_LOCAL                 32
+#&gt; 24                                H5P_ATTRIBUTE_CREATE 720575940379279377
+#&gt; 25                                  H5P_DATASET_ACCESS 720575940379279370
+#&gt; 26                                  H5P_DATASET_CREATE 720575940379279369
+#&gt; 27                                    H5P_DATASET_XFER 720575940379279371
+#&gt; 28                                 H5P_DATATYPE_ACCESS 720575940379279374
+#&gt; 29                                 H5P_DATATYPE_CREATE 720575940379279373
+#&gt; 30                                     H5P_FILE_ACCESS 720575940379279368
+#&gt; 31                                     H5P_FILE_CREATE 720575940379279367
+#&gt; 32                                      H5P_FILE_MOUNT 720575940379279372
+#&gt; 33                                    H5P_GROUP_ACCESS 720575940379279366
+#&gt; 34                                    H5P_GROUP_CREATE 720575940379279364
+#&gt; 35                                     H5P_LINK_ACCESS 720575940379279363
+#&gt; 36                                     H5P_LINK_CREATE 720575940379279379
+#&gt; 37                                     H5P_OBJECT_COPY 720575940379279365
+#&gt; 38                                   H5P_OBJECT_CREATE 720575940379279361
+#&gt; 39                                   H5P_STRING_CREATE 720575940379279362
+#&gt; 40                                      H5Z_FILTER_ALL                  0
+#&gt; 41                                  H5Z_FILTER_DEFLATE                  1
+#&gt; 42                                  H5Z_FILTER_SHUFFLE                  2
+#&gt; 43                               H5Z_FILTER_FLETCHER32                  3
+#&gt; 44                                     H5Z_FILTER_SZIP                  4
+#&gt; 45                                     H5Z_FILTER_NBIT                  5
+#&gt; 46                              H5Z_FILTER_SCALEOFFSET                  6
+#&gt; 47                                   H5Z_FLAG_OPTIONAL                  1
+#&gt; 48                                  H5Z_FLAG_MANDATORY                  0
+#&gt; 49                               H5P_CRT_ORDER_TRACKED                  1
+#&gt; 50                               H5P_CRT_ORDER_INDEXED                  2
+#&gt; 51                     H5O_COPY_SHALLOW_HIERARCHY_FLAG                  1
+#&gt; 52                      H5O_COPY_EXPAND_SOFT_LINK_FLAG                  2
+#&gt; 53                       H5O_COPY_EXPAND_EXT_LINK_FLAG                  4
+#&gt; 54                      H5O_COPY_EXPAND_REFERENCE_FLAG                  8
+#&gt; 55                          H5O_COPY_WITHOUT_ATTR_FLAG                 16
+#&gt; 56                 H5O_COPY_MERGE_COMMITTED_DTYPE_FLAG                 64
+#&gt; 57                                      H5O_INFO_BASIC                  1
+#&gt; 58                                       H5O_INFO_TIME                  2
+#&gt; 59                                  H5O_INFO_NUM_ATTRS                  4
+#&gt; 60                                        H5O_INFO_HDR                  8
+#&gt; 61                                  H5O_INFO_META_SIZE                 16
+#&gt; 62                                        H5O_INFO_ALL                 31
+#&gt; 63                          H5D_CHUNK_CACHE_W0_DEFAULT                 -1
+#&gt; 1100                                  H5_INDEX_UNKNOWN                 -1
+#&gt; 2100                                     H5_INDEX_NAME                  0
+#&gt; 3                                   H5_INDEX_CRT_ORDER                  1
+#&gt; 410                                         H5_INDEX_N                  2
+#&gt; 510                                    H5_ITER_UNKNOWN                 -1
+#&gt; 610                                        H5_ITER_INC                  0
+#&gt; 710                                        H5_ITER_DEC                  1
+#&gt; 810                                     H5_ITER_NATIVE                  2
+#&gt; 910                                          H5_ITER_N                  3
+#&gt; 1010                                     H5C_decr__off                  0
+#&gt; 1110                               H5C_decr__threshold                  1
+#&gt; 1210                                 H5C_decr__age_out                  2
+#&gt; 1310                  H5C_decr__age_out_with_threshold                  3
+#&gt; 1410                               H5C_flash_incr__off                  0
+#&gt; 1510                         H5C_flash_incr__add_space                  1
+#&gt; 1610                                     H5C_incr__off                  0
+#&gt; 1710                               H5C_incr__threshold                  1
+#&gt; 1810                              H5D_ALLOC_TIME_ERROR                 -1
+#&gt; 1910                            H5D_ALLOC_TIME_DEFAULT                  0
+#&gt; 2010                              H5D_ALLOC_TIME_EARLY                  1
+#&gt; 2110                               H5D_ALLOC_TIME_LATE                  2
+#&gt; 2210                               H5D_ALLOC_TIME_INCR                  3
+#&gt; 2310                               H5D_CHUNK_IDX_BTREE                  0
+#&gt; 2410                              H5D_CHUNK_IDX_SINGLE                  1
+#&gt; 2510                                H5D_CHUNK_IDX_NONE                  2
+#&gt; 2610                              H5D_CHUNK_IDX_FARRAY                  3
+#&gt; 2710                              H5D_CHUNK_IDX_EARRAY                  4
+#&gt; 2810                                 H5D_CHUNK_IDX_BT2                  5
+#&gt; 2910                              H5D_CHUNK_IDX_NTYPES                  6
+#&gt; 304                                H5D_FILL_TIME_ERROR                 -1
+#&gt; 311                                H5D_FILL_TIME_ALLOC                  0
+#&gt; 321                                H5D_FILL_TIME_NEVER                  1
+#&gt; 331                                H5D_FILL_TIME_IFSET                  2
+#&gt; 341                               H5D_FILL_VALUE_ERROR                 -1
+#&gt; 351                           H5D_FILL_VALUE_UNDEFINED                  0
+#&gt; 361                             H5D_FILL_VALUE_DEFAULT                  1
+#&gt; 371                        H5D_FILL_VALUE_USER_DEFINED                  2
+#&gt; 381                                   H5D_LAYOUT_ERROR                 -1
+#&gt; 391                                        H5D_COMPACT                  0
+#&gt; 401                                     H5D_CONTIGUOUS                  1
+#&gt; 411                                        H5D_CHUNKED                  2
+#&gt; 421                                        H5D_VIRTUAL                  3
+#&gt; 431                                       H5D_NLAYOUTS                  4
+#&gt; 441                     H5D_MPIO_NO_CHUNK_OPTIMIZATION                  0
+#&gt; 451                                H5D_MPIO_LINK_CHUNK                  1
+#&gt; 461                               H5D_MPIO_MULTI_CHUNK                  2
+#&gt; 471                             H5D_MPIO_NO_COLLECTIVE                  0
+#&gt; 481                         H5D_MPIO_CHUNK_INDEPENDENT                  1
+#&gt; 491                          H5D_MPIO_CHUNK_COLLECTIVE                  2
+#&gt; 501                               H5D_MPIO_CHUNK_MIXED                  3
+#&gt; 511                     H5D_MPIO_CONTIGUOUS_COLLECTIVE                  4
+#&gt; 521                                H5D_MPIO_COLLECTIVE                  0
+#&gt; 531                           H5D_MPIO_SET_INDEPENDENT                  1
+#&gt; 541                       H5D_MPIO_DATATYPE_CONVERSION                  2
+#&gt; 551                           H5D_MPIO_DATA_TRANSFORMS                  4
+#&gt; 561            H5D_MPIO_MPI_OPT_TYPES_ENV_VAR_DISABLED                  8
+#&gt; 571           H5D_MPIO_NOT_SIMPLE_OR_SCALAR_DATASPACES                 16
+#&gt; 581         H5D_MPIO_NOT_CONTIGUOUS_OR_CHUNKED_DATASET                 32
+#&gt; 591         H5D_MPIO_PARALLEL_FILTERED_WRITES_DISABLED                 64
+#&gt; 601  H5D_MPIO_ERROR_WHILE_CHECKING_COLLECTIVE_POSSIBLE                128
+#&gt; 611                   H5D_MPIO_NO_COLLECTIVE_MAX_CAUSE                256
+#&gt; 621                             H5D_SPACE_STATUS_ERROR                 -1
+#&gt; 631                     H5D_SPACE_STATUS_NOT_ALLOCATED                  0
+#&gt; 64                     H5D_SPACE_STATUS_PART_ALLOCATED                  1
+#&gt; 65                          H5D_SPACE_STATUS_ALLOCATED                  2
+#&gt; 66                                       H5D_VDS_ERROR                 -1
+#&gt; 67                               H5D_VDS_FIRST_MISSING                  0
+#&gt; 68                              H5D_VDS_LAST_AVAILABLE                  1
+#&gt; 69                                     H5E_WALK_UPWARD                  0
+#&gt; 70                                   H5E_WALK_DOWNWARD                  1
+#&gt; 71                                           H5E_MAJOR                  0
+#&gt; 72                                           H5E_MINOR                  1
+#&gt; 73                             H5ES_STATUS_IN_PROGRESS                  0
+#&gt; 74                                 H5ES_STATUS_SUCCEED                  1
+#&gt; 75                                    H5ES_STATUS_FAIL                  2
+#&gt; 76                                H5ES_STATUS_CANCELED                  3
+#&gt; 77                                   H5F_CLOSE_DEFAULT                  0
+#&gt; 78                                      H5F_CLOSE_WEAK                  1
+#&gt; 79                                      H5F_CLOSE_SEMI                  2
+#&gt; 80                                    H5F_CLOSE_STRONG                  3
+#&gt; 81                              H5F_FILE_SPACE_DEFAULT                  0
+#&gt; 82                          H5F_FILE_SPACE_ALL_PERSIST                  1
+#&gt; 83                                  H5F_FILE_SPACE_ALL                  2
+#&gt; 84                             H5F_FILE_SPACE_AGGR_VFD                  3
+#&gt; 85                                  H5F_FILE_SPACE_VFD                  4
+#&gt; 86                               H5F_FILE_SPACE_NTYPES                  5
+#&gt; 87                        H5F_FSPACE_STRATEGY_FSM_AGGR                  0
+#&gt; 88                            H5F_FSPACE_STRATEGY_PAGE                  1
+#&gt; 89                            H5F_FSPACE_STRATEGY_AGGR                  2
+#&gt; 90                            H5F_FSPACE_STRATEGY_NONE                  3
+#&gt; 91                          H5F_FSPACE_STRATEGY_NTYPES                  4
+#&gt; 92                                    H5F_LIBVER_ERROR                 -1
+#&gt; 93                                 H5F_LIBVER_EARLIEST                  0
+#&gt; 94                                      H5F_LIBVER_V18                  1
+#&gt; 95                                     H5F_LIBVER_V110                  2
+#&gt; 96                                     H5F_LIBVER_V112                  3
+#&gt; 97                                  H5F_LIBVER_NBOUNDS                  4
+#&gt; 98                                     H5FD_MEM_NOLIST                 -1
+#&gt; 99                                    H5FD_MEM_DEFAULT                  0
+#&gt; 100                                     H5FD_MEM_SUPER                  1
+#&gt; 101                                     H5FD_MEM_BTREE                  2
+#&gt; 102                                      H5FD_MEM_DRAW                  3
+#&gt; 103                                     H5FD_MEM_GHEAP                  4
+#&gt; 104                                     H5FD_MEM_LHEAP                  5
+#&gt; 105                                      H5FD_MEM_OHDR                  6
+#&gt; 106                                    H5FD_MEM_NTYPES                  7
+#&gt; 107                                    H5F_SCOPE_LOCAL                  0
+#&gt; 108                                   H5F_SCOPE_GLOBAL                  1
+#&gt; 109                           H5FD_FILE_IMAGE_OP_NO_OP                  0
+#&gt; 110               H5FD_FILE_IMAGE_OP_PROPERTY_LIST_SET                  1
+#&gt; 111              H5FD_FILE_IMAGE_OP_PROPERTY_LIST_COPY                  2
+#&gt; 112               H5FD_FILE_IMAGE_OP_PROPERTY_LIST_GET                  3
+#&gt; 113             H5FD_FILE_IMAGE_OP_PROPERTY_LIST_CLOSE                  4
+#&gt; 114                       H5FD_FILE_IMAGE_OP_FILE_OPEN                  5
+#&gt; 115                     H5FD_FILE_IMAGE_OP_FILE_RESIZE                  6
+#&gt; 116                      H5FD_FILE_IMAGE_OP_FILE_CLOSE                  7
+#&gt; 117                                        H5G_UNKNOWN                 -1
+#&gt; 118                                          H5G_GROUP                  0
+#&gt; 119                                        H5G_DATASET                  1
+#&gt; 120                                           H5G_TYPE                  2
+#&gt; 121                                           H5G_LINK                  3
+#&gt; 122                                         H5G_UDLINK                  4
+#&gt; 123                                     H5G_RESERVED_5                  5
+#&gt; 124                                     H5G_RESERVED_6                  6
+#&gt; 125                                     H5G_RESERVED_7                  7
+#&gt; 126                           H5G_STORAGE_TYPE_UNKNOWN                 -1
+#&gt; 127                      H5G_STORAGE_TYPE_SYMBOL_TABLE                  0
+#&gt; 128                           H5G_STORAGE_TYPE_COMPACT                  1
+#&gt; 129                             H5G_STORAGE_TYPE_DENSE                  2
+#&gt; 130                                         H5I_UNINIT                 -2
+#&gt; 131                                          H5I_BADID                 -1
+#&gt; 132                                           H5I_FILE                  1
+#&gt; 133                                          H5I_GROUP                  2
+#&gt; 134                                       H5I_DATATYPE                  3
+#&gt; 135                                      H5I_DATASPACE                  4
+#&gt; 136                                        H5I_DATASET                  5
+#&gt; 137                                            H5I_MAP                  6
+#&gt; 138                                           H5I_ATTR                  7
+#&gt; 139                                            H5I_VFL                  8
+#&gt; 140                                            H5I_VOL                  9
+#&gt; 141                                    H5I_GENPROP_CLS                 10
+#&gt; 142                                    H5I_GENPROP_LST                 11
+#&gt; 143                                    H5I_ERROR_CLASS                 12
+#&gt; 144                                      H5I_ERROR_MSG                 13
+#&gt; 145                                    H5I_ERROR_STACK                 14
+#&gt; 146                                 H5I_SPACE_SEL_ITER                 15
+#&gt; 147                                         H5I_NTYPES                 16
+#&gt; 148                                     H5L_TYPE_ERROR                 -1
+#&gt; 149                                      H5L_TYPE_HARD                  0
+#&gt; 150                                      H5L_TYPE_SOFT                  1
+#&gt; 151                                  H5L_TYPE_EXTERNAL                 64
+#&gt; 152                                       H5L_TYPE_MAX                255
+#&gt; 153                                      H5LT_LANG_ERR                 -1
+#&gt; 154                                           H5LT_DDL                  0
+#&gt; 155                                             H5LT_C                  1
+#&gt; 156                                       H5LT_FORTRAN                  2
+#&gt; 157                                       H5LT_NO_LANG                  3
+#&gt; 158                              H5O_MCDT_SEARCH_ERROR                 -1
+#&gt; 159                               H5O_MCDT_SEARCH_CONT                  0
+#&gt; 160                               H5O_MCDT_SEARCH_STOP                  1
+#&gt; 161                                   H5O_TYPE_UNKNOWN                 -1
+#&gt; 162                                     H5O_TYPE_GROUP                  0
+#&gt; 163                                   H5O_TYPE_DATASET                  1
+#&gt; 164                            H5O_TYPE_NAMED_DATATYPE                  2
+#&gt; 165                                       H5O_TYPE_MAP                  3
+#&gt; 166                                    H5O_TYPE_NTYPES                  4
+#&gt; 167                                    H5PL_TYPE_ERROR                 -1
+#&gt; 168                                   H5PL_TYPE_FILTER                  0
+#&gt; 169                                      H5PL_TYPE_VOL                  1
+#&gt; 170                                     H5PL_TYPE_NONE                  2
+#&gt; 171                                        H5R_BADTYPE                 -1
+#&gt; 172                                        H5R_OBJECT1                  0
+#&gt; 173                                H5R_DATASET_REGION1                  1
+#&gt; 174                                        H5R_OBJECT2                  2
+#&gt; 175                                H5R_DATASET_REGION2                  3
+#&gt; 176                                           H5R_ATTR                  4
+#&gt; 177                                        H5R_MAXTYPE                  5
+#&gt; 178                                       H5S_NO_CLASS                 -1
+#&gt; 179                                         H5S_SCALAR                  0
+#&gt; 180                                         H5S_SIMPLE                  1
+#&gt; 181                                           H5S_NULL                  2
+#&gt; 182                                      H5S_SEL_ERROR                 -1
+#&gt; 183                                       H5S_SEL_NONE                  0
+#&gt; 184                                     H5S_SEL_POINTS                  1
+#&gt; 185                                 H5S_SEL_HYPERSLABS                  2
+#&gt; 186                                        H5S_SEL_ALL                  3
+#&gt; 187                                          H5S_SEL_N                  4
+#&gt; 188                                    H5S_SELECT_NOOP                 -1
+#&gt; 189                                     H5S_SELECT_SET                  0
+#&gt; 190                                      H5S_SELECT_OR                  1
+#&gt; 191                                     H5S_SELECT_AND                  2
+#&gt; 192                                     H5S_SELECT_XOR                  3
+#&gt; 193                                    H5S_SELECT_NOTB                  4
+#&gt; 194                                    H5S_SELECT_NOTA                  5
+#&gt; 195                                  H5S_SELECT_APPEND                  6
+#&gt; 196                                 H5S_SELECT_PREPEND                  7
+#&gt; 197                                 H5S_SELECT_INVALID                  8
+#&gt; 198                                         H5T_BKG_NO                  0
+#&gt; 199                                       H5T_BKG_TEMP                  1
+#&gt; 200                                        H5T_BKG_YES                  2
+#&gt; 201                                       H5T_NO_CLASS                 -1
+#&gt; 202                                        H5T_INTEGER                  0
+#&gt; 203                                          H5T_FLOAT                  1
+#&gt; 204                                           H5T_TIME                  2
+#&gt; 205                                         H5T_STRING                  3
+#&gt; 206                                       H5T_BITFIELD                  4
+#&gt; 207                                         H5T_OPAQUE                  5
+#&gt; 208                                       H5T_COMPOUND                  6
+#&gt; 209                                      H5T_REFERENCE                  7
+#&gt; 210                                           H5T_ENUM                  8
+#&gt; 211                                           H5T_VLEN                  9
+#&gt; 212                                          H5T_ARRAY                 10
+#&gt; 213                                       H5T_NCLASSES                 11
+#&gt; 214                                      H5T_CONV_INIT                  0
+#&gt; 215                                      H5T_CONV_CONV                  1
+#&gt; 216                                      H5T_CONV_FREE                  2
+#&gt; 217                           H5T_CONV_EXCEPT_RANGE_HI                  0
+#&gt; 218                          H5T_CONV_EXCEPT_RANGE_LOW                  1
+#&gt; 219                          H5T_CONV_EXCEPT_PRECISION                  2
+#&gt; 220                           H5T_CONV_EXCEPT_TRUNCATE                  3
+#&gt; 221                               H5T_CONV_EXCEPT_PINF                  4
+#&gt; 222                               H5T_CONV_EXCEPT_NINF                  5
+#&gt; 223                                H5T_CONV_EXCEPT_NAN                  6
+#&gt; 224                                     H5T_CONV_ABORT                 -1
+#&gt; 225                                 H5T_CONV_UNHANDLED                  0
+#&gt; 226                                   H5T_CONV_HANDLED                  1
+#&gt; 227                                     H5T_CSET_ERROR                 -1
+#&gt; 228                                     H5T_CSET_ASCII                  0
+#&gt; 229                                      H5T_CSET_UTF8                  1
+#&gt; 230                                H5T_CSET_RESERVED_2                  2
+#&gt; 231                                H5T_CSET_RESERVED_3                  3
+#&gt; 232                                H5T_CSET_RESERVED_4                  4
+#&gt; 233                                H5T_CSET_RESERVED_5                  5
+#&gt; 234                                H5T_CSET_RESERVED_6                  6
+#&gt; 235                                H5T_CSET_RESERVED_7                  7
+#&gt; 236                                H5T_CSET_RESERVED_8                  8
+#&gt; 237                                H5T_CSET_RESERVED_9                  9
+#&gt; 238                               H5T_CSET_RESERVED_10                 10
+#&gt; 239                               H5T_CSET_RESERVED_11                 11
+#&gt; 240                               H5T_CSET_RESERVED_12                 12
+#&gt; 241                               H5T_CSET_RESERVED_13                 13
+#&gt; 242                               H5T_CSET_RESERVED_14                 14
+#&gt; 243                               H5T_CSET_RESERVED_15                 15
+#&gt; 244                                    H5T_DIR_DEFAULT                  0
+#&gt; 245                                     H5T_DIR_ASCEND                  1
+#&gt; 246                                    H5T_DIR_DESCEND                  2
+#&gt; 247                                     H5T_NORM_ERROR                 -1
+#&gt; 248                                   H5T_NORM_IMPLIED                  0
+#&gt; 249                                    H5T_NORM_MSBSET                  1
+#&gt; 250                                      H5T_NORM_NONE                  2
+#&gt; 251                                    H5T_ORDER_ERROR                 -1
+#&gt; 252                                       H5T_ORDER_LE                  0
+#&gt; 253                                       H5T_ORDER_BE                  1
+#&gt; 254                                      H5T_ORDER_VAX                  2
+#&gt; 255                                    H5T_ORDER_MIXED                  3
+#&gt; 256                                     H5T_ORDER_NONE                  4
+#&gt; 257                                      H5T_PAD_ERROR                 -1
+#&gt; 258                                       H5T_PAD_ZERO                  0
+#&gt; 259                                        H5T_PAD_ONE                  1
+#&gt; 260                                 H5T_PAD_BACKGROUND                  2
+#&gt; 261                                           H5T_NPAD                  3
+#&gt; 262                                  H5T_PERS_DONTCARE                 -1
+#&gt; 263                                      H5T_PERS_HARD                  0
+#&gt; 264                                      H5T_PERS_SOFT                  1
+#&gt; 265                                      H5T_SGN_ERROR                 -1
+#&gt; 266                                       H5T_SGN_NONE                  0
+#&gt; 267                                          H5T_SGN_2                  1
+#&gt; 268                                           H5T_NSGN                  2
+#&gt; 269                                      H5T_STR_ERROR                 -1
+#&gt; 270                                   H5T_STR_NULLTERM                  0
+#&gt; 271                                    H5T_STR_NULLPAD                  1
+#&gt; 272                                   H5T_STR_SPACEPAD                  2
+#&gt; 273                                 H5T_STR_RESERVED_3                  3
+#&gt; 274                                 H5T_STR_RESERVED_4                  4
+#&gt; 275                                 H5T_STR_RESERVED_5                  5
+#&gt; 276                                 H5T_STR_RESERVED_6                  6
+#&gt; 277                                 H5T_STR_RESERVED_7                  7
+#&gt; 278                                 H5T_STR_RESERVED_8                  8
+#&gt; 279                                 H5T_STR_RESERVED_9                  9
+#&gt; 280                                H5T_STR_RESERVED_10                 10
+#&gt; 281                                H5T_STR_RESERVED_11                 11
+#&gt; 282                                H5T_STR_RESERVED_12                 12
+#&gt; 283                                H5T_STR_RESERVED_13                 13
+#&gt; 284                                H5T_STR_RESERVED_14                 14
+#&gt; 285                                H5T_STR_RESERVED_15                 15
+#&gt; 286                                  H5VL_MAP_GET_MAPL                  0
+#&gt; 287                                  H5VL_MAP_GET_MCPL                  1
+#&gt; 288                              H5VL_MAP_GET_KEY_TYPE                  2
+#&gt; 289                              H5VL_MAP_GET_VAL_TYPE                  3
+#&gt; 290                                 H5VL_MAP_GET_COUNT                  4
+#&gt; 291                                      H5VL_MAP_ITER                  0
+#&gt; 292                                    H5VL_MAP_DELETE                  1
+#&gt; 293                                       H5Z_CB_ERROR                 -1
+#&gt; 294                                        H5Z_CB_FAIL                  0
+#&gt; 295                                        H5Z_CB_CONT                  1
+#&gt; 296                                          H5Z_CB_NO                  2
+#&gt; 297                                      H5Z_ERROR_EDC                 -1
+#&gt; 298                                    H5Z_DISABLE_EDC                  0
+#&gt; 299                                     H5Z_ENABLE_EDC                  1
+#&gt; 300                                         H5Z_NO_EDC                  2
+#&gt; 301                                H5Z_SO_FLOAT_DSCALE                  0
+#&gt; 302                                H5Z_SO_FLOAT_ESCALE                  1
+#&gt; 303                                         H5Z_SO_INT                  2</div><div class='input'><span class='no'>h5const</span>$<span class='no'>H5F_ACC_RDWR</span></div><div class='output co'>#&gt; [1] H5F_ACC_RDWR
 #&gt; 7 Levels: H5F_ACC_RDONLY H5F_ACC_RDWR H5F_ACC_TRUNC ... H5F_ACC_DEFAULT
 #&gt; 7 Values: 0 1 2 ... 65535</div><div class='input'><span class='no'>h5const</span>$<span class='no'>H5F_ACC_DEFAULT</span></div><div class='output co'>#&gt; [1] H5F_ACC_DEFAULT
 #&gt; 7 Levels: H5F_ACC_RDONLY H5F_ACC_RDWR H5F_ACC_TRUNC ... H5F_ACC_DEFAULT

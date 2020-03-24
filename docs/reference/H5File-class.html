@@ -71,7 +71,7 @@ of the H5RefClass." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hdf5r</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.2</span>
       </span>
     </div>
 
@@ -468,11 +468,11 @@ Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF
 <span class='no'>file</span><span class='kw'>[[</span><span class='st'>"testdataset"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>10</span>
 <span class='fu'>h5attr</span>(<span class='no'>file</span>, <span class='st'>"testattrib"</span>) <span class='kw'>&lt;-</span> <span class='no'>LETTERS</span>[<span class='fl'>1</span>:<span class='fl'>10</span>]
 <span class='no'>file</span>$<span class='fu'>create_group</span>(<span class='st'>"testgroup"</span>)</div><div class='output co'>#&gt; Class: H5Group
-#&gt; Filename: /tmp/RtmpRiZvxJ/file13f49649e26fd.h5
+#&gt; Filename: /tmp/Rtmpu9cLuu/file9f482911ac8b.h5
 #&gt; Group: /testgroup</div><div class='input'><span class='no'>file</span><span class='kw'>[[</span><span class='st'>"testgroup/testdataset2"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>10</span>
 <span class='co'># Show contents of file</span>
 <span class='no'>file</span></div><div class='output co'>#&gt; Class: H5File
-#&gt; Filename: /tmp/RtmpRiZvxJ/file13f49649e26fd.h5
+#&gt; Filename: /tmp/Rtmpu9cLuu/file9f482911ac8b.h5
 #&gt; Access type: H5F_ACC_RDWR
 #&gt; Attributes: testattrib
 #&gt; Listing:
@@ -485,17 +485,17 @@ Please see the documentation at <a href='https://portal.hdfgroup.org/display/HDF
 <span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>h5file</span>(<span class='no'>fname</span>, <span class='kw'>mode</span> <span class='kw'>=</span> <span class='st'>"a"</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"testgroup1"</span>, <span class='st'>"testgroup2"</span>, <span class='st'>"testgroup3"</span>), <span class='no'>file</span>$<span class='no'>create_group</span>)</div><div class='output co'>#&gt; $testgroup1
 #&gt; Class: H5Group
-#&gt; Filename: /tmp/RtmpRiZvxJ/file13f49649e26fd.h5
+#&gt; Filename: /tmp/Rtmpu9cLuu/file9f482911ac8b.h5
 #&gt; Group: /testgroup1
 #&gt; 
 #&gt; $testgroup2
 #&gt; Class: H5Group
-#&gt; Filename: /tmp/RtmpRiZvxJ/file13f49649e26fd.h5
+#&gt; Filename: /tmp/Rtmpu9cLuu/file9f482911ac8b.h5
 #&gt; Group: /testgroup2
 #&gt; 
 #&gt; $testgroup3
 #&gt; Class: H5Group
-#&gt; Filename: /tmp/RtmpRiZvxJ/file13f49649e26fd.h5
+#&gt; Filename: /tmp/Rtmpu9cLuu/file9f482911ac8b.h5
 #&gt; Group: /testgroup3
 #&gt; </div><div class='input'><span class='no'>file</span><span class='kw'>[[</span><span class='st'>"testgroup1/testset1"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>1</span>:<span class='fl'>10</span>
 <span class='no'>file</span><span class='kw'>[[</span><span class='st'>"testgroup2/testset2"</span>]] <span class='kw'>&lt;-</span> <span class='fl'>11</span>:<span class='fl'>20</span>
