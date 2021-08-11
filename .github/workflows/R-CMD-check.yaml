@@ -103,7 +103,9 @@ jobs:
           _R_CHECK_CRAN_INCOMING_: false
         run: |
           options(crayon.enabled = TRUE)
-          Sys.setenv("PATH" = sprintf("%s:%s", Sys.getenv("PATH"), "${{ env.HDF5_DIR }}/bin"))
+          if(startsWith(tolower(R.version$os), 'darwin')){
+            Sys.setenv("PATH" = sprintf("%s:%s", Sys.getenv("PATH"), "${{ env.HDF5_DIR }}/bin"))
+          }
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran", "--ignore-vignettes"), build_args = c("--no-build-vignettes", "--no-manual"), error_on = "error", check_dir = "check")
         shell: Rscript {0}
 
