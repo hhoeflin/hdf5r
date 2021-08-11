@@ -30,3 +30,4 @@ wercker.yml
 ^cran-comments\.md$
 windows
 
+^\.github$

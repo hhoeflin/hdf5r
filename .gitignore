@@ -14,3 +14,4 @@ config.status
 test.h5
 *.Rcheck
 *.tar.gz
+*.DS_Store
