@@ -29,5 +29,5 @@ wercker.yml
 ^_pkgdown\.yml$
 ^cran-comments\.md$
 windows
-
+^cache$
 ^\.github$
