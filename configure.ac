@@ -105,7 +105,7 @@ if test -z "${LIBS}"; then
     AC_MSG_ERROR([${GREP} does not support option -o])
   fi
   [
-  LIBS=`${H5CC} -show | ${GREP} -o "\-L[^[:space:]]\+" | tr "\n" " "` 
+  LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "` 
   ]
   
   dnl Fix for newer Debian versions
