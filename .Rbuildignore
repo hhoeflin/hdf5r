@@ -31,3 +31,4 @@ wercker.yml
 windows
 ^cache$
 ^\.github$
+README.md
