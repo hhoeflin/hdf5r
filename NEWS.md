@@ -1,5 +1,5 @@
 # hdf5r 1.3.5
-- Change AC_CHECK_LIBRARY in inst/m4/ax_lib_hdf5.m4 to squash autoreconf complaint
+- Change AC_HAVE_LIBRARY in inst/m4/ax_lib_hdf5.m4 to squash autoreconf complaint
 
 # hdf5r 1.3.4
 - Added installation for MacOS (PR #179 by @dipterix)
