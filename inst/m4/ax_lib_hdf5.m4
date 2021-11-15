@@ -86,10 +86,10 @@
 
 #serial 12
 
-# This code was adapted by Holger Hoefling on May 2nd 2016 to also 
-# substitute variables HDF5_MAJOR_VERSION, HDF5_MINOR_VERSION 
+# This code was adapted by Holger Hoefling on May 2nd 2016 to also
+# substitute variables HDF5_MAJOR_VERSION, HDF5_MINOR_VERSION
 # as well as HDF5_REVISION_VERSION so that the 3 parts of the
-# version number are available separately for testing 
+# version number are available separately for testing
 # Also changed to check for hdf5_hl header library existence
 
 
@@ -262,7 +262,7 @@ HDF5 support is being disabled (equivalent to --with-hdf5=no).
           AC_MSG_WARN([Unable to compile HDF5_HL test program])
         fi
         dnl Look for HDF5's high level library
-        AC_HAVE_LIBRARY([hdf5_hl], [HDF5_LIBS="$HDF5_LIBS -lhdf5_hl"], [], [])
+        AC_CHECK_LIB([hdf5_hl], [main], [HDF5_LIBS="$HDF5_LIBS -lhdf5_hl"], [], [])
 
         CC=$ax_lib_hdf5_save_CC
         CPPFLAGS=$ax_lib_hdf5_save_CPPFLAGS

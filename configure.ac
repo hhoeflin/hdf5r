@@ -1,4 +1,4 @@
-AC_INIT([hdf5r], 0.1.0, [hhoeflin@gmail.com])
+AC_INIT([hdf5r],[0.1.0],[hhoeflin@gmail.com])
 
 dnl Grab that macro that checks for HDF5 availability
 m4_include([inst/m4/ax_lib_hdf5.m4])

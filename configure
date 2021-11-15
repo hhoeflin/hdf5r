@@ -3871,7 +3871,6 @@ $as_echo "$ac_cv_lib_hdf5_hl_main" >&6; }
 if test "x$ac_cv_lib_hdf5_hl_main" = xyes; then :
   HDF5_LIBS="$HDF5_LIBS -lhdf5_hl"
 fi
-ac_cv_lib_hdf5_hl=ac_cv_lib_hdf5_hl_main
 
 
         CC=$ax_lib_hdf5_save_CC
