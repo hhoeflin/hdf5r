@@ -207,14 +207,15 @@ values.default <- function(x, ...) {
 
 ## internal helper function
 position <- function(x) {
+    .match <- function(x, y) match(unclass(x), unclass(y))
     if(is.integer64(values(x)) && is.integer(x)) {
-        match(as.integer64(unclass(x)), as.integer64(values(x)))
+        .match(as.integer64(unclass(x)), as.integer64(values(x)))
     }
     else if(is.integer(values(x)) && is.integer64(x)) {
-        match(x, as.integer64(values(x)))
+        .match(x, as.integer64(values(x)))
     }
     else {
-        match(x, values(x))
+        .match(x, values(x))
     }
 }
 

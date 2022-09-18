@@ -1,3 +1,6 @@
+# hdf5r 1.3.6
+- Adapted as.charater.factor_ext to be compatible with future changes in R. See issue #190
+
 # hdf5r 1.3.5
 - Change AC_HAVE_LIBRARY in inst/m4/ax_lib_hdf5.m4 to squash autoreconf complaint
 
