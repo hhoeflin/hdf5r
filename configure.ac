@@ -7,10 +7,10 @@ m4_include([inst/m4/hh_hdf5rlib.m4])
 
 AX_LIB_HDF5()
 
-if test "$with_hdf5" = "yes"; then 
+if test "$with_hdf5" = "yes"; then
 AC_MSG_RESULT([Found hdf5 with version: $HDF5_VERSION])
 AX_COMPARE_VERSION([$HDF5_VERSION], [ge], [1.8.13], [hdf5_version_sufficient="yes"], AC_MSG_ERROR([The version of hdf5 installed on your system is not sufficient. Please ensure that at least version 1.8.13 is installed]))
-else 
+else
   AC_MSG_ERROR([hdf5 does not seem to be installed on your platform.
   Please install the hdf5 library.
   The required HDF5 library files can be installed as follows:
@@ -21,59 +21,59 @@ else
 fi
 
 
-if test "$hdf5_version_sufficient" = "yes"; then 
+if test "$hdf5_version_sufficient" = "yes"; then
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.8.13], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.8.13],
 	[HDF5_VERSION_USE="1_8_14"])
 
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.8.14], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.8.14],
 	[HDF5_VERSION_USE="1_8_14"])
 
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.8.16], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.8.16],
 	[HDF5_VERSION_USE="1_8_16"])
 
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.10.0], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.10.0],
 	[HDF5_VERSION_USE="1_10_0"])
 
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.10.2], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.10.2],
 	[HDF5_VERSION_USE="1_10_2"])
 
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.10.3], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.10.3],
 	[HDF5_VERSION_USE="1_10_3"])
-	
+
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.10.4], 
-	[HDF5_VERSION_USE="1_10_3"])
-	
+	[$HDF5_VERSION],
+	[ge],
+	[1.10.6],
+	[HDF5_VERSION_USE="1_10_3" && HDF5_USE_PATCH="1.10.6"])
+
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.12.0], 
-	[HDF5_VERSION_USE="1_12_0"])
-  
+	[$HDF5_VERSION],
+	[ge],
+	[1.12.0],
+	[HDF5_VERSION_USE="1_12_0" && HDF5_USE_PATCH=""])
+
   AX_COMPARE_VERSION(
-	[$HDF5_VERSION], 
-	[ge], 
-	[1.12.0], 
+	[$HDF5_VERSION],
+	[ge],
+	[1.12.0],
 	[HDF5_API_VERS_USE="-DH5_USE_110_API"],
     [HDF5_API_VERS_USE=""])
 fi
@@ -81,7 +81,7 @@ fi
 AC_SUBST(HDF5_VERSION_USE)
 AC_SUBST(HDF5_API_VERS_USE)
 AC_SUBST(DEFINE_H5FREE_MEMORY)
-
+AC_SUBST(HDF5_USE_PATCH)
 
 
 dnl Now find the compiler and compiler flags to use
@@ -105,9 +105,9 @@ if test -z "${LIBS}"; then
     AC_MSG_ERROR([${GREP} does not support option -o])
   fi
   [
-  LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "` 
+  LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
   ]
-  
+
   dnl Fix for newer Debian versions
   HDF5R_LIBS="${LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"
 
@@ -143,9 +143,6 @@ AC_SUBST(HDF5R_CFLAGS)
 dnl substitute CPPFLAGS and LIBS
 AC_SUBST(HDF5R_CPPFLAGS)
 AC_SUBST(HDF5R_LIBS)
-dnl and do subsitution in the src/Makevars.in 
+dnl and do subsitution in the src/Makevars.in
 AC_CONFIG_FILES([src/Makevars])
 AC_OUTPUT
-
-
-

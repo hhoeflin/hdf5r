@@ -1,0 +1,74 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build-image:
+    cmds:
+      - DOCKER_BUILDKIT=1 docker build -f Dockerfile_deps -t hhoeflin/hdf5r_devel:{{.HDF5_VERSION}} --build-arg HDF5_VERSION={{.HDF5_VERSION}} .
+  push-image:
+    deps:
+      - task: build-image
+        vars: {HDF5_VERSION: "{{.HDF5_VERSION}}"}
+    cmds:
+      - docker push hhoeflin/hdf5r_devel:{{.HDF5_VERSION}}
+  create-all:
+    cmds:
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.13"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.14"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.15-patch1"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.16"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.17"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.8.21"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.1"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.3"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.5"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.6"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.8"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.10.9"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.12.0"}
+      - task: create-image
+        vars: {HDF5_VERSION: "1.12.2"}
+  push-all:
+    cmds:
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.13"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.14"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.15-patch1"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.16"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.17"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.8.21"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.1"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.3"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.5"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.6"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.8"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.10.9"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.12.0"}
+      - task: push-image
+        vars: {HDF5_VERSION: "1.12.2"}

@@ -1,0 +1,13 @@
+--- a/src/datatype_export.c
++++ b/src/datatype_export.c
+@@ -1900,8 +1900,8 @@
+
+ /* typedef enum H5R_type_t { H5R_BADTYPE = (-1), H5R_OBJECT, H5R_DATASET_REGION, H5R_MAXTYPE } H5R_type_t; */
+ hid_t create_DT_H5R_type_t(void) {
+-  enum H5R_type_t myenum;
+-  hid_t base_type = get_h5_equiv(sizeof(enum H5R_type_t), issigned(enum H5R_type_t));
++  H5R_type_t myenum;
++  hid_t base_type = get_h5_equiv(sizeof(H5R_type_t), issigned(H5R_type_t));
+   hid_t dtype_id = H5Tenum_create(base_type);
+   myenum = H5R_BADTYPE;
+   H5Tenum_insert(dtype_id, "H5R_BADTYPE", &myenum);

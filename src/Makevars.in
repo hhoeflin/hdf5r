@@ -1,6 +1,6 @@
-PKG_LIBS = @HDF5R_LIBS@ 
-PKG_CPPFLAGS= @HDF5R_CPPFLAGS@ 
-PKG_CFLAGS=@HDF5R_CFLAGS@ -D__USE_MINGW_ANSI_STDIO @HDF5_API_VERS_USE@ 
+PKG_LIBS = @HDF5R_LIBS@
+PKG_CPPFLAGS= @HDF5R_CPPFLAGS@
+PKG_CFLAGS=@HDF5R_CFLAGS@ -D__USE_MINGW_ANSI_STDIO @HDF5_API_VERS_USE@
 
 .PHONY: all copy_auto_files
 
@@ -25,5 +25,5 @@ $(OBJECTS_TO_COPY): copy_auto_files
 
 copy_auto_files:
 	cp @HDF5_VERSION_USE@/*.c @HDF5_VERSION_USE@/*.h .
-
-
+	if [ "@HDF5_USE_PATCH@" != "1" ]; then echo @HDF5_USE_PATCH@ 'PATCHING'; fi
+	if [ "@HDF5_USE_PATCH@" != "1" ]; then patch -p2 < patch_@HDF5_USE_PATCH@; fi

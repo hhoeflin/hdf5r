@@ -1,0 +1,11 @@
+ARG HDF5_VERSION
+FROM hhoeflin/hdf5r_devel:$HDF5_VERSION
+
+# copy the local context
+USER docker
+COPY --chown=docker:docker . /home/docker/hdf5r
+
+ENTRYPOINT [ /bin/bash ]
+
+RUN cd /home/docker/hdf5r \
+    && R CMD check .

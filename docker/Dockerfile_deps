@@ -1,0 +1,52 @@
+# Docker container for R development of hdf5r package
+# Includes all R dependencies as well as specific HDF5 version
+FROM r-base
+
+# dependencies to build the manual
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
+                ghostscript \
+                lmodern \
+                pandoc-citeproc \
+                qpdf \
+                texinfo \
+                texlive-fonts-extra \
+                texlive-fonts-recommended \
+                texlive-latex-extra \
+                texlive-latex-recommended \
+                texlive-luatex \
+                texlive-plain-generic \
+                texlive-science \
+                texlive-xetex \
+                pandoc \
+                libfontconfig1-dev \
+                libcurl4-openssl-dev \
+                libxml2-dev \
+                libssl-dev \
+                libharfbuzz-dev \
+                libfribidi-dev \
+                libfreetype6-dev \
+                libpng-dev \
+                libtiff5-dev \
+                libjpeg-dev
+
+COPY install_all_packages.R .
+
+RUN Rscript install_all_packages.R \
+    && rm install_all_packages.R
+    # -e 'install.packages(c("R6", "bit64", "testthat", "knitr", "rmarkdown", "nycflights13", "reshape2", "formatR"))'
+
+ARG HDF5_VERSION
+ARG HDF5_RELEASE_URL="https://support.hdfgroup.org/ftp/HDF5/releases"
+
+RUN echo $HDF5_VERSION \
+    && cd home/docker \
+    && wget "$HDF5_RELEASE_URL/hdf5-${HDF5_VERSION%.*}/hdf5-$HDF5_VERSION/src/hdf5-$HDF5_VERSION.tar.gz" \
+    && tar -xzf "hdf5-$HDF5_VERSION.tar.gz" \
+    && cd "hdf5-$HDF5_VERSION" \
+    && ./configure --prefix=/usr/local \
+    && make install 2>&1 \
+    && cd .. \
+    && rm -rf "hdf5-$HDF5_VERSION" "hdf5-${HDF5_VERSION}.tar.gz"
+
+ENV LD_LIBRARY_PATH=/usr/local/lib

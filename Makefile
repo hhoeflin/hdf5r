@@ -13,7 +13,7 @@ MD_FILES := $(RMD_FILES:.Rmd=.md)
 SRC_FILES := $(filter-out src/RcppExports.cpp, $(ALL_SRC_FILES))
 HEADER_FILES := $(wildcard src/*.h)
 RCPPEXPORTS := src/RcppExports.cpp R/RcppExports.R
-ROXYGENFILES := $(wildcard man/*.Rd) NAMESPACE 
+ROXYGENFILES := $(wildcard man/*.Rd) NAMESPACE
 PKG_FILES := DESCRIPTION $(ROXYGENFILES) $(R_FILES) $(SRC_FILES) \
 	$(HEADER_FILES) $(TEST_FILES) $(RCPPEXPORTS)
 OBJECTS := $(wildcard src/*.o) $(wildcard src/*.o-*) $(wildcard src/*.dll) $(wildcard src/*.so) $(wildcard src/*.rds)
@@ -22,13 +22,13 @@ CHECKLOG := `cat $(CHECKPATH)/00check.log`
 CURRENT_DIR := $(shell pwd)
 
 .PHONY: all build check manual install clean compileAttributes roxygen\
-	build-cran check-cran doc 
+	build-cran check-cran doc
 
-all: 
+all:
 	install
-	
+
 build: $(PKG_NAME)_$(PKG_VERSION).tar.gz
-	
+
 $(PKG_NAME)_$(PKG_VERSION).tar.gz: $(PKG_FILES)
 	@make roxygen
 	R CMD build --resave-data .
@@ -39,26 +39,26 @@ build-cran:
 	@make build
 
 roxygen: $(R_FILES)
-	$(R) 'devtools::load_all(".", reset=TRUE, recompile = FALSE, export_all=FALSE)';
-	$(R) 'devtools::document(".")';
+	$(Rscript) 'devtools::load_all(".", reset=TRUE, recompile = FALSE, export_all=FALSE)';
+	$(Rscript) 'devtools::document(".")';
 
 sitedoc:
-	$(R) 'pkgdown::build_site()';
+	$(Rscript) 'pkgdown::build_site()';
 
 $(RCPPEXPORTS): compileAttributes
-	
+
 compileAttributes: $(SRC_FILES)
 	$(Rscript) 'library(Rcpp); Rcpp::compileAttributes()'
-	
-check: $(PKG_NAME)_$(PKG_VERSION).tar.gz 
+
+check: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	@rm -rf $(CHECKPATH)
 	R CMD check --no-clean $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
-check-valgrind: $(PKG_NAME)_$(PKG_VERSION).tar.gz 
+check-valgrind: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	@rm -rf $(CHECKPATH)
 	R CMD check --no-clean --use-valgrind $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
-check-cran: 
+check-cran:
 	@make build-cran
 	@rm -rf $(CHECKPATH)
 	R CMD check --no-clean --as-cran $(PKG_NAME)_$(PKG_VERSION).tar.gz
@@ -80,7 +80,7 @@ manual: $(PKG_NAME)-manual.pdf
 
 $(PKG_NAME)-manual.pdf: $(ROXYGENFILES)
 	R CMD Rd2pdf --no-preview -o $(PKG_NAME)-manual.pdf .
-	
+
 install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 	R CMD INSTALL --byte-compile $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
