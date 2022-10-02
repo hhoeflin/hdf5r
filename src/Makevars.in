@@ -25,5 +25,4 @@ $(OBJECTS_TO_COPY): copy_auto_files
 
 copy_auto_files:
 	cp @HDF5_VERSION_USE@/*.c @HDF5_VERSION_USE@/*.h .
-	if [ "@HDF5_USE_PATCH@" != "1" ]; then echo @HDF5_USE_PATCH@ 'PATCHING'; fi
-	if [ "@HDF5_USE_PATCH@" != "1" ]; then patch -p2 < patch_@HDF5_USE_PATCH@; fi
+	if [ "@HDF5_USE_PATCH@" != "" ]; then patch -p2 < patch_@HDF5_USE_PATCH@; fi
