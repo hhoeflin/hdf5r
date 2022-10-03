@@ -1,3 +1,6 @@
+# hdf5r 1.3.7
+- Patched source code for hdf5r 1.10.6 and up
+
 # hdf5r 1.3.6
 - Adapted as.charater.factor_ext to be compatible with future changes in R. See issue #190
 

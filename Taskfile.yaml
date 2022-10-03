@@ -1,0 +1,38 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  check-install:
+    cmds:
+      - DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile_check --build-arg HDF5_VERSION={{.HDF5_VERSION}} .
+  check-all:
+    cmds:
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.13"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.14"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.15-patch1"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.16"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.17"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.8.21"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.1"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.3"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.5"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.6"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.8"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.10.9"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.12.0"}
+      - task: check-install
+        vars: {HDF5_VERSION: "1.12.2"}

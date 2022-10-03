@@ -32,3 +32,5 @@ windows
 ^cache$
 ^\.github$
 README.md
+Taskfile.yaml
+docker

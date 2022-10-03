@@ -8,4 +8,5 @@ COPY --chown=docker:docker . /home/docker/hdf5r
 ENTRYPOINT [ /bin/bash ]
 
 RUN cd /home/docker/hdf5r \
-    && R CMD check .
+    && R CMD build . \
+    && R CMD check hdf5r_*.tar.gz
