@@ -5,7 +5,7 @@ version: '3'
 tasks:
   check-install:
     cmds:
-      - DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile_check --build-arg HDF5_VERSION={{.HDF5_VERSION}} .
+      - DOCKER_BUILDKIT=1 docker build -f docker/Dockerfile_check --build-arg HDF5_VERSION={{.HDF5_VERSION}} . &> logs/docker_check_log_{{.HDF5_VERSION}}
   check-all:
     cmds:
       - task: check-install
