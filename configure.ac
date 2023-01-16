@@ -5,6 +5,15 @@ m4_include([inst/m4/ax_lib_hdf5.m4])
 m4_include([inst/m4/ax_compare_version.m4])
 m4_include([inst/m4/hh_hdf5rlib.m4])
 
+: ${R_HOME=`R RHOME`}
+if test -z "${R_HOME}"; then
+  echo "could not determine R_HOME"
+  exit 1
+fi
+CC=`"${R_HOME}/bin/R" CMD config CC`
+CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
+CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+
 AX_LIB_HDF5()
 
 if test "$with_hdf5" = "yes"; then
