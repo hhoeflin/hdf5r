@@ -34,3 +34,4 @@ windows
 README.md
 Taskfile.yaml
 docker
+builds

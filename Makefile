@@ -1,3 +1,5 @@
+.ONESHELL:
+
 R := R --slave --vanilla -e
 Rscript := Rscript -e
 
@@ -31,7 +33,9 @@ build: $(PKG_NAME)_$(PKG_VERSION).tar.gz
 
 $(PKG_NAME)_$(PKG_VERSION).tar.gz: $(PKG_FILES)
 	@make roxygen
-	R CMD build --resave-data .
+	mkdir -p builds
+	cd builds
+	R CMD build --resave-data ..
 
 build-cran:
 	@make clean
