@@ -11,8 +11,8 @@ if test -z "${R_HOME}"; then
   exit 1
 fi
 CC=`"${R_HOME}/bin/R" CMD config CC`
-CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
-CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+R_CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
+R_CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 
 AX_LIB_HDF5()
 
@@ -144,6 +144,9 @@ if test -z "${CPPFLAGS}"; then
   ]
   rm -f myconftest.c
 fi
+
+CFLAGS=${R_CFLAGS}
+CPPFLAGS=${R_CPPFLAGS}
 
 dnl dummy substitute HDF5R_CFLAGS
 HDF5R_CFLAGS=""
