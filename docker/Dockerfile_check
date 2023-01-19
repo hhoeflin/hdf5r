@@ -1,5 +1,5 @@
-ARG HDF5_VERSION
-FROM hhoeflin/hdf5r_devel:$HDF5_VERSION
+ARG DEB_HDF5_IMG
+FROM $DEB_HDF5_IMG
 
 # copy the local context
 USER docker

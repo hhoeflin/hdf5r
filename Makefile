@@ -1,3 +1,5 @@
+.ONESHELL:
+
 R := R --slave --vanilla -e
 Rscript := Rscript -e
 
@@ -12,64 +14,68 @@ RMD_FILES := README.Rmd
 MD_FILES := $(RMD_FILES:.Rmd=.md)
 SRC_FILES := $(filter-out src/RcppExports.cpp, $(ALL_SRC_FILES))
 HEADER_FILES := $(wildcard src/*.h)
-RCPPEXPORTS := src/RcppExports.cpp R/RcppExports.R
 ROXYGENFILES := $(wildcard man/*.Rd) NAMESPACE
 PKG_FILES := DESCRIPTION $(ROXYGENFILES) $(R_FILES) $(SRC_FILES) \
-	$(HEADER_FILES) $(TEST_FILES) $(RCPPEXPORTS)
+	$(HEADER_FILES) $(TEST_FILES) configure
 OBJECTS := $(wildcard src/*.o) $(wildcard src/*.o-*) $(wildcard src/*.dll) $(wildcard src/*.so) $(wildcard src/*.rds)
 CHECKPATH := $(PKG_NAME).Rcheck
 CHECKLOG := `cat $(CHECKPATH)/00check.log`
 CURRENT_DIR := $(shell pwd)
+BUILD_OUTPUT := builds/$(PKG_NAME)_$(PKG_VERSION).tar.gz
 
-.PHONY: all build check manual install clean compileAttributes roxygen\
+.PHONY: all build check manual install clean compileAttributes roxygen \
 	build-cran check-cran doc
 
 all:
 	install
 
-build: $(PKG_NAME)_$(PKG_VERSION).tar.gz
+build: $(BUILD_OUTPUT)
 
-$(PKG_NAME)_$(PKG_VERSION).tar.gz: $(PKG_FILES)
+$(BUILD_OUTPUT): $(PKG_FILES)
 	@make roxygen
-	R CMD build --resave-data .
+	mkdir -p builds
+	cd builds
+	R CMD build --resave-data ..
 
 build-cran:
 	@make clean
 	@make roxygen
 	@make build
 
-roxygen: $(R_FILES)
+roxygen: $(ROXYGENFILES)
+
+configure: configure.ac
+	autoconf
+
+# uses grouped targets https://www.gnu.org/software/make/manual/html_node/Multiple-Targets.html
+$(ROXYGENFILES) &: $(R_FILES)
 	$(Rscript) 'devtools::load_all(".", reset=TRUE, recompile = FALSE, export_all=FALSE)';
 	$(Rscript) 'devtools::document(".")';
+	touch $(ROXYGENFILES)
 
 sitedoc:
 	$(Rscript) 'pkgdown::build_site()';
 
-$(RCPPEXPORTS): compileAttributes
-
-compileAttributes: $(SRC_FILES)
-	$(Rscript) 'library(Rcpp); Rcpp::compileAttributes()'
-
-check: $(PKG_NAME)_$(PKG_VERSION).tar.gz
+check: $(BUILD_OUTPUT)
 	@rm -rf $(CHECKPATH)
-	R CMD check --no-clean $(PKG_NAME)_$(PKG_VERSION).tar.gz
+	R CMD check --no-clean $(BUILD_OUTPUT)
 
-check-valgrind: $(PKG_NAME)_$(PKG_VERSION).tar.gz
+check-valgrind: $(BUILD_OUTPUT)
 	@rm -rf $(CHECKPATH)
-	R CMD check --no-clean --use-valgrind $(PKG_NAME)_$(PKG_VERSION).tar.gz
+	R CMD check --no-clean --use-valgrind $(BUILD_OUTPUT)
 
 check-cran:
 	@make build-cran
 	@rm -rf $(CHECKPATH)
-	R CMD check --no-clean --as-cran $(PKG_NAME)_$(PKG_VERSION).tar.gz
+	R CMD check --no-clean --as-cran $(BUILD_OUTPUT)
 
-check-asan-gcc: $(PKG_NAME)_$(PKG_VERSION).tar.gz
+check-asan-gcc: $(BUILD_OUTPUT)
 	@boot2docker up
 	$(shell boot2docker shellinit)
 	@docker run -v "$(CURRENT_DIR):/mnt" mannau/r-devel-san /bin/bash -c \
 		"cd /mnt; apt-get update; apt-get clean; apt-get install -y libhdf5-dev; \
 		R -e \"install.packages(c('Rcpp', 'testthat', 'roxygen2', 'highlight', 'zoo', 'microbenchmark'))\"; \
-		R CMD check $(PKG_NAME)_$(PKG_VERSION).tar.gz; \
+		R CMD check $(BUILD_OUTPUT); \
 		cat /mnt/h5.Rcheck/00install.out"
 
 00check.log: check
@@ -81,8 +87,8 @@ manual: $(PKG_NAME)-manual.pdf
 $(PKG_NAME)-manual.pdf: $(ROXYGENFILES)
 	R CMD Rd2pdf --no-preview -o $(PKG_NAME)-manual.pdf .
 
-install: $(PKG_NAME)_$(PKG_VERSION).tar.gz
-	R CMD INSTALL --byte-compile $(PKG_NAME)_$(PKG_VERSION).tar.gz
+install: $(BUILD_OUTPUT)
+	R CMD INSTALL --byte-compile $(BUILD_OUTPUT)
 
 clean:
 	@rm -f $(OBJECTS)
