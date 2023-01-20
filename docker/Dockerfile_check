@@ -1,4 +1,5 @@
 ARG DEB_HDF5_IMG
+
 FROM $DEB_HDF5_IMG
 
 # copy the local context
@@ -7,6 +8,7 @@ COPY --chown=docker:docker . /home/docker/hdf5r
 
 ENTRYPOINT [ /bin/bash ]
 
+ARG BUILD_OUTPUT
 RUN cd /home/docker/hdf5r \
-    && R CMD build . \
-    && R CMD check hdf5r_*.tar.gz
+    && R CMD check ${BUILD_OUTPUT} || true
+

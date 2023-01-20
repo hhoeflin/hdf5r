@@ -1,7 +1,7 @@
 ## Emacs, make this -*- mode: sh; -*-
-ARG R_REVISION
 
 FROM rhub/debian-gcc
+ARG R_REVISION
 
 MAINTAINER "r-hub admin" admin@r-hub.io
 

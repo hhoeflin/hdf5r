@@ -1,0 +1,42 @@
+# Docker container for R development of hdf5r package
+# Includes all R dependencies as well as specific HDF5 version
+ARG DEB_BASE_IMG
+
+FROM ${DEB_BASE_IMG}
+
+# dependencies to build the manual
+RUN apt-get update \
+        && apt-get install -y --no-install-recommends \
+                ghostscript \
+                lmodern \
+                python3-citeproc \
+                qpdf \
+                texinfo \
+                texlive-fonts-extra \
+                texlive-fonts-recommended \
+                texlive-latex-extra \
+                texlive-latex-recommended \
+                texlive-luatex \
+                texlive-plain-generic \
+                texlive-science \
+                texlive-xetex \
+                pandoc \
+                libfontconfig1-dev \
+                libcurl4-openssl-dev \
+                libxml2-dev \
+                libssl-dev \
+                libharfbuzz-dev \
+                libfribidi-dev \
+                libfreetype6-dev \
+                libpng-dev \
+                libtiff5-dev \
+                libjpeg-dev
+
+COPY install_all_packages.R .
+
+RUN Rscript install_all_packages.R \
+    && rm install_all_packages.R
+    # -e 'install.packages(c("R6", "bit64", "testthat", "knitr", "rmarkdown", "nycflights13", "reshape2", "formatR"))'
+
+RUN apt-get install -y libhdf5-dev
+

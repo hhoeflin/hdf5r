@@ -650,9 +650,6 @@ ac_includes_default="\
 ac_header_c_list=
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
-HDF5R_LIBS
-HDF5R_CPPFLAGS
-HDF5R_CFLAGS
 HDF5_USE_PATCH
 DEFINE_H5FREE_MEMORY
 HDF5_API_VERS_USE
@@ -2443,6 +2440,15 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: Detected environment variables" >&5
+printf "%s\n" "Detected environment variables" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CC=${CC}" >&5
+printf "%s\n" "CC=${CC}" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CFLAGS=${CFLAGS}" >&5
+printf "%s\n" "CFLAGS=${CFLAGS}" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CPPFLAGS=${CPPFLAGS}" >&5
+printf "%s\n" "CPPFLAGS=${CPPFLAGS}" >&6; }
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
 printf %s "checking for a sed that does not truncate output... " >&6; }
@@ -4445,8 +4451,72 @@ if test -z "${R_HOME}"; then
   exit 1
 fi
 
-if test -z "${LIBS}"; then
-    # Extract the first word of "ggrep", so it can be a program name with args.
+####################
+# Deterine HDF5_LIBS
+####################
+# Extract the first word of "ggrep", so it can be a program name with args.
+set dummy ggrep; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_GREP+y}
+then :
+  printf %s "(cached) " >&6
+else $as_nop
+  if test -n "$GREP"; then
+  ac_cv_prog_GREP="$GREP" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_GREP="`which ggrep`"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_prog_GREP" && ac_cv_prog_GREP="`which grep`"
+fi
+fi
+GREP=$ac_cv_prog_GREP
+if test -n "$GREP"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GREP" >&5
+printf "%s\n" "$GREP" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether ${GREP} accepts -o" >&5
+printf %s "checking whether ${GREP} accepts -o... " >&6; }
+if `echo '' | ${GREP} -o '' >/dev/null 2>&1`
+then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+  as_fn_error $? "${GREP} does not support option -o" "$LINENO" 5
+fi
+
+HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
+
+HDF5_LIBS="${HDF5_LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"
+
+#########################
+# Determine HDF5_CPPFLAGS
+#########################
+# Extract the first word of "ggrep", so it can be a program name with args.
 set dummy ggrep; ac_word=$2
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
 printf %s "checking for $ac_word... " >&6; }
@@ -4490,93 +4560,35 @@ fi
 
 
 
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether ${GREP} accepts -o" >&5
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether ${GREP} accepts -o" >&5
 printf %s "checking whether ${GREP} accepts -o... " >&6; }
-  if `echo '' | ${GREP} -o '' >/dev/null 2>&1`
-  then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+if `echo '' | ${GREP} -o '' >/dev/null 2>&1`
+then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 printf "%s\n" "yes" >&6; }
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-    as_fn_error $? "${GREP} does not support option -o" "$LINENO" 5
-  fi
-
-  LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
-
-
-    HDF5R_LIBS="${LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"
-
-fi
-
-if test -z "${CPPFLAGS}"; then
-    # Extract the first word of "ggrep", so it can be a program name with args.
-set dummy ggrep; ac_word=$2
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
-printf %s "checking for $ac_word... " >&6; }
-if test ${ac_cv_prog_GREP+y}
-then :
-  printf %s "(cached) " >&6
-else $as_nop
-  if test -n "$GREP"; then
-  ac_cv_prog_GREP="$GREP" # Let the user override the test.
-else
-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
-for as_dir in $PATH
-do
-  IFS=$as_save_IFS
-  case $as_dir in #(((
-    '') as_dir=./ ;;
-    */) ;;
-    *) as_dir=$as_dir/ ;;
-  esac
-    for ac_exec_ext in '' $ac_executable_extensions; do
-  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
-    ac_cv_prog_GREP="`which ggrep`"
-    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
-    break 2
-  fi
-done
-  done
-IFS=$as_save_IFS
-
-  test -z "$ac_cv_prog_GREP" && ac_cv_prog_GREP="`which grep`"
-fi
-fi
-GREP=$ac_cv_prog_GREP
-if test -n "$GREP"; then
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GREP" >&5
-printf "%s\n" "$GREP" >&6; }
 else
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
 printf "%s\n" "no" >&6; }
+  as_fn_error $? "${GREP} does not support option -o" "$LINENO" 5
 fi
 
+echo 'int main() { return; }' > myconftest.c
+
+HDF5_CPPFLAGS=`${H5CC} -show -c myconftest.c | ${GREP} -o "\-I[^[:space:]]\+" | tr "\n" " "`
+
+rm -f myconftest.c
 
 
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether ${GREP} accepts -o" >&5
-printf %s "checking whether ${GREP} accepts -o... " >&6; }
-  if `echo '' | ${GREP} -o '' >/dev/null 2>&1`
-  then
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-printf "%s\n" "yes" >&6; }
-  else
-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
-printf "%s\n" "no" >&6; }
-    as_fn_error $? "${GREP} does not support option -o" "$LINENO" 5
-  fi
+HDF5_CFLAGS=""
 
-  echo 'int main() { return; }' > myconftest.c
-
-
-
-  HDF5R_CPPFLAGS=`${H5CC} -show -c myconftest.c | ${GREP} -o "\-I[^[:space:]]\+" | tr "\n" " "`
-
-  rm -f myconftest.c
-fi
-
-HDF5R_CFLAGS=""
-
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: Using variables:" >&5
+printf "%s\n" "Using variables:" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: HDF5_LIBS=${HDF5_LIBS}" >&5
+printf "%s\n" "HDF5_LIBS=${HDF5_LIBS}" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: HDF5_CFLAGS=${HDF5_CFLAGS}" >&5
+printf "%s\n" "HDF5_CFLAGS=${HDF5_CFLAGS}" >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: HDF5_CPPFLAGS=${HDF5_CPPFLAGS}" >&5
+printf "%s\n" "HDF5_CPPFLAGS=${HDF5_CPPFLAGS}" >&6; }
 
 
 
