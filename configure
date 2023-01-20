@@ -2441,14 +2441,15 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: Detected environment variables" >&5
-printf "%s\n" "Detected environment variables" >&6; }
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CC=${CC}" >&5
-printf "%s\n" "CC=${CC}" >&6; }
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CFLAGS=${CFLAGS}" >&5
-printf "%s\n" "CFLAGS=${CFLAGS}" >&6; }
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: CPPFLAGS=${CPPFLAGS}" >&5
-printf "%s\n" "CPPFLAGS=${CPPFLAGS}" >&6; }
+
+: ${R_HOME=`R RHOME`}
+if test -z "${R_HOME}"; then
+  echo "could not determine R_HOME"
+  exit 1
+fi
+CC=`"${R_HOME}/bin/R" CMD config CC`
+CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
+CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for a sed that does not truncate output" >&5
 printf %s "checking for a sed that does not truncate output... " >&6; }

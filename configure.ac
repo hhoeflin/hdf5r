@@ -5,10 +5,15 @@ m4_include([inst/m4/ax_lib_hdf5.m4])
 m4_include([inst/m4/ax_compare_version.m4])
 m4_include([inst/m4/hh_hdf5rlib.m4])
 
-AC_MSG_RESULT([Detected environment variables])
-AC_MSG_RESULT([CC=${CC}])
-AC_MSG_RESULT([CFLAGS=${CFLAGS}])
-AC_MSG_RESULT([CPPFLAGS=${CPPFLAGS}])
+
+: ${R_HOME=`R RHOME`}
+if test -z "${R_HOME}"; then
+  echo "could not determine R_HOME"
+  exit 1
+fi
+CC=`"${R_HOME}/bin/R" CMD config CC`
+CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
+CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 
 AX_LIB_HDF5()
 
