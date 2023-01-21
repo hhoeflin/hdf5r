@@ -1,3 +1,6 @@
+# hdf5r 1.3.8
+- Fixed issue in configue.ac that lead to failing builds.
+
 # hdf5r 1.3.7
 - Patched source code for hdf5r 1.10.6 and up
 
