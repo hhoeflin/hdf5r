@@ -1,5 +1,5 @@
 /**************************************************************************
- * 
+ *
  * Copyright 2016 Novartis Institutes for BioMedical Research Inc.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ hid_t get_h5_equiv(int size, bool sign) {
 }
 
 
-SEXP print_dtypes_array() {
+SEXP print_dtypes_array(void) {
   Rprintf("New -------------------------------------\n");
   for(int i=0; i < DT_LAST_ITEM; ++i) {
     Rprintf("%d: %I64d\n", i, h5_datatype[i]);
@@ -201,7 +201,7 @@ SEXP init_dtypes(void) {
 #if H5_SIZEOF_LONG_DOUBLE !=0
   h5_datatype[DT_H5T_NATIVE_LDOUBLE] = H5T_NATIVE_LDOUBLE;
 #endif
-  // the C_API_types 
+  // the C_API_types
   h5_datatype[DT_ssize_t] = get_h5_equiv(sizeof(ssize_t), issigned(ssize_t));
   h5_datatype[DT_hsize_t] = get_h5_equiv(sizeof(hsize_t), issigned(hsize_t));
   h5_datatype[DT_size_t] = get_h5_equiv(sizeof(size_t), issigned(size_t));
@@ -234,8 +234,8 @@ SEXP init_dtypes(void) {
   h5_datatype[DT_uint32_t] = get_h5_equiv(sizeof(uint32_t), issigned(uint32_t));
   h5_datatype[DT_unsigned_long_long] = get_h5_equiv(sizeof(unsigned long long), issigned(unsigned long long));
   // the string and double datatypes
-  h5_datatype[DT_char] = H5Tcopy(H5T_C_S1); 
-  H5Tset_size(h5_datatype[DT_char], H5T_VARIABLE); 
+  h5_datatype[DT_char] = H5Tcopy(H5T_C_S1);
+  H5Tset_size(h5_datatype[DT_char], H5T_VARIABLE);
   h5_datatype[DT_double] = H5T_NATIVE_DOUBLE;
   h5_datatype[DT_float] = H5T_NATIVE_FLOAT;
   // the enums
@@ -316,9 +316,9 @@ SEXP init_dtypes(void) {
 
 
 /*************************************************************************
- * 
+ *
  * Create the dataframe with all the type information
- * 
+ *
  *************************************************************************/
 
 SEXP show_all_types_data_frame(void) {
@@ -1262,9 +1262,9 @@ SEXP show_all_types_data_frame(void) {
 
 
 /*************************************************************************
- * 
+ *
  * Enums
- * 
+ *
  *************************************************************************/
 
 /* typedef enum H5_index_t { H5_INDEX_UNKNOWN = -1, H5_INDEX_NAME, H5_INDEX_CRT_ORDER, H5_INDEX_N } H5_index_t; */
@@ -2164,9 +2164,9 @@ hid_t create_DT_H5Z_SO_scale_type_t(void) {
 
 
 /*************************************************************************
- * 
+ *
  * Structs
- * 
+ *
  *************************************************************************/
 
 

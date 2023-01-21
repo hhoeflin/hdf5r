@@ -1,5 +1,5 @@
 /**************************************************************************
- * 
+ *
  * Copyright 2016 Novartis Institutes for BioMedical Research Inc.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ hid_t get_h5_equiv(int size, bool sign) {
 }
 
 
-SEXP print_dtypes_array() {
+SEXP print_dtypes_array(void) {
   Rprintf("New -------------------------------------\n");
   for(int i=0; i < DT_LAST_ITEM; ++i) {
     Rprintf("%d: %I64d\n", i, h5_datatype[i]);
@@ -75,11 +75,11 @@ SEXP init_dtypes(void) {
 #if H5_SIZEOF_LONG_DOUBLE !=0
   h5_datatype[DT_H5T_NATIVE_LDOUBLE] = H5T_NATIVE_LDOUBLE;
 #endif
-  // the C_API_types 
+  // the C_API_types
 <%=c_api_types_init_no_char_float%>
   // the string and double datatypes
-  h5_datatype[DT_char] = H5Tcopy(H5T_C_S1); 
-  H5Tset_size(h5_datatype[DT_char], H5T_VARIABLE); 
+  h5_datatype[DT_char] = H5Tcopy(H5T_C_S1);
+  H5Tset_size(h5_datatype[DT_char], H5T_VARIABLE);
   h5_datatype[DT_double] = H5T_NATIVE_DOUBLE;
   h5_datatype[DT_float] = H5T_NATIVE_FLOAT;
   // the enums
@@ -96,27 +96,27 @@ SEXP init_dtypes(void) {
 
 
 /*************************************************************************
- * 
+ *
  * Create the dataframe with all the type information
- * 
+ *
  *************************************************************************/
 
 <%=show_all_types_code%>
 
 
 /*************************************************************************
- * 
+ *
  * Enums
- * 
+ *
  *************************************************************************/
 <%=create_enum_types_code%>
 
 
 
 /*************************************************************************
- * 
+ *
  * Structs
- * 
+ *
  *************************************************************************/
 
 <%=create_struct_types_code%>

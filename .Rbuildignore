@@ -3,10 +3,7 @@
 .*\.Rmd~
 .*~
 src/clean_files.sh
-inst/CWrappers_1.10.0
-inst/CWrappers_1.8.16
-inst/CWrappers_1.8.14
-inst/CWrappers_1.8.12
+inst/CWrappers*
 inst/manual
 inst/function_overview
 inst/speed_check

@@ -22,6 +22,6 @@
 
 #include "global.h"
 
-SEXP R_H5error();
+SEXP R_H5error(void);
 
 #endif

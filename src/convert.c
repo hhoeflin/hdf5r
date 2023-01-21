@@ -2463,13 +2463,13 @@ SEXP R_as_hex(SEXP x) {
   
   if(TYPEOF(x) == REALSXP) {
     for(R_xlen_t i = 0; i < XLENGTH(x); ++i) {
-      sprintf(as_hex, "%016llX", ((long long*)REAL(x))[i]);
+      snprintf(as_hex, 17, "%016llX", ((long long*)REAL(x))[i]);
       SET_STRING_ELT(as_hex_r, i, mkChar(as_hex));
     }
   }
   else if(TYPEOF(x) == INTSXP) {
     for(R_xlen_t i = 0; i < XLENGTH(x); ++i) {
-      sprintf(as_hex, "%08X", INTEGER(x)[i]);
+      snprintf(as_hex, 17, "%08X", INTEGER(x)[i]);
       SET_STRING_ELT(as_hex_r, i, mkChar(as_hex));
     }
   }

@@ -2,6 +2,8 @@
 
 R_REVISION?=83640
 HDF5_VERSION?=System
+DOCKER_CRAN_CHECK_ARG=''
+# DOCKER_CRAN_CHECK_ARG='--as-cran'
 
 R := R --slave --vanilla -e
 Rscript := Rscript -e
@@ -25,6 +27,10 @@ CHECKPATH := $(PKG_NAME).Rcheck
 CHECKLOG := `cat $(CHECKPATH)/00check.log`
 CURRENT_DIR := $(shell pwd)
 BUILD_OUTPUT := builds/$(PKG_NAME)_$(PKG_VERSION).tar.gz
+SRC_FILES_COPIED := $(wildcard src/Wrapper_auto*) src/HelperStructs.h \
+					src/const_export.c src/const_export.h src/export_auto.h \
+					src/datatype_export.c src/datatype_export.h
+
 
 .PHONY: all build check manual install clean compileAttributes roxygen \
 	build-cran check-cran doc
@@ -64,7 +70,11 @@ check: $(BUILD_OUTPUT)
 	R CMD check --no-clean $(BUILD_OUTPUT)
 
 check-docker: $(BUILD_OUTPUT)
-	$(MAKE) -C docker R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
+	if [[ "${HDF5_VERSION}" = "System" ]]; then
+		$(MAKE) -C docker build-system R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
+	else
+		$(MAKE) -C docker build-custom R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
+	fi
 	export DOCKER_BUILDKIT=1
 	mkdir -p logs
 	SOURCE_IMAGE=hhoeflin/hdf5-debian-gcc-devel:r${R_REVISION}-v${HDF5_VERSION}
@@ -78,6 +88,7 @@ check-docker: $(BUILD_OUTPUT)
 		-t $${TARGET_IMAGE}\
 		--build-arg DEB_HDF5_IMG=$${SOURCE_IMAGE} \
 		--build-arg BUILD_OUTPUT=$${BUILD_OUTPUT} \
+		--build-arg CRAN_CHECK_ARG=${DOCKER_CRAN_CHECK_ARG} \
 		. 2>&1 \
 		| tee $${LOG_FILE}
 	# get the artifacts
@@ -117,6 +128,7 @@ install: $(BUILD_OUTPUT)
 
 clean:
 	@rm -f $(OBJECTS)
+	@rm -f ${SRC_FILES_COPIED}
 	@rm -rf $(wildcard *.Rcheck)
 	@rm -rf $(wildcard *.cache)
 	@rm -f $(wildcard *.tar.gz)

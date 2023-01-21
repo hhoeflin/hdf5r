@@ -9,6 +9,8 @@ COPY --chown=docker:docker . /home/docker/hdf5r
 ENTRYPOINT [ /bin/bash ]
 
 ARG BUILD_OUTPUT
+ARG CRAN_CHECK_ARG
 RUN cd /home/docker/hdf5r \
-    && R CMD check ${BUILD_OUTPUT} || true
+    && export _R_CHECK_CRAN_INCOMING="false" \
+    && R CMD check ${CRAN_CHECK_ARG} ${BUILD_OUTPUT} || true
 

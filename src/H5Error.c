@@ -119,7 +119,7 @@ herr_t _errorCollector( hid_t estack_id, void * stream) {
 
 
 
-SEXP R_H5error() {
+SEXP R_H5error(void) {
   H5E_auto2_t err_func;
   void *err_func_data;
   herr_t err;

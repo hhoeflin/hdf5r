@@ -11,9 +11,15 @@ if test -z "${R_HOME}"; then
   echo "could not determine R_HOME"
   exit 1
 fi
-CC=`"${R_HOME}/bin/R" CMD config CC`
-CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
-CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+if test -z "${CC}"; then
+  CC=`"${R_HOME}/bin/R" CMD config CC`
+fi
+if test -z "${CFLAGS}"; then
+  CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
+fi
+if test -z "${CPPFLAGS}"; then
+  CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+fi
 
 AX_LIB_HDF5()
 
