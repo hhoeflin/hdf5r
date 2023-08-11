@@ -195,6 +195,16 @@ H5D <- R6Class("H5D",
                        }
                        return(info)
                    },
+                   chunk_iter=function(chk_coords) {
+                       "This function implements the HDF5-API function H5Dchunk_iter"
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_GET_CHUNK_INFO_BY_COORD} for details."
+
+                       info <- .Call("R_H5Dchunk_iter", self$id, chk_coords, request_empty(1), request_empty(1), request_empty(1), PACKAGE="hdf5r")
+                       if(info$return_val < 0) {
+                           stop("Error retrieving information about a chunk by coords")
+                       }
+                       return(info)
+                   },
                    get_access_plist=function() {
                        "This function implements the HDF5-API function H5Dget_access_plist."
                        "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_GET_ACCESS_PLIST} for details."
