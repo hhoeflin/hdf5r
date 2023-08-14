@@ -335,82 +335,66 @@ SEXP R_H5Dget_chunk_info(SEXP R_dset_id, SEXP R_fspace_id, SEXP R_chk_idx, SEXP 
   return(__ret_list);
 }
 
-/* H5_DLL herr_t R_H5Dchunk_iter(hid_t dset_id, const hsize_t *coord, unsigned *filter_mask, haddr_t *addr, hsize_t *size); */
-SEXP R_H5Dchunk_iter(SEXP R_dset_id, SEXP R_coord, SEXP R_filter_mask, SEXP R_addr, SEXP R_size){
+
+int chunk_cb(const hsize_t *offset, unsigned filter_mask, haddr_t addr, hsize_t size, void *op_data)
+{
+    int vars_protected=0;
+    SEXP cb = *((SEXP*)op_data);
+    SEXP RCall, R_offset, R_filter_mask, R_addr, R_size;
+
+    R_offset = PROTECT(ScalarInteger64_or_int(offset));
+    vars_protected++;
+    R_filter_mask = PROTECT(ScalarInteger64_or_int(filter_mask));
+    vars_protected++;
+    R_addr = PROTECT(ScalarInteger64_or_int(addr));
+    vars_protected++;
+    R_size =PROTECT(ScalarInteger64_or_int(size));
+    vars_protected++;
+
+    SEXP __ret_list;
+    PROTECT(__ret_list = allocVector(VECSXP, 4));
+    SET_VECTOR_ELT(__ret_list, 0, R_offset);
+    SET_VECTOR_ELT(__ret_list, 1, R_filter_mask);
+    SET_VECTOR_ELT(__ret_list, 2, R_addr);
+    SET_VECTOR_ELT(__ret_list, 3, R_size);
+    SEXP __ret_list_names;
+    PROTECT(__ret_list_names = allocVector(STRSXP, 4));
+    SET_STRING_ELT(__ret_list_names, 0, mkChar("offset"));
+    SET_STRING_ELT(__ret_list_names, 1, mkChar("filter_mask"));
+    SET_STRING_ELT(__ret_list_names, 2, mkChar("addr"));
+    SET_STRING_ELT(__ret_list_names, 3, mkChar("size"));
+    SET_NAMES(__ret_list, __ret_list_names);
+    vars_protected += 2;
+
+    PROTECT(RCall = lang2(cb,__ret_list));
+    vars_protected++;
+
+    SEXP ret=eval(RCall, R_GlobalEnv);
+    UNPROTECT(vars_protected);
+    return EXIT_SUCCESS;
+}
+
+/* H5_DLL herr_t R_H5Dchunk_iter(hid_t dset_id, SEXP cb); */
+SEXP R_H5Dchunk_iter(SEXP R_dset_id, SEXP cb){
   hsize_t size_helper;
   SEXP R_helper = R_NilValue;
   int vars_protected=0;
-  R_filter_mask = PROTECT(duplicate(R_filter_mask));
-  vars_protected++;
-  R_addr = PROTECT(duplicate(R_addr));
-  vars_protected++;
-  R_size = PROTECT(duplicate(R_size));
-  vars_protected++;
-  hid_t dset_id = SEXP_to_longlong(R_dset_id, 0);
-  const hsize_t* coord;
-  if(XLENGTH(R_coord) == 0) {
-    coord = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_coord, h5_datatype[DT_hsize_t], XLENGTH(R_coord)));
-    coord= (const hsize_t*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  unsigned* filter_mask;
-  if(XLENGTH(R_filter_mask) == 0) {
-    filter_mask = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_filter_mask, h5_datatype[DT_unsigned], XLENGTH(R_filter_mask)));
-    filter_mask= (unsigned*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  haddr_t* addr;
-  if(XLENGTH(R_addr) == 0) {
-    addr = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_addr, h5_datatype[DT_haddr_t], XLENGTH(R_addr)));
-    addr= (haddr_t*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  hsize_t* size;
-  if(XLENGTH(R_size) == 0) {
-    size = NULL;
-  }
-  else {
-    R_helper = PROTECT(RToH5(R_size, h5_datatype[DT_hsize_t], XLENGTH(R_size)));
-    size= (hsize_t*) VOIDPTR(R_helper);
-    vars_protected++;
-  }
-  //herr_t return_val = H5Dget_chunk_info_by_coord(dset_id, coord, filter_mask, addr, size);
 
-  printf("Capturado lugar del iter 2\n");
+  hid_t dset_id = SEXP_to_longlong(R_dset_id, 0);
+
+  SEXP resCb; 
+  herr_t return_val=H5Dchunk_iter(dset_id, H5P_DEFAULT, &chunk_cb, &cb);
 
   SEXP R_return_val= R_NilValue;
-  //R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+  R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;
-  size_helper = guess_nelem(R_filter_mask, h5_datatype[DT_unsigned]);
-  R_filter_mask = PROTECT(H5ToR_single_step(filter_mask, h5_datatype[DT_unsigned], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  size_helper = guess_nelem(R_addr, h5_datatype[DT_haddr_t]);
-  R_addr = PROTECT(H5ToR_single_step(addr, h5_datatype[DT_haddr_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
-  size_helper = guess_nelem(R_size, h5_datatype[DT_hsize_t]);
-  R_size = PROTECT(H5ToR_single_step(size, h5_datatype[DT_hsize_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
-  vars_protected++;
+
   SEXP __ret_list;
-  PROTECT(__ret_list = allocVector(VECSXP, 4));
+  PROTECT(__ret_list = allocVector(VECSXP, 1));
   SET_VECTOR_ELT(__ret_list, 0, R_return_val);
-  SET_VECTOR_ELT(__ret_list, 1, R_filter_mask);
-  SET_VECTOR_ELT(__ret_list, 2, R_addr);
-  SET_VECTOR_ELT(__ret_list, 3, R_size);
   SEXP __ret_list_names;
-  PROTECT(__ret_list_names = allocVector(STRSXP, 4));
+  PROTECT(__ret_list_names = allocVector(STRSXP, 1));
   SET_STRING_ELT(__ret_list_names, 0, mkChar("return_val"));
-  SET_STRING_ELT(__ret_list_names, 1, mkChar("filter_mask"));
-  SET_STRING_ELT(__ret_list_names, 2, mkChar("addr"));
-  SET_STRING_ELT(__ret_list_names, 3, mkChar("size"));
   SET_NAMES(__ret_list, __ret_list_names);
   vars_protected += 2;
   UNPROTECT(vars_protected);

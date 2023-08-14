@@ -56,7 +56,7 @@ R_CallMethodDef library_WRAPPER_AUTO_H5D[] = {
 {"R_H5Dget_chunk_index_type", (DL_FUNC) &R_H5Dget_chunk_index_type, 2},
 {"R_H5Dget_chunk_info", (DL_FUNC) &R_H5Dget_chunk_info, 7},
 {"R_H5Dget_chunk_info_by_coord", (DL_FUNC) &R_H5Dget_chunk_info_by_coord, 5},
-{"R_H5Dchunk_iter", (DL_FUNC) &R_H5Dchunk_iter,5},
+{"R_H5Dchunk_iter", (DL_FUNC) &R_H5Dchunk_iter,2},
 {"R_H5Dget_chunk_storage_size", (DL_FUNC) &R_H5Dget_chunk_storage_size, 3},
 {"R_H5Dget_create_plist", (DL_FUNC) &R_H5Dget_create_plist, 1},
 {"R_H5Dget_num_chunks", (DL_FUNC) &R_H5Dget_num_chunks, 3},
