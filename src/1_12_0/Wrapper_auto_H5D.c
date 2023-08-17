@@ -335,15 +335,17 @@ SEXP R_H5Dget_chunk_info(SEXP R_dset_id, SEXP R_fspace_id, SEXP R_chk_idx, SEXP 
   return(__ret_list);
 }
 
+typedef struct s_chunck_cb_data {
+  SEXP* R_cb;
+  uint8_t rank;
+} chunk_cb_data;
 
 int chunk_cb(const hsize_t *offset, unsigned filter_mask, haddr_t addr, hsize_t size, void *op_data)
 {
     int vars_protected=0;
-    SEXP cb = *((SEXP*)op_data);
+    chunk_cb_data* cb = (chunk_cb_data*)op_data;
     SEXP RCall, R_offset, R_filter_mask, R_addr, R_size;
 
-    R_offset = PROTECT(ScalarInteger64_or_int(offset));
-    vars_protected++;
     R_filter_mask = PROTECT(ScalarInteger64_or_int(filter_mask));
     vars_protected++;
     R_addr = PROTECT(ScalarInteger64_or_int(addr));
@@ -351,6 +353,11 @@ int chunk_cb(const hsize_t *offset, unsigned filter_mask, haddr_t addr, hsize_t 
     R_size =PROTECT(ScalarInteger64_or_int(size));
     vars_protected++;
 
+    PROTECT(R_offset = allocVector(INTSXP, cb->rank));
+    vars_protected++;
+    for(int i=0;i<cb->rank;i++){
+        INTEGER(R_offset)[i] = offset[i];
+    }
     SEXP __ret_list;
     PROTECT(__ret_list = allocVector(VECSXP, 4));
     SET_VECTOR_ELT(__ret_list, 0, R_offset);
@@ -366,12 +373,26 @@ int chunk_cb(const hsize_t *offset, unsigned filter_mask, haddr_t addr, hsize_t 
     SET_NAMES(__ret_list, __ret_list_names);
     vars_protected += 2;
 
-    PROTECT(RCall = lang2(cb,__ret_list));
+    PROTECT(RCall = lang2(*(cb->R_cb),__ret_list));
     vars_protected++;
 
     SEXP ret=eval(RCall, R_GlobalEnv);
+    int retVal=EXIT_FAILURE;
+    if(ret == R_NilValue){
+      retVal=EXIT_SUCCESS;
+    }else{
+      switch(TYPEOF(ret)) {
+        case REALSXP:
+        case LGLSXP:
+        case INTSXP: 
+          retVal=SEXP_to_longlong(ret,0);
+          break;
+        default:
+      }    
+      if(retVal==0)retVal=EXIT_SUCCESS;
+    } 
     UNPROTECT(vars_protected);
-    return EXIT_SUCCESS;
+    return retVal; 
 }
 
 /* H5_DLL herr_t R_H5Dchunk_iter(hid_t dset_id, SEXP cb); */
@@ -379,11 +400,15 @@ SEXP R_H5Dchunk_iter(SEXP R_dset_id, SEXP cb){
   hsize_t size_helper;
   SEXP R_helper = R_NilValue;
   int vars_protected=0;
-
+  chunk_cb_data data;
+  data.R_cb=&cb;
   hid_t dset_id = SEXP_to_longlong(R_dset_id, 0);
+  
+  hid_t space_id = H5Dget_space(dset_id);
+  data.rank = H5Sget_simple_extent_ndims(space_id);
 
   SEXP resCb; 
-  herr_t return_val=H5Dchunk_iter(dset_id, H5P_DEFAULT, &chunk_cb, &cb);
+  herr_t return_val=H5Dchunk_iter(dset_id, H5P_DEFAULT, &chunk_cb, &data);
 
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
