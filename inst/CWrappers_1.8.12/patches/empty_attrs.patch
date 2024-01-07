@@ -1,0 +1,53 @@
+diff --git a/src/1_12_0/Wrapper_auto_H5A.c b/src/1_12_0/Wrapper_auto_H5A.c
+index 4ce99a9..49b8ff0 100644
+--- a/src/1_12_0/Wrapper_auto_H5A.c
++++ b/src/1_12_0/Wrapper_auto_H5A.c
+@@ -614,13 +614,13 @@ SEXP R_H5Aread(SEXP R_attr_id, SEXP R_type_id, SEXP R_buf, SEXP _dupl_buf){
+     R_buf = PROTECT(duplicate(R_buf));
+     vars_protected++;
+   }
+   hid_t attr_id = SEXP_to_longlong(R_attr_id, 0);
+   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
+   void* buf;
+-  if(XLENGTH(R_buf) == 0) {
++  if(TYPEOF(R_buf) == NILSXP) {
+     buf = NULL;
+   }
+   else {
+     buf = (void *) VOIDPTR(R_buf);
+   }
+   herr_t return_val = H5Aread(attr_id, type_id, buf);
+@@ -690,13 +690,13 @@ SEXP R_H5Arename_by_name(SEXP R_loc_id, SEXP R_obj_name, SEXP R_old_attr_name, S
+ /* H5_DLL herr_t H5Awrite(hid_t attr_id, hid_t type_id, const void *buf); */
+ SEXP R_H5Awrite(SEXP R_attr_id, SEXP R_type_id, SEXP R_buf){
+   int vars_protected=0;
+   hid_t attr_id = SEXP_to_longlong(R_attr_id, 0);
+   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
+   const void* buf;
+-  if(XLENGTH(R_buf) == 0) {
++  if(TYPEOF(R_buf) == NILSXP) {
+     buf = NULL;
+   }
+   else {
+     buf = (void *) VOIDPTR(R_buf);
+   }
+   herr_t return_val = H5Awrite(attr_id, type_id, buf);
+diff --git a/src/1_12_0/Wrapper_auto_H5D.c b/src/1_12_0/Wrapper_auto_H5D.c
+index 515f8db..8844fb6 100644
+--- a/src/1_12_0/Wrapper_auto_H5D.c
++++ b/src/1_12_0/Wrapper_auto_H5D.c
+@@ -856,13 +856,13 @@ SEXP R_H5Dvlen_reclaim(SEXP R_type_id, SEXP R_space_id, SEXP R_plist_id, SEXP R_
+     vars_protected++;
+   }
+   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
+   hid_t space_id = SEXP_to_longlong(R_space_id, 0);
+   hid_t plist_id = SEXP_to_longlong(R_plist_id, 0);
+   void* buf;
+-  if(XLENGTH(R_buf) == 0) {
++  if(TYPEOF(R_buf) == NILSXP) {
+     buf = NULL;
+   }
+   else {
+     buf = (void *) VOIDPTR(R_buf);
+   }
+   herr_t return_val = H5Dvlen_reclaim(type_id, space_id, plist_id, buf);
