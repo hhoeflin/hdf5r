@@ -181,3 +181,75 @@ test_that("Creating attributes of different types", {
 
 
 
+test_that("Creating attributes of different types of length 0", {
+    test_file <- tempfile(fileext=".h5")
+    ## open a new one, truncate if it exists
+    file.h5 <- H5File$new(test_file, mode="w")
+
+    ## now create different types
+    ## integer, long integer, float, enum, compound, strings
+    ## create a dataset for each of them
+    dtype_int64 <- h5types$H5T_NATIVE_LLONG
+    dtype_int32 <- h5types$H5T_NATIVE_INT
+    dtype_float <- h5types$H5T_NATIVE_FLOAT
+    dtype_double <- h5types$H5T_NATIVE_DOUBLE
+
+    ## enums
+    enum_logical <- H5T_LOGICAL$new()
+    factor_levels <- paste("test", 1:10, sep="")
+    enum_factor <- H5T_ENUM$new(labels=factor_levels)
+
+    ## strings
+    dtype_string_variable_utf8 <- H5T_STRING$new()$set_size(Inf)$set_cset(h5const$H5T_CSET_UTF8)
+    dtype_string_short_utf8 <- H5T_STRING$new()$set_size(10)$set_cset(h5const$H5T_CSET_UTF8)
+
+    ## compound
+    dtype_cpd <- H5T_COMPOUND$new(dtypes=list(dtype_int32, dtype_int32), labels=c("a", "b"))
+
+
+    ## now create a simple dataspace for the new objects;
+    ## will be the same for all, single dimension of size 0
+    attrspace <- H5S$new(type="simple", dims=0, maxdims=0)
+
+    ## create named datasets for all these types
+    attr_int64 <- file.h5$create_attr(attr_name="int64", dtype=dtype_int64, space=attrspace)
+    attr_int32 <- file.h5$create_attr(attr_name="int32", dtype=dtype_int32, space=attrspace)
+    attr_float <- file.h5$create_attr(attr_name="float", dtype=dtype_float, space=attrspace)
+    attr_double <- file.h5$create_attr(attr_name="double", dtype=dtype_double, space=attrspace)
+    attr_logical <- file.h5$create_attr(attr_name="enum_logical", dtype=enum_logical, space=attrspace)
+    attr_factor <- file.h5$create_attr(attr_name="enum_factor", dtype=enum_factor, space=attrspace)
+    attr_string_short <- file.h5$create_attr(attr_name="string_short", dtype=dtype_string_short_utf8, space=attrspace)
+    attr_string_variable <- file.h5$create_attr(attr_name="string_variable", dtype=dtype_string_variable_utf8, space=attrspace)
+    attr_cpd <- file.h5$create_attr(attr_name="cpd", dtype=dtype_cpd, space=attrspace)
+
+        ## now write data into the dataset, and read it back out again
+    res_int32 <- read_write_roundtrip(attr_int32, integer(0))
+    expect_equal(res_int32$input, res_int32$output)
+
+    res_int64 <- read_write_roundtrip(attr_int64, integer(0))
+    expect_equal(res_int64$input, res_int64$output)
+
+    res_float <- read_write_roundtrip(attr_float, numeric(0))
+    expect_equal(res_float$input, res_float$output)
+
+    res_double <- read_write_roundtrip(attr_double, numeric(0))
+    expect_equal(res_double$input, res_double$output)
+
+    res_logical <- read_write_roundtrip(attr_logical, logical(0))
+    expect_equal(res_logical$input, res_logical$output)
+
+    res_factor <- read_write_roundtrip(attr_factor, factor(character(0), levels=paste("test", 1:10, sep="")))
+    expect_equal(res_factor$input, res_factor$output)
+
+    res_string_short <- read_write_roundtrip(attr_string_short, character(0))
+    expect_equal(substr(res_string_short$input, 1,10), res_string_short$output)
+
+    res_string_variable <- read_write_roundtrip(attr_string_variable, character(0))
+    expect_equal(res_string_variable$input, res_string_variable$output)
+
+    res_cpd <- read_write_roundtrip(attr_cpd, data.frame(a = numeric(0), b = numeric(0)))
+    expect_equal(res_cpd$input, res_cpd$output)
+    
+    file.h5$close_all()
+    file.remove(test_file)
+})
