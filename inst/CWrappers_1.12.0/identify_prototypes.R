@@ -321,7 +321,7 @@ struct_all_elements_rtype$all_rtype[struct_all_elements_rtype$category_name=="H5
 struct_all_elements_rtype <- subset(struct_all_elements_rtype, all_rtype)
 
 
-all_types_with_complete_rtype <- rbind.fill(subset(struct_enum_types, !category %in% c("struct", "union") ||
+all_types_with_complete_rtype <- rbind.fill(subset(struct_enum_types, !category %in% c("struct", "union") |
                                                category_name %in% struct_all_elements_rtype$category_name), all_other)
 all_types_with_complete_rtype <- subset(all_types_with_complete_rtype, has_rtype)
 

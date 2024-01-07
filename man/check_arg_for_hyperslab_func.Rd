@@ -7,9 +7,9 @@
 check_arg_for_hyperslab_func(x, envir)
 }
 \arguments{
-\item{envir}{The environment in which to evaluate the argument}
+\item{x}{The argument to check}
 
-\item{cur_arg}{The argument to check}
+\item{envir}{The environment in which to evaluate the argument}
 }
 \value{
 A vector of length 4 describing start, count, stride and block if appropriate

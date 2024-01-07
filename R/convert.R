@@ -372,22 +372,20 @@ guess_chunks <- function(space_maxdims, dtype_size, chunk_size=getOption("hdf5r.
     return(chunk_dim)
 }
 
-##' Set the correct dimension attribute for an object
+##' Get the correct dimensions for a space and datatype
 ##'
-##' This function uses the space and the selection in it to set the correct dimension
+##' This function uses the space and the selection in it to get the correct dimension
 ##' for the resulting object (but without dropping dimensions). Furthermore, if the
 ##' datatype is an array, those dimensions are correctly determined as well.
 ##'
 ##' Internal use only; currently unused
-##' @title Set the correct dimension attribute for an object
-##' @param x an object that was read from an HDF5 dataset or attribute
+##' @title Extract the dimension of a space and datatype
 ##' @param space The space with the selection that was used to read the dataset
 ##' @param dtype The datatype of the dataset
 ##' @return \code{x}, but with a new dimension attribute
 ##' @author Holger Hoefling
 ##' @keywords internal
 extract_dim <- function(space, dtype) {
-    ## apply the right dimension attribute to x that is implied by the space and the data-type
     dtype_dim <- NULL
     if(inherits(dtype, "H5T")) {
         if(dtype$get_class() == h5const$H5T_ARRAY) {
