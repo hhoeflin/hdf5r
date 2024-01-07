@@ -617,7 +617,7 @@ SEXP R_H5Aread(SEXP R_attr_id, SEXP R_type_id, SEXP R_buf, SEXP _dupl_buf){
   hid_t attr_id = SEXP_to_longlong(R_attr_id, 0);
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   void* buf;
-  if(XLENGTH(R_buf) == 0) {
+  if(TYPEOF(R_buf) == NILSXP) {
     buf = NULL;
   }
   else {
@@ -693,7 +693,7 @@ SEXP R_H5Awrite(SEXP R_attr_id, SEXP R_type_id, SEXP R_buf){
   hid_t attr_id = SEXP_to_longlong(R_attr_id, 0);
   hid_t type_id = SEXP_to_longlong(R_type_id, 0);
   const void* buf;
-  if(XLENGTH(R_buf) == 0) {
+  if(TYPEOF(R_buf) == NILSXP) {
     buf = NULL;
   }
   else {

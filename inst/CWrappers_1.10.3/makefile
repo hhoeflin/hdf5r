@@ -1,3 +1,5 @@
+.ONESHELL:
+
 R=R
 
 
@@ -14,6 +16,7 @@ output/all_const_df_code.txt output/all_const_enum_names.txt ./create_constants_
 
 output_code/export_auto.h output/library_names.txt output/makevars_files.txt ./createCWrappers.Rout output/include_file_names.txt: createCWrappers.R helperFunctions.R injectionCode.R store/functions_for_wrappping.rds
 	$(R) CMD BATCH --no-save --no-restore --no-site-file --no-environ createCWrappers.R ./createCWrappers.Rout
+	cd output_code && patch -F 0 < ../patches/empty_attrs.patch
 
 output/DT_enum_base_type.txt output/DT_enum_enum.txt output/enum_assign.txt output/base_type_assign.txt output/DT_enum_struct.txt output/enum_create_code_c.txt output/enum_create_code_h.txt output/struct_create_code_h.txt output/DT_enum_all_types.txt output/h5t_public_types_assign.txt output/all_types_dt_return_df.txt output/struct_create_code_c.txt ./create_datatype_wrappers.Rout output/struct_assign.txt: store/all_types.rds create_datatype_wrappers.R store/enum_info.rds store/struct_info.rds
 	$(R) CMD BATCH --no-save --no-restore --no-site-file --no-environ create_datatype_wrappers.R ./create_datatype_wrappers.Rout
@@ -22,7 +25,7 @@ store/functions_for_wrappping.rds store/all_types.rds store/struct_info.rds stor
 	$(R) CMD BATCH --no-save --no-restore --no-site-file --no-environ identify_prototypes.R ./identify_prototypes.Rout
 
 
-clean: 
+clean:
 	rm -r output_code output store src_nocomments *.Rout
 
 copy:
