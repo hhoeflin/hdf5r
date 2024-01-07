@@ -73,7 +73,7 @@ SEXP h5create_enum_type(SEXP _labels, SEXP _values, SEXP _dtype_id) {
     H5Tconvert(H5T_NATIVE_LLONG, dtype_id, 1, &buf, NULL, H5P_DEFAULT);
     status = H5Tenum_insert(datatype, CHAR(STRING_ELT(_labels, i)), &buf);
     if(status < 0) {
-      error("Could not insert value into enum %s value %d with status %d\n", CHAR(STRING_ELT(_labels, i)), buf, status);
+      error("Could not insert value into enum %s value %lld with status %d\n", CHAR(STRING_ELT(_labels, i)), buf, status);
     }
   }
 

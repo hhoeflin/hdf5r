@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert.R
 \name{extract_dim}
 \alias{extract_dim}
-\title{Set the correct dimension attribute for an object}
+\title{Extract the dimension of a space and datatype}
 \usage{
 extract_dim(space, dtype)
 }
@@ -10,17 +10,15 @@ extract_dim(space, dtype)
 \item{space}{The space with the selection that was used to read the dataset}
 
 \item{dtype}{The datatype of the dataset}
-
-\item{x}{an object that was read from an HDF5 dataset or attribute}
 }
 \value{
 \code{x}, but with a new dimension attribute
 }
 \description{
-Set the correct dimension attribute for an object
+Get the correct dimensions for a space and datatype
 }
 \details{
-This function uses the space and the selection in it to set the correct dimension
+This function uses the space and the selection in it to get the correct dimension
 for the resulting object (but without dropping dimensions). Furthermore, if the
 datatype is an array, those dimensions are correctly determined as well.
 

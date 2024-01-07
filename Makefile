@@ -1,6 +1,7 @@
 .ONESHELL:
+SHELL:=/bin/bash
 
-R_REVISION?=83640
+R_REVISION?=85786
 HDF5_VERSION?=System
 DOCKER_CRAN_CHECK_ARG=''
 # DOCKER_CRAN_CHECK_ARG='--as-cran'
@@ -14,7 +15,7 @@ PKG_NAME := $(shell grep -i ^package DESCRIPTION | cut -d : -d \  -f 2)
 #DATA_FILES := $(wildcard data/*.rda)
 R_FILES := $(wildcard R/*.R)
 TEST_FILES := $(wildcard tests/*.R) $(wildcard tests/testthat/*.R)
-ALL_SRC_FILES := $(wildcard src/*.cpp) $(wildcard src/*.h) src/Makevars.in
+ALL_SRC_FILES := $(wildcard src/*.c) $(wildcard src/*.h) src/Makevars.in
 RMD_FILES := README.Rmd
 MD_FILES := $(RMD_FILES:.Rmd=.md)
 SRC_FILES := $(filter-out src/RcppExports.cpp, $(ALL_SRC_FILES))
@@ -71,6 +72,7 @@ check: $(BUILD_OUTPUT)
 
 check-docker: $(BUILD_OUTPUT)
 	if [[ "${HDF5_VERSION}" = "System" ]]; then
+		echo HDF is System
 		$(MAKE) -C docker build-system R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
 	else
 		$(MAKE) -C docker build-custom R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}

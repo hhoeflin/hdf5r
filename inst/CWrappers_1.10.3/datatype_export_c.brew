@@ -64,7 +64,7 @@ hid_t get_h5_equiv(int size, bool sign) {
 SEXP print_dtypes_array(void) {
   Rprintf("New -------------------------------------\n");
   for(int i=0; i < DT_LAST_ITEM; ++i) {
-    Rprintf("%d: %I64d\n", i, h5_datatype[i]);
+    Rprintf("%d: %ld\n", i, h5_datatype[i]);
   }
   return(R_NilValue);
 }

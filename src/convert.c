@@ -258,7 +258,7 @@ SEXP RToH5_INTEGER(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
   SEXP Rval;
 
   if(nelem != XLENGTH(_Robj)) {
-    error("Length of integer vector not as expected: Actual: %d; Expected %d\n", XLENGTH(_Robj), nelem);
+    error("Length of integer vector not as expected: Actual: %ld; Expected %ld\n", XLENGTH(_Robj), nelem);
   }
 
   switch(TYPEOF(_Robj)) {
