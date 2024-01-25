@@ -1,8 +1,18 @@
-WRAP = 1_8_16
-VERSION = 1.8.16
+HDF5_LIBS = $(shell pkg-config --libs hdf5_hl)
+
+# Config for legacy rtools without pkgconfig
+ifeq (,$(HDF5_LIBS))
 RWINLIB = ../windows/hdf5-$(VERSION)
-PKG_LIBS = -L. -lwrapper -L${RWINLIB}/lib${R_ARCH}${CRT} -lhdf5 -lhdf5_hl -lz -lm
-PKG_CPPFLAGS = -I${RWINLIB}/include -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
+HDF5_LIBS = -L${RWINLIB}/lib${R_ARCH}${CRT} -lhdf5 -lhdf5_hl -lz -lm
+HDF5_CFLAGS = -I${RWINLIB}/include
+WRAP = 1_8_16
+else
+WRAP = 1_12_0
+HDF5_CFLAGS = -DH5_USE_110_API
+endif
+
+PKG_LIBS = -L. -lwrapper $(HDF5_LIBS)
+PKG_CPPFLAGS = $(HDF5_CFLAGS) -I$(WRAP) -I. -D__USE_MINGW_ANSI_STDIO
 
 all: winlibs
 
@@ -23,8 +33,10 @@ $(STATLIB): $(WRAPPER)
 $(WRAPPER): winlibs
 
 winlibs:
+ifneq (,$(RWINLIB))
 	@echo "Linking to HDF5 $(RWINLIB)"
-	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R" $(VERSION)
+	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/winlibs.R" "1.8.16"
+endif
 
 .PHONY: all winlibs
 
