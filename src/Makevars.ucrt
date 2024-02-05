@@ -1,2 +1,20 @@
-CRT=-ucrt
-include Makevars.win
+WRAP = 1_12_0
+PKG_CPPFLAGS = -I$(WRAP) -I. -DH5_USE_110_API -D__USE_MINGW_ANSI_STDIO
+
+ifeq (,$(shell pkg-config --version 2>/dev/null))
+  PKG_LIBS = -lhdf5_hl -lhdf5 -lz -lm -lsz
+else
+  PKG_LIBS = $(shell pkg-config --libs hdf5_hl)
+endif
+
+OBJECTS = $(WRAP)/const_export.o $(WRAP)/datatype_export.o $(WRAP)/Wrapper_auto_H5A.o \
+	$(WRAP)/Wrapper_auto_H5.o $(WRAP)/Wrapper_auto_H5D.o $(WRAP)/Wrapper_auto_H5DS.o $(WRAP)/Wrapper_auto_H5E.o \
+	$(WRAP)/Wrapper_auto_H5F.o $(WRAP)/Wrapper_auto_H5G.o $(WRAP)/Wrapper_auto_H5I.o $(WRAP)/Wrapper_auto_H5IM.o \
+	$(WRAP)/Wrapper_auto_H5L.o $(WRAP)/Wrapper_auto_H5LT.o $(WRAP)/Wrapper_auto_H5O.o $(WRAP)/Wrapper_auto_H5P.o \
+	$(WRAP)/Wrapper_auto_H5R.o $(WRAP)/Wrapper_auto_H5S.o $(WRAP)/Wrapper_auto_H5TB.o $(WRAP)/Wrapper_auto_H5T.o \
+	$(WRAP)/Wrapper_auto_H5Z.o $(WRAP)/Wrapper_auto_H5FDcore.o $(WRAP)/Wrapper_auto_H5FDfamily.o \
+	$(WRAP)/Wrapper_auto_H5FDlog.o $(WRAP)/Wrapper_auto_H5FDsec2.o $(WRAP)/Wrapper_auto_H5FDstdio.o \
+	convert.o hdf5r_init.o H5Error.o H5ls.o Wrapper_manual_H5T.o
+
+.PHONY: all
+
