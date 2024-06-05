@@ -1583,7 +1583,7 @@ SEXP R_reorder(SEXP R_src, SEXP R_num_rows, SEXP R_num_cols, SEXP R_item_size, S
   hsize_t item_size = SEXP_to_longlong(R_item_size, 0);
 
   SEXP R_helper = PROTECT(RToH5(R_new_order, H5T_NATIVE_ULLONG, num_rows));
-  hsize_t* new_order = (unsigned long long *) VOIDPTR(R_helper);
+  hsize_t* new_order = (hsize_t *) VOIDPTR(R_helper);
   
   SEXP R_dst = PROTECT(duplicate(R_src));
   reorder(VOIDPTR(R_dst), VOIDPTR(R_src), num_rows, num_cols, item_size, new_order);
