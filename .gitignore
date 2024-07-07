@@ -17,3 +17,4 @@ test.h5
 *.DS_Store
 logs
 .RData
+src/datatype_export.c.orig

@@ -28,9 +28,9 @@ wercker.yml
 windows
 ^cache$
 ^\.github$
-README.md
-Taskfile.yaml
-docker
-logs
-builds
-RLIB
+^README.md$
+^Taskfile.yaml$
+^docker$
+^logs$
+^builds$
+^m4$
