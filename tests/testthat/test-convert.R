@@ -220,6 +220,7 @@ test_that("Convert R_Complex works", {
     r_cmplx <- complex(real=-5:5, imaginary = 5:(-5))
     dtype_complex <- H5T_COMPLEX$new()
     res <- convertRoundTrip(r_cmplx, dtype_complex)
+    expect_equal(res$input, res$output)
 })
 
 
