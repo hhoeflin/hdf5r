@@ -1,3 +1,7 @@
+# hdf5r 1.3.11
+- Fixes a bug, where an HDF5 array of length 0 is returned as NULL instead of an appropriate vector of length 0
+- Fixes #223, where an incompatible pointer type occurs during compilation.
+
 # hdf5r 1.3.10
 - Fixed warnings related to printf in convert.c on M1Mac
 - Fixed broken links to HDF5 docs
