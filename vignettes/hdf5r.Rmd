@@ -250,7 +250,7 @@ again using the **close_all* method in order to ensure that all IDs using the fi
 
 HDF5 provides a very wide range of tools. Describing it here would certainly be a task that is too large for this vignette.
 For a complete overview on what HDF5 can do, the reader should have a look at the [HDF5 website](https://www.hdfgroup.org/solutions/hdf5/)
-and the documentation that is listed there as well as specifically the [reference manual](https://docs.hdfgroup.org/hdf5/develop/_r_m.html).
+and the documentation that is listed there as well as specifically the [reference manual](https://docs.hdfgroup.org/hdf5/v1_10/index.html).
 Most API-functions that are referenced there are already implemented (and any other missing functionality that is feasible will hopefully
 follow soon).
 

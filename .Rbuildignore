@@ -33,3 +33,4 @@ Taskfile.yaml
 docker
 logs
 builds
+RLIB

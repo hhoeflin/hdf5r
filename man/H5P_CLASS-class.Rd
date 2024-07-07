@@ -19,7 +19,7 @@ to get the class type of an HDF5 identifier that is known to be a property list,
 \item{\code{equal(cmp)}}{
 
 This function implements the HDF5-API function H5Pequal.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_p.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
 }}
 
 \seealso{

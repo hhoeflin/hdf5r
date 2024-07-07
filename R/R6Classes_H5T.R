@@ -127,8 +127,7 @@ H5T_factory <- function(ids, do_copy=FALSE) {
 
 ##' Convert a text description to a datatype
 ##'
-##' Converts a text to a datatype using the HDF5 function H5LT_text_to_dtype. Documentation can be found at 
-##' \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_l_t.html}.
+##' Converts a text to a datatype using the HDF5 function H5LT_text_to_dtype. 
 ##' @title Convert a text description to a datatype
 ##' @param text The text to convert to the datatype
 ##' @param lang_type The type of language to use; currently only \code{H5LT_DDL} is supported.
@@ -193,21 +192,21 @@ H5T <- R6Class("H5T",
                    },
                    get_class=function() {
                        "This function implements the HDF5-API function H5Tget_class."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        cls_id <- .Call("R_H5Tget_class", self$id, PACKAGE="hdf5r")$return_val
                        return(cls_id)
                    },
                    get_size=function(...) {
                        "This function implements the HDF5-API function H5Tget_size."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
                        "@param ... ignored"
 
                        return(.Call("R_H5Tget_size", self$id, PACKAGE="hdf5r")$return_val)
                    },
                    set_size=function(size) {
                        "This function implements the HDF5-API function H5Tset_size."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        if(size==Inf) {
                            if(self$get_class() != h5const$H5T_STRING) {
@@ -225,7 +224,7 @@ H5T <- R6Class("H5T",
                    },
                    set_precision=function(precision) {
                        "This function implements the HDF5-API function H5Tset_precision."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_precision", self$id, as.integer(precision), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -235,7 +234,7 @@ H5T <- R6Class("H5T",
                    },
                    get_precision=function() {
                        "This function implements the HDF5-API function H5Tget_precision."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        prec <- .Call("R_H5Tget_precision", self$id, PACKAGE = "hdf5r")$return_val
                        if(prec < 0) {
@@ -245,7 +244,7 @@ H5T <- R6Class("H5T",
                    },
                    set_order=function(order) {
                        "This function implements the HDF5-API function H5Tset_order."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_order", self$id, as.integer(order), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -255,7 +254,7 @@ H5T <- R6Class("H5T",
                    },
                    get_order=function() {
                        "This function implements the HDF5-API function H5Tget_order."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        order <- .Call("R_H5Tget_order", self$id, PACKAGE = "hdf5r")$return_val
                        if(order < 0) {
@@ -265,7 +264,7 @@ H5T <- R6Class("H5T",
                    },
                    set_offset=function(offset) {
                        "This function implements the HDF5-API function H5Tset_offset."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_offset", self$id, as.integer(offset), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -275,7 +274,7 @@ H5T <- R6Class("H5T",
                    },
                    get_offset=function() {
                        "This function implements the HDF5-API function H5Tget_offset."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        offset <- .Call("R_H5Tget_offset", self$id, PACKAGE = "hdf5r")$return_val
                        if(offset < 0) {
@@ -285,7 +284,7 @@ H5T <- R6Class("H5T",
                    },
                    set_pad=function(pad) {
                        "This function implements the HDF5-API function H5Tset_pad."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_pad", self$id, as.integer(pad), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -295,7 +294,7 @@ H5T <- R6Class("H5T",
                    },
                    get_pad=function() {
                        "This function implements the HDF5-API function H5Tget_pad."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        pad <- .Call("R_H5Tget_pad", self$id, PACKAGE = "hdf5r")$return_val
                        if(pad < 0) {
@@ -305,14 +304,14 @@ H5T <- R6Class("H5T",
                    },
                    copy=function() {
                        "This function implements the HDF5-API function H5Tcopy."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tcopy", self$id, PACKAGE="hdf5r")$return_val
                        return(H5T_factory(id, do_copy=FALSE))
                    },
                    is_committed=function() {
                        "This function implements the HDF5-API function H5Tcommitted."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        htri <- .Call("R_H5Tcommitted", self$id, PACKAGE="hdf5r")$return_val
                        if(htri < 0) {
@@ -322,7 +321,7 @@ H5T <- R6Class("H5T",
                    },
                    equal=function(dtype) {
                        "This function implements the HDF5-API function H5Tequal."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        if(is.numeric(dtype)) {
                            dtype <- bit64::as.integer64(dtype)
@@ -351,7 +350,7 @@ H5T <- R6Class("H5T",
                    },
                    detect_class=function(dtype_class) {
                        "This function implements the HDF5-API function H5Tdetect_class."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        htri <- .Call("R_H5Tdetect_class", self$id, dtype_class, PACKAGE = "hdf5r")$return_val
                        if(htri < 0) {
@@ -361,7 +360,7 @@ H5T <- R6Class("H5T",
                    },
                    get_native_type=function(direction=h5const$H5T_DIR_ASCEND) {
                        "This function implements the HDF5-API function H5Tget_native_type."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tget_native_type", self$id, direction, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -371,7 +370,7 @@ H5T <- R6Class("H5T",
                    },
                    get_create_plist=function() {
                        "This function implements the HDF5-API function H5Tget_create_plist."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tget_create_plist", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -381,7 +380,6 @@ H5T <- R6Class("H5T",
                    },
                    to_text=function(lang_type=h5const$H5LT_DDL) {
                        "This function implements the HDF5-API function H5LTdtype_to_text."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_l_t.html} for details."
                        res <- standalone_H5T_dtype_to_text(self$id, lang_type)
 
                        return(res)
@@ -455,7 +453,7 @@ H5T_INTEGER <- R6Class("H5T_INTEGER",
                        public=list(
                            set_sign=function(sign) {
                                "This function implements the HDF5-API function H5Tset_sign."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_sign", self$id, as.integer(sign), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -465,7 +463,7 @@ H5T_INTEGER <- R6Class("H5T_INTEGER",
                            },
                            get_sign=function() {
                                "This function implements the HDF5-API function H5Tget_sign."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                sign <- .Call("R_H5Tget_sign", self$id, PACKAGE = "hdf5r")$return_val
                                return(sign)
@@ -501,7 +499,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                        public=list(
                            set_fields=function(spos, epos, esize, mpos, msize) {
                                "This function implements the HDF5-API function H5Tset_fields."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_fields", self$id, spos, epos, esize, mpos, msize, PACKAGE="hdf5r")$return_val
                                if(herr < 0) {
@@ -510,7 +508,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            get_fields=function() {
                                "This function implements the HDF5-API function H5Tget_fields."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                res <- .Call("R_H5Tget_fields", self$id, request_empty(1), request_empty(1), request_empty(1), request_empty(1),
                                             request_empty(1), PACKAGE="hdf5r")
@@ -521,7 +519,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            set_ebias=function(ebias) {
                                "This function implements the HDF5-API function H5Tset_ebias."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_ebias", self$id, as.integer(ebias), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -531,7 +529,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            get_ebias=function() {
                                "This function implements the HDF5-API function H5Tget_ebias."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                ebias <- .Call("R_H5Tget_ebias", self$id, PACKAGE = "hdf5r")$return_val
                                return(ebias)
@@ -541,7 +539,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            set_norm=function(norm) {
                                "This function implements the HDF5-API function H5Tset_norm."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_norm", self$id, as.integer(norm), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -551,7 +549,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            get_norm=function() {
                                "This function implements the HDF5-API function H5Tget_norm."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                norm <- .Call("R_H5Tget_norm", self$id, PACKAGE = "hdf5r")$return_val
                                return(norm)
@@ -561,7 +559,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            set_inpad=function(inpad) {
                                "This function implements the HDF5-API function H5Tset_inpad."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_inpad", self$id, as.integer(inpad), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -571,7 +569,7 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                            },
                            get_inpad=function() {
                                "This function implements the HDF5-API function H5Tget_inpad."
-                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                               "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                inpad <- .Call("R_H5Tget_inpad", self$id, PACKAGE = "hdf5r")$return_val
                                return(inpad)
@@ -801,7 +799,7 @@ H5T_COMPOUND <- R6Class("H5T_COMPOUND",
                             },
                             pack=function() {
                                 "This function implements the HDF5-API function H5Tpack."
-                                "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                                "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                                 herr <- .Call("R_H5Tpack", self$id, PACKAGE="hdf5r")$return_val
                                 if(herr < 0) {
@@ -889,7 +887,7 @@ H5T_STRING <- R6Class("H5T_STRING",
                           get_size=function(variable_as_inf=TRUE) {
                               "Retrieves the length of the string, setting it to \\code{Inf} it is of variable length."
                               "This function implements the HDF5-API function H5Tis_variable_str."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                               ## needs to be overloaded to properly assess if it is a variable length string
                               ## first check if the string has variable length
@@ -911,14 +909,14 @@ H5T_STRING <- R6Class("H5T_STRING",
                           },
                           get_cset=function() {
                               "This function implements the HDF5-API function H5Tget_cset."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                               cset_res = .Call("R_H5Tget_cset", self$id, PACKAGE = "hdf5r")$return_val
                               return(cset_res)
                           },
                           set_cset=function(cset=c("unknown", "UTF-8")) {
                               "This function implements the HDF5-API function H5Tset_cset."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                               if(is.character(cset)) {
                                   cset <- match.arg(cset)
@@ -932,7 +930,7 @@ H5T_STRING <- R6Class("H5T_STRING",
                           },
                           set_strpad=function(strpad) {
                               "This function implements the HDF5-API function H5Tset_strpad."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                               herr <- .Call("R_H5Tset_strpad", self$id, as.integer(strpad), PACKAGE = "hdf5r")$return_val
                               if(herr < 0) {
@@ -942,7 +940,7 @@ H5T_STRING <- R6Class("H5T_STRING",
                           },
                           get_strpad=function() {
                               "This function implements the HDF5-API function H5Tget_strpad."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                               strpad <- .Call("R_H5Tget_strpad", self$id, PACKAGE = "hdf5r")$return_val
                               return(strpad)
@@ -1030,7 +1028,7 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                          },
                          get_array_ndims=function() {
                              "This function implements the HDF5-API function H5Tget_array_ndims."
-                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                              res <- .Call("R_H5Tget_array_ndims", self$id, PACKAGE="hdf5r")$return_val
                              if(res < 0) {
@@ -1040,7 +1038,7 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                          },
                          get_array_dims=function() {
                              "This function implements the HDF5-API function H5Tget_array_dims2."
-                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                              rank <- self$get_array_ndims()
                              dims <- integer(rank)
@@ -1052,7 +1050,7 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                          },
                          get_super=function() {
                              "This function implements the HDF5-API function H5Tget_super."
-                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                             "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                              id <- .Call("R_H5Tget_super", self$id, PACKAGE="hdf5r")$return_val
                              if(id < 0) {
@@ -1102,7 +1100,7 @@ H5T_VLEN <- R6Class("H5T_VLEN",
                         },
                         get_super=function() {
                             "This function implements the HDF5-API function H5Tget_super."
-                            "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_t.html} for details."
+                            "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details."
 
                             id <- .Call("R_H5Tget_super", self$id, PACKAGE="hdf5r")$return_val
                             if(id < 0) {

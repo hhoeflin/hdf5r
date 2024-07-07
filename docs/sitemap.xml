@@ -1,291 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/404.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/TODO.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/articles/hdf5r.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/index.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/news/index.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5A-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5D-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5File-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5File.open.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5GTD_factory.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5Group-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5Group_access.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_ATTRIBUTE_CREATE-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_CLASS-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_ACCESS-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_CREATE-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_XFER-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DEFAULT-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_FILE_ACCESS-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_FILE_CREATE-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_LINK_ACCESS-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_LINK_CREATE-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_OBJECT_COPY-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_OBJECT_CREATE-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5P_factory.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5R-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5R_DATASET_REGION-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5R_OBJECT-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5R_functions.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5RefClass-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5S-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5S_ALL-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5S_H5D_subset_assign.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_ARRAY-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_COMPLEX-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_COMPOUND-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_ENUM-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_FLOAT-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_INTEGER-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_LOGICAL-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_STRING-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_VLEN-class.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_extractID.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5T_factory.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/H5_close_any.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/RToH5.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/apply_selection.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/are_args_scalar.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/args_regularity_evaluation.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/array_counter.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/array_reorder.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/as_hex.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/check_arg_for_hyperslab_func.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/clean_ls_df.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/convertRoundTrip.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/create_empty.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/do_reshuffle.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/equal_id_check.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/expand_point_grid.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/extract_dim.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/factor_ext.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/factor_ext_functions.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/flatten_df.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/get_id.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/guess_chunks.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/guess_dtype.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/guess_space.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5-wrapper.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5attributes.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5const.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5garbage_collect.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5types.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/h5version.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/hdf5r-package.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/hdf5r.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/hyperslab_to_points.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/is_hdf5.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/list-groups-datasets.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/match.call.withDef.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/names.H5Group.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/print.data.frame_ext.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/print_attributes.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/print_class_id.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/print_listing.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/regularity_eval_to_selection.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/standalone_H5D_get_type.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/standalone_H5S_select_multiple_hyperslab.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/text_to_dtype.html</loc>
-  </url>
-  <url>
-    <loc>http://hhoeflin.github.io/hdf5r/reference/types_env_access.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://hhoeflin.github.io/hdf5r/404.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/LICENSE-text.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/LICENSE.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/TODO.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/articles/hdf5r.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/articles/index.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/authors.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/index.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/news/index.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5A-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5D-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5File-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5File.open.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5GTD_factory.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5Group-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5Group_access.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_ATTRIBUTE_CREATE-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_CLASS-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_ACCESS-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_CREATE-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DATASET_XFER-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_DEFAULT-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_FILE_ACCESS-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_FILE_CREATE-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_LINK_ACCESS-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_LINK_CREATE-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_OBJECT_COPY-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_OBJECT_CREATE-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5P_factory.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5R-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5R_DATASET_REGION-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5R_OBJECT-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5R_functions.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5RefClass-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5S-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5S_ALL-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5S_H5D_subset_assign.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_ARRAY-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_COMPLEX-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_COMPOUND-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_ENUM-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_FLOAT-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_INTEGER-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_LOGICAL-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_STRING-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_VLEN-class.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_extractID.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5T_factory.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/H5_close_any.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/RToH5.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/apply_selection.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/are_args_scalar.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/args_regularity_evaluation.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/array_counter.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/array_reorder.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/as_hex.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/check_arg_for_hyperslab_func.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/clean_ls_df.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/convertRoundTrip.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/create_empty.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/do_reshuffle.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/equal_id_check.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/expand_point_grid.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/extract_dim.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/factor_ext.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/factor_ext_functions.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/flatten_df.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/get_id.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/guess_chunks.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/guess_dtype.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/guess_space.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5-wrapper.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5attributes.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5const.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5garbage_collect.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5types.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/h5version.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/hdf5r-package.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/hdf5r.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/hyperslab_to_points.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/index.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/is_hdf5.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/list-groups-datasets.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/match.call.withDef.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/names.H5Group.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/print.data.frame_ext.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/print_attributes.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/print_class_id.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/print_listing.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/regularity_eval_to_selection.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/standalone_H5D_get_type.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/standalone_H5S_select_multiple_hyperslab.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/text_to_dtype.html</loc></url>
+<url><loc>http://hhoeflin.github.io/hdf5r/reference/types_env_access.html</loc></url>
 </urlset>
+

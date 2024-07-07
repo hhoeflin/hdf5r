@@ -18,8 +18,7 @@ A datatype corresponding to the text with the appropriate class inheriting from 
 Convert a text description to a datatype
 }
 \details{
-Converts a text to a datatype using the HDF5 function H5LT_text_to_dtype. Documentation can be found at 
-\url{https://docs.hdfgroup.org/hdf5/develop/group___h5_l_t.html}.
+Converts a text to a datatype using the HDF5 function H5LT_text_to_dtype.
 }
 \author{
 Holger Hoefling

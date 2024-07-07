@@ -22,33 +22,33 @@ however with the notable exception that attributes always have to be read and wr
 \item{\code{get_info()}}{
 
 This function implements the HDF5-API function H5Aget_info.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{attr_name()}}{
 
 This function implements the HDF5-API function H5Aget_name.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{get_space()}}{
 
 This function implements the HDF5-API function H5Aget_space.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{get_type(native = TRUE)}}{
 
 This function implements the HDF5-API function H5Aget_type.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{get_storage_size()}}{
 
 This function implements the HDF5-API function H5Aget_storage_size.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{read_low_level(buffer, mem_type, duplicate_buffer = FALSE)}}{
 
 Only for advanced users. See documentation for \code{read} instead.
 This function implements the HDF5-API function H5Aread.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{read(flags = getOption("hdf5r.h5tor_default"), drop = TRUE)}}{
 
@@ -64,7 +64,7 @@ Reads the data of the attribute and returns it as an R-object
 
 Only for advanced users. See documentation for \code{write} instead.
 This function implements the HDF5-API function H5Awrite.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_a.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_a.html} for details.}
 
 \item{\code{write(robj, mem_type = NULL,
   flush = getOption("hdf5r.flush_on_write"))}}{
@@ -90,12 +90,12 @@ Prints information for the dataset
 \item{\code{flush(scope = h5const$H5F_SCOPE_GLOBAL)}}{
 
 This function implements the HDF5-API function H5Fflush.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_f.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_f.html} for details.}
 
 \item{\code{get_filename()}}{
 
 This function implements the HDF5-API function H5Fget_name.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/develop/group___h5_f.html} for details.}
+Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_f.html} for details.}
 }}
 
 \examples{
