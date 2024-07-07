@@ -2280,9 +2280,9 @@ void* VOIDPTR(SEXP x) {
   case RAWSXP:
     return((void *) RAW(x));
   case STRSXP:
-    return((void *) STRING_PTR(x));
+    return((void *) STRING_PTR_RO(x));
   case VECSXP:
-    return((void *) VECTOR_PTR(x));
+    error("Cannot convert VECSXP to voidptr\n");
   default:
     error("Type cannot be converted to voidptr\n");
   }
