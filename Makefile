@@ -144,3 +144,6 @@ doc: $(MD_FILES)
 
 $(MD_FILES): $(RMD_FILES)
 	echo "library(knitr); library(h5); sapply(list.files(pattern = '*.Rmd'), knit);if(file.exists('test.h5')) file.remove('test.h5')" | R --slave --vanilla
+
+testthat:
+	$(Rscript) 'testthat::test_local(path = ".", reporter = NULL, load_package = "source")'
