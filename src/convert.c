@@ -2193,8 +2193,7 @@ bool is_robj_array(SEXP _Robj, hid_t dtype_id) {
 SEXP string_to_UTF8(SEXP _str) {
   SEXP res, s, t;
   
-  t = s = PROTECT(allocList(2));
-  SET_TYPEOF(s, LANGSXP);
+  t = s = PROTECT(LCONS(R_NilValue, allocList(1)));;
   SETCAR(t, install("enc2utf8")); t = CDR(t);
   SETCAR(t,  _str); t = CDR(t);
   PROTECT(res = eval(s, R_GlobalEnv));
