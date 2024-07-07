@@ -407,14 +407,14 @@ SEXP RToH5_FLOAT(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem) {
 	error("Error when comparing if is native double\n");
       }
       if(isNativeDouble) { // size of a regular double, no conversion necessary
-	return(_Robj);
+	    return(_Robj);
       }
       // in case of long double, might need 16 bytes
       int alloc_size = (dtype_size > sizeof(double) ? dtype_size : sizeof(double));
       PROTECT(Rval = NEW_RAW(nelem * alloc_size));
       memcpy(VOIDPTR(Rval), VOIDPTR(_Robj), nelem * sizeof(double));
-      H5Tconvert_with_warning(H5T_NATIVE_DOUBLE, dtype_id, nelem, VOIDPTR(Rval)); 
-      SETLENGTH(Rval, XLENGTH(_Robj) * dtype_size);
+      H5Tconvert_with_warning(H5T_NATIVE_DOUBLE, dtype_id, nelem, VOIDPTR(Rval));
+      Rval=Rf_xlengthgets(Rval, XLENGTH(_Robj) * dtype_size);
       UNPROTECT(1);
       return(Rval);	    
     }
@@ -795,9 +795,11 @@ SEXP H5ToR_Post_RComplex(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags) 
 
   // if its size is larger than double, need to set the length
   if(dtype_size > sizeof(double)) {
-    SETLENGTH(_Robj, nelem);
+    return(Rf_xlengthgets(res, nelem));
   }
-  return(res);
+  else {
+    return(res);
+  }
 
 }
 
@@ -1035,9 +1037,11 @@ SEXP H5ToR_Post_FLOAT(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags) {
     H5Tconvert_with_warning(dtype_id, H5T_NATIVE_DOUBLE, nelem, VOIDPTR(_Robj)); // do it in place; from the way it is used, we know it is safe
     // if its size is larger than double, need to set the length
     if(dtype_size > sizeof(double)) {
-      SETLENGTH(_Robj, nelem);
+      return(Rf_xlengthgets(_Robj, nelem));
     }
-    return(_Robj);
+    else {
+      return(_Robj);
+    }
   }
 
 }
