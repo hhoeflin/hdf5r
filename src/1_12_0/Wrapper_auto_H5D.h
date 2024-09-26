@@ -23,6 +23,8 @@ SEXP R_H5Dget_chunk_index_type(SEXP R_did, SEXP R_idx_type);
 SEXP R_H5Dget_chunk_info(SEXP R_dset_id, SEXP R_fspace_id, SEXP R_chk_idx, SEXP R_coord, SEXP R_filter_mask, SEXP R_addr, SEXP R_size);
 /* H5_DLL herr_t H5Dget_chunk_info_by_coord(hid_t dset_id, const hsize_t *coord, unsigned *filter_mask, haddr_t *addr, hsize_t *size); */
 SEXP R_H5Dget_chunk_info_by_coord(SEXP R_dset_id, SEXP R_coord, SEXP R_filter_mask, SEXP R_addr, SEXP R_size);
+/* H5_DLL herr_t R_H5Dchunk_iter(hid_t dset_id, const hsize_t *coord, unsigned *filter_mask, haddr_t *addr, hsize_t *size); */
+SEXP R_H5Dchunk_iter(SEXP R_dset_id, SEXP cb);
 /* H5_DLL herr_t H5Dget_chunk_storage_size(hid_t dset_id, const hsize_t *offset, hsize_t *chunk_bytes); */
 SEXP R_H5Dget_chunk_storage_size(SEXP R_dset_id, SEXP R_offset, SEXP R_chunk_bytes);
 /* H5_DLL hid_t H5Dget_create_plist(hid_t dset_id); */

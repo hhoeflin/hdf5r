@@ -145,6 +145,66 @@ H5D <- R6Class("H5D",
                        }
                        return(H5P_DATASET_CREATE$new(id=id))
                    },
+                   get_num_chunks=function() {
+                       "This function implements the HDF5-API function H5Dget_num_chunks"
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_GET_NUM_CHUNKS} for details."
+
+                       # /* H5_DLL herr_t H5Dget_num_chunks(hid_t dset_id, hid_t fspace_id, hsize_t *nchunks); */
+                       # SEXP R_H5Dget_num_chunks(SEXP R_dset_id, SEXP R_fspace_id, SEXP R_nchunks){
+
+                       self_space_id <- as.integer64(.Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val)
+                       on.exit(.Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r"), add=TRUE)
+
+                       self_space_is_simple <- as.logical(.Call("R_H5Sis_simple", self_space_id, PACKAGE = "hdf5r")$return_val)
+                       if(!self_space_is_simple) {
+                           stop("Dataspace has to be simple for a selection to occur")
+                       }
+                       num <- .Call("R_H5Dget_num_chunks", self$id, self_space_id, request_empty(1), PACKAGE="hdf5r")
+                       if(num$return_val < 0) {
+                           stop("Error retrieving number of chunks")
+                       }
+                       return(num$nchunks)
+                   },
+                   get_chunk_info=function(chk_idx) {
+                       "This function implements the HDF5-API function H5Dget_chunk_info"
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_GET_CHUNK_INFO} for details."
+
+                       # /* H5_DLL herr_t H5Dget_chunk_info(hid_t dset_id, hid_t fspace_id, hsize_t chk_idx, hsize_t *coord, unsigned *filter_mask, haddr_t *addr, hsize_t *size); */
+                       # SEXP R_H5Dget_chunk_info(SEXP R_dset_id, SEXP R_fspace_id, SEXP R_chk_idx, SEXP R_coord, SEXP R_filter_mask, SEXP R_addr, SEXP R_size){
+
+                       self_space_id <- as.integer64(.Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val)
+                       on.exit(.Call("R_H5Sclose", self_space_id, PACKAGE = "hdf5r"), add=TRUE)
+
+                       self_space_is_simple <- as.logical(.Call("R_H5Sis_simple", self_space_id, PACKAGE = "hdf5r")$return_val)
+                       if(!self_space_is_simple) {
+                           stop("Dataspace has to be simple for a selection to occur")
+                       }
+                       info <- .Call("R_H5Dget_chunk_info", self$id, self_space_id, chk_idx, request_empty(1), request_empty(1), request_empty(1), request_empty(1), PACKAGE="hdf5r")
+                       if(info$return_val < 0) {
+                           stop("Error retrieving information about a chunk")
+                       }
+                       return(info)
+                   },
+                   get_chunk_info_by_coord=function(chk_coords) {
+                       "This function implements the HDF5-API function H5Dget_chunk_info_by_coord"
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_GET_CHUNK_INFO_BY_COORD} for details."
+
+                       info <- .Call("R_H5Dget_chunk_info_by_coord", self$id, chk_coords, request_empty(1), request_empty(1), request_empty(1), PACKAGE="hdf5r")
+                       if(info$return_val < 0) {
+                           stop("Error retrieving information about a chunk by coords")
+                       }
+                       return(info)
+                   },
+                   chunk_iter=function(iter_cb) {
+                       "This function implements the HDF5-API function H5Dchunk_iter"
+                       "Please see the documentation at \\url{https://portal.hdfgroup.org/display/HDF5/H5D_CHUNK_ITER} for details."
+
+                       info <- .Call("R_H5Dchunk_iter", self$id, iter_cb, PACKAGE="hdf5r")
+                       if(info$return_val < 0) {
+                           stop("Error retrieving information about a chunk by coords")
+                       }
+                       return(info)
+                   },
                    get_access_plist=function() {
                        "This function implements the HDF5-API function H5Dget_access_plist."
                        "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
