@@ -18,12 +18,12 @@ It inherits all functions of the \code{\link{H5P}}.
   rdcc_w0 = -1)}}{
 
 This function implements the HDF5-API function H5Pset_chunk_cache.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_chunk_cache()}}{
 
 This function implements the HDF5-API function H5Pget_chunk_cache.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 }}
 
 \seealso{

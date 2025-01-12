@@ -1,7 +1,7 @@
 Package: hdf5r
 Type: Package
 Title: Interface to the 'HDF5' Binary Data Format
-Version: 1.3.11
+Version: 1.3.12
 Authors@R: c(
     person("Holger", "Hoefling", email = "hhoeflin@gmail.com", role = c("aut", "cre")),
     person("Mario", "Annau", email = "mario.annau@gmail.com", role = "aut"),
@@ -10,7 +10,7 @@ Authors@R: c(
 Description: 'HDF5' is a data model, library and file format for storing
     and managing large amounts of data. This package provides a nearly
     feature complete, object oriented  wrapper for the 'HDF5' API
-    <https://support.hdfgroup.org/HDF5/doc/RM/RM_H5Front.html> using R6 classes.
+    <https://support.hdfgroup.org/documentation/hdf5/latest/_r_m.html> using R6 classes.
     Additionally, functionality is added so that 'HDF5' objects behave very
     similar to their corresponding R counterparts.
 URL: https://hhoeflin.github.io/hdf5r/, https://github.com/hhoeflin/hdf5r/

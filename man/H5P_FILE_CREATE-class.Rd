@@ -26,52 +26,52 @@ Create a new class of type \code{\link{H5P_FILE_CREATE}}
 \item{\code{set_userblock(size)}}{
 
 This function implements the HDF5-API function H5Pset_userblock.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_userblock()}}{
 
 This function implements the HDF5-API function H5Pget_userblock.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_sizes(sizeof_addr, sizeof_size)}}{
 
 This function implements the HDF5-API function H5Pset_sizes.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_sizes()}}{
 
 This function implements the HDF5-API function H5Pget_sizes.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_sym_k(ik, lk)}}{
 
 This function implements the HDF5-API function H5Pset_sym_k.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_sym_k()}}{
 
 This function implements the HDF5-API function H5Pget_sym_k.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_istore_k(ik)}}{
 
 This function implements the HDF5-API function H5Pset_istore_k.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_istore_k()}}{
 
 This function implements the HDF5-API function H5Pget_istore_k.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_file_space(strategy, threshold)}}{
 
 This function implements the HDF5-API function H5Pset_file_space.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_file_space()}}{
 
 This function implements the HDF5-API function H5Pget_file_space.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 }}
 
 \seealso{

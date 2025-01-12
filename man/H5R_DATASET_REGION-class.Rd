@@ -28,7 +28,7 @@ It returns a list where each item is a list with components \code{dataset}, bein
 \code{space} being a \code{H5S} object. When setting \code{get_value=TRUE}, then instead of these objects
 The data itself is returned
 This function implements the HDF5-API function H5Rdereference.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_r.html} for details.
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details.
 
 \strong{Parameters}
 \describe{

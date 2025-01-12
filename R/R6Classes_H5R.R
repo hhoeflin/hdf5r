@@ -381,7 +381,7 @@ H5R_OBJECT <- R6Class("H5R_OBJECT",
                           dereference=function(object_access_pl=h5const$H5P_DEFAULT, obj=NULL) {
                               "Dereference an H5R reference. The file the reference is pointing to is assigned automatically"
                               "This function implements the HDF5-API function H5Rdereference."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_r.html} for details."
+                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details."
                               "@param obj Overriding the default file the reference is referring to"
                               "@param object_access_pl The object-access property list. Currently always the default"
 
@@ -452,7 +452,7 @@ H5R_DATASET_REGION <- R6Class("H5R_DATASET_REGION",
                               "\\code{space} being a \\code{H5S} object. When setting \\code{get_value=TRUE}, then instead of these objects"
                               "The data itself is returned"
                               "This function implements the HDF5-API function H5Rdereference."
-                              "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_r.html} for details."
+                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details."
                               "@param obj Overriding the default file the reference is referring to"
                               "@param object_access_pl The object-access property list. Currently always the default"
 

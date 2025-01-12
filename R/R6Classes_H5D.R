@@ -110,7 +110,7 @@ H5D <- R6Class("H5D",
                    },
                    get_space=function() {
                        "This function implements the HDF5-API function H5Dget_space."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        id <- .Call("R_H5Dget_space", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -120,7 +120,7 @@ H5D <- R6Class("H5D",
                    },
                    get_space_status=function() {
                        "This function implements the HDF5-API function H5Dget_space_status."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        res <- .Call("R_H5Dget_space_status", self$id, request_empty(1), PACKAGE="hdf5r")
                        if(res$return_val < 0) {
@@ -130,14 +130,14 @@ H5D <- R6Class("H5D",
                    },
                    get_type=function(native=TRUE) {
                        "This function implements the HDF5-API function H5Dget_type."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        id <- standalone_H5D_get_type(h5d_id=self$id, native=native) 
                        return(H5T_factory(id))
                    },
                    get_create_plist=function() {
                        "This function implements the HDF5-API function H5Dget_create_plist."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        id <- .Call("R_H5Dget_create_plist", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -147,7 +147,7 @@ H5D <- R6Class("H5D",
                    },
                    get_access_plist=function() {
                        "This function implements the HDF5-API function H5Dget_access_plist."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        id <- .Call("R_H5Dget_access_plist", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -157,7 +157,7 @@ H5D <- R6Class("H5D",
                    },
                    get_offset=function() {
                        "This function implements the HDF5-API function H5Dget_offset."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        haddr <- .Call("R_H5Dget_offset", self$id, PACKAGE="hdf5r")$return_val
                        if(haddr < 0) {
@@ -167,14 +167,14 @@ H5D <- R6Class("H5D",
                    },
                    get_storage_size=function() {
                        "This function implements the HDF5-API function H5Dget_storage_size."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        size <- .Call("R_H5Dget_storage_size", self$id, PACKAGE="hdf5r")$return_val
                        return(size)
                    },
                    vlen_get_buf_size=function(type, space) {
                        "This function implements the HDF5-API function H5Dvlen_get_buf_size."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        check_class(type, "H5T")
                        check_class(space, "H5S")
@@ -187,7 +187,7 @@ H5D <- R6Class("H5D",
                    },
                    vlen_reclaim=function(buffer, type, space, dataset_xfer_pl=h5const$H5P_DEFAULT) {
                        "This function implements the HDF5-API function H5Dvlen_reclaim."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        check_class(type, "H5T")
                        check_class(space, "H5S")
@@ -203,7 +203,7 @@ H5D <- R6Class("H5D",
                        dataset_xfer_pl=h5const$H5P_DEFAULT, flags=getOption("hdf5r.h5tor_default"), set_dim=FALSE, dim_to_set=NULL, drop=TRUE) {
                        "This function is for advanced users. It is recommended to use \\code{read} instead or the \\code{[} interface."
                        "This function implements the HDF5-API function H5Dread, with minor changes to the API to accommodate R."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
                        "It reads the data in the dataset as specified by \\code{mem_space} and return it as an R-obj"
                        "@param file_space An HDF5-space, represented as class \\code{\\link{H5S}} that determines which part"
                        "of the dataset is being read. Can also be given as an id"
@@ -397,7 +397,7 @@ H5D <- R6Class("H5D",
                        "This function is for advanced users. It is recommended to use \\code{read} instead or the \\code{[<-} interface"
                        "as used for arrays."
                        "This function implements the HDF5-API function H5Dwrite, with some changes to accommodate R."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
                        "It writes that data from the \\code{robj} into the dataset."
                        "@param robj The object to write into the dataset"
                        "@param mem_space The space as it is represented in memory; advanced feature; may be removed in the future"
@@ -573,7 +573,7 @@ H5D <- R6Class("H5D",
                    },
                    set_extent=function(dims) {
                        "This function implements the HDF5-API function H5Dset_extent."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_d.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_d.html} for details."
 
                        rank <- self$get_space()$get_simple_extent_ndims()
                        if(length(dims) != rank) {
@@ -588,7 +588,7 @@ H5D <- R6Class("H5D",
                    get_fill_value=function() {
                        "This function implements the HDF5-API function H5Pget_fill_value, automatically"
                        "supplying the datatype of the dataset for convenience."
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details."
 
                        dtype <- self$get_type()
                        create_plist <- self$get_create_plist()
@@ -602,7 +602,7 @@ H5D <- R6Class("H5D",
                    create_reference=function(...) {
                        "This function implements the HDF5-API function H5Rcreate. The parameters are interpreted as in '['."
                        "The function always create \\code{H5R_DATASET_REGION} references"
-                       "Please see the documentation at \\url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_r.html} for details."
+                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details."
 
                        space <- self$get_space()
                        do.call("[", c(list(space), list(...)))

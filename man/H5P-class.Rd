@@ -40,22 +40,22 @@ use the classes of the type they actually require
 \item{\code{get_class()}}{
 
 This function implements the HDF5-API function H5Pget_class.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_class_name()}}{
 
 This function implements the HDF5-API function H5Pget_class_name.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{copy()}}{
 
 This function implements the HDF5-API function H5Pcopy.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{equal(cmp)}}{
 
 This function implements the HDF5-API function H5Pequal.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 }}
 
 \examples{

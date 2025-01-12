@@ -29,27 +29,27 @@ Create a string datatype
 
 Retrieves the length of the string, setting it to \code{Inf} it is of variable length.
 This function implements the HDF5-API function H5Tis_variable_str.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.}
 
 \item{\code{get_cset()}}{
 
 This function implements the HDF5-API function H5Tget_cset.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.}
 
 \item{\code{set_cset(cset = c("unknown", "UTF-8"))}}{
 
 This function implements the HDF5-API function H5Tset_cset.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.}
 
 \item{\code{set_strpad(strpad)}}{
 
 This function implements the HDF5-API function H5Tset_strpad.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.}
 
 \item{\code{get_strpad()}}{
 
 This function implements the HDF5-API function H5Tget_strpad.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_t.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.}
 
 \item{\code{describe()}}{
 

@@ -26,131 +26,131 @@ Create a new class of type \code{\link{H5P_DATASET_CREATE}}
 \item{\code{set_layout(layout = h5const$H5D_CHUNKED)}}{
 
 This function implements the HDF5-API function H5Pset_layout.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_layout()}}{
 
 This function implements the HDF5-API function H5Pget_layout.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_chunk(chunk)}}{
 
 This function implements the HDF5-API function H5Pset_chunk.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_chunk(max_ndims)}}{
 
 This function implements the HDF5-API function H5Pget_chunk.
 If the layout is not chunked, returns NA.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_deflate(level)}}{
 
 This function implements the HDF5-API function H5Pset_deflate.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_fill_value(dtype, value)}}{
 
 This function implements the HDF5-API function H5Pset_fill_value.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_fill_value(dtype)}}{
 
 This function implements the HDF5-API function H5Pget_fill_value.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_fill_time(fill_time = h5const$H5D_FILL_TIME_IFSET)}}{
 
 This function implements the HDF5-API function H5Pset_fill_time.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_fill_time()}}{
 
 This function implements the HDF5-API function H5Pget_fill_time.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_alloc_time(alloc_time = h5const$H5D_ALLOC_TIME_DEFAULT)}}{
 
 This function implements the HDF5-API function H5Pset_alloc_time.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_alloc_time()}}{
 
 This function implements the HDF5-API function H5Pget_alloc_time.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_filter(filter = h5const$H5Z_FILTER_DEFLATE,
   flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}}{
 
 This function implements the HDF5-API function H5Pset_filter.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{all_filters_avail()}}{
 
 This function implements the HDF5-API function H5Pall_filters_avail.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_nfilters()}}{
 
 This function implements the HDF5-API function H5Pget_nfilters.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_filter(idx)}}{
 
 This function implements the HDF5-API function H5Pget_filter2.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{modify_filter(filter = h5const$H5Z_FILTER_DEFLATE,
   flags = h5const$H5Z_FLAG_OPTIONAL, cd_values = integer(0))}}{
 
 This function implements the HDF5-API function H5Pmodify_filter.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{remove_filter(filter = h5const$H5Z_FILTER_ALL)}}{
 
 This function implements the HDF5-API function H5Premove_filter.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_fletcher32()}}{
 
 This function implements the HDF5-API function H5Pset_fletcher32.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_nbit()}}{
 
 This function implements the HDF5-API function H5Pset_nbit.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_scaleoffset(scale_type = h5const$H5Z_SO_FLOAT_DSCALE,
   scale_factor = 0)}}{
 
 This function implements the HDF5-API function H5Pset_scaleoffset.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_shuffle()}}{
 
 This function implements the HDF5-API function H5Pset_shuffle.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_szip()}}{
 
 This function implements the HDF5-API function H5Pset_szip.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{set_external(filename, offset, size)}}{
 
 This function implements the HDF5-API function H5Pset_external.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_external_count()}}{
 
 This function implements the HDF5-API function H5Pget_external_count.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 
 \item{\code{get_external(idx)}}{
 
 This function implements the HDF5-API function H5Pget_external.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_p.html} for details.}
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_p.html} for details.}
 }}
 
 \seealso{

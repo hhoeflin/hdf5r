@@ -24,7 +24,7 @@ method of a dataset, group of committed datatype}
 
 Dereference an H5R reference. The file the reference is pointing to is assigned automatically
 This function implements the HDF5-API function H5Rdereference.
-Please see the documentation at \url{https://docs.hdfgroup.org/hdf5/v1_10/group___h5_r.html} for details.
+Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details.
 
 \strong{Parameters}
 \describe{
