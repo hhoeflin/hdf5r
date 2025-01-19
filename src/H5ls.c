@@ -125,7 +125,11 @@ herr_t H5Dget_info_by_name(hid_t g_id, const char* name, H5D_info_t * dataset_in
   return(err);
 }
 
-
+herr_t count_items(hid_t g_id, const char *name, const H5L_info_t *info, void *op_data) {
+    unsigned long *num_visited = op_data;
+    (*num_visited)++;
+    return(0);
+}
 herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *info, void *op_data) {
   H5L_op_data* lsdata_ptr = op_data;
   H5ls_info_t* ls_info=lsdata_ptr->ls_info + lsdata_ptr->num_visited; // this is the current one we are editing
@@ -159,11 +163,9 @@ herr_t gather_data_from_link(hid_t g_id, const char *name, const H5L_info_t *inf
       ls_info->obj_type=obj_type;
       ls_info->num_attrs = num_attrs;
     }
-    else {  // this is intended to let us count how many items we have in the end
-      ls_info->obj_type_success=0; // not really necessary; already initialized to 0
-      // if getting the object failed, we are done
-      lsdata_ptr->num_visited++;
-      return(0);
+    else {  
+      // we did not allocate enough items
+      return(1);
     }
 
     // We know that we could access the object; grab data specific to the object type
@@ -226,20 +228,13 @@ SEXP R_H5ls(SEXP _g_id, SEXP _recursive, SEXP _index_type, SEXP _order, SEXP _la
   H5_index_t index_type = SEXP_to_longlong(_index_type, 0);
   H5_iter_order_t order = SEXP_to_longlong(_order, 0);
 
-  SEXP robj_ls_info = R_NilValue; // will use it to allocate space for the ls_info struct
 
   // need to prepare lsdata for the first pass
   // first pass will be with no allocated space to see how much we need
-  H5L_op_data lsdata;
-  lsdata.lapl_id = SEXP_to_longlong(_lapl_id, 0);
-  lsdata.dapl_id = SEXP_to_longlong(_dapl_id, 0);
-  lsdata.tapl_id = SEXP_to_longlong(_tapl_id, 0);
-  lsdata.num_visited = 0;
-  lsdata.num_allocated = 0;
-
+  unsigned long num_visited = 0;
   if(recursive) {
     // run it with H5Lvisit
-    err = H5Lvisit(g_id, index_type, order, &gather_data_from_link, &lsdata);
+    err = H5Lvisit(g_id, index_type, order, &count_items, &num_visited);
     if(err < 0) {
       error("Could not iterate through group for ls");
     }
@@ -247,24 +242,28 @@ SEXP R_H5ls(SEXP _g_id, SEXP _recursive, SEXP _index_type, SEXP _order, SEXP _la
   else {
     // run it with H5Literate
     hsize_t iter_pos = 0;
-    err = H5Literate(g_id, index_type, order, &iter_pos, &gather_data_from_link, &lsdata);
+    err = H5Literate(g_id, index_type, order, &iter_pos, &count_items, &num_visited);
     if(err < 0) {
       error("Could not iterate through group for ls");
     }
   }
 
   // now allocate the necesary space
-  robj_ls_info = PROTECT(H5ToR_Pre(h5_datatype[DT_H5ls_info_t], lsdata.num_visited));
+  SEXP robj_ls_info = R_NilValue; // will use it to allocate space for the ls_info struct
+  robj_ls_info = PROTECT(H5ToR_Pre(h5_datatype[DT_H5ls_info_t], num_visited));
   // set it to 0, just to be sure; for H5ToR_Pre usually not necessary, but here we do it anyway
   R_xlen_t vec_size = XLENGTH(robj_ls_info);
   memset(VOIDPTR(robj_ls_info), 0, vec_size);
 
+  H5L_op_data lsdata;
+  lsdata.lapl_id = SEXP_to_longlong(_lapl_id, 0);
+  lsdata.dapl_id = SEXP_to_longlong(_dapl_id, 0);
+  lsdata.tapl_id = SEXP_to_longlong(_tapl_id, 0);
+  lsdata.num_visited = 0;
+  lsdata.num_allocated = num_visited;
   lsdata.ls_info = (H5ls_info_t*) VOIDPTR(robj_ls_info);
  
 
-  // Rprintf("Number of objects visisted %d\n", lsdata.num_visited);
-  lsdata.num_allocated = lsdata.num_visited;
-  lsdata.num_visited = 0;
   // and the same as before
   if(recursive) {
     // run it with H5Lvisit
