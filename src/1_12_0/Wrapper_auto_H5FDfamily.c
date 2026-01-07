@@ -20,7 +20,7 @@
 /* H5_DLL hid_t H5FD_family_init(void); */
 SEXP R_H5FD_family_init(void){
   int vars_protected=0;
-  hid_t return_val = H5FD_family_init();
+  hid_t return_val = H5FD_FAMILY;
   SEXP R_return_val= R_NilValue;
   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
   vars_protected++;
