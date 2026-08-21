@@ -40,14 +40,15 @@
 ##' group$print()
 ##' group$close()
 ##' file$close_all()
+##' @aliases H5Group-class
 H5Group <- R6Class("H5Group",
                    inherit=H5RefClass,
                    public=list(
+                       #' @description Prints information for the group
+                       #' @param ... ignored
+                       #' @param max.attributes Maximum number of attribute names to print
+                       #' @param max.listing Maximum number of ls-items to print
                        print=function(..., max.attributes=10, max.listing=10){
-                           "Prints information for the group"
-                           "@param max.attributes Maximum number of attribute names to print"
-                           "@param max.listing Maximum number of ls-items to print"
-                           "@param ... ignored"
 
                            is_valid <- self$is_valid
 
@@ -61,6 +62,15 @@ H5Group <- R6Class("H5Group",
                            return(invisible(self))
                        }
             
+                       ),
+                   active=list(
+                       #' @field names Returns the names of the items in the group or at the root of the file
+                       names=function(...) {
+                            ## Placeholder only, so that roxygen has somewhere to attach the
+                            ## documentation. The real binding is installed from commonFG_active
+                            ## by the R6_set_list_of_items call below.
+                           .NotYetImplemented()
+                       }
                        ),
                    private=list(
                        closeFun=function(id) if(!is.na(id) && is.loaded("R_H5Gclose", PACKAGE="hdf5r")) {

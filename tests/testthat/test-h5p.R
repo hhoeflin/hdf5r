@@ -116,11 +116,22 @@ test_that("H5P_DATASET_CREATE works", {
 })
 
 test_that("H5P_DATASET_ACCESS works", {
+    ## passing -1 asks for the library default. Don't hard-code what that default is:
+    ## HDF5 2.0 raised rdcc_nslots from 521 to 8191 and rdcc_nbytes from 1MiB to 8MiB.
+    ## Compare against a pristine property list instead.
+    defaults <- H5P_DATASET_ACCESS$new()$get_chunk_cache()
+
     h5p_obj <- H5P_DATASET_ACCESS$new()
     h5p_obj$set_chunk_cache(rdcc_nslots=-1, rdcc_nbytes=-1, rdcc_w0=-1)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nslots, 521)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nbytes, 1048576)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_w0, 0.75)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nslots, defaults$rdcc_nslots)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nbytes, defaults$rdcc_nbytes)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_w0, defaults$rdcc_w0)
+
+    ## explicitly requested values have to round-trip unchanged
+    h5p_obj$set_chunk_cache(rdcc_nslots=1031, rdcc_nbytes=2097152, rdcc_w0=0.5)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nslots, 1031)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nbytes, 2097152)
+    expect_equal(h5p_obj$get_chunk_cache()$rdcc_w0, 0.5)
 })
 
 test_that("H5P_DATASET_XFER", {

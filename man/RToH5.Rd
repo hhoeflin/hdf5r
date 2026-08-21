@@ -10,8 +10,13 @@ RToH5(Robj, dtype, nelem)
 
 H5ToR_Pre(dtype, nelem)
 
-H5ToR_Post(Robj, dtype, nelem, flags = getOption("hdf5r.h5tor_default"),
-  id = -1)
+H5ToR_Post(
+  Robj,
+  dtype,
+  nelem,
+  flags = getOption("hdf5r.h5tor_default"),
+  id = -1
+)
 }
 \arguments{
 \item{Robj}{The R-object to transfer to HDF5}

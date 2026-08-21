@@ -4518,7 +4518,11 @@ fi
 
 HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
 
-HDF5_LIBS="${HDF5_LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"
+case "${HDF5_LIBS}" in
+  *-lhdf5*) ;;
+  *) HDF5_LIBS="${HDF5_LIBS} -lhdf5_hl -lhdf5" ;;
+esac
+HDF5_LIBS="${HDF5_LIBS} -lz -lm"
 
 #########################
 # Determine HDF5_CPPFLAGS

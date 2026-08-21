@@ -46,13 +46,14 @@ ref_obj_size <- new.env()
 #' r <- file$create_reference("testset")
 #' file$close_all()
 #' @export
+#' @aliases H5R-class
 H5R <- R6Class("H5R",
                inherit=H5RefClass,
                public=list(
+                   #' @description Method that returns a subset of the data in the H5R-object
+                   #' @param dim_index A list of dimension indices as usually pasted into \code{[}
+                   #' @param drop Logical. Should dimensions of size 1 be dropped.
                    subset_read=function(dim_index, drop=TRUE) {
-                       "Method that returns a subset of the data in the H5R-object"
-                       "@param dim_index A list of dimension indices as usually pasted into \\code{[}"
-                       "@param drop Logical. Should dimensions of size 1 be dropped."
                        if(!is.list(dim_index)) {
                            dim_index <- list(dim_index)
                        }
@@ -93,10 +94,10 @@ H5R <- R6Class("H5R",
 
                        return(h5r_sub)
                    },
+                   #' @description Method to read a single item
+                   #' @param i The single item to read
+                   #' @param exact Is the item name exact or should partial matching be allowed?
                    subset2_read=function(i, exact=TRUE) {
-                       "Method to read a single item"
-                       "@param i The single item to read"
-                       "@param exact Is the item name exact or should partial matching be allowed?"
 
                        if(length(i) != 1) {
                            stop("can only read single element")
@@ -131,10 +132,10 @@ H5R <- R6Class("H5R",
 
                        return(h5r_sub)
                    },
+                   #' @description Assign values into a subset of the H5R-vector
+                   #' @param dim_index A list of dimension indices as usually passed into \code{[}
+                   #' @param value The value to assign
                    subset_assign=function(dim_index, value) {
-                       "Assign values into a subset of the H5R-vector"
-                       "@param dim_index A list of dimension indices as usually passed into \\code{[}"
-                       "@param value The value to assign"
                        if(inherits(value, "H5R")) {
                            value <- value$ref
                        }
@@ -178,10 +179,11 @@ H5R <- R6Class("H5R",
 
                        return(self)
                    },
+                   #' @description Assign a value to a single value in the array
+                   #' @param i the index where to assign the value
+                   #' @param exact Logical; does the subscript have to match exactly.
+                   #' @param value The value to assign
                    subset2_assign=function(i, exact=TRUE, value) {
-                       "Assign a value to a single value in the array"
-                       "@param i the index where to assign the value"
-                       "@param value The value to assign"
                        if(inherits(value, "H5R")) {
                            value <- value$ref
                        }
@@ -215,8 +217,8 @@ H5R <- R6Class("H5R",
 
                        return(self)
                    },
+                   #' @description Transpose the object if it is a matrix (i.e. has rank 2
                    t=function() {
-                       "Transpose the object if it is a matrix (i.e. has rank 2"
                        ## we want to transpose it; check that it is a matrix
                        if(length(private$pdim) != 2) {
                            stop("Not a matrix; can't transpose")
@@ -230,12 +232,12 @@ H5R <- R6Class("H5R",
                    }
                    ),
                active=list(
+                   #' @field length Get the length of the object
                    length=function() {
-                       "Get the length of the object"
                        return(length(private$pref) / private$size)
                    },
+                   #' @field ref Get or assign the internal raw-vector representation of the data. Usually, user's shouldn't have to use this.
                    ref=function(ref) {
-                       "Get or assign the internal raw-vector representation of the data. Usually, user's shouldn't have to use this."
                        if(missing(ref)) {
                            return(private$pref)
                        }
@@ -255,8 +257,8 @@ H5R <- R6Class("H5R",
                            return(self)
                        }
                    },
+                   #' @field dim Get or assign the dimensionality of the object
                    dim=function(x) {
-                       "Get or assign the dimensionality of the object"
                        if(missing(x)) {
                            return(private$pdim)
                        }
@@ -278,8 +280,8 @@ H5R <- R6Class("H5R",
                            return(self)
                        }
                    },
+                   #' @field dimnames Get or assign the dimnames of the object
                    dimnames=function(x) {
-                       "Get or assign the dimnames of the object"
                        if(missing(x)) {
                            return(private$pdimnames)
                        }
@@ -294,8 +296,8 @@ H5R <- R6Class("H5R",
                            return(self)
                        }
                    },
+                   #' @field names Get or assign the names of the object
                    names=function(x) {
-                       "Get or assign the names of the object"
                        if(missing(x)) {
                            return(private$pnames)
                        }
@@ -311,8 +313,8 @@ H5R <- R6Class("H5R",
                            }
                        }
                    },
+                   #' @field rank Get the rank of the object
                    rank=function() {
-                       "Get the rank of the object"
                        return(max(1, length(private$pdim)))
                    }
                    ),
@@ -358,12 +360,14 @@ R6_set_list_of_items(H5R, "public", ref_func_clone_public, overwrite=TRUE)
 #' @return Object of class \code{\link[=H5R_OBJECT]{H5R_OBJECT}}.
 #' @export
 #' @author Holger Hoefling
+#' @aliases H5R_OBJECT-class
 H5R_OBJECT <- R6Class("H5R_OBJECT",
                       inherit=H5R,
                       public=list(
+                          #' @description Create a new reference for object; Usually, users shouldn't have to call this, but use the \code{create_reference} method of a dataset, group of committed datatype
+                          #' @param num The number of items.
+                          #' @param id An HDF5 id; for internal use only.
                           initialize=function(num=0, id=NULL) {
-                              "Create a new reference for object; Usually, users shouldn't have to call this, but use the \\code{create_reference}"
-                              "method of a dataset, group of committed datatype"
                               if(inherits(id, "H5File")) {
                                   id$inc_ref()
                                   id <- id$id
@@ -378,12 +382,10 @@ H5R_OBJECT <- R6Class("H5R_OBJECT",
                               self$ref <- raw(private$size * num) 
                               return(self)
                           },
+                          #' @description Dereference an H5R reference. The file the reference is pointing to is assigned automatically This function implements the HDF5-API function H5Rdereference. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details.
+                          #' @param object_access_pl The object-access property list. Currently always the default
+                          #' @param obj Overriding the default file the reference is referring to
                           dereference=function(object_access_pl=h5const$H5P_DEFAULT, obj=NULL) {
-                              "Dereference an H5R reference. The file the reference is pointing to is assigned automatically"
-                              "This function implements the HDF5-API function H5Rdereference."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details."
-                              "@param obj Overriding the default file the reference is referring to"
-                              "@param object_access_pl The object-access property list. Currently always the default"
 
                               res <- vector("list", length=self$length)
                               index_vec_end <- private$size * seq_along(res)
@@ -426,12 +428,14 @@ H5R_OBJECT <- R6Class("H5R_OBJECT",
 #' @return Object of class \code{\link[=H5R_DATASET_REGION]{H5R_DATASET_REGION}}.
 #' @export
 #' @author Holger Hoefling
+#' @aliases H5R_DATASET_REGION-class
 H5R_DATASET_REGION <- R6Class("H5R_DATASET_REGION",
                       inherit=H5R,
                       public=list(
+                          #' @description Create a new reference for dataset regions; Usually, users shouldn't have to call this, but use the \code{create_reference} method of a dataset.
+                          #' @param num The number of items.
+                          #' @param id An HDF5 id; for internal use only.
                           initialize=function(num=0, id=NULL) {
-                              "Create a new reference for dataset regions; Usually, users shouldn't have to call this, but use the "
-                              "\\code{create_reference} method of a dataset."
                               if(inherits(id, "H5File")) {
                                   id$inc_ref()
                                   id <- id$id
@@ -446,15 +450,11 @@ H5R_DATASET_REGION <- R6Class("H5R_DATASET_REGION",
                               self$ref <- raw(private$size * num) 
                               return(self)
                           },
+                          #' @description Dereference an H5R reference for a dataset region. The file the reference is pointing to is assigned automatically. It returns a list where each item is a list with components \code{dataset}, being an \code{H5D} object and \code{space} being a \code{H5S} object. When setting \code{get_value=TRUE}, then instead of these objects The data itself is returned This function implements the HDF5-API function H5Rdereference. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details.
+                          #' @param object_access_pl The object-access property list. Currently always the default
+                          #' @param obj Overriding the default file the reference is referring to
+                          #' @param get_value Logical; should the referenced values be returned instead of the objects.
                           dereference=function(object_access_pl=h5const$H5P_DEFAULT, obj=NULL, get_value=FALSE) {
-                              "Dereference an H5R reference for a dataset region. The file the reference is pointing to is assigned automatically."
-                              "It returns a list where each item is a list with components \\code{dataset}, being an \\code{H5D} object and"
-                              "\\code{space} being a \\code{H5S} object. When setting \\code{get_value=TRUE}, then instead of these objects"
-                              "The data itself is returned"
-                              "This function implements the HDF5-API function H5Rdereference."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_r.html} for details."
-                              "@param obj Overriding the default file the reference is referring to"
-                              "@param object_access_pl The object-access property list. Currently always the default"
 
                               res <- vector("list", length=self$length)
                               index_vec_end <- private$size * seq_along(res)

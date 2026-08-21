@@ -1,0 +1,8 @@
+#!/bin/sh
+# Windows analogue of 'cleanup': the UCRT Makevars compiles the versioned
+# wrappers in place under src/<version>/, which the built-in "cleaning src"
+# step does not reach. R CMD build runs this after re-building vignettes.
+rm -f src/*.o
+rm -f src/*.a
+rm -f src/*/*.o
+rm -f src/*/*.a

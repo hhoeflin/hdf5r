@@ -1,10 +1,11 @@
 Package: hdf5r
 Type: Package
 Title: Interface to the 'HDF5' Binary Data Format
-Version: 1.3.12
+Version: 1.3.14
 Authors@R: c(
     person("Holger", "Hoefling", email = "hhoeflin@gmail.com", role = c("aut", "cre")),
     person("Mario", "Annau", email = "mario.annau@gmail.com", role = "aut"),
+    person("Zhengjia", "Wang", email = "dipterix.wang@gmail.com", role = c("ctb")),
     person("Novartis Institute for BioMedical Research (NIBR)", role = "cph")
     )
 Description: 'HDF5' is a data model, library and file format for storing
@@ -16,9 +17,12 @@ Description: 'HDF5' is a data model, library and file format for storing
 URL: https://hhoeflin.github.io/hdf5r/, https://github.com/hhoeflin/hdf5r/
 BugReports: https://github.com/hhoeflin/hdf5r/issues
 License: Apache License 2.0 | file LICENSE
-Copyright: For the hdf5r package: Novartis Institute for BioMedical Research
+Copyright: 
+    For the hdf5r package: Novartis Institute for BioMedical Research
     Inc. For HDF5: see the HDF5_COPYRIGHTS file.
 LazyLoad: true
+Encoding: UTF-8
+Language: en-US
 Depends:
     R (>= 3.2.2),
     methods
@@ -31,12 +35,10 @@ Suggests:
     knitr,
     rmarkdown,
     nycflights13,
-    reshape2,
-    formatR,
+    reshape2
 SystemRequirements: HDF5 (>= 1.8.13)
 VignetteBuilder: knitr
 NeedsCompilation: yes
-RoxygenNote: 6.1.1.9000
 Collate:
     'Common_functions.R'
     'Compound.R'
@@ -56,9 +58,11 @@ Collate:
     'convert.R'
     'factor_ext.R'
     'globalVariables.R'
-    'h5errorHandling.R'
     'h5wrapper.R'
     'hdf5r.R'
     'high_level_UI.R'
     'open_objs.R'
+    'r6_doc.R'
+    'r6_docs.R'
     'zzz.R'
+Config/roxygen2/version: 8.0.0

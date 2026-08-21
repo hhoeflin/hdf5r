@@ -183,30 +183,30 @@ text_to_dtype <- function(text, lang_type=h5const$H5LT_DDL) {
 #' file$close_all()
 #' file.remove(fname)
 #' @export
+#' @aliases H5T-class
 H5T <- R6Class("H5T",
                inherit=H5RefClass,
                public=list(
+                   #' @description Internal use only
+                   #' @param id An HDF5 id; for internal use only.
                    initialize=function(id) {
-                       "Internal use only"
                        super$initialize(id)
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_class. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_class=function() {
-                       "This function implements the HDF5-API function H5Tget_class."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        cls_id <- .Call("R_H5Tget_class", self$id, PACKAGE="hdf5r")$return_val
                        return(cls_id)
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_size. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param ... ignored
                    get_size=function(...) {
-                       "This function implements the HDF5-API function H5Tget_size."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
-                       "@param ... ignored"
 
                        return(.Call("R_H5Tget_size", self$id, PACKAGE="hdf5r")$return_val)
                    },
+                   #' @description This function implements the HDF5-API function H5Tset_size. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param size The size of the object in bytes; use \code{Inf} for variable-length strings.
                    set_size=function(size) {
-                       "This function implements the HDF5-API function H5Tset_size."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        if(size==Inf) {
                            if(self$get_class() != h5const$H5T_STRING) {
@@ -222,9 +222,9 @@ H5T <- R6Class("H5T",
                        }
                        return(invisible(self))
                    },
+                   #' @description This function implements the HDF5-API function H5Tset_precision. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param precision The precision of the datatype, in bits.
                    set_precision=function(precision) {
-                       "This function implements the HDF5-API function H5Tset_precision."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_precision", self$id, as.integer(precision), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -232,9 +232,8 @@ H5T <- R6Class("H5T",
                        }
                        return(invisible(self))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_precision. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_precision=function() {
-                       "This function implements the HDF5-API function H5Tget_precision."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        prec <- .Call("R_H5Tget_precision", self$id, PACKAGE = "hdf5r")$return_val
                        if(prec < 0) {
@@ -242,9 +241,9 @@ H5T <- R6Class("H5T",
                        }
                        return(prec)
                    },
+                   #' @description This function implements the HDF5-API function H5Tset_order. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param order The order in which to iterate; one of the \code{H5_ITER_*} values in \code{\link{h5const}}.
                    set_order=function(order) {
-                       "This function implements the HDF5-API function H5Tset_order."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_order", self$id, as.integer(order), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -252,9 +251,8 @@ H5T <- R6Class("H5T",
                        }
                        return(invisible(self))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_order. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_order=function() {
-                       "This function implements the HDF5-API function H5Tget_order."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        order <- .Call("R_H5Tget_order", self$id, PACKAGE = "hdf5r")$return_val
                        if(order < 0) {
@@ -262,9 +260,9 @@ H5T <- R6Class("H5T",
                        }
                        return(order)
                    },
+                   #' @description This function implements the HDF5-API function H5Tset_offset. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param offset The offset to apply; see the corresponding HDF5 function for how it is interpreted.
                    set_offset=function(offset) {
-                       "This function implements the HDF5-API function H5Tset_offset."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_offset", self$id, as.integer(offset), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -272,9 +270,8 @@ H5T <- R6Class("H5T",
                        }
                        return(invisible(self))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_offset. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_offset=function() {
-                       "This function implements the HDF5-API function H5Tget_offset."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        offset <- .Call("R_H5Tget_offset", self$id, PACKAGE = "hdf5r")$return_val
                        if(offset < 0) {
@@ -282,9 +279,9 @@ H5T <- R6Class("H5T",
                        }
                        return(offset)
                    },
+                   #' @description This function implements the HDF5-API function H5Tset_pad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param pad The padding to use for unused bits; one of the \code{H5T_PAD_*} values in \code{\link{h5const}}.
                    set_pad=function(pad) {
-                       "This function implements the HDF5-API function H5Tset_pad."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        herr <- .Call("R_H5Tset_pad", self$id, as.integer(pad), PACKAGE = "hdf5r")$return_val
                        if(herr < 0) {
@@ -292,9 +289,8 @@ H5T <- R6Class("H5T",
                        }
                        return(invisible(self))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_pad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_pad=function() {
-                       "This function implements the HDF5-API function H5Tget_pad."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        pad <- .Call("R_H5Tget_pad", self$id, PACKAGE = "hdf5r")$return_val
                        if(pad < 0) {
@@ -302,16 +298,14 @@ H5T <- R6Class("H5T",
                        }
                        return(pad)
                    },
+                   #' @description This function implements the HDF5-API function H5Tcopy. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    copy=function() {
-                       "This function implements the HDF5-API function H5Tcopy."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tcopy", self$id, PACKAGE="hdf5r")$return_val
                        return(H5T_factory(id, do_copy=FALSE))
                    },
+                   #' @description This function implements the HDF5-API function H5Tcommitted. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    is_committed=function() {
-                       "This function implements the HDF5-API function H5Tcommitted."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        htri <- .Call("R_H5Tcommitted", self$id, PACKAGE="hdf5r")$return_val
                        if(htri < 0) {
@@ -319,9 +313,9 @@ H5T <- R6Class("H5T",
                        }
                        return(as.logical(htri))
                    },
+                   #' @description This function implements the HDF5-API function H5Tequal. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param dtype The datatype to use; an object of class \code{\link{H5T}}.
                    equal=function(dtype) {
-                       "This function implements the HDF5-API function H5Tequal."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        if(is.numeric(dtype)) {
                            dtype <- bit64::as.integer64(dtype)
@@ -338,9 +332,8 @@ H5T <- R6Class("H5T",
                        }
                        return(as.logical(eq_res))
                    },
+                   #' @description This function detects if the underlying type is H5T_VLEN or a variable length string. This is used to know if after reading a dataset, memory has to be freed
                    is_vlen=function() {
-                       "This function detects if the underlying type is H5T_VLEN or a variable length string. This is used to know if"
-                       "after reading a dataset, memory has to be freed"
 
                        htri <- .Call("R_H5Tdetect_vlen", self$id, PACKAGE = "hdf5r")$return_val
                        if(htri < 0) {
@@ -348,9 +341,9 @@ H5T <- R6Class("H5T",
                        }
                        return(as.logical(htri))
                    },
+                   #' @description This function implements the HDF5-API function H5Tdetect_class. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param dtype_class The datatype class to look for; one of the \code{H5T_*} class values in \code{\link{h5const}}.
                    detect_class=function(dtype_class) {
-                       "This function implements the HDF5-API function H5Tdetect_class."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        htri <- .Call("R_H5Tdetect_class", self$id, dtype_class, PACKAGE = "hdf5r")$return_val
                        if(htri < 0) {
@@ -358,9 +351,9 @@ H5T <- R6Class("H5T",
                        }
                        return(as.logical(htri))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_native_type. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                   #' @param direction The direction in which to search for a native type; one of the \code{H5T_DIR_*} values in \code{\link{h5const}}.
                    get_native_type=function(direction=h5const$H5T_DIR_ASCEND) {
-                       "This function implements the HDF5-API function H5Tget_native_type."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tget_native_type", self$id, direction, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -368,9 +361,8 @@ H5T <- R6Class("H5T",
                        }
                        return(H5T_factory(id=id))
                    },
+                   #' @description This function implements the HDF5-API function H5Tget_create_plist. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                    get_create_plist=function() {
-                       "This function implements the HDF5-API function H5Tget_create_plist."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                        id <- .Call("R_H5Tget_create_plist", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -378,15 +370,16 @@ H5T <- R6Class("H5T",
                        }
                        return(H5P_TYPE_CREATE$new(id=id))
                    },
+                   #' @description This function implements the HDF5-API function H5LTdtype_to_text.
+                   #' @param lang_type The language to produce the text representation in; one of the \code{H5LT_LANG_*} values in \code{\link{h5const}}.
                    to_text=function(lang_type=h5const$H5LT_DDL) {
-                       "This function implements the HDF5-API function H5LTdtype_to_text."
                        res <- standalone_H5T_dtype_to_text(self$id, lang_type)
 
                        return(res)
                    },
+                   #' @description Prints information for the group
+                   #' @param ... ignored
                    print=function(...){
-                       "Prints information for the group"
-                       "@param ... ignored"
                        
                        is_valid <- self$is_valid
                        
@@ -448,12 +441,13 @@ standalone_H5T_dtype_to_text <- function(h5t_id, lang_type) {
 #' my_int$set_size(1)
 #' my_int$set_precision(2)
 #' my_int$describe()
+#' @aliases H5T_INTEGER-class
 H5T_INTEGER <- R6Class("H5T_INTEGER",
                        inherit=H5T,
                        public=list(
+                           #' @description This function implements the HDF5-API function H5Tset_sign. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                           #' @param sign The signedness of the integer; one of the \code{H5T_SGN_*} values in \code{\link{h5const}}.
                            set_sign=function(sign) {
-                               "This function implements the HDF5-API function H5Tset_sign."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_sign", self$id, as.integer(sign), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -461,9 +455,8 @@ H5T_INTEGER <- R6Class("H5T_INTEGER",
                                }
                                return(invisible(self))
                            },
+                           #' @description This function implements the HDF5-API function H5Tget_sign. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                            get_sign=function() {
-                               "This function implements the HDF5-API function H5Tget_sign."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                sign <- .Call("R_H5Tget_sign", self$id, PACKAGE = "hdf5r")$return_val
                                return(sign)
@@ -471,8 +464,8 @@ H5T_INTEGER <- R6Class("H5T_INTEGER",
                                    stop("There was an error retrieving the sign")
                                }
                            },
+                           #' @description Return a vector that describes the key features of the datatype
                            describe=function() {
-                               "Return a vector that describes the key features of the datatype"
                                return(list(size=self$get_size(), precision=self$get_precision(), sign=self$get_sign(),
                                            order=self$get_order()))
                            }
@@ -494,21 +487,25 @@ H5T_BITFIELD <- H5T_INTEGER
 #' @export
 #' @author Holger Hoefling
 #' @seealso \code{\link[=H5T]{H5T}}
+#' @aliases H5T_FLOAT-class
 H5T_FLOAT <- R6Class("H5T_FLOAT",
                        inherit=H5T,
                        public=list(
+                           #' @description This function implements the HDF5-API function H5Tset_fields. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                           #' @param spos The bit position of the sign bit.
+                           #' @param epos The bit position of the exponent field.
+                           #' @param esize The size of the exponent field, in bits.
+                           #' @param mpos The bit position of the mantissa field.
+                           #' @param msize The size of the mantissa field, in bits.
                            set_fields=function(spos, epos, esize, mpos, msize) {
-                               "This function implements the HDF5-API function H5Tset_fields."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_fields", self$id, spos, epos, esize, mpos, msize, PACKAGE="hdf5r")$return_val
                                if(herr < 0) {
                                    stop("Error setting fields")
                                }
                            },
+                           #' @description This function implements the HDF5-API function H5Tget_fields. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                            get_fields=function() {
-                               "This function implements the HDF5-API function H5Tget_fields."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                res <- .Call("R_H5Tget_fields", self$id, request_empty(1), request_empty(1), request_empty(1), request_empty(1),
                                             request_empty(1), PACKAGE="hdf5r")
@@ -517,9 +514,9 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                }
                                return(list(spos=res$spos, epos=res$epos, esize=res$esize, mpos=res$mpos, msize=res$msize))
                            },
+                           #' @description This function implements the HDF5-API function H5Tset_ebias. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                           #' @param ebias The exponent bias.
                            set_ebias=function(ebias) {
-                               "This function implements the HDF5-API function H5Tset_ebias."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_ebias", self$id, as.integer(ebias), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -527,9 +524,8 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                }
                                return(invisible(self))
                            },
+                           #' @description This function implements the HDF5-API function H5Tget_ebias. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                            get_ebias=function() {
-                               "This function implements the HDF5-API function H5Tget_ebias."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                ebias <- .Call("R_H5Tget_ebias", self$id, PACKAGE = "hdf5r")$return_val
                                return(ebias)
@@ -537,9 +533,9 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                    stop("There was an error retrieving the ebias")
                                }
                            },
+                           #' @description This function implements the HDF5-API function H5Tset_norm. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                           #' @param norm The mantissa normalisation; one of the \code{H5T_NORM_*} values in \code{\link{h5const}}.
                            set_norm=function(norm) {
-                               "This function implements the HDF5-API function H5Tset_norm."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_norm", self$id, as.integer(norm), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -547,9 +543,8 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                }
                                return(invisible(self))
                            },
+                           #' @description This function implements the HDF5-API function H5Tget_norm. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                            get_norm=function() {
-                               "This function implements the HDF5-API function H5Tget_norm."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                norm <- .Call("R_H5Tget_norm", self$id, PACKAGE = "hdf5r")$return_val
                                return(norm)
@@ -557,9 +552,9 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                    stop("There was an error retrieving the norm")
                                }
                            },
+                           #' @description This function implements the HDF5-API function H5Tset_inpad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                           #' @param inpad How to fill unused internal bits; one of the \code{H5T_PAD_*} values in \code{\link{h5const}}.
                            set_inpad=function(inpad) {
-                               "This function implements the HDF5-API function H5Tset_inpad."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                herr <- .Call("R_H5Tset_inpad", self$id, as.integer(inpad), PACKAGE = "hdf5r")$return_val
                                if(herr < 0) {
@@ -567,9 +562,8 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                }
                                return(invisible(self))
                            },
+                           #' @description This function implements the HDF5-API function H5Tget_inpad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                            get_inpad=function() {
-                               "This function implements the HDF5-API function H5Tget_inpad."
-                               "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                inpad <- .Call("R_H5Tget_inpad", self$id, PACKAGE = "hdf5r")$return_val
                                return(inpad)
@@ -577,8 +571,8 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
                                    stop("There was an error retrieving the inpad")
                                }
                            },
+                           #' @description Print a detailed description of the datatype; this is experimental
                            describe=function() {
-                               "Print a detailed description of the datatype; this is experimental"
                                return(list(size=self$get_size(), precision=self$get_precision(),
                                            fields=self$get_fields(), ebias=self$get_ebias(), norm=self$get_norm(),
                                            inpad=self$get_inpad()))
@@ -603,15 +597,15 @@ H5T_FLOAT <- R6Class("H5T_FLOAT",
 #' # For HDF5 1.8.16 or higher, the size and precision are set optimally
 #' nucleotide_enum$get_size()
 #' nucleotide_enum$get_precision()
+#' @aliases H5T_ENUM-class
 H5T_ENUM <- R6Class("H5T_ENUM",
                     inherit=H5T_INTEGER,
                     public=list(
+                        #' @description Create an enumeration datatype. This is either a factor-like object or a logical variable (that is internally represented as an ENUM-type.
+                        #' @param labels The labels of the ENUM-type
+                        #' @param values The values corresponding to the labels
+                        #' @param id Internal use only
                         initialize=function(labels, values=seq_along(labels), id=NULL) {
-                            "Create an enumeration datatype. This is either a factor-like object or a logical variable (that is"
-                            "internally represented as an ENUM-type."
-                            "@param labels The labels of the ENUM-type"
-                            "@param values The values corresponding to the labels"
-                            "@param id Internal use only"
                             if(!is.null(id)) {
                                 super$initialize(id=id)
                                 return(self)
@@ -630,7 +624,10 @@ H5T_ENUM <- R6Class("H5T_ENUM",
 
                                 if(has_neg) {
                                     if(size <= 1) {
-                                        dtype_id <- h5types$H5T_NATIVE_CHAR
+                                        ## H5T_NATIVE_CHAR follows the signedness of plain 'char', which is
+                                        ## unsigned on AArch64 Linux; negative values would then be clamped
+                                        ## to 0 and collide. Always ask for the signed type explicitly.
+                                        dtype_id <- h5types$H5T_NATIVE_SCHAR
                                     }
                                     else if(size <= 2) {
                                         dtype_id <- h5types$H5T_NATIVE_SHORT
@@ -673,28 +670,29 @@ H5T_ENUM <- R6Class("H5T_ENUM",
                             }
                             stop("None of the parameters were set")
                         },
+                        #' @description Return all the labels of the enumeration type
                         get_labels=function() {
-                            "Return all the labels of the enumeration type"
                             return(.Call("h5get_enum_labels", self$id, PACKAGE="hdf5r")$return_val)
                         },
+                        #' @description Return the values of the enumeration type
                         get_values=function() {
-                            "Return the values of the enumeration type"
                             return(.Call("h5get_enum_values", self$id, PACKAGE = "hdf5r")$return_val)
                         },
+                        #' @description Base type of every enum is \code{H5T_INTEGER}. This disables the set_size function
+                        #' @param size The size of the object in bytes; use \code{Inf} for variable-length strings.
                         set_size=function(size) {
-                            "Base type of every enum is \\code{H5T_INTEGER}. This disables the set_size function"
                             stop("Function 'set_size' not allowed for 'H5T_ENUM'")
                         },
+                        #' @description Returns \code{\link{H5T_INTEGER}} that is the base type of the enumeration
                         get_super=function() {
-                            "Returns \\code{\\link{H5T_INTEGER}} that is the base type of the enumeration"
                             id <- .Call("R_H5Tget_super", self$id, PACKAGE="hdf5r")$return_val
                             if(id < 0) {
                                 stop("Error retrieving super_type")
                             }
                             return(H5T_factory(id=id))
                         },
+                        #' @description Print a detailed description of the datatype; this is experimental
                         describe=function() {
-                            "Print a detailed description of the datatype; this is experimental"
 
                             return(list(super=self$get_super()$describe(), labels=self$get_labels(), values=self$get_values()))
                         }
@@ -715,13 +713,14 @@ H5T_ENUM <- R6Class("H5T_ENUM",
 #' @export
 #' @author Holger Hoefling
 #' @seealso \code{\link[=H5T]{H5T}}, \code{\link[=H5T_ENUM]{H5T_ENUM}}
+#' @aliases H5T_LOGICAL-class
 H5T_LOGICAL <-  R6Class("H5T_LOGICAL",
                     inherit=H5T_ENUM,
                     public=list(
+                        #' @description Create a logical datatype. This is internally represented by an ENUM-type
+                        #' @param include_NA Logical; should the enumeration include a level for \code{NA}.
+                        #' @param id Internal use only
                         initialize=function(include_NA=TRUE, id=NULL) {
-                            "Create a logical datatype. This is"
-                            "internally represented by an ENUM-type"
-                            "@param id Internal use only"
                             if(!is.null(id)) {
                                 super$initialize(id=id)
                                 return(self)
@@ -769,18 +768,17 @@ H5T_LOGICAL <-  R6Class("H5T_LOGICAL",
 #' my_cpd <- H5T_COMPOUND$new(c("name", "age", "salary"),
 #'     dtypes=list(H5T_STRING$new(size=200), h5types$H5T_NATIVE_INT, h5types$H5T_NATIVE_DOUBLE))
 #' my_cpd
+#' @aliases H5T_COMPOUND-class
 H5T_COMPOUND <- R6Class("H5T_COMPOUND",
                         inherit=H5T,
                         public=list(
+                            #' @description Create at compound type that is the HDF5 equivalent of a table
+                            #' @param labels The labels of the columns of the compound object
+                            #' @param dtypes The datatypes of the columns of the object; this is usually a list of objects of class \code{\link{H5T}}
+                            #' @param size The size of each datatype; if \code{NULL}, automatically inferred
+                            #' @param offset The offset where each datatype starts; can be different from the sum of the individual sizes so that datatypes are aligned with memory addresses. If \code{NULL}, inferred automatically
+                            #' @param id Internal use only
                             initialize=function(labels, dtypes, size=NULL, offset=NULL, id=NULL) {
-                                "Create at compound type that is the HDF5 equivalent of a table"
-                                "@param labels The labels of the columns of the compound object"
-                                "@param dtypes The datatypes of the columns of the object; this is usually a list of objects"
-                                "of class \\code{\\link{H5T}}"
-                                "@param size The size of each datatype; if \\code{NULL}, automatically inferred"
-                                "@param offset The offset where each datatype starts; can be different from the sum of the individual sizes"
-                                "so that datatypes are aligned with memory addresses. If \\code{NULL}, inferred automatically"
-                                "@param id Internal use only"
                                 if(is.null(id)) {
                                     if(missing(dtypes) || missing(labels)) {
                                         stop("Either 'id' or ('dtype_ids' and 'labels') have to be given")
@@ -797,9 +795,8 @@ H5T_COMPOUND <- R6Class("H5T_COMPOUND",
                                 }
                                 super$initialize(id)
                             },
+                            #' @description This function implements the HDF5-API function H5Tpack. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                             pack=function() {
-                                "This function implements the HDF5-API function H5Tpack."
-                                "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                                 herr <- .Call("R_H5Tpack", self$id, PACKAGE="hdf5r")$return_val
                                 if(herr < 0) {
@@ -807,26 +804,25 @@ H5T_COMPOUND <- R6Class("H5T_COMPOUND",
                                 }
                                 return(invisible(self))
                             },
+                            #' @description Return \code{\link{H5T}} objects that represent the datatypes of the columns of the compound object. Returned as a list if more than 1
                             get_cpd_types=function() {
-                                "Return \\code{\\link{H5T}} objects that represent the datatypes of the columns of the "
-                                "compound object. Returned as a list if more than 1"
                                 dtype_ids <- .Call("h5get_compound_types", self$id, PACKAGE="hdf5r")$return_val
                                 return(H5T_factory(ids=dtype_ids))
                             },
+                            #' @description Return the labels of the columns as a character vector
                             get_cpd_labels=function() {
-                                "Return the labels of the columns as a character vector"
                                 return(.Call("h5get_compound_names", self$id, PACKAGE="hdf5r")$return_val)
                             },
+                            #' @description Return the classes of the columns as an object of type \code{\link{factor_ext}}
                             get_cpd_classes=function() {
-                                "Return the classes of the columns as an object of type \\code{\\link{factor_ext}}"
                                 return(.Call("h5get_compound_classes", self$id, PACKAGE="hdf5r")$return_val)
                             },
+                            #' @description Return the offsets of the datatypes
                             get_cpd_offsets=function() {
-                                "Return the offsets of the datatypes"
                                 return(.Call("h5get_compound_offsets", self$id, PACKAGE="hdf5r")$return_val)
                             },
+                            #' @description Print a detailed description of the datatype; this is experimental
                             describe=function() {
-                                "Print a detailed description of the datatype; this is experimental"
 
                                 cpd_types <- self$get_cpd_types()
                                 if(!is.list(cpd_types)) {
@@ -861,14 +857,15 @@ H5T_COMPOUND <- R6Class("H5T_COMPOUND",
 #' str_vlen <- H5T_STRING$new(size=Inf)
 #' str_vlen$is_vlen()
 #' str_vlen
+#' @aliases H5T_STRING-class
 H5T_STRING <- R6Class("H5T_STRING",
                       inherit=H5T,
                       public=list(
+                          #' @description Create a string datatype
+                          #' @param type The type to use. For a dataspace one of \code{"simple"}, \code{"scalar"} or \code{"null"}; otherwise an object of class \code{\link{H5T}}.
+                          #' @param size Size of the string object. Set to \code{Inf} for variable size strings
+                          #' @param id internal use only
                           initialize=function(type=c("c", "fortran"), size=1, id=NULL) {
-                              "Create a string datatype"
-                              "@param A C or fortran type string"
-                              "@param size Size of the string object. Set to \\code{Inf} for variable size strings"
-                              "@param id internal use only"
                               newid <- FALSE
                               if(is.null(id)) {
                                   type <- match.arg(type)
@@ -884,10 +881,9 @@ H5T_STRING <- R6Class("H5T_STRING",
                               }
                               return(self)
                           },
+                          #' @description Retrieves the length of the string, setting it to \code{Inf} it is of variable length. This function implements the HDF5-API function H5Tis_variable_str. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                          #' @param variable_as_inf Logical; should variable-length strings report their size as \code{Inf}.
                           get_size=function(variable_as_inf=TRUE) {
-                              "Retrieves the length of the string, setting it to \\code{Inf} it is of variable length."
-                              "This function implements the HDF5-API function H5Tis_variable_str."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                               ## needs to be overloaded to properly assess if it is a variable length string
                               ## first check if the string has variable length
@@ -907,16 +903,15 @@ H5T_STRING <- R6Class("H5T_STRING",
                                   return(super$get_size())
                               }
                           },
+                          #' @description This function implements the HDF5-API function H5Tget_cset. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                           get_cset=function() {
-                              "This function implements the HDF5-API function H5Tget_cset."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                               cset_res = .Call("R_H5Tget_cset", self$id, PACKAGE = "hdf5r")$return_val
                               return(cset_res)
                           },
+                          #' @description This function implements the HDF5-API function H5Tset_cset. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                          #' @param cset The character set to use; one of the \code{H5T_CSET_*} values in \code{\link{h5const}}.
                           set_cset=function(cset=c("unknown", "UTF-8")) {
-                              "This function implements the HDF5-API function H5Tset_cset."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                               if(is.character(cset)) {
                                   cset <- match.arg(cset)
@@ -928,9 +923,9 @@ H5T_STRING <- R6Class("H5T_STRING",
                               }
                               return(self)
                           },
+                          #' @description This function implements the HDF5-API function H5Tset_strpad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
+                          #' @param strpad The string padding to use; one of the \code{H5T_STR_*} values in \code{\link{h5const}}.
                           set_strpad=function(strpad) {
-                              "This function implements the HDF5-API function H5Tset_strpad."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                               herr <- .Call("R_H5Tset_strpad", self$id, as.integer(strpad), PACKAGE = "hdf5r")$return_val
                               if(herr < 0) {
@@ -938,9 +933,8 @@ H5T_STRING <- R6Class("H5T_STRING",
                               }
                               return(invisible(self))
                           },
+                          #' @description This function implements the HDF5-API function H5Tget_strpad. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                           get_strpad=function() {
-                              "This function implements the HDF5-API function H5Tget_strpad."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                               strpad <- .Call("R_H5Tget_strpad", self$id, PACKAGE = "hdf5r")$return_val
                               return(strpad)
@@ -948,8 +942,8 @@ H5T_STRING <- R6Class("H5T_STRING",
                                   stop("There was an error retrieving the strpad")
                               }
                           },
+                          #' @description Print a detailed description of the datatype; this is experimental
                           describe=function() {
-                              "Print a detailed description of the datatype; this is experimental"
 
                               return(list(size=self$get_size(), cset=self$get_cset(), strpad=self$get_strpad()))
                           }
@@ -971,12 +965,13 @@ H5T_STRING <- R6Class("H5T_STRING",
 #' @export
 #' @author Holger Hoefling
 #' @seealso \code{\link[=H5T]{H5T}}, \code{\link[=H5T_COMPOUND]{H5T_COMPOUND}}
+#' @aliases H5T_COMPLEX-class
 H5T_COMPLEX <- R6Class("H5T_COMPLEX",
                        inherit=H5T_COMPOUND,
                        public=list(
+                           #' @description Create a new complex datatype
+                           #' @param id Internal use only
                            initialize=function(id=NULL) {
-                               "Create a new complex datatype"
-                               "@param id Internal use only"
                                if(is.null(id)) {
                                    labels <- c("Real", "Imaginary")
                                    dtypes <- rep(h5types$H5T_NATIVE_DOUBLE$id,2)
@@ -1004,14 +999,15 @@ H5T_COMPLEX <- R6Class("H5T_COMPLEX",
 #' @export
 #' @author Holger Hoefling
 #' @seealso \code{\link[=H5T]{H5T}}
+#' @aliases H5T_ARRAY-class
 H5T_ARRAY <- R6Class("H5T_ARRAY",
                      inherit=H5T,
                      public=list(
+                         #' @description Create an array datatype.
+                         #' @param dims The dimension of the datatype
+                         #' @param dtype_base The datatype that makes up the elements of the array
+                         #' @param id internal use only
                          initialize=function(dims, dtype_base, id=NULL) {
-                             "Create an array datatype."
-                             "@param dims The dimension of the datatype"
-                             "@param dtype_base The datatype that makes up the elements of the array"
-                             "@param id internal use only"
                              if(is.null(id)) {
                                  ## ok, check that we have the right base type available
                                  if(missing(dims) || missing(dtype_base)) {
@@ -1026,9 +1022,8 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                              }
                              super$initialize(id)
                          },
+                         #' @description This function implements the HDF5-API function H5Tget_array_ndims. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                          get_array_ndims=function() {
-                             "This function implements the HDF5-API function H5Tget_array_ndims."
-                             "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                              res <- .Call("R_H5Tget_array_ndims", self$id, PACKAGE="hdf5r")$return_val
                              if(res < 0) {
@@ -1036,9 +1031,8 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                              }
                              return(res)
                          },
+                         #' @description This function implements the HDF5-API function H5Tget_array_dims2. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                          get_array_dims=function() {
-                             "This function implements the HDF5-API function H5Tget_array_dims2."
-                             "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                              rank <- self$get_array_ndims()
                              dims <- integer(rank)
@@ -1048,9 +1042,8 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                              }
                              return(rev(res$dims))
                          },
+                         #' @description This function implements the HDF5-API function H5Tget_super. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                          get_super=function() {
-                             "This function implements the HDF5-API function H5Tget_super."
-                             "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                              id <- .Call("R_H5Tget_super", self$id, PACKAGE="hdf5r")$return_val
                              if(id < 0) {
@@ -1058,8 +1051,8 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
                              }
                              return(H5T_factory(id=id))
                          },
+                         #' @description Print a detailed description of the datatype; this is experimental
                          describe=function() {
-                             "Print a detailed description of the datatype; this is experimental"
 
                              return(list(super=self$get_super()$describe(), array_dims=self$get_array_dims()))
                          }
@@ -1083,13 +1076,14 @@ H5T_ARRAY <- R6Class("H5T_ARRAY",
 #' @examples
 #' vlen_int <- H5T_VLEN$new(h5types$H5T_NATIVE_INT)
 #' vlen_int
+#' @aliases H5T_VLEN-class
 H5T_VLEN <- R6Class("H5T_VLEN",
                     inherit=H5T,
                     public=list(
+                        #' @description Create a variable length datatype
+                        #' @param dtype_base The basis-type of the variable length datatype
+                        #' @param id Internal use only
                         initialize=function(dtype_base, id=NULL) {
-                            "Create a variable length datatype"
-                            "@param dtype_base The basis-type of the variable length datatype"
-                            "@param id Internal use only"
                             if(is.null(id)) {
                                 if(inherits(dtype_base, "H5T")) {
                                     dtype_base <- dtype_base$id
@@ -1098,9 +1092,8 @@ H5T_VLEN <- R6Class("H5T_VLEN",
                             }
                             super$initialize(id=id)
                         },
+                        #' @description This function implements the HDF5-API function H5Tget_super. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details.
                         get_super=function() {
-                            "This function implements the HDF5-API function H5Tget_super."
-                            "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_t.html} for details."
 
                             id <- .Call("R_H5Tget_super", self$id, PACKAGE="hdf5r")$return_val
                             if(id < 0) {
@@ -1108,8 +1101,8 @@ H5T_VLEN <- R6Class("H5T_VLEN",
                             }
                             return(H5T_factory(id=id))
                         },
+                        #' @description Print a detailed description of the datatype; this is experimental
                         describe=function() {
-                            "Print a detailed description of the datatype; this is experimental"
 
                             return(list(super=self$get_super()$describe()))
                         }

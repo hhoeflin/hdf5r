@@ -791,15 +791,14 @@ SEXP H5ToR_Post_RComplex(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags) 
   SEXP res;
   PROTECT(res = H5ToR_Post_FLOAT(_Robj, dtype_member, nelem * 2, flags));
   H5Tclose(dtype_member);
-  UNPROTECT(1);
 
-  // if its size is larger than double, need to set the length
+  // if its size is larger than double, need to set the length; res has to stay
+  // protected across Rf_xlengthgets, which can itself trigger a garbage collection
   if(dtype_size > sizeof(double)) {
-    return(Rf_xlengthgets(res, nelem));
+    res = Rf_xlengthgets(res, nelem);
   }
-  else {
-    return(res);
-  }
+  UNPROTECT(1);
+  return(res);
 
 }
 
@@ -2260,8 +2259,10 @@ R_xlen_t guess_nelem(SEXP _Robj, hid_t dtype_id) {
   case H5T_REFERENCE: {
     SEXP hdf5r_ns = PROTECT(eval(PROTECT(lang2(PROTECT(install("getNamespace")), PROTECT(mkString("hdf5r")))), R_GlobalEnv));
     SEXP robj_len = PROTECT(eval(PROTECT(lang3(install("$"), _Robj, install("length"))), hdf5r_ns));
+    // read the length before UNPROTECT: SEXP_to_xlen may allocate and GC robj_len
+    R_xlen_t robj_nelem = SEXP_to_xlen(robj_len);
     UNPROTECT(6);
-    return(SEXP_to_xlen(robj_len));
+    return(robj_nelem);
   }	      
   default:
     error("Error when retrieving class");

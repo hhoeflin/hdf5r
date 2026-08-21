@@ -8,16 +8,16 @@ reference:
   - title: Files and Groups
     desc:  Objects representing HDF5 Files and Groups
     contents:
-    - H5File-class
+    - H5File
     - is_hdf5
-    - H5Group-class
+    - H5Group
     - H5Group_access
     - names.H5Group
   - title: Spaces and Datasets
     desc: Objects representing HDF5 Datasets and Spaces
     contents:
-    - H5D-class
-    - H5S-class
+    - H5D
+    - H5S
     - H5S_H5D_subset_assign
     - create_empty
     - guess_chunks
@@ -28,20 +28,20 @@ reference:
     desc: Objects representing HDF5 Datatypes
     contents:
     - h5types
-    - H5T-class
+    - H5T
     - starts_with("H5T_")
     - text_to_dtype
   - title: HDF5 Attributes
     contents: 
     - h5attributes
-    - H5A-class
+    - H5A
   - title: HDF5 Reference objects
     contents: 
-    - H5R-class
+    - H5R
     - starts_with("H5R_")
   - title: HDF5 Property lists
     contents: 
-    - H5P-class
+    - H5P
     - starts_with("H5P_")
   - title: Helpers
     contents:
@@ -50,7 +50,7 @@ reference:
     - h5-wrapper
     - h5version 
     - h5garbage_collect   
-    - H5RefClass-class
+    - H5RefClass
     - as_hex
     - flatten_df 
     - print.data.frame_ext

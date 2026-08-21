@@ -4,8 +4,11 @@
 \alias{guess_chunks}
 \title{Guess the dimension of a chunk}
 \usage{
-guess_chunks(space_maxdims, dtype_size,
-  chunk_size = getOption("hdf5r.chunk_size"))
+guess_chunks(
+  space_maxdims,
+  dtype_size,
+  chunk_size = getOption("hdf5r.chunk_size")
+)
 }
 \arguments{
 \item{space_maxdims}{Maximal dimensions of the dataset}

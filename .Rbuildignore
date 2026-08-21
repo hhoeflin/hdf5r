@@ -11,17 +11,12 @@ inst/test_implementations
 .Rprofile
 .Rhistory
 Makevars^
-appveyor.yml
-.travis.yml
-travis_setup.sh
 ^.*\.Rproj$
 ^\.Rproj\.user$
 TODO.md
-.wercker.yml
 Makefile
 ^.*\.tar.gz
 configure.win.temp
-wercker.yml
 ^docs$
 ^_pkgdown\.yml$
 ^cran-comments\.md$
@@ -34,3 +29,7 @@ windows
 ^logs$
 ^builds$
 ^m4$
+^autom4te\.cache$
+^config\.log$
+^config\.status$
+^dev$

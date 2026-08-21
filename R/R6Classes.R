@@ -24,19 +24,17 @@
 ##' H5-derived classes to provide common functionality for id tracking
 ##' @docType class
 ##' @importFrom R6 R6Class
-##' @return Object of reference class \code{\link{H5RefClass}}. 
-##' @field id Returns the id of the object as an integer
+##' @return Object of reference class \code{\link{H5RefClass}}.
 ##' @export
 ##' @importFrom bit64 as.integer64
 ##' @importFrom bit64 is.na.integer64
 ##' @author Holger Hoefling
+##' @aliases H5RefClass-class
 H5RefClass <- R6Class("H5RefClass",
                       public=list(
+                          #' @description Constructor for the basic class for hdf5 objects. Takes an id and stores it appropriately, including the necessary counting of object references that the package implements. This reference counting is included in addition to R's internal method in order to allow for the invalidation of objects in R itself when all open handles in an R-file are being closed.
+                          #' @param id An HDF5 id; for internal use only.
                           initialize=function(id=NULL) {
-                              "Constructor for the basic class for hdf5 objects. Takes an id and stores it appropriately, including"
-                              "the necessary counting of object references that the package implements. This reference counting is"
-                              "included in addition to R's internal method in order to allow for the invalidation of objects"
-                              "in R itself when all open handles in an R-file are being closed."
                               if(is.null(id)) {
                                   stop("Id has to be specified")
                               }
@@ -72,8 +70,8 @@ H5RefClass <- R6Class("H5RefClass",
                               
                               reg.finalizer(self, function(e) { e$close()}, onexit=TRUE)
                           },
+                          #' @description Closes an object and calls the appropriate HDF5 function for the type of object
                           close=function() {
-                              "Closes an object and calls the appropriate HDF5 function for the type of object"
                               if(self$is_valid) {
                                   id <- private$pid$id
                                   private$closeFun(id)
@@ -87,22 +85,23 @@ H5RefClass <- R6Class("H5RefClass",
  #                             private$pid <- NA
  #                             private$pmessage <- "erased"
  #                         },
+                          #' @description Prints the class of the object and the id
+                          #' @param ... Further arguments; currently ignored.
                           print=function(...) {
-                              "Prints the class of the object and the id"
 
                               is_valid <- self$is_valid
 
                               print_class_id(self, is_valid)
                               return(invisible(self))
                           },
+                          #' @description Prints available methods on the screen
                           methods=function() {
-                              "Prints available methods on the screen"
                               cat(format(self), sep="\n")
                           }
                           ),
                       active=list(
+                          #' @field id Returns the id of the object
                           id=function() {
-                              "Returns the id of the object"
                               if(is.environment(private$pid)) {
                                   if(is.na(private$pid$id)) {
                                       stop("id is invalid")
@@ -115,14 +114,12 @@ H5RefClass <- R6Class("H5RefClass",
                                   stop("id is invalid")
                               }
                           },
+                          #' @field id_env The environment that holds the id, used internally for reference counting.
                           id_env=function() {
                               return(private$pid)
                           },
+                          #' @field is_valid This function implements the HDF5-API function H5Iis_valid. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_i.html} for details. Additionally, the R-object representing the HDF5-id can be invalidated as well. In this case, the class id is set to \code{NA} and \code{is_valid} returns \code{FALSE}.
                           is_valid=function() {
-                              "This function implements the HDF5-API function H5Iis_valid."
-                              "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_i.html} for details."
-                              "Additionally, the R-object representing the HDF5-id can be invalidated as well. In this"
-                              "case, the class id is set to \\code{NA} and \\code{is_valid} returns \\code{FALSE}."
                               
                               if(!is.environment(private$pid) || is.na(private$pid$id)) {
                                   return(FALSE)
@@ -136,8 +133,8 @@ H5RefClass <- R6Class("H5RefClass",
                               }
                               return(res > 0)
                           },
+                          #' @field message Legacy function; currently not used; may be removed
                           message=function() {
-                              "Legacy function; currently not used; may be removed"
                               return(private$pmessage)
                           }
                           ),

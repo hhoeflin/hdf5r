@@ -34,8 +34,7 @@ NULL
 ##' functionality from inside R using R6 classes. For more details please see the README at
 ##' the github page \url{https://github.com/hhoeflin/hdf5r}.
 ##' 
-##' @name hdf5r-package
-##' @docType package
+##' @keywords internal
 ##' @examples 
 ##' test_file <- tempfile(fileext=".h5")
 ##' file.h5 <- H5File$new(test_file, mode="w")
@@ -63,7 +62,7 @@ NULL
 ##' h5attr(cars_ds, "rownames")
 ##' 
 ##' file.h5$close_all()
-NULL
+"_PACKAGE"
 
 
 

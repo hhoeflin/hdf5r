@@ -135,7 +135,6 @@ R_CallMethodDef library_WRAPPER_AUTO_H5FDCORE[] = {
 };
 
 R_CallMethodDef library_WRAPPER_AUTO_H5FDFAMILY[] = {
-{"R_H5FD_family_init", (DL_FUNC) &R_H5FD_family_init, 0},
 {"R_H5FD_family_term", (DL_FUNC) &R_H5FD_family_term, 0},
 {"R_H5Pget_fapl_family", (DL_FUNC) &R_H5Pget_fapl_family, 3},
 {"R_H5Pset_fapl_family", (DL_FUNC) &R_H5Pset_fapl_family, 3},
@@ -143,21 +142,18 @@ R_CallMethodDef library_WRAPPER_AUTO_H5FDFAMILY[] = {
 };
 
 R_CallMethodDef library_WRAPPER_AUTO_H5FDLOG[] = {
-{"R_H5FD_log_init", (DL_FUNC) &R_H5FD_log_init, 0},
 {"R_H5FD_log_term", (DL_FUNC) &R_H5FD_log_term, 0},
 {"R_H5Pset_fapl_log", (DL_FUNC) &R_H5Pset_fapl_log, 4},
 {NULL, NULL, 0}
 };
 
 R_CallMethodDef library_WRAPPER_AUTO_H5FDSEC2[] = {
-{"R_H5FD_sec2_init", (DL_FUNC) &R_H5FD_sec2_init, 0},
 {"R_H5FD_sec2_term", (DL_FUNC) &R_H5FD_sec2_term, 0},
 {"R_H5Pset_fapl_sec2", (DL_FUNC) &R_H5Pset_fapl_sec2, 1},
 {NULL, NULL, 0}
 };
 
 R_CallMethodDef library_WRAPPER_AUTO_H5FDSTDIO[] = {
-{"R_H5FD_stdio_init", (DL_FUNC) &R_H5FD_stdio_init, 0},
 {"R_H5FD_stdio_term", (DL_FUNC) &R_H5FD_stdio_term, 0},
 {"R_H5Pset_fapl_stdio", (DL_FUNC) &R_H5Pset_fapl_stdio, 1},
 {NULL, NULL, 0}

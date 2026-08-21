@@ -1,8 +1,6 @@
 #ifndef _WRAPPER_AUTO_H5FDLOG_H_
 #define _WRAPPER_AUTO_H5FDLOG_H_
 #include "global.h"
-/* H5_DLL hid_t H5FD_log_init(void); */
-SEXP R_H5FD_log_init(void);
 /* H5_DLL void H5FD_log_term(void); */
 SEXP R_H5FD_log_term(void);
 /* H5_DLL herr_t H5Pset_fapl_log(hid_t fapl_id, const char *logfile, unsigned long long flags, size_t buf_size); */

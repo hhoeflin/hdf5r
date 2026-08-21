@@ -163,18 +163,22 @@ is_hdf5 <- function(name) {
 #' @seealso \code{\link{h5file}}
 #' @author Holger Hoefling, Mario Annau
 #' @export
+#' @aliases H5File-class
 H5File <- R6Class("H5File",
                   inherit=H5RefClass,
                   public=list(
+                      #' @field mode The mode the file was opened with.
                       mode = NULL,
+                      #' @field filename The name of the file on disk.
                       filename = NULL,
+                      #' @description Opens or creates a new HDF5 File
+                      #' @param filename Name of the file
+                      #' @param mode How to open it. \code{a} creates a new file or opens an existing one for read/write. \code{r} opens an existing file for reading, \code{r+} opens an existing file for read/write. \code{w} creates a file, truncating any existing ones and \code{w-}/\code{x} are synonyms, creating a file and failing if it already exists.
+                      #' @param file_create_pl The file creation property list. See \code{\link{H5P_FILE_CREATE}}.
+                      #' @param file_access_pl The file access property list. See \code{\link{H5P_FILE_ACCESS}}.
+                      #' @param id An HDF5 id; for internal use only.
                       initialize=function(filename=NULL, mode=c("a", "r", "r+", "w", "w-", "x"), file_create_pl=h5const$H5P_DEFAULT,
                           file_access_pl=h5const$H5P_DEFAULT, id=NULL) {
-                          "Opens or creates a new HDF5 File"
-                          "@param filename Name of the file"
-                          "@param mode How to open it. \\code{a} creates a new file or opens an existing one for read/write. \\code{r} opens an"
-                          "existing file for reading, \\code{r+} opens an existing file for read/write. \\code{w} creates a file, truncating any"
-                          "existing ones and \\code{w-}/\\code{x} are synonyms, creating a file and failing if it already exists."
 
 
                           if (is.null(id)) {
@@ -189,18 +193,18 @@ H5File <- R6Class("H5File",
                           self$mode <- mode
                           self$filename <- self$get_filename()
                       },
+                      #' @description This function implements the HDF5-API function H5Fget_obj_count. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details.
+                      #' @param types The types of object to count; one or more of the \code{H5F_OBJ_*} values in \code{\link{h5const}}.
                       get_obj_count=function(types=h5const$H5F_OBJ_ALL) {
-                          "This function implements the HDF5-API function H5Fget_obj_count."
-                          "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details."
                           count <- .Call("R_H5Fget_obj_count", self$id, types, PACKAGE = "hdf5r")$return_val
                           if(count < 0) {
                               stop("Couldn't get object count in file")
                           }
                           return(count)
                       },
+                      #' @description This function implements the HDF5-API function H5Fget_obj_ids. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details.
+                      #' @param types The types of object to count; one or more of the \code{H5F_OBJ_*} values in \code{\link{h5const}}.
                       get_obj_ids=function(types=h5const$H5F_OBJ_ALL) {
-                          "This function implements the HDF5-API function H5Fget_obj_ids."
-                          "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details."
 
                           count <- self$get_obj_count(types=types)
                           res <- .Call("R_H5Fget_obj_ids", self$id, types, count, request_empty(count), PACKAGE = "hdf5r")
@@ -210,9 +214,8 @@ H5File <- R6Class("H5File",
                           obj_ids <- res$obj_id_list
                           return(obj_ids)
                       },
+                      #' @description This function implements the HDF5-API function H5Fget_filesize. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details.
                       get_filesize=function() {
-                          "This function implements the HDF5-API function H5Fget_filesize."
-                          "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details."
 
                           res <- .Call("R_H5Fget_filesize", self$id, request_empty(1), PACKAGE = "hdf5r")
                           if(res$return_val < 0) {
@@ -220,10 +223,8 @@ H5File <- R6Class("H5File",
                           }
                           return(res$size)
                       },
+                      #' @description This function implements the HDF5-API function H5Fget_info2. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details. Please note that the returned information differs if HDF5 Version 1.8.16 or HDF5 Version >= 1.10.0 is being used
                       file_info=function() {
-                          "This function implements the HDF5-API function H5Fget_info2."
-                          "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details."
-                          "Please note that the returned information differs if HDF5 Version 1.8.16 or HDF5 Version >= 1.10.0 is being used"
 
                           if(is.loaded("R_H5Fget_info2", PACKAGE = "hdf5r")) {
                               res <- .Call("R_H5Fget_info2", self$id, request_empty(1), PACKAGE = "hdf5r")
@@ -240,9 +241,8 @@ H5File <- R6Class("H5File",
                               return(res$bh_info)
                           }
                       },
+                      #' @description This function implements the HDF5-API function H5Fget_intent. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details.
                       get_intent=function() {
-                          "This function implements the HDF5-API function H5Fget_intent."
-                          "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_f.html} for details."
 
                           res <- .Call("R_H5Fget_intent", self$id, request_empty(1), PACKAGE="hdf5r")
                           if(res$return_val < 0) {
@@ -252,9 +252,9 @@ H5File <- R6Class("H5File",
                           intent <- factor_ext(res$intent, values=values(h5f_acc), levels=levels(h5f_acc))
                           return(intent)
                       },
+                      #' @description Closes the file, flushes it and also closes all open objects that are still open in it. This is the recommended way of closing any file. If not all objects in a file are closed, the file remains open and cannot be re-opened the regular way.
+                      #' @param close_self Logical; should the object itself be closed as well.
                       close_all=function(close_self=TRUE) {
-                          "Closes the file, flushes it and also closes all open objects that are still open in it. This is the recommended way of"
-                          "closing any file. If not all objects in a file are closed, the file remains open and cannot be re-opened the regular way."
 
                           ## first trigger the garbage collection, so that lost, but not yet collected objects are closed
                           gc()
@@ -289,11 +289,11 @@ H5File <- R6Class("H5File",
                       ##     }
                       ##     return(invisible(self))
                       ## }
+                      #' @description Prints information for the file
+                      #' @param ... ignored
+                      #' @param max.attributes Maximum number of attribute names to print
+                      #' @param max.listing Maximum number of ls-items to print
                       print=function(..., max.attributes=10, max.listing=10){
-                          "Prints information for the file"
-                          "@param max.attributes Maximum number of attribute names to print"
-                          "@param max.listing Maximum number of ls-items to print"
-                          "@param ... ignored"
 
                           is_valid <- self$is_valid
                           
@@ -307,6 +307,15 @@ H5File <- R6Class("H5File",
                           }
                           
                           return(invisible(self))
+                      }
+                      ),
+                  active=list(
+                      #' @field names Returns the names of the items in the group or at the root of the file
+                      names=function(...) {
+                            ## Placeholder only, so that roxygen has somewhere to attach the
+                            ## documentation. The real binding is installed from commonFG_active
+                            ## by the R6_set_list_of_items call below.
+                          .NotYetImplemented()
                       }
                       ),
                   private=list(

@@ -44,8 +44,7 @@ coercible_to_factor(x)
 
 coerce_to_factor(x)
 
-\method{print}{factor_ext}(x, quote = FALSE, max.levels = NULL,
-  width = getOption("width"), ...)
+\method{print}{factor_ext}(x, quote = FALSE, max.levels = NULL, width = getOption("width"), ...)
 
 \method{==}{factor_ext}(e1, e2)
 

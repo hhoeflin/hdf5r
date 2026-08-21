@@ -48,12 +48,12 @@
 ##' a$close()
 ##' file$close_all()
 ##' @export
+##' @aliases H5A-class
 H5A <- R6Class("H5A",
                inherit=H5RefClass,
                public=list(
+                   #' @description This function implements the HDF5-API function H5Aget_info. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
                    get_info=function() {
-                       "This function implements the HDF5-API function H5Aget_info."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        res <- .Call("R_H5Aget_info", self$id, request_empty(1), PACKAGE="hdf5r")
                        if(res$return_val < 0) {
@@ -61,9 +61,8 @@ H5A <- R6Class("H5A",
                        }
                        return(res$ainfo)
                    },
+                   #' @description This function implements the HDF5-API function H5Aget_name. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
                    attr_name=function() {
-                       "This function implements the HDF5-API function H5Aget_name."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        ## get size of the name
                        name_size <- .Call("R_H5Aget_name", self$id, 0, character(0), PACKAGE="hdf5r")$return_val
@@ -81,9 +80,8 @@ H5A <- R6Class("H5A",
                        }
                        return(res$buf)
                    },
+                   #' @description This function implements the HDF5-API function H5Aget_space. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
                    get_space=function() {
-                       "This function implements the HDF5-API function H5Aget_space."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        id <- .Call("R_H5Aget_space", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -91,9 +89,9 @@ H5A <- R6Class("H5A",
                        }
                        return(H5S$new(id=id))
                    },
+                   #' @description This function implements the HDF5-API function H5Aget_type. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
+                   #' @param native Logical; should the native version of the datatype be returned.
                    get_type=function(native=TRUE) {
-                       "This function implements the HDF5-API function H5Aget_type."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        id <- .Call("R_H5Aget_type", self$id, PACKAGE="hdf5r")$return_val
                        if(id < 0) {
@@ -112,17 +110,17 @@ H5A <- R6Class("H5A",
                            return(H5T_factory(id))
                        }
                    },
+                   #' @description This function implements the HDF5-API function H5Aget_storage_size. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
                    get_storage_size=function() {
-                       "This function implements the HDF5-API function H5Aget_storage_size."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        size <- .Call("R_H5Aget_storage_size", self$id, PACKAGE="hdf5r")$return_val
                        return(size)
                    },
+                   #' @description Only for advanced users. See documentation for \code{read} instead. This function implements the HDF5-API function H5Aread. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
+                   #' @param buffer The raw buffer to read into or write from.
+                   #' @param mem_type The memory datatype to use for the transfer; an object of class \code{\link{H5T}}.
+                   #' @param duplicate_buffer Logical; should the buffer be copied before it is returned.
                    read_low_level=function(buffer, mem_type, duplicate_buffer=FALSE) {
-                       "Only for advanced users. See documentation for \\code{read} instead."
-                       "This function implements the HDF5-API function H5Aread."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        check_class(mem_type, "H5T")
                        res <- .Call("R_H5Aread", self$id, mem_type$id, buffer, duplicate_buffer, PACKAGE="hdf5r")
@@ -131,10 +129,10 @@ H5A <- R6Class("H5A",
                        }
                        return(res$buffer)
                    },
+                   #' @description Reads the data of the attribute and returns it as an R-object
+                   #' @param flags Conversion rules for integer values. See also \code{\link{h5const}}
+                   #' @param drop Logical. Should dimensions of length 1 be dropped (R-default for arrays)
                    read=function(flags=getOption("hdf5r.h5tor_default"), drop=TRUE) {
-                       "Reads the data of the attribute and returns it as an R-object"
-                       "@param flags Conversion rules for integer values. See also \\code{\\link{h5const}}"
-                       "@param drop Logical. Should dimensions of length 1 be dropped (R-default for arrays)"
                        mem_type <- self$get_type()
 
                        check_class(mem_type, "H5T")
@@ -180,10 +178,10 @@ H5A <- R6Class("H5A",
                        }
                        return(buffer_post)
                    },
+                   #' @description Only for advanced users. See documentation for \code{write} instead. This function implements the HDF5-API function H5Awrite. Please see the documentation at \url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details.
+                   #' @param buffer The raw buffer to read into or write from.
+                   #' @param mem_type The memory datatype to use for the transfer; an object of class \code{\link{H5T}}.
                    write_low_level=function(buffer, mem_type) {
-                       "Only for advanced users. See documentation for \\code{write} instead."
-                       "This function implements the HDF5-API function H5Awrite."
-                       "Please see the documentation at \\url{https://support.hdfgroup.org/documentation/hdf5/latest/group___h5_a.html} for details."
 
                        check_class(mem_type, "H5T")
                        res <- .Call("R_H5Awrite", self$id, mem_type$id, buffer, PACKAGE="hdf5r")
@@ -192,11 +190,11 @@ H5A <- R6Class("H5A",
                        }
                        return(invisible(self))
                    },
+                   #' @description Writes the data of \code{robj} to the attribute
+                   #' @param robj The object to write into the attribute
+                   #' @param mem_type The memory data type to use when transferring from HDF5 to intermediate storage. This is an advanced development feature and may be removed in the future.
+                   #' @param flush Logical; should the file be flushed after the write.
                    write=function(robj, mem_type=NULL, flush=getOption("hdf5r.flush_on_write")) {
-                       "Writes the data of \\code{robj} to the attribute"
-                       "@param robj The object to write into the attribute"
-                       "@param mem_type The memory data type to use when transferring from HDF5 to intermediate storage. This is an "
-                       "advanced development feature and may be removed in the future."
                        if(is.null(mem_type)) {
                            mem_type <- self$get_type()
                        }
@@ -230,9 +228,9 @@ H5A <- R6Class("H5A",
                        }
                        return(invisible(self))
                    },
+                   #' @description Prints information for the dataset
+                   #' @param ... ignored
                    print=function(...){
-                       "Prints information for the dataset"
-                       "@param ... ignored"
 
                        is_valid <- self$is_valid
                        

@@ -2,6 +2,7 @@
 % Please edit documentation in R/hdf5r.R
 \docType{package}
 \name{hdf5r-package}
+\alias{hdf5r}
 \alias{hdf5r-package}
 \title{hdf5r: A package to provide an interface to hdf5 from R}
 \description{
@@ -37,3 +38,28 @@ h5attr(cars_ds, "rownames")
 
 file.h5$close_all()
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://hhoeflin.github.io/hdf5r/}
+  \item \url{https://github.com/hhoeflin/hdf5r/}
+  \item Report bugs at \url{https://github.com/hhoeflin/hdf5r/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Holger Hoefling \email{hhoeflin@gmail.com}
+
+Authors:
+\itemize{
+  \item Holger Hoefling \email{hhoeflin@gmail.com}
+  \item Mario Annau \email{mario.annau@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Novartis Institute for BioMedical Research (NIBR) [copyright holder]
+}
+
+}
+\keyword{internal}

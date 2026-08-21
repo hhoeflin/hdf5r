@@ -4,9 +4,12 @@
 \alias{H5File.open}
 \title{Open an HDF5 file}
 \usage{
-H5File.open(name, mode = c("a", "r", "r+", "w", "w-", "x"),
+H5File.open(
+  name,
+  mode = c("a", "r", "r+", "w", "w-", "x"),
   file_create_pl = h5const$H5P_DEFAULT,
-  file_access_pl = h5const$H5P_DEFAULT)
+  file_access_pl = h5const$H5P_DEFAULT
+)
 }
 \arguments{
 \item{name}{The name of the file to open}

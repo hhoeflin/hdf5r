@@ -10,8 +10,12 @@ guess_nelem(x, dtype)
 
 guess_dim(x)
 
-guess_dtype(x, ds_dim = NULL, scalar = FALSE,
-  string_len = getOption("hdf5r.default_string_len"))
+guess_dtype(
+  x,
+  ds_dim = NULL,
+  scalar = FALSE,
+  string_len = getOption("hdf5r.default_string_len")
+)
 }
 \arguments{
 \item{x}{The object for which to guess the HDF5 datatype or the dimension or the number of elements}

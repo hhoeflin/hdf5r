@@ -467,7 +467,10 @@ excluded_funcs_obsolete <- c("H5Acreate1", "H5Dcreate1", "H5Dopen1",
                              "H5Pget_filter_by_id1", "H5Rget_obj_type1", "H5Tcommit1",
                              "H5Tarray_create1", "H5Topen1", "H5Tget_array_dims1", "H5Dextend")
 excluded_funcs_not_used <- c("H5Lregister", "H5Sselect_select", "H5Scombine_select", "H5Oget_num_attrs", "H5Scombine_hyperslab", "H5Iobject_verify",
-                             "H5Iremove_verify", "H5Pget_driver_info", "H5allocate_memory", "H5resize_memory")
+                             "H5Iremove_verify", "H5Pget_driver_info", "H5allocate_memory", "H5resize_memory",
+                             ## private driver-init symbols; never called from R and dropped
+                             ## from the public headers in HDF5 2.x
+                             "H5FD_family_init", "H5FD_log_init", "H5FD_sec2_init", "H5FD_stdio_init")
 
 excluded_funcs_needs_parallel <- c("H5Fget_mpi_atomicity", "H5Fset_mpi_atomicity", "H5Pget_all_coll_metadata_ops",
                                    "H5Pget_coll_metadata_write", "H5Pget_mpio_actual_chunk_opt_mode", "H5Pget_mpio_actual_io_mode",

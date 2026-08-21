@@ -20,6 +20,18 @@
 
 
 
+## NOTE ON DOCUMENTATION
+##
+## The method lists in this file are attached to the R6 generators at run time
+## by R6_set_list_of_items(), so roxygen cannot see a roxygen comment written
+## next to them here. They keep the older "docstring" convention instead - bare
+## string literals at the top of the body, optionally including @param and
+## @return lines - and R/r6_docs.R turns those into real documentation.
+##
+## So: document methods in THIS file with docstrings, and methods defined
+## directly inside an R6Class() call with ordinary #' roxygen comments. After
+## adding or removing a method here, re-run dev/generate_r6_docs.R.
+
 interface <- list(
     get_file_id=function() {
         "This function implements the HDF5-API function H5Iget_file_id."
@@ -123,9 +135,13 @@ commonFG <- list(
             stop(paste("An object with name", group_name, "does not exist"))
         }
     },
-    ls=function(recursive=FALSE, detailed=FALSE, index_type=h5const$H5_INDEX_NAME, order=h5const$H5_ITER_NATIVE, link_access_pl=h5const$H5P_DEFAULT,
+    ls=function(recursive=FALSE, detailed=FALSE, index_type=h5const$H5_INDEX_NAME, order=h5const$H5_ITER_INC, link_access_pl=h5const$H5P_DEFAULT,
         dataset_access_pl=h5const$H5P_DEFAULT, type_access_pl=h5const$H5P_DEFAULT) {
         "Returns the contents of a file or group as a data.frame."
+        ## 'order' defaults to H5_ITER_INC so that the listing is in increasing
+        ## index_type order, matching what 'names' returns. H5_ITER_NATIVE lets
+        ## HDF5 pick whatever is fastest; that happened to be name order up to
+        ## HDF5 1.x but is creation order in HDF5 2.x.
 
         ls_res <- .Call("R_H5ls", self$id, recursive, index_type, order, link_access_pl$id,
                         dataset_access_pl$id, type_access_pl$id, PACKAGE='hdf5r')$return_val
@@ -812,6 +828,13 @@ commonFG <- list(
 
 
 
+
+
+
+
+
+
+
 commonFG_active <- list(
         names=function(link_access_pl=h5const$H5P_DEFAULT) {
         "Returns the names of the items in the group or at the root of the file"
@@ -826,10 +849,6 @@ commonFG_active <- list(
         return(res)
     }
 )
-
-
-
-
 
 
 

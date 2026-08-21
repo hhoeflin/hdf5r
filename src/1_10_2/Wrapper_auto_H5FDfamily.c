@@ -17,25 +17,6 @@
  *************************************************************************/
 
 #include "Wrapper_auto_H5FDfamily.h"
-/* H5_DLL hid_t H5FD_family_init(void); */
-SEXP R_H5FD_family_init(void){
-  int vars_protected=0;
-  hid_t return_val = H5FD_family_init();
-  SEXP R_return_val= R_NilValue;
-  R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
-  vars_protected++;
-  SEXP __ret_list;
-  PROTECT(__ret_list = allocVector(VECSXP, 1));
-  SET_VECTOR_ELT(__ret_list, 0, R_return_val);
-  SEXP __ret_list_names;
-  PROTECT(__ret_list_names = allocVector(STRSXP, 1));
-  SET_STRING_ELT(__ret_list_names, 0, mkChar("return_val"));
-  SET_NAMES(__ret_list, __ret_list_names);
-  vars_protected += 2;
-  UNPROTECT(vars_protected);
-  return(__ret_list);
-}
-
 /* H5_DLL herr_t H5Pget_fapl_family(hid_t fapl_id, hsize_t *memb_size, hid_t *memb_fapl_id); */
 SEXP R_H5Pget_fapl_family(SEXP R_fapl_id, SEXP R_memb_size, SEXP R_memb_fapl_id){
   hsize_t size_helper;

@@ -8,13 +8,23 @@
 \alias{[[<-.H5File}
 \title{Retrieve object from a group of file}
 \usage{
-\method{[[}{H5Group}(x, name, ..., link_access_pl = h5const$H5P_DEFAULT,
+\method{[[}{H5Group}(
+  x,
+  name,
+  ...,
+  link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)
+  type_access_pl = h5const$H5P_DEFAULT
+)
 
-\method{[[}{H5File}(x, name, ..., link_access_pl = h5const$H5P_DEFAULT,
+\method{[[}{H5File}(
+  x,
+  name,
+  ...,
+  link_access_pl = h5const$H5P_DEFAULT,
   dataset_access_pl = h5const$H5P_DEFAULT,
-  type_access_pl = h5const$H5P_DEFAULT)
+  type_access_pl = h5const$H5P_DEFAULT
+)
 
 \method{[[}{H5Group}(x, name, ...) <- value
 

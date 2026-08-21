@@ -10,25 +10,40 @@
 \alias{[<-.H5D}
 \title{Selecting and assigning subsets of HDF5-Spaces and HDF5-Datasets}
 \usage{
-subset_h5.H5S(x, d1, ..., op = h5const$H5S_SELECT_SET,
-  envir = parent.frame())
+subset_h5.H5S(x, d1, ..., op = h5const$H5S_SELECT_SET, envir = parent.frame())
 
-\method{[}{H5S}(x, d1, ..., op = h5const$H5S_SELECT_SET,
-  envir = parent.frame())
+\method{[}{H5S}(x, d1, ..., op = h5const$H5S_SELECT_SET, envir = parent.frame())
 
-subset_h5.H5D(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT,
-  flags = getOption("hdf5r.h5tor_default"), drop = TRUE,
-  envir = parent.frame())
+subset_h5.H5D(
+  x,
+  d1,
+  ...,
+  dataset_xfer_pl = h5const$H5P_DEFAULT,
+  flags = getOption("hdf5r.h5tor_default"),
+  drop = TRUE,
+  envir = parent.frame()
+)
 
-\method{[}{H5D}(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT,
-  flags = getOption("hdf5r.h5tor_default"), drop = TRUE,
-  envir = parent.frame())
+\method{[}{H5D}(
+  x,
+  d1,
+  ...,
+  dataset_xfer_pl = h5const$H5P_DEFAULT,
+  flags = getOption("hdf5r.h5tor_default"),
+  drop = TRUE,
+  envir = parent.frame()
+)
 
-subset_assign_h5.H5D(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT,
-  envir = parent.frame(), value)
+subset_assign_h5.H5D(
+  x,
+  d1,
+  ...,
+  dataset_xfer_pl = h5const$H5P_DEFAULT,
+  envir = parent.frame(),
+  value
+)
 
-\method{[}{H5D}(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT,
-  envir = parent.frame()) <- value
+\method{[}{H5D}(x, d1, ..., dataset_xfer_pl = h5const$H5P_DEFAULT, envir = parent.frame()) <- value
 }
 \arguments{
 \item{x}{The  \code{\link{H5S}} or \code{\link{H5D}} to subset or assign values to}

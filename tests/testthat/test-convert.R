@@ -145,6 +145,21 @@ test_that("Convert H5T_ENUM works", {
     expect_equal(enum_64bit$get_values(), INT_MAX + 1)
 })
 
+test_that("H5T_ENUM with negative values uses a signed base type", {
+    ## H5T_NATIVE_CHAR follows the signedness of plain 'char', which is unsigned on
+    ## AArch64 Linux. Picking it for negative enum values made HDF5 clamp them all to
+    ## 0, so the second one failed with "value redefinition".
+    enum_neg <- H5T_ENUM$new(labels=paste0("test", -3:3), values=-3:3)
+    expect_equal(enum_neg$get_values(), -3:3)
+    expect_equal(enum_neg$get_labels(), paste0("test", -3:3))
+    expect_equal(as.character(enum_neg$get_super()$get_sign()), "H5T_SGN_2")
+
+    ## values that stay non-negative may still use an unsigned base type
+    enum_pos <- H5T_ENUM$new(labels=paste0("test", 1:3), values=1:3)
+    expect_equal(enum_pos$get_values(), 1:3)
+    expect_equal(as.character(enum_pos$get_super()$get_sign()), "H5T_SGN_NONE")
+})
+
 test_that("Convert H5T_STRING works", {
 #    string1.utf8 <- "\x46\x6F\x6F\x20\xC2\xA9\x20\x62\x61\x72\x20\xF0\x9D\x8C\x86\x20\x62\x61\x7A\x20\xE2\x98\x83\x20\x71\x75\x78"
 #    Encoding(string1.utf8) <- "UTF-8"

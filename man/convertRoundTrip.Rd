@@ -4,8 +4,12 @@
 \alias{convertRoundTrip}
 \title{Round-trip of converting data to HDF5 and back to R}
 \usage{
-convertRoundTrip(Robj, dtype, nelem = length(Robj),
-  flags = h5const$H5TOR_CONV_INT64_NOLOSS)
+convertRoundTrip(
+  Robj,
+  dtype,
+  nelem = length(Robj),
+  flags = h5const$H5TOR_CONV_INT64_NOLOSS
+)
 }
 \arguments{
 \item{Robj}{The object to convert}

@@ -1,0 +1,25 @@
+# Normalize line endings to LF in the repository *and* in the working tree,
+# including on Windows.
+#
+# Windows CI runners (GitHub Actions, R-hub) check out with core.autocrlf=true,
+# which rewrites the autoconf inputs and the C sources to CRLF.  R CMD check
+# then reports, e.g.:
+#
+#   * checking line endings in shell scripts ... WARNING
+#     Found the following shell script(s) with CR or CRLF line endings:
+#       configure.ac
+#     Non-Windows OSes require LF line endings.
+#
+# `eol=lf` overrides core.autocrlf, so the checked-out bytes match what is
+# committed here.  R CMD build drops .gitattributes from the tarball, so this
+# file never reaches CRAN.
+* text=auto eol=lf
+
+# Recorded container build logs contain bare CR from progress output; keep them
+# byte-for-byte rather than renormalizing them.
+docker/**/logs/** -text
+
+# Never touch binary payloads (text=auto already detects these, but be explicit
+# so a stray edit to the rules above cannot corrupt the test fixtures).
+*.h5  binary
+*.png binary
