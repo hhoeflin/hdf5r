@@ -30,7 +30,7 @@ windows
 ^\.github$
 ^README.md$
 ^Taskfile.yaml$
-^docker$
+^harness$
 ^logs$
 ^builds$
 ^m4$

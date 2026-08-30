@@ -1,0 +1,73 @@
+# syntax=docker/dockerfile:1
+# Base image: R built from source for a specific version.
+#
+# Build (usually via the Makefile):
+#   docker build -f docker/Dockerfile_r_base \
+#       --build-arg R_VERSION=4.6.1 \
+#       -t hhoeflin/hdf5r-base-r:r4.6.1 .
+#
+# R_VERSION: a CRAN release (e.g. 4.4.3, 4.5.1, 4.6.1) or "devel" (built from
+# SVN trunk).
+ARG BASE_IMAGE=debian:bookworm
+FROM ${BASE_IMAGE}
+
+ARG R_VERSION
+ARG R_DEVEL_CACHE_DATE=release
+LABEL org.opencontainers.image.title="hdf5r R base image" \
+      org.opencontainers.image.description="R ${R_VERSION} built from source on Debian" \
+      org.opencontainers.image.source="https://github.com/hhoeflin/hdf5r"
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Toolchain + libraries required to build R from source
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        bash ca-certificates curl wget perl make m4 \
+        gcc g++ gfortran \
+        libreadline-dev libx11-dev libxt-dev libcairo2-dev \
+        zlib1g-dev libbz2-dev liblzma-dev libpcre2-dev \
+        libcurl4-openssl-dev libssl-dev libicu-dev \
+        libblas-dev liblapack-dev \
+        git rsync \
+    && rm -rf /var/lib/apt/lists/*
+
+# R-devel is fetched from SVN trunk
+RUN if [ "${R_VERSION}" = "devel" ]; then \
+        apt-get update \
+        && apt-get install -y --no-install-recommends subversion \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+# dedicated non-root user (independent of any base-image conventions)
+RUN useradd --create-home --shell /bin/bash docker
+
+RUN set -eux; \
+    echo "R-devel cache date: ${R_DEVEL_CACHE_DATE}"; \
+    mkdir -p /tmp/Rsrc; cd /tmp/Rsrc; \
+    if [ "${R_VERSION}" = "devel" ]; then \
+        svn co https://svn.r-project.org/R/trunk R-src; \
+        cd R-src; \
+        ./tools/rsync-recommended; \
+    else \
+        R_MAJOR="$(echo "${R_VERSION}" | cut -d. -f1)"; \
+        curl -fSsL --retry 3 \
+            -o "R-${R_VERSION}.tar.gz" \
+            "https://cran.r-project.org/src/base/R-${R_MAJOR}/R-${R_VERSION}.tar.gz"; \
+        tar -xzf "R-${R_VERSION}.tar.gz"; \
+        rm "R-${R_VERSION}.tar.gz"; \
+        cd "R-${R_VERSION}"; \
+    fi; \
+    ./configure \
+        --prefix="/opt/R/${R_VERSION}" \
+        --enable-R-shlib \
+        --with-x=no \
+        --with-recommended-packages; \
+    make -j"$(nproc)"; \
+    make install; \
+    cd /; \
+    rm -rf /tmp/Rsrc
+
+ENV PATH="/opt/R/${R_VERSION}/bin:${PATH}"
+
+USER docker
+WORKDIR /home/docker

@@ -1,0 +1,87 @@
+# syntax=docker/dockerfile:1
+# hdf5r development image: R dependencies (as Linux binaries from a pinned
+# Posit Package Manager snapshot) plus a specific HDF5 version built from source.
+#
+# Build (usually via the Makefile):
+#   docker build -f docker/Dockerfile_deps_custom_hdf5 \
+#       --build-arg R_VERSION=4.4.3 \
+#       --build-arg HDF5_VERSION=1.12.3 \
+#       -t hhoeflin/hdf5r-deps:r4.4.3-hdf5v1.12.3 .
+#
+# Requires the base image hhoeflin/hdf5r-base-r:r<R_VERSION> (see Dockerfile_r_base).
+ARG R_VERSION
+ARG REGISTRY=hhoeflin
+FROM ${REGISTRY}/hdf5r-base-r:r${R_VERSION}
+
+ARG R_VERSION
+ARG HDF5_VERSION
+
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Debian bookworm's CMake is too old for HDF5 2.x. The pinned PyPI package
+# provides the same CMake release on amd64 and arm64.
+ARG CMAKE_VERSION=3.31.6
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        python3-pip \
+        rsync \
+        zlib1g-dev \
+    && pip3 install --no-cache-dir --break-system-packages "cmake==${CMAKE_VERSION}" \
+    && cmake --version \
+    && rm -rf /var/lib/apt/lists/*
+
+# LaTeX stack: only needed to build the package manual/vignettes during
+# R CMD check. Set INSTALL_DOCS_DEPS=false for a lean image if you only run tests.
+ARG INSTALL_DOCS_DEPS=true
+RUN if [ "${INSTALL_DOCS_DEPS}" = "true" ]; then \
+        apt-get update \
+        && apt-get install -y --no-install-recommends \
+            ghostscript \
+            lmodern \
+            qpdf \
+            default-jre-headless \
+            texinfo \
+            texlive-fonts-extra \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-luatex \
+            texlive-plain-generic \
+            texlive-science \
+            texlive-xetex \
+            pandoc \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+ARG CRAN_SNAPSHOT=2026-08-01
+ENV R_LIBS_USER="/opt/R-libs/${R_VERSION}" \
+    CRAN_REPO="https://packagemanager.posit.co/cran/__linux__/bookworm/${CRAN_SNAPSHOT}"
+COPY common/install-r-packages.R /tmp/install-r-packages.R
+RUN mkdir -p "${R_LIBS_USER}" \
+    && Rscript /tmp/install-r-packages.R \
+    && rm /tmp/install-r-packages.R
+
+# HDF5 from source; common/compile-hdf5.sh handles download fallbacks and
+# version-aware configure flags.
+COPY common/compile-hdf5.sh /tmp/compile-hdf5.sh
+RUN chmod +x /tmp/compile-hdf5.sh \
+    && /tmp/compile-hdf5.sh "${HDF5_VERSION}" "/opt/hdf5/${HDF5_VERSION}" \
+    && rm /tmp/compile-hdf5.sh
+
+ENV HDF5_ROOT="/opt/hdf5/${HDF5_VERSION}" \
+    PATH="/opt/hdf5/${HDF5_VERSION}/bin:${PATH}" \
+    CPATH="/opt/hdf5/${HDF5_VERSION}/include:${CPATH}" \
+    LIBRARY_PATH="/opt/hdf5/${HDF5_VERSION}/lib:${LIBRARY_PATH}" \
+    LD_LIBRARY_PATH="/opt/hdf5/${HDF5_VERSION}/lib:${LD_LIBRARY_PATH}"
+
+USER docker
+WORKDIR /home/docker

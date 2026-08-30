@@ -1,11 +1,6 @@
 .ONESHELL:
 SHELL:=/bin/bash
 
-R_REVISION?=86875
-HDF5_VERSION?=System
-# DOCKER_CRAN_CHECK_ARG=''
-DOCKER_CRAN_CHECK_ARG='--as-cran'
-
 R := R --slave --vanilla -e
 Rscript := Rscript -e
 
@@ -69,34 +64,6 @@ sitedoc:
 check: $(BUILD_OUTPUT)
 	@rm -rf $(CHECKPATH)
 	R CMD check --no-clean $(BUILD_OUTPUT)
-
-check-docker: $(BUILD_OUTPUT)
-	if [[ "${HDF5_VERSION}" = "System" ]]; then
-		echo HDF is System
-		$(MAKE) -C docker build-system R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
-	else
-		$(MAKE) -C docker build-custom R_REVISION=${R_REVISION} HDF5_VERSION=${HDF5_VERSION}
-	fi
-	export DOCKER_BUILDKIT=1
-	mkdir -p logs
-	SOURCE_IMAGE=hhoeflin/hdf5-debian-gcc-devel:r${R_REVISION}-v${HDF5_VERSION}
-	TARGET_IMAGE=hhoeflin/hdf5r-install-debian-gcc-devel:r${R_REVISION}-v${HDF5_VERSION}
-	LOG_FILE=logs/hdf5r-install-r${R_REVISION}-v${HDF5_VERSION}
-	RCHECK_DIR=$${LOG_FILE}.Rcheck
-	BUILD_OUTPUT=${BUILD_OUTPUT}
-	rm -rf hdf5r.Rcheck
-	rm -rf $${RCHECK_DIR}
-	docker build -f docker/Dockerfile_check \
-		-t $${TARGET_IMAGE}\
-		--build-arg DEB_HDF5_IMG=$${SOURCE_IMAGE} \
-		--build-arg BUILD_OUTPUT=$${BUILD_OUTPUT} \
-		--build-arg CRAN_CHECK_ARG=${DOCKER_CRAN_CHECK_ARG} \
-		. 2>&1 \
-		| tee $${LOG_FILE}
-	# get the artifacts
-	docker rm tc || true
-	docker cp $$(docker create --name tc $${TARGET_IMAGE}):/home/docker/hdf5r/hdf5r.Rcheck\
-		$${RCHECK_DIR} && docker rm tc
 
 check-valgrind: $(BUILD_OUTPUT)
 	@rm -rf $(CHECKPATH)

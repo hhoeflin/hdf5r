@@ -1,0 +1,63 @@
+# syntax=docker/dockerfile:1
+# hdf5r development image using the system-provided HDF5 library
+# (libhdf5-dev on Debian/Ubuntu) instead of a custom-built version.
+#
+# Build (usually via the Makefile):
+#   docker build -f docker/Dockerfile_deps_system_hdf5 \
+#       --build-arg R_VERSION=4.4.3 \
+#       -t hhoeflin/hdf5r-deps:r4.4.3-hdf5vSystem .
+#
+# Requires the base image hhoeflin/hdf5r-base-r:r<R_VERSION> (see Dockerfile_r_base).
+ARG R_VERSION
+ARG REGISTRY=hhoeflin
+FROM ${REGISTRY}/hdf5r-base-r:r${R_VERSION}
+
+ARG R_VERSION
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        rsync \
+        libhdf5-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+ARG INSTALL_DOCS_DEPS=true
+RUN if [ "${INSTALL_DOCS_DEPS}" = "true" ]; then \
+        apt-get update \
+        && apt-get install -y --no-install-recommends \
+            ghostscript \
+            lmodern \
+            qpdf \
+            default-jre-headless \
+            texinfo \
+            texlive-fonts-extra \
+            texlive-fonts-recommended \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-luatex \
+            texlive-plain-generic \
+            texlive-science \
+            texlive-xetex \
+            pandoc \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+ARG CRAN_SNAPSHOT=2026-08-01
+ENV R_LIBS_USER="/opt/R-libs/${R_VERSION}" \
+    CRAN_REPO="https://packagemanager.posit.co/cran/__linux__/bookworm/${CRAN_SNAPSHOT}"
+COPY common/install-r-packages.R /tmp/install-r-packages.R
+RUN mkdir -p "${R_LIBS_USER}" \
+    && Rscript /tmp/install-r-packages.R \
+    && rm /tmp/install-r-packages.R
+
+USER docker
+WORKDIR /home/docker
