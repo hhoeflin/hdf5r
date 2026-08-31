@@ -27,6 +27,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         python3-pip \
         rsync \
+        libuv1-dev \
         zlib1g-dev \
     && pip3 install --no-cache-dir --break-system-packages "cmake==${CMAKE_VERSION}" \
     && cmake --version \

@@ -98,6 +98,7 @@ check-linux:
 	$(require_r)
 	$(require_hdf5)
 	@mkdir -p "$(LOG_DIR)"
+	@echo "==> checking Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
 	@status="$(LOG_DIR)/linux-r$(R_VERSION)-hdf5v$(HDF5_TAG).status"
 	@if ! docker image inspect "$(DEPS_IMAGE)" >/dev/null 2>&1; then \
 	    echo FAIL > "$${status}"; \
@@ -140,6 +141,7 @@ check-macos:
 	$(require_r)
 	$(require_hdf5)
 	@mkdir -p "$(LOG_DIR)"
+	@echo "==> checking macOS R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
 	@"$(MACOS_DIR)/run-check.sh" "$(R_VERSION)" "$(HDF5_VERSION)" "$(PKG_DIR)" "$(LOG_DIR)"
 
 .PHONY: build-matrix-linux

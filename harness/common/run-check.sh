@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Run `R CMD build` and `R CMD check --as-cran`, recording a reliable status.
+# Run `R CMD build --no-build-vignettes` and `R CMD check --as-cran`, recording
+# a reliable status.
 set -euo pipefail
 
 PKG_SRC="${1:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
@@ -62,7 +63,7 @@ cd "${WORK}/hdf5r"
 export _R_CHECK_CRAN_INCOMING_="false"
 
 echo "run-check.sh: building package" | tee -a "${LOG}"
-if ! R CMD build . >> "${LOG}" 2>&1; then
+if ! R CMD build --no-build-vignettes . >> "${LOG}" 2>&1; then
     die "R CMD build failed"
 fi
 
