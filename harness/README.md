@@ -97,6 +97,7 @@ The build installs:
 - R under `harness/installs/R/<version>`
 - HDF5 under `harness/installs/hdf5/<version>`
 - R check dependencies under `harness/installs/R-libs/<R-version>`
+- Submission dependencies under `harness/installs/R-libs-submission/devel`
 
 Homebrew build dependencies are installed when missing. Run the check
 separately:

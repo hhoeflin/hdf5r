@@ -33,4 +33,5 @@ windows
 ^harness$
 ^logs$
 ^builds$
+^tools/submit-(rhub|checkers)\.R$
 ^m4$

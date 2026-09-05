@@ -791,15 +791,13 @@ SEXP H5ToR_Post_RComplex(SEXP _Robj, hid_t dtype_id, R_xlen_t nelem, int flags) 
   SEXP res;
   PROTECT(res = H5ToR_Post_FLOAT(_Robj, dtype_member, nelem * 2, flags));
   H5Tclose(dtype_member);
-  UNPROTECT(1);
 
   // if its size is larger than double, need to set the length
   if(dtype_size > sizeof(double)) {
-    return(Rf_xlengthgets(res, nelem));
+    res = Rf_xlengthgets(res, nelem);
   }
-  else {
-    return(res);
-  }
+  UNPROTECT(1);
+  return(res);
 
 }
 
@@ -2705,4 +2703,3 @@ herr_t H5Tconvert_with_warning(hid_t src_type_id, hid_t dest_type_id, size_t nel
   }
   return(herr);
 }
-

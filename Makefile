@@ -4,6 +4,10 @@ CURRENT_DIR := $(shell pwd)
 
 R_BIN := R
 RSCRIPT_BIN := Rscript
+SUBMIT_R_VERSION := devel
+SUBMIT_R_PREFIX := $(CURRENT_DIR)/harness/installs/R/$(SUBMIT_R_VERSION)
+SUBMIT_R_LIBRARY := $(CURRENT_DIR)/harness/installs/R-libs-submission/$(SUBMIT_R_VERSION)
+SUBMIT_RSCRIPT_BIN := $(SUBMIT_R_PREFIX)/bin/Rscript
 
 # Set both variables to use native macOS installations created by the harness:
 #
@@ -77,7 +81,8 @@ SRC_FILES_COPIED := $(wildcard src/Wrapper_auto*) src/HelperStructs.h \
 
 
 .PHONY: all build check manual install clean compileAttributes roxygen \
-	build-cran check-cran doc harness-preflight
+	build-cran check-cran submit-deps submit-rhub submit-macbuilder submit-winbuilder \
+	submit-checkers doc harness-preflight
 
 .PHONY: harness-preflight
 harness-preflight:
@@ -125,6 +130,7 @@ $(BUILD_OUTPUT): $(PKG_FILES)
 
 build-cran: harness-preflight
 	@$(MAKE) clean
+	@rm -f $(BUILD_OUTPUT)
 	@$(MAKE) roxygen
 	@$(MAKE) build
 
@@ -154,6 +160,51 @@ check-cran: harness-preflight
 	@$(MAKE) build-cran
 	@rm -rf $(CHECKPATH)
 	$(R_BIN) CMD check --no-clean --as-cran $(BUILD_OUTPUT)
+
+submit-deps:
+	@test -x "$(SUBMIT_RSCRIPT_BIN)" || { \
+	    echo "ERROR: harness R-devel is missing: $(SUBMIT_RSCRIPT_BIN)" >&2; \
+	    echo "Build it with: gmake -C harness build-macos-r R_VERSION=devel" >&2; \
+	    exit 2; \
+	}
+	R_LIBS_USER="$(SUBMIT_R_LIBRARY)" \
+	R_ENVIRON_USER=/dev/null \
+	R_PROFILE_USER=/dev/null \
+	$(SUBMIT_RSCRIPT_BIN) harness/common/install-submission-packages.R
+
+submit-rhub: build-cran submit-deps
+	RHUB_PLATFORMS="$(if $(RHUB_PLATFORMS),$(RHUB_PLATFORMS),ubuntu-release)" \
+	RHUB_EMAIL="$(RHUB_EMAIL)" \
+	R_LIBS_USER="$(SUBMIT_R_LIBRARY)" \
+	R_ENVIRON_USER=/dev/null \
+	R_PROFILE_USER=/dev/null \
+	$(SUBMIT_RSCRIPT_BIN) tools/submit-rhub.R $(BUILD_OUTPUT)
+
+submit-macbuilder: build-cran submit-deps
+	MAC_R_FLAVOR="$(MAC_R_FLAVOR)" \
+	MAC_DEPFILES="$(MAC_DEPFILES)" \
+	R_LIBS_USER="$(SUBMIT_R_LIBRARY)" \
+	R_ENVIRON_USER=/dev/null \
+	R_PROFILE_USER=/dev/null \
+	$(SUBMIT_RSCRIPT_BIN) tools/submit-checkers.R macos $(BUILD_OUTPUT)
+
+submit-winbuilder: build-cran submit-deps
+	WINBUILDER_VERSIONS="$(WINBUILDER_VERSIONS)" \
+	R_LIBS_USER="$(SUBMIT_R_LIBRARY)" \
+	R_ENVIRON_USER=/dev/null \
+	R_PROFILE_USER=/dev/null \
+	$(SUBMIT_RSCRIPT_BIN) tools/submit-checkers.R windows $(BUILD_OUTPUT)
+
+submit-checkers: build-cran submit-deps
+	RHUB_PLATFORMS="$(if $(RHUB_PLATFORMS),$(RHUB_PLATFORMS),ubuntu-release)" \
+	RHUB_EMAIL="$(RHUB_EMAIL)" \
+	MAC_R_FLAVOR="$(MAC_R_FLAVOR)" \
+	MAC_DEPFILES="$(MAC_DEPFILES)" \
+	WINBUILDER_VERSIONS="$(WINBUILDER_VERSIONS)" \
+	R_LIBS_USER="$(SUBMIT_R_LIBRARY)" \
+	R_ENVIRON_USER=/dev/null \
+	R_PROFILE_USER=/dev/null \
+	$(SUBMIT_RSCRIPT_BIN) tools/submit-checkers.R all $(BUILD_OUTPUT)
 
 check-asan-gcc: $(BUILD_OUTPUT)
 	@boot2docker up
