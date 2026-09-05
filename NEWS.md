@@ -1,3 +1,7 @@
+# hdf5r 1.3.14
+
+- Fix a garbage collection protection issue during HDF5 complex conversion.
+
 # hdf5r 1.3.13
 
 - Add HDF5 2.x compatibility fixes.
