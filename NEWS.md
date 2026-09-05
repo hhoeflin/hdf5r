@@ -1,3 +1,7 @@
+# hdf5r 1.3.13
+
+- Add HDF5 2.x compatibility fixes.
+
 # hdf5r 1.3.12
 
 - Fix compilation warning #232.
