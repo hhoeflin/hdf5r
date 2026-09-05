@@ -4797,7 +4797,7 @@ printf '%s\n' "no" >&6; }
   as_fn_error $? "${GREP} does not support option -o" "$LINENO" 5
 fi
 
-HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
+HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \(-Wl,-rpath,[^[:space:]]\+\|-[lL][^[:space:]]\+\)" | tr "\n" " "`
 
 HDF5_LIBS="${HDF5_LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"
 

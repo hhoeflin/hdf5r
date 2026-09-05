@@ -128,7 +128,7 @@ else
   AC_MSG_ERROR([${GREP} does not support option -o])
 fi
 [
-HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \-[lL][^[:space:]]\+" | tr "\n" " "`
+HDF5_LIBS=`${H5CC} -show | ${GREP} -o " \(-Wl,-rpath,[^[:space:]]\+\|-[lL][^[:space:]]\+\)" | tr "\n" " "`
 ]
 dnl Fix for newer Debian versions
 HDF5_LIBS="${HDF5_LIBS} -L. -lhdf5_hl -lhdf5 -lz -lm"

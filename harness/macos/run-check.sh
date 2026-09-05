@@ -56,7 +56,6 @@ export CPPFLAGS="-I${HDF5_PREFIX}/include ${CPPFLAGS:-}"
 export LDFLAGS="-L${HDF5_PREFIX}/lib ${LDFLAGS:-}"
 export CPATH="${HDF5_PREFIX}/include:${CPATH:-}"
 export LIBRARY_PATH="${HDF5_PREFIX}/lib:${LIBRARY_PATH:-}"
-export DYLD_LIBRARY_PATH="${HDF5_PREFIX}/lib:${DYLD_LIBRARY_PATH:-}"
 export HDF5_ROOT="${HDF5_PREFIX}"
 export HDF5_VERSION
 
