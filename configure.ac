@@ -78,13 +78,19 @@ if test "$hdf5_version_sufficient" = "yes"; then
 	[$HDF5_VERSION],
 	[ge],
 	[1.10.6],
-	[HDF5_VERSION_USE="1_10_3" && HDF5_USE_PATCH="1.10.6"])
+	[HDF5_VERSION_USE="1_10_3" && HDF5_USE_PATCH="patches/patch_1.10.6"])
 
   AX_COMPARE_VERSION(
 	[$HDF5_VERSION],
 	[ge],
 	[1.12.0],
 	[HDF5_VERSION_USE="1_12_0" && HDF5_USE_PATCH=""])
+
+  AX_COMPARE_VERSION(
+	[$HDF5_VERSION],
+	[ge],
+	[2.0.0],
+	[HDF5_VERSION_USE="1_12_0" && HDF5_USE_PATCH="patches/patch_2.0.0"])
 
   AX_COMPARE_VERSION(
 	[$HDF5_VERSION],
