@@ -141,8 +141,18 @@ make check-matrix-linux FULL=1
 Results are written under `harness/logs/`:
 
 - `build-*.log` contains build output.
-- `check-<combination>.log` contains check output.
-- `<combination>.status` contains `RUNNING`, `PASS`, or `FAIL`.
+- `check-<combination>/check.log` contains package build and check output.
+- `check-<combination>/preflight.log` contains platform preflight output;
+  `dependencies.log` contains macOS R dependency installation output.
+- `check-<combination>/status` contains `RUNNING`, `PASS`, or `FAIL`.
+- `check-<combination>/runner.log` contains platform runner output and startup
+  failures.
+- `check-<combination>/hdf5r.Rcheck/` contains the complete R check artifacts,
+  including `00check.log` and `00install.out`.
+
+Each check replaces its own `check-<combination>/` directory at the start of a
+run. This keeps all artifacts for one combination together while preventing a
+rerun from using stale files.
 
 Show results with:
 
@@ -152,8 +162,8 @@ make summary PLATFORM=linux
 make summary PLATFORM=macos
 ```
 
-Starting a platform matrix clears old status files for that platform, so its
-summary cannot report stale results.
+Starting a platform matrix clears old check directories for that platform, so
+its summary cannot report stale results.
 
 ## Layout
 
@@ -163,7 +173,7 @@ common/                     shared HDF5 builder, R dependencies, check runner
 docker/                     Linux Dockerfiles and parameterized build scripts
 macos/                      native setup, build, and check scripts
 installs/                   ignored native R, HDF5, and R package installs
-logs/                       ignored build/check output
+logs/                       ignored build logs and per-check artifacts
 ```
 
 `installs/` and `logs/` are gitignored: they exist on disk but never appear in

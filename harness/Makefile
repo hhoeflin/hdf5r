@@ -24,6 +24,8 @@ MACOS_DIR := $(CURDIR)/macos
 LOG_DIR := $(CURDIR)/logs
 HDF5_TAG = $(if $(filter system System,$(HDF5_VERSION)),System,$(HDF5_VERSION))
 DEPS_IMAGE = $(REGISTRY)/hdf5r-deps:r$(R_VERSION)-hdf5v$(HDF5_TAG)
+LINUX_CHECK_NAME = linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)
+LINUX_CHECK_DIR = $(LOG_DIR)/check-$(LINUX_CHECK_NAME)
 
 define require_r
 	@if [ -z "$(R_VERSION)" ]; then echo "ERROR: R is required (example: R_VERSION=4.6.1)" >&2; exit 2; fi
@@ -31,6 +33,11 @@ endef
 
 define require_hdf5
 	@if [ -z "$(HDF5_VERSION)" ]; then echo "ERROR: HDF5 is required (example: HDF5_VERSION=2.2.0)" >&2; exit 2; fi
+endef
+
+define require_safe_versions
+	@case "$(R_VERSION)" in *[!A-Za-z0-9_.-]*|'') echo "ERROR: R_VERSION contains unsafe characters" >&2; exit 2;; esac
+	@case "$(HDF5_VERSION)" in *[!A-Za-z0-9_.-]*|'') echo "ERROR: HDF5_VERSION contains unsafe characters" >&2; exit 2;; esac
 endef
 
 # Default matrix: every HDF5 on the latest R, plus the latest HDF5 on every R.
@@ -100,23 +107,35 @@ build-linux:
 check-linux:
 	$(require_r)
 	$(require_hdf5)
+	$(require_safe_versions)
+	@rm -rf "$(LINUX_CHECK_DIR)"
+	@mkdir -p "$(LINUX_CHECK_DIR)"
+	@printf '%s\n' RUNNING > "$(LINUX_CHECK_DIR)/status"
+	@printf '%s\n' "=== hdf5r preflight: $(LINUX_CHECK_NAME) ===" > "$(LINUX_CHECK_DIR)/preflight.log"
+	@printf '%s\n' "=== started: $$(date -u '+%Y-%m-%dT%H:%M:%SZ') ===" >> "$(LINUX_CHECK_DIR)/preflight.log"
 	@mkdir -p "$(LOG_DIR)"
 	@echo "==> checking Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
-	@status="$(LOG_DIR)/linux-r$(R_VERSION)-hdf5v$(HDF5_TAG).status"
+	@status="$(LINUX_CHECK_DIR)/status"
 	@if ! docker image inspect "$(DEPS_IMAGE)" >/dev/null 2>&1; then \
 	    echo FAIL > "$${status}"; \
-	    echo "ERROR: missing image $(DEPS_IMAGE)" >&2; \
-	    echo "Build it with: $(MAKE_COMMAND) build-linux R_VERSION=$(R_VERSION) HDF5_VERSION=$(HDF5_VERSION)" >&2; \
+	    { echo "ERROR: missing image $(DEPS_IMAGE)"; \
+	      echo "Build it with: $(MAKE_COMMAND) build-linux R_VERSION=$(R_VERSION) HDF5_VERSION=$(HDF5_VERSION)"; \
+	    } | tee -a "$(LINUX_CHECK_DIR)/preflight.log" >&2; \
 	    exit 2; \
 	fi
-	@docker run --rm \
+	@if ! docker run --rm \
 	    -v "$(PKG_DIR):/pkg:ro" \
 	    -v "$(COMMON_DIR):/opt/scripts:ro" \
-	    -v "$(LOG_DIR):/out" \
+	    -v "$(LINUX_CHECK_DIR):/out" \
 	    -e "HDF5_VERSION=$(HDF5_VERSION)" \
 	    -e "FAIL_ON_WARNINGS=$(FAIL_ON_WARNINGS)" \
 	    "$(DEPS_IMAGE)" \
-	    bash /opt/scripts/run-check.sh /pkg /out "linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)"
+	    bash /opt/scripts/run-check.sh /pkg /out "$(LINUX_CHECK_NAME)" \
+	    2>&1 | tee "$(LINUX_CHECK_DIR)/runner.log"; then \
+	    echo FAIL > "$${status}"; \
+	    echo "ERROR: Docker check failed; see runner.log" | tee -a "$(LINUX_CHECK_DIR)/preflight.log" >&2; \
+	    exit 1; \
+	fi
 
 .PHONY: setup-macos
 setup-macos:
@@ -144,6 +163,7 @@ build-macos:
 check-macos:
 	$(require_r)
 	$(require_hdf5)
+	$(require_safe_versions)
 	@mkdir -p "$(LOG_DIR)"
 	@echo "==> checking macOS R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
 	@FAIL_ON_WARNINGS="$(FAIL_ON_WARNINGS)" \
@@ -163,7 +183,7 @@ build-matrix-linux:
 .PHONY: prepare-check-matrix-linux
 prepare-check-matrix-linux:
 	@mkdir -p "$(LOG_DIR)"
-	@rm -f "$(LOG_DIR)"/linux-*.status
+	@rm -rf "$(LOG_DIR)"/check-linux-*
 
 .PHONY: check-matrix-linux
 check-matrix-linux: prepare-check-matrix-linux
@@ -195,7 +215,7 @@ build-matrix-macos:
 .PHONY: prepare-check-matrix-macos
 prepare-check-matrix-macos:
 	@mkdir -p "$(LOG_DIR)"
-	@rm -f "$(LOG_DIR)"/macos-*.status
+	@rm -rf "$(LOG_DIR)"/check-macos-*
 
 .PHONY: check-matrix-macos
 check-matrix-macos: prepare-check-matrix-macos
@@ -212,8 +232,8 @@ check-matrix-macos: prepare-check-matrix-macos
 .PHONY: summary
 summary:
 	@case "$(PLATFORM)" in \
-	    linux|macos) pattern="$(LOG_DIR)/$(PLATFORM)-*.status" ;; \
-	    "") pattern="$(LOG_DIR)/*.status" ;; \
+	    linux|macos) pattern="$(LOG_DIR)/check-$(PLATFORM)-*/status" ;; \
+	    "") pattern="$(LOG_DIR)/check-*/status" ;; \
 	    *) echo "ERROR: PLATFORM must be linux or macos" >&2; exit 2 ;; \
 	esac
 	@echo "=== hdf5r check summary ($$(date '+%Y-%m-%d %H:%M')) ==="
@@ -222,6 +242,6 @@ summary:
 	@for status in $${pattern}; do \
 	    [ -e "$${status}" ] || continue; \
 	    found=1; \
-	    printf '%-38s %s\n' "$$(basename "$${status}" .status)" "$$(cat "$${status}")"; \
+	    printf '%-38s %s\n' "$$(basename "$$(dirname "$${status}")")" "$$(cat "$${status}")"; \
 	done
 	@if [ "$${found}" -eq 0 ]; then echo "(no results)"; fi

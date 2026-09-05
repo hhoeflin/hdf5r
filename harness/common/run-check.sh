@@ -3,25 +3,24 @@
 # a reliable status.
 set -euo pipefail
 
-PKG_SRC="${1:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
-OUT_DIR="${2:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
-NAME="${3:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
+PKG_SRC="${1:?usage: run-check.sh <pkg-source-dir> <artifact-dir> <log-name-base>}"
+OUT_DIR="${2:?usage: run-check.sh <pkg-source-dir> <artifact-dir> <log-name-base>}"
+NAME="${3:?usage: run-check.sh <pkg-source-dir> <artifact-dir> <log-name-base>}"
 FAIL_ON_WARNINGS="${FAIL_ON_WARNINGS:-false}"
 
 # R CMD build/check invoke make internally; keep outer gmake flags out.
 unset MAKEFLAGS MAKEOVERRIDES MFLAGS MAKEFILES GNUMAKEFLAGS
 
 mkdir -p "${OUT_DIR}"
-LOG="${OUT_DIR}/check-${NAME}.log"
-STATUS="${OUT_DIR}/${NAME}.status"
-WORK=""
+LOG="${OUT_DIR}/check.log"
+STATUS="${OUT_DIR}/status"
+WORK="${OUT_DIR}/hdf5r"
 
 : > "${LOG}"
 echo RUNNING > "${STATUS}"
 
 on_exit() {
     rc=$?
-    [ -z "${WORK}" ] || rm -rf "${WORK}"
     if [ "${rc}" -ne 0 ]; then
         echo FAIL > "${STATUS}"
     fi
@@ -48,15 +47,15 @@ done
 java -version >/dev/null 2>&1 \
     || die "a working Java runtime is required for R CMD check --as-cran; see harness/README.md"
 
-WORK="$(mktemp -d)"
+mkdir -p "${WORK}"
 rsync -a \
     --exclude .git \
     --exclude .github \
     --exclude harness \
     --exclude docs \
     --exclude "*.Rcheck" \
-    "${PKG_SRC}/" "${WORK}/hdf5r/"
-cd "${WORK}/hdf5r"
+    "${PKG_SRC}/" "${WORK}/"
+cd "${WORK}"
 
 {
     echo "=== hdf5r check: ${NAME} ==="
