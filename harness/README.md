@@ -133,7 +133,8 @@ make check-matrix-linux FULL=1
 
 Results are written under `harness/logs/`:
 
-- `<combination>.log` contains build and check output.
+- `build-*.log` contains build output.
+- `check-<combination>.log` contains check output.
 - `<combination>.status` contains `RUNNING`, `PASS`, or `FAIL`.
 
 Show results with:

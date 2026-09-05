@@ -11,7 +11,7 @@ NAME="${3:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
 unset MAKEFLAGS MAKEOVERRIDES MFLAGS MAKEFILES GNUMAKEFLAGS
 
 mkdir -p "${OUT_DIR}"
-LOG="${OUT_DIR}/${NAME}.log"
+LOG="${OUT_DIR}/check-${NAME}.log"
 STATUS="${OUT_DIR}/${NAME}.status"
 WORK=""
 
