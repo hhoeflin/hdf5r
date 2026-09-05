@@ -630,7 +630,7 @@ H5T_ENUM <- R6Class("H5T_ENUM",
 
                                 if(has_neg) {
                                     if(size <= 1) {
-                                        dtype_id <- h5types$H5T_NATIVE_CHAR
+                                        dtype_id <- h5types$H5T_NATIVE_SCHAR
                                     }
                                     else if(size <= 2) {
                                         dtype_id <- h5types$H5T_NATIVE_SHORT

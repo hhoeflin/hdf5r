@@ -147,7 +147,7 @@ Results are written under `harness/logs/`:
 - `check-<combination>/status` contains `RUNNING`, `PASS`, or `FAIL`.
 - `check-<combination>/runner.log` contains platform runner output and startup
   failures.
-- `check-<combination>/hdf5r.Rcheck/` contains the complete R check artifacts,
+- `check-<combination>/hdf5r/hdf5r.Rcheck/` contains the complete R check artifacts,
   including `00check.log` and `00install.out`.
 
 Each check replaces its own `check-<combination>/` directory at the start of a

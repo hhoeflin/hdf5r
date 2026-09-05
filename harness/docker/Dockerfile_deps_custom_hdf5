@@ -26,6 +26,7 @@ ARG CMAKE_VERSION=3.31.6
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         python3-pip \
+        patch \
         rsync \
         libuv1-dev \
         zlib1g-dev \
