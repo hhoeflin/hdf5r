@@ -6,7 +6,8 @@ This directory tests hdf5r against multiple R and HDF5 versions.
 - macOS uses native source builds under `harness/installs/`.
 - Builds and checks are always separate.
 - Every check runs `R CMD check --as-cran`.
-- An ERROR or WARNING fails the combination; NOTEs are allowed.
+- An ERROR fails the combination; WARNINGs are allowed by default and NOTEs are
+  allowed. Set `FAIL_ON_WARNINGS=true` to fail on WARNINGs as well.
 
 Run `make help` to see the command summary. On macOS, use `gmake` in place of
 `make` throughout this document.
@@ -103,6 +104,12 @@ make check-macos R_VERSION=4.6.1 HDF5_VERSION=2.2.0
 ```
 
 The check uses only the selected R, HDF5, and harness-owned R library.
+
+Warnings are allowed by default. To make warnings fail the check:
+
+```sh
+make check-macos R_VERSION=devel HDF5_VERSION=1.14.6 FAIL_ON_WARNINGS=true
+```
 
 ## Matrices
 

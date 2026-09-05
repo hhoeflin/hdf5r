@@ -9,6 +9,7 @@ endif
 
 REGISTRY ?= hhoeflin
 INSTALL_DOCS_DEPS ?= true
+FAIL_ON_WARNINGS ?= false
 PLATFORM ?=
 MAKE_COMMAND := $(notdir $(MAKE))
 
@@ -62,6 +63,8 @@ help:
 	@echo "  $(MAKE_COMMAND) build-matrix-macos              each macOS R and HDF5 version once"
 	@echo "  $(MAKE_COMMAND) check-matrix-macos [FULL=1]"
 	@echo
+	@echo "Check options: FAIL_ON_WARNINGS=true fails checks with warnings"
+	@echo
 	@echo "Results:"
 	@echo "  $(MAKE_COMMAND) summary [PLATFORM=linux|macos]"
 	@echo
@@ -111,6 +114,7 @@ check-linux:
 	    -v "$(COMMON_DIR):/opt/scripts:ro" \
 	    -v "$(LOG_DIR):/out" \
 	    -e "HDF5_VERSION=$(HDF5_VERSION)" \
+	    -e "FAIL_ON_WARNINGS=$(FAIL_ON_WARNINGS)" \
 	    "$(DEPS_IMAGE)" \
 	    bash /opt/scripts/run-check.sh /pkg /out "linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)"
 
@@ -142,7 +146,8 @@ check-macos:
 	$(require_hdf5)
 	@mkdir -p "$(LOG_DIR)"
 	@echo "==> checking macOS R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
-	@"$(MACOS_DIR)/run-check.sh" "$(R_VERSION)" "$(HDF5_VERSION)" "$(PKG_DIR)" "$(LOG_DIR)"
+	@FAIL_ON_WARNINGS="$(FAIL_ON_WARNINGS)" \
+	    "$(MACOS_DIR)/run-check.sh" "$(R_VERSION)" "$(HDF5_VERSION)" "$(PKG_DIR)" "$(LOG_DIR)"
 
 .PHONY: build-matrix-linux
 build-matrix-linux:

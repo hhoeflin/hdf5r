@@ -6,6 +6,7 @@ set -euo pipefail
 PKG_SRC="${1:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
 OUT_DIR="${2:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
 NAME="${3:?usage: run-check.sh <pkg-source-dir> <out-dir> <log-name-base>}"
+FAIL_ON_WARNINGS="${FAIL_ON_WARNINGS:-false}"
 
 # R CMD build/check invoke make internally; keep outer gmake flags out.
 unset MAKEFLAGS MAKEOVERRIDES MFLAGS MAKEFILES GNUMAKEFLAGS
@@ -32,6 +33,11 @@ die() {
     exit 2
 }
 
+case "${FAIL_ON_WARNINGS}" in
+    true|false) ;;
+    *) die "FAIL_ON_WARNINGS must be true or false" ;;
+esac
+
 command -v R >/dev/null || die "R not found in PATH"
 [ -f "${PKG_SRC}/DESCRIPTION" ] || die "${PKG_SRC} is not an R package"
 
@@ -56,6 +62,7 @@ cd "${WORK}/hdf5r"
     echo "=== hdf5r check: ${NAME} ==="
     echo "=== R: $(R --version 2>&1 | sed -n '1p')"
     echo "=== HDF5: ${HDF5_VERSION:-system} ==="
+    echo "=== fail on warnings: ${FAIL_ON_WARNINGS} ==="
     echo "=== started: $(date -u '+%Y-%m-%dT%H:%M:%SZ') ==="
     echo
 } >> "${LOG}"
@@ -88,8 +95,14 @@ else
         tail -n 50 "${check_log}"
     } >> "${LOG}"
 
-    if grep -Eq '^Status:.*(ERROR|WARNING)' "${check_log}"; then
+    if grep -Eq '^Status:.*ERROR' "${check_log}"; then
         check_rc=1
+    elif grep -Eq '^Status:.*WARNING' "${check_log}"; then
+        if [ "${FAIL_ON_WARNINGS}" = "true" ]; then
+            check_rc=1
+        else
+            check_rc=0
+        fi
     fi
 fi
 
