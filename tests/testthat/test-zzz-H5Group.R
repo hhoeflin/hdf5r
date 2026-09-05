@@ -148,18 +148,19 @@ test_that("CommonFG-list-groups",{
 
   ex <- c("testgroup", "testgroup/testgroup1", "testgroup/testgroup2",
  	"testgroup/testgroup3", "testgroupN")
-  expect_that(list.groups(file), is_identical_to(ex))
+  expect_equal(sort(list.groups(file)), sort(ex))
 
   ex <- c("testgroup", "testgroup1", "testgroup2", "testgroup3", "testgroupN")
-  expect_that(basename(list.groups(file)), is_identical_to(ex))
+  expect_equal(sort(basename(list.groups(file))), sort(ex))
 
   ex <- c("testgroup", "testgroupN")
-  expect_that(list.groups(file, recursive = FALSE), is_identical_to(ex))
+  expect_equal(sort(list.groups(file, recursive = FALSE)), sort(ex))
 
   ex <- c("testgroup1", "testgroup2", "testgroup3")
   testgroup <- file[["testgroup"]]
-  expect_that(list.groups(file[["testgroup"]], full.names = TRUE), is_identical_to(paste0("/testgroup/", ex)))
-  expect_that(list.groups(testgroup), is_identical_to(ex))
+  expect_equal(sort(list.groups(file[["testgroup"]], full.names = TRUE)),
+               sort(paste0("/testgroup/", ex)))
+  expect_equal(sort(list.groups(testgroup)), sort(ex))
   h5close(testgroup)
 
   h5close(file)

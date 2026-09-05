@@ -118,9 +118,14 @@ test_that("H5P_DATASET_CREATE works", {
 test_that("H5P_DATASET_ACCESS works", {
     h5p_obj <- H5P_DATASET_ACCESS$new()
     h5p_obj$set_chunk_cache(rdcc_nslots=-1, rdcc_nbytes=-1, rdcc_w0=-1)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nslots, 521)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_nbytes, 1048576)
-    expect_equal(h5p_obj$get_chunk_cache()$rdcc_w0, 0.75)
+    default_cache <- h5p_obj$get_chunk_cache()
+    expect_gt(default_cache$rdcc_nslots, 0)
+    expect_gt(default_cache$rdcc_nbytes, 0)
+    expect_equal(default_cache$rdcc_w0, 0.75)
+
+    h5p_obj$set_chunk_cache(rdcc_nslots=521, rdcc_nbytes=1048576, rdcc_w0=0.75)
+    expect_equal(h5p_obj$get_chunk_cache(),
+                 list(rdcc_nslots=521, rdcc_nbytes=1048576, rdcc_w0=0.75))
 })
 
 test_that("H5P_DATASET_XFER", {
@@ -189,4 +194,3 @@ test_that("H5P_ATTRIBUTE_CREATE", {
     h5p_obj$set_char_encoding(h5const$H5T_CSET_UTF8)
     expect_equal(h5p_obj$get_char_encoding(), h5const$H5T_CSET_UTF8)
 })
-

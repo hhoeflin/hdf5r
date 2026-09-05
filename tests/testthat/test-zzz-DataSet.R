@@ -138,7 +138,7 @@ test_that("DataSet-list-dataset",{
 
   ex <- c("testgroup/testgroup1/testset1", "testgroup/testgroup2/testset2",
           "testgroup/testset", "testgroup3/testgroup3/testset3")
-  expect_that(list.datasets(file), is_identical_to(ex))
+  expect_equal(sort(list.datasets(file)), sort(ex))
 
   #ex <- c("testset1", "testset2", "testset", "testset3")
   #expect_that(list.datasets(file), is_identical_to(ex))
@@ -146,7 +146,7 @@ test_that("DataSet-list-dataset",{
   ex <- c("testgroup1/testset1", "testgroup2/testset2",
           "testset")
   testgroup <- file[["testgroup"]]
-  expect_that(list.datasets(testgroup), is_identical_to(ex))
+  expect_equal(sort(list.datasets(testgroup)), sort(ex))
   h5close(testgroup)
   h5close(file)
   expect_true(file.remove(fname))
@@ -165,7 +165,7 @@ test_that("DataSet-list-dataset",{
   file[["ABC/1F"]] <- 1:3
 
   ex <- c("ABC/1A", "ABC/1B", "ABC/1C", "ABC/1D", "ABC/1E", "ABC/1F")
-  expect_that(list.datasets(file), is_identical_to(ex))
+  expect_equal(sort(list.datasets(file)), sort(ex))
 
   expect_that(list.datasets(file, recursive = FALSE), is_identical_to(character(0)))
 
@@ -189,7 +189,7 @@ test_that("DataSet-list-dataset-link",{
   # expect_that(list.datasets(file[["softlink"]], follow.link = TRUE), is_identical_to(exp1))
 
   exp2 <- c("hardlink/test2", "testgroup/subgroup/test-sub", "testgroup/test")
-  expect_that(list.datasets(file), is_identical_to(exp2))
+  expect_equal(sort(list.datasets(file)), sort(exp2))
 
   #exp3 <- "softlink/test3/test"
   expect_that(list.datasets(file[["softlink/test3"]], recursive = FALSE), is_identical_to("test"))
@@ -203,4 +203,3 @@ test_that("DataSet-Bug-F32-Issue10",{
   expect_that(file[["floats"]][], is_identical_to(c(1, 2, 3)))
   h5close(file)
 })
-

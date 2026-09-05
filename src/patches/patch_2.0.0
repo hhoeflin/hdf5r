@@ -9,6 +9,28 @@
    SEXP R_return_val= R_NilValue;
    R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
    vars_protected++;
+--- a/src/Wrapper_auto_H5P.c
++++ b/src/Wrapper_auto_H5P.c
+@@ -1507,9 +1507,9 @@
+-  off_t* offset;
++  HDoff_t* offset;
+   if(XLENGTH(R_offset) == 0) {
+     offset = NULL;
+   }
+   else {
+-    R_helper = PROTECT(RToH5(R_offset, h5_datatype[DT_off_t], XLENGTH(R_offset)));
+-    offset= (off_t*) VOIDPTR(R_helper);
++    R_helper = PROTECT(RToH5(R_offset, h5_datatype[DT_int64_t], XLENGTH(R_offset)));
++    offset= (HDoff_t*) VOIDPTR(R_helper);
+     vars_protected++;
+   }
+--- a/src/Wrapper_auto_H5P.c
++++ b/src/Wrapper_auto_H5P.c
+@@ -1537,2 +1537,2 @@
+-  size_helper = guess_nelem(R_offset, h5_datatype[DT_off_t]);
+-  R_offset = PROTECT(H5ToR_single_step(offset, h5_datatype[DT_off_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
++  size_helper = guess_nelem(R_offset, h5_datatype[DT_int64_t]);
++  R_offset = PROTECT(H5ToR_single_step(offset, h5_datatype[DT_int64_t], size_helper, H5TOR_CONV_INT64_NOLOSS));
 --- a/src/Wrapper_auto_H5FDlog.c
 +++ b/src/Wrapper_auto_H5FDlog.c
 @@ -20,7 +20,7 @@
