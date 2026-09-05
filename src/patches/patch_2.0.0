@@ -1,0 +1,44 @@
+--- a/src/Wrapper_auto_H5FDfamily.c
++++ b/src/Wrapper_auto_H5FDfamily.c
+@@ -20,7 +20,7 @@
+ /* H5_DLL hid_t H5FD_family_init(void); */
+ SEXP R_H5FD_family_init(void){
+   int vars_protected=0;
+-  hid_t return_val = H5FD_family_init();
++  hid_t return_val = H5FD_FAMILY;
+   SEXP R_return_val= R_NilValue;
+   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+   vars_protected++;
+--- a/src/Wrapper_auto_H5FDlog.c
++++ b/src/Wrapper_auto_H5FDlog.c
+@@ -20,7 +20,7 @@
+ /* H5_DLL hid_t H5FD_log_init(void); */
+ SEXP R_H5FD_log_init(void){
+   int vars_protected=0;
+-  hid_t return_val = H5FD_log_init();
++  hid_t return_val = H5FD_LOG;
+   SEXP R_return_val= R_NilValue;
+   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+   vars_protected++;
+--- a/src/Wrapper_auto_H5FDsec2.c
++++ b/src/Wrapper_auto_H5FDsec2.c
+@@ -20,7 +20,7 @@
+ /* H5_DLL hid_t H5FD_sec2_init(void); */
+ SEXP R_H5FD_sec2_init(void){
+   int vars_protected=0;
+-  hid_t return_val = H5FD_sec2_init();
++  hid_t return_val = H5FD_SEC2;
+   SEXP R_return_val= R_NilValue;
+   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+   vars_protected++;
+--- a/src/Wrapper_auto_H5FDstdio.c
++++ b/src/Wrapper_auto_H5FDstdio.c
+@@ -20,7 +20,7 @@
+ /* H5_DLL hid_t H5FD_stdio_init(void); */
+ SEXP R_H5FD_stdio_init(void){
+   int vars_protected=0;
+-  hid_t return_val = H5FD_stdio_init();
++  hid_t return_val = H5FD_STDIO;
+   SEXP R_return_val= R_NilValue;
+   R_return_val = PROTECT(ScalarInteger64_or_int(return_val));
+   vars_protected++;
