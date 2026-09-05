@@ -22,13 +22,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Toolchain + libraries required to build R from source
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        bash ca-certificates curl wget perl make m4 \
+        bash ca-certificates curl wget perl make m4 autoconf automake devscripts \
         gcc g++ gfortran \
         libreadline-dev libx11-dev libxt-dev libcairo2-dev \
         zlib1g-dev libbz2-dev liblzma-dev libpcre2-dev \
         libcurl4-openssl-dev libssl-dev libicu-dev \
         libblas-dev liblapack-dev \
         git rsync \
+    && command -v autoreconf \
+    && command -v aclocal \
+    && command -v checkbashisms \
     && rm -rf /var/lib/apt/lists/*
 
 # R-devel is fetched from SVN trunk

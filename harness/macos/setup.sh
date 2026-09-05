@@ -2,7 +2,8 @@
 # One-time macOS setup for the hdf5r test harness.
 #
 # Installs everything needed to build R/HDF5 and run `R CMD check --as-cran`:
-#   formulas: make (gmake), pandoc, qpdf
+#   formulas: make (gmake), autoconf, automake, checkbashisms, pandoc, qpdf,
+#             pkgconf, freetype, harfbuzz, fribidi
 #   casks:    basictex (pdflatex), temurin (Java)
 #
 # The TeX and Java installers require your admin password (Homebrew will
@@ -14,7 +15,7 @@ die() { echo "setup.sh: ERROR: $*" >&2; exit 1; }
 
 command -v brew >/dev/null || die "Homebrew required (see https://brew.sh)"
 
-for formula in make pandoc qpdf; do
+for formula in make autoconf automake checkbashisms pandoc qpdf pkgconf freetype harfbuzz fribidi; do
     brew list --formula "${formula}" >/dev/null 2>&1 || brew install "${formula}"
 done
 
@@ -29,7 +30,7 @@ sudo tlmgr update --self
 sudo tlmgr install inconsolata upquote
 
 log "verifying prerequisites"
-for command in gmake pandoc pdflatex qpdf; do
+for command in gmake autoreconf aclocal checkbashisms pandoc pdflatex qpdf; do
     command -v "${command}" >/dev/null \
         || die "${command} still not on PATH; open a new shell and retry"
 done

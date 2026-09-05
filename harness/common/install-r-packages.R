@@ -1,5 +1,7 @@
 # Install and verify the R packages needed by `R CMD check`.
 packages <- c(
+    "devtools",
+    "roxygen2",
     "R6",
     "bit64",
     "testthat",

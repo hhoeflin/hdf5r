@@ -68,8 +68,10 @@ Requirements:
 - Xcode Command Line Tools
 - Homebrew
 
-Run the one-time setup target. It installs GNU Make (`gmake`), `pandoc`,
-`qpdf`, BasicTeX (`pdflatex`), and a Java runtime (Temurin JDK). The TeX and
+Run the one-time setup target. It installs GNU Make (`gmake`), the autotools
+and shell-checking tools (`autoconf`, `automake`, `checkbashisms`), `pandoc`,
+`qpdf`, the text-shaping libraries (`pkgconf`, FreeType, HarfBuzz, and
+FriBidi), BasicTeX (`pdflatex`), and a Java runtime (Temurin JDK). The TeX and
 Java installers ask for your admin password:
 
 ```sh
@@ -110,6 +112,18 @@ Warnings are allowed by default. To make warnings fail the check:
 ```sh
 make check-macos R_VERSION=devel HDF5_VERSION=1.14.6 FAIL_ON_WARNINGS=true
 ```
+
+To run the repository's top-level CRAN build and check with the selected native
+installations, use the `HARNESS_*` variables from the repository root:
+
+```sh
+gmake check-cran HARNESS_R_VERSION=4.6.1 HARNESS_HDF5_VERSION=2.2.0
+```
+
+This uses the harness R, HDF5, and R library for every top-level R command.
+`R CMD build` is run without `--no-build-vignettes`, so the vignettes are built
+before `R CMD check --as-cran` runs. Build the selected installations first with
+`gmake build-macos R_VERSION=4.6.1 HDF5_VERSION=2.2.0` from `harness/`.
 
 ## Matrices
 

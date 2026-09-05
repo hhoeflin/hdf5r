@@ -21,7 +21,7 @@ xcode-select -p >/dev/null 2>&1 \
     || die "Xcode Command Line Tools required (run: xcode-select --install)"
 command -v brew >/dev/null || die "Homebrew required (see https://brew.sh)"
 
-brew_packages=(gcc pcre2 xz)
+brew_packages=(gcc pcre2 xz pkgconf autoconf automake checkbashisms freetype harfbuzz fribidi)
 if [ "${R_VERSION}" = "devel" ]; then
     brew_packages+=(subversion)
 fi
@@ -32,10 +32,15 @@ done
 GCC_PREFIX="$(brew --prefix gcc)"
 PCRE2_PREFIX="$(brew --prefix pcre2)"
 XZ_PREFIX="$(brew --prefix xz)"
+PKGCONF_PREFIX="$(brew --prefix pkgconf)"
+FREETYPE_PREFIX="$(brew --prefix freetype)"
+HARFBUZZ_PREFIX="$(brew --prefix harfbuzz)"
+FRIBIDI_PREFIX="$(brew --prefix fribidi)"
 export PATH="${GCC_PREFIX}/bin:${PATH}"
-export CPPFLAGS="-I${PCRE2_PREFIX}/include -I${XZ_PREFIX}/include ${CPPFLAGS:-}"
-export LDFLAGS="-L${PCRE2_PREFIX}/lib -L${XZ_PREFIX}/lib ${LDFLAGS:-}"
-export PKG_CONFIG_PATH="${PCRE2_PREFIX}/lib/pkgconfig:${XZ_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+export PATH="${PKGCONF_PREFIX}/bin:${PATH}"
+export CPPFLAGS="-I${PCRE2_PREFIX}/include -I${XZ_PREFIX}/include -I${FREETYPE_PREFIX}/include -I${HARFBUZZ_PREFIX}/include -I${FRIBIDI_PREFIX}/include ${CPPFLAGS:-}"
+export LDFLAGS="-L${PCRE2_PREFIX}/lib -L${XZ_PREFIX}/lib -L${FREETYPE_PREFIX}/lib -L${HARFBUZZ_PREFIX}/lib -L${FRIBIDI_PREFIX}/lib ${LDFLAGS:-}"
+export PKG_CONFIG_PATH="${PCRE2_PREFIX}/lib/pkgconfig:${XZ_PREFIX}/lib/pkgconfig:${FREETYPE_PREFIX}/lib/pkgconfig:${HARFBUZZ_PREFIX}/lib/pkgconfig:${FRIBIDI_PREFIX}/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
 
 gfortran=""
 for candidate in "${GCC_PREFIX}/bin/gfortran" "${GCC_PREFIX}"/bin/gfortran-*; do

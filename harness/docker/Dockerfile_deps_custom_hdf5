@@ -28,6 +28,10 @@ RUN apt-get update \
         python3-pip \
         patch \
         rsync \
+        pkg-config \
+        libfreetype6-dev \
+        libharfbuzz-dev \
+        libfribidi-dev \
         libuv1-dev \
         zlib1g-dev \
     && pip3 install --no-cache-dir --break-system-packages "cmake==${CMAKE_VERSION}" \
@@ -55,12 +59,9 @@ RUN if [ "${INSTALL_DOCS_DEPS}" = "true" ]; then \
             texlive-xetex \
             pandoc \
             libfontconfig1-dev \
-            libfreetype6-dev \
             libpng-dev \
             libtiff5-dev \
             libjpeg-dev \
-            libharfbuzz-dev \
-            libfribidi-dev \
         && rm -rf /var/lib/apt/lists/*; \
     fi
 
