@@ -10,7 +10,8 @@
 # Requires the base image hhoeflin/hdf5r-base-r:r<R_VERSION> (see Dockerfile_r_base).
 ARG R_VERSION
 ARG REGISTRY=hhoeflin
-FROM ${REGISTRY}/hdf5r-base-r:r${R_VERSION}
+ARG R_BASE_TAG=r${R_VERSION}
+FROM ${REGISTRY}/hdf5r-base-r:${R_BASE_TAG}
 
 ARG R_VERSION
 USER root
@@ -26,6 +27,8 @@ RUN apt-get update \
         libharfbuzz-dev \
         libfribidi-dev \
         libuv1-dev \
+        libxml2-dev \
+        libgit2-dev \
         libhdf5-dev \
     && rm -rf /var/lib/apt/lists/*
 

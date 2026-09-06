@@ -11,7 +11,8 @@
 # Requires the base image hhoeflin/hdf5r-base-r:r<R_VERSION> (see Dockerfile_r_base).
 ARG R_VERSION
 ARG REGISTRY=hhoeflin
-FROM ${REGISTRY}/hdf5r-base-r:r${R_VERSION}
+ARG R_BASE_TAG=r${R_VERSION}
+FROM ${REGISTRY}/hdf5r-base-r:${R_BASE_TAG}
 
 ARG R_VERSION
 ARG HDF5_VERSION
@@ -20,8 +21,7 @@ USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Debian bookworm's CMake is too old for HDF5 2.x. The pinned PyPI package
-# provides the same CMake release on amd64 and arm64.
+# Use a pinned CMake release for consistent HDF5 builds on amd64 and arm64.
 ARG CMAKE_VERSION=3.31.6
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -33,6 +33,8 @@ RUN apt-get update \
         libharfbuzz-dev \
         libfribidi-dev \
         libuv1-dev \
+        libxml2-dev \
+        libgit2-dev \
         zlib1g-dev \
     && pip3 install --no-cache-dir --break-system-packages "cmake==${CMAKE_VERSION}" \
     && cmake --version \

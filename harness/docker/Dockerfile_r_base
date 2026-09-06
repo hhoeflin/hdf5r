@@ -8,7 +8,7 @@
 #
 # R_VERSION: a CRAN release (e.g. 4.4.3, 4.5.1, 4.6.1) or "devel" (built from
 # SVN trunk).
-ARG BASE_IMAGE=debian:bookworm
+ARG BASE_IMAGE=debian:testing
 FROM ${BASE_IMAGE}
 
 ARG R_VERSION

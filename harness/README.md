@@ -33,7 +33,7 @@ cd harness
 make build-linux R_VERSION=4.6.1 HDF5_VERSION=2.2.0
 ```
 
-This builds two cached images in order:
+This builds two cached images in order, using `debian:testing`:
 
 1. `hhoeflin/hdf5r-base-r:r4.6.1`
 2. `hhoeflin/hdf5r-deps:r4.6.1-hdf5v2.2.0`
@@ -47,7 +47,8 @@ make check-linux R_VERSION=4.6.1 HDF5_VERSION=2.2.0
 The check does not build missing images. It prints the required build command
 and exits non-zero instead.
 
-To use Debian's system HDF5 package:
+To use Debian's system HDF5 package, which provides the serial library names
+used by the R checker:
 
 ```sh
 make build-linux R_VERSION=4.6.1 HDF5_VERSION=system
@@ -142,7 +143,8 @@ make check-matrix-macos
 only the check matrix, because both matrix sizes use the same native installs.
 
 The default matrix runs every HDF5 version on R 4.6.1, plus HDF5 2.2.0 on
-every R version. It contains 11 combinations.
+every R version, and Debian's system HDF5 on R 4.6.1. It contains 12
+combinations.
 
 Use `FULL=1` for all 35 combinations:
 

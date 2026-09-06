@@ -11,20 +11,23 @@ REGISTRY ?= hhoeflin
 INSTALL_DOCS_DEPS ?= true
 FAIL_ON_WARNINGS ?= false
 PLATFORM ?=
+LINUX_BASE_IMAGE ?= debian:testing
+LINUX_IMAGE_SUFFIX ?=
 MAKE_COMMAND := $(notdir $(MAKE))
 
 R_VERSIONS := 4.3.3 4.4.3 4.5.1 4.6.1 devel
 HDF5_VERSIONS := 1.8.23 1.10.11 1.12.3 1.14.6 2.0.0 2.1.1 2.2.0
 LATEST_R := 4.6.1
 LATEST_HDF5 := 2.2.0
+SYSTEM_HDF5 := system
 
 PKG_DIR := $(realpath ..)
 COMMON_DIR := $(CURDIR)/common
 MACOS_DIR := $(CURDIR)/macos
 LOG_DIR := $(CURDIR)/logs
 HDF5_TAG = $(if $(filter system System,$(HDF5_VERSION)),System,$(HDF5_VERSION))
-DEPS_IMAGE = $(REGISTRY)/hdf5r-deps:r$(R_VERSION)-hdf5v$(HDF5_TAG)
-LINUX_CHECK_NAME = linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)
+DEPS_IMAGE = $(REGISTRY)/hdf5r-deps:r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX)
+LINUX_CHECK_NAME = linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX)
 LINUX_CHECK_DIR = $(LOG_DIR)/check-$(LINUX_CHECK_NAME)
 
 define require_r
@@ -83,8 +86,8 @@ build-linux-r:
 	$(require_r)
 	@mkdir -p "$(LOG_DIR)"
 	@echo "==> building Linux R $(R_VERSION)"
-	@REGISTRY="$(REGISTRY)" PLATFORM="$(PLATFORM)" \
-	    docker/base-r/build.sh "$(R_VERSION)" 2>&1 | tee "$(LOG_DIR)/build-linux-r$(R_VERSION).log"
+	@REGISTRY="$(REGISTRY)" PLATFORM="$(PLATFORM)" BASE_IMAGE="$(LINUX_BASE_IMAGE)" IMAGE_SUFFIX="$(LINUX_IMAGE_SUFFIX)" \
+	    docker/base-r/build.sh "$(R_VERSION)" 2>&1 | tee "$(LOG_DIR)/build-linux-r$(R_VERSION)$(LINUX_IMAGE_SUFFIX).log"
 
 .PHONY: build-linux-deps
 build-linux-deps:
@@ -92,9 +95,9 @@ build-linux-deps:
 	$(require_hdf5)
 	@mkdir -p "$(LOG_DIR)"
 	@echo "==> building Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION) dependencies"
-	@REGISTRY="$(REGISTRY)" INSTALL_DOCS_DEPS="$(INSTALL_DOCS_DEPS)" PLATFORM="$(PLATFORM)" \
+	@REGISTRY="$(REGISTRY)" INSTALL_DOCS_DEPS="$(INSTALL_DOCS_DEPS)" PLATFORM="$(PLATFORM)" IMAGE_SUFFIX="$(LINUX_IMAGE_SUFFIX)" \
 	    docker/deps/build.sh "$(R_VERSION)" "$(HDF5_VERSION)" 2>&1 \
-	    | tee "$(LOG_DIR)/build-linux-r$(R_VERSION)-hdf5v$(HDF5_TAG).log"
+	    | tee "$(LOG_DIR)/build-linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX).log"
 
 .PHONY: build-linux
 build-linux:
@@ -172,6 +175,11 @@ check-macos:
 .PHONY: build-matrix-linux
 build-matrix-linux:
 	@failed=""
+	@if [ "$(FULL)" != "1" ]; then \
+	    if ! $(MAKE) --no-print-directory build-linux R_VERSION="$(LATEST_R)" HDF5_VERSION="$(SYSTEM_HDF5)"; then \
+	        failed="$${failed} r$(LATEST_R)-hdf5vSystem"; \
+	    fi; \
+	fi
 	@for combo in $$($(combo_list)); do \
 	    r="$${combo%%:*}"; h="$${combo##*:}"; \
 	    if ! $(MAKE) --no-print-directory build-linux R_VERSION="$${r}" HDF5_VERSION="$${h}"; then \
@@ -188,6 +196,11 @@ prepare-check-matrix-linux:
 .PHONY: check-matrix-linux
 check-matrix-linux: prepare-check-matrix-linux
 	@failed=""
+	@if [ "$(FULL)" != "1" ]; then \
+	    if ! $(MAKE) --no-print-directory check-linux R_VERSION="$(LATEST_R)" HDF5_VERSION="$(SYSTEM_HDF5)"; then \
+	        failed="$${failed} r$(LATEST_R)-hdf5vSystem"; \
+	    fi; \
+	fi
 	@for combo in $$($(combo_list)); do \
 	    r="$${combo%%:*}"; h="$${combo##*:}"; \
 	    if ! $(MAKE) --no-print-directory check-linux R_VERSION="$${r}" HDF5_VERSION="$${h}"; then \
