@@ -28,7 +28,6 @@
 ##' @field id Returns the id of the object as an integer
 ##' @export
 ##' @importFrom bit64 as.integer64
-##' @importFrom bit64 is.na.integer64
 ##' @author Holger Hoefling
 H5RefClass <- R6Class("H5RefClass",
                       public=list(
