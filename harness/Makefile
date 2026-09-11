@@ -16,16 +16,50 @@ LINUX_IMAGE_SUFFIX ?=
 MAKE_COMMAND := $(notdir $(MAKE))
 
 R_VERSIONS := 4.3.3 4.4.3 4.5.1 4.6.1 devel
-HDF5_VERSIONS := 1.8.23 1.10.11 1.12.3 1.14.6 2.0.0 2.1.1 2.2.0
-LATEST_R := 4.6.1
-LATEST_HDF5 := 2.2.0
-SYSTEM_HDF5 := system
+
+# Matrix entries are R:HDF5:build-system. HDF5 2.x always uses CMake; the
+# additional 1.14.6 CMake entry exercises the HDF5 wrapper configuration from
+# issue #246.
+HDF5_PROFILES := \
+	1.8.23:autotools \
+	1.10.11:autotools \
+	1.12.3:autotools \
+	1.14.6:autotools \
+	1.14.6:cmake \
+	2.0.0:cmake \
+	2.1.1:cmake \
+	2.2.0:cmake
+
+DEFAULT_COMBOS := \
+	4.6.1:system:system \
+	4.6.1:1.8.23:autotools \
+	4.6.1:1.10.11:autotools \
+	4.6.1:1.12.3:autotools \
+	4.6.1:1.14.6:autotools \
+	4.6.1:2.0.0:cmake \
+	4.6.1:2.1.1:cmake \
+	4.6.1:2.2.0:cmake \
+	4.3.3:2.2.0:cmake \
+	4.4.3:2.2.0:cmake \
+	4.5.1:2.2.0:cmake \
+	devel:2.2.0:cmake \
+	devel:1.14.6:cmake
+
+FULL_COMBOS := \
+	4.3.3:1.8.23:autotools 4.3.3:1.10.11:autotools 4.3.3:1.12.3:autotools 4.3.3:1.14.6:autotools 4.3.3:2.0.0:cmake 4.3.3:2.1.1:cmake 4.3.3:2.2.0:cmake \
+	4.4.3:1.8.23:autotools 4.4.3:1.10.11:autotools 4.4.3:1.12.3:autotools 4.4.3:1.14.6:autotools 4.4.3:2.0.0:cmake 4.4.3:2.1.1:cmake 4.4.3:2.2.0:cmake \
+	4.5.1:1.8.23:autotools 4.5.1:1.10.11:autotools 4.5.1:1.12.3:autotools 4.5.1:1.14.6:autotools 4.5.1:2.0.0:cmake 4.5.1:2.1.1:cmake 4.5.1:2.2.0:cmake \
+	4.6.1:1.8.23:autotools 4.6.1:1.10.11:autotools 4.6.1:1.12.3:autotools 4.6.1:1.14.6:autotools 4.6.1:2.0.0:cmake 4.6.1:2.1.1:cmake 4.6.1:2.2.0:cmake \
+	devel:1.8.23:autotools devel:1.10.11:autotools devel:1.12.3:autotools devel:1.14.6:autotools devel:1.14.6:cmake devel:2.0.0:cmake devel:2.1.1:cmake devel:2.2.0:cmake
 
 PKG_DIR := $(realpath ..)
 COMMON_DIR := $(CURDIR)/common
 MACOS_DIR := $(CURDIR)/macos
 LOG_DIR := $(CURDIR)/logs
-HDF5_TAG = $(if $(filter system System,$(HDF5_VERSION)),System,$(HDF5_VERSION))
+HDF5_BUILD_SYSTEM ?= auto
+HDF5_BUILD_SYSTEM_EFFECTIVE = $(if $(filter system System,$(HDF5_VERSION)),system,$(if $(filter auto,$(HDF5_BUILD_SYSTEM)),$(if $(filter 2.%,$(HDF5_VERSION)),cmake,autotools),$(HDF5_BUILD_SYSTEM)))
+HDF5_CMAKE_SUFFIX = $(if $(filter 1.%,$(HDF5_VERSION)),$(if $(filter cmake,$(HDF5_BUILD_SYSTEM_EFFECTIVE)),-cmake,))
+HDF5_TAG = $(if $(filter system,$(HDF5_BUILD_SYSTEM_EFFECTIVE)),System,$(HDF5_VERSION)$(HDF5_CMAKE_SUFFIX))
 DEPS_IMAGE = $(REGISTRY)/hdf5r-deps:r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX)
 LINUX_CHECK_NAME = linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX)
 LINUX_CHECK_DIR = $(LOG_DIR)/check-$(LINUX_CHECK_NAME)
@@ -41,18 +75,10 @@ endef
 define require_safe_versions
 	@case "$(R_VERSION)" in *[!A-Za-z0-9_.-]*|'') echo "ERROR: R_VERSION contains unsafe characters" >&2; exit 2;; esac
 	@case "$(HDF5_VERSION)" in *[!A-Za-z0-9_.-]*|'') echo "ERROR: HDF5_VERSION contains unsafe characters" >&2; exit 2;; esac
+	@case "$(HDF5_BUILD_SYSTEM_EFFECTIVE)" in autotools|cmake|system) ;; *) echo "ERROR: unsupported HDF5 build system" >&2; exit 2;; esac
 endef
 
-# Default matrix: every HDF5 on the latest R, plus the latest HDF5 on every R.
-# FULL=1 selects the complete cross product.
-define combo_list
-	if [ "$(FULL)" = "1" ]; then \
-	    for r in $(R_VERSIONS); do for h in $(HDF5_VERSIONS); do echo "$${r}:$${h}"; done; done; \
-	else \
-	    { for h in $(HDF5_VERSIONS); do echo "$(LATEST_R):$${h}"; done; \
-	      for r in $(R_VERSIONS); do echo "$${r}:$(LATEST_HDF5)"; done; } | sort -u; \
-	fi
-endef
+combo_list = $(if $(filter 1,$(FULL)),$(FULL_COMBOS),$(DEFAULT_COMBOS))
 
 .PHONY: help
 help:
@@ -64,6 +90,8 @@ help:
 	@echo "Single combination:"
 	@echo "  $(MAKE_COMMAND) build-linux R_VERSION=4.6.1 HDF5_VERSION=2.2.0"
 	@echo "  $(MAKE_COMMAND) check-linux R_VERSION=4.6.1 HDF5_VERSION=2.2.0"
+	@echo "  $(MAKE_COMMAND) build-linux R_VERSION=devel HDF5_VERSION=1.14.6 HDF5_BUILD_SYSTEM=cmake"
+	@echo "  $(MAKE_COMMAND) check-linux R_VERSION=devel HDF5_VERSION=1.14.6 HDF5_BUILD_SYSTEM=cmake"
 	@echo "  $(MAKE_COMMAND) build-macos R_VERSION=4.6.1 HDF5_VERSION=2.2.0"
 	@echo "  $(MAKE_COMMAND) check-macos R_VERSION=4.6.1 HDF5_VERSION=2.2.0"
 	@echo
@@ -79,7 +107,7 @@ help:
 	@echo "  $(MAKE_COMMAND) summary [PLATFORM=linux|macos]"
 	@echo
 	@echo "R versions:    $(R_VERSIONS)"
-	@echo "HDF5 versions: $(HDF5_VERSIONS) (Linux also accepts HDF5_VERSION=system)"
+	@echo "HDF5 profiles: $(HDF5_PROFILES) (Linux also accepts HDF5_VERSION=system)"
 
 .PHONY: build-linux-r
 build-linux-r:
@@ -94,8 +122,8 @@ build-linux-deps:
 	$(require_r)
 	$(require_hdf5)
 	@mkdir -p "$(LOG_DIR)"
-	@echo "==> building Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION) dependencies"
-	@REGISTRY="$(REGISTRY)" INSTALL_DOCS_DEPS="$(INSTALL_DOCS_DEPS)" PLATFORM="$(PLATFORM)" IMAGE_SUFFIX="$(LINUX_IMAGE_SUFFIX)" \
+	@echo "==> building Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION) ($(HDF5_BUILD_SYSTEM_EFFECTIVE)) dependencies"
+	@REGISTRY="$(REGISTRY)" INSTALL_DOCS_DEPS="$(INSTALL_DOCS_DEPS)" PLATFORM="$(PLATFORM)" IMAGE_SUFFIX="$(LINUX_IMAGE_SUFFIX)" HDF5_BUILD_SYSTEM="$(HDF5_BUILD_SYSTEM_EFFECTIVE)" \
 	    docker/deps/build.sh "$(R_VERSION)" "$(HDF5_VERSION)" 2>&1 \
 	    | tee "$(LOG_DIR)/build-linux-r$(R_VERSION)-hdf5v$(HDF5_TAG)$(LINUX_IMAGE_SUFFIX).log"
 
@@ -104,7 +132,7 @@ build-linux:
 	$(require_r)
 	$(require_hdf5)
 	@$(MAKE) --no-print-directory build-linux-r R_VERSION="$(R_VERSION)"
-	@$(MAKE) --no-print-directory build-linux-deps R_VERSION="$(R_VERSION)" HDF5_VERSION="$(HDF5_VERSION)"
+	@$(MAKE) --no-print-directory build-linux-deps R_VERSION="$(R_VERSION)" HDF5_VERSION="$(HDF5_VERSION)" HDF5_BUILD_SYSTEM="$(HDF5_BUILD_SYSTEM_EFFECTIVE)"
 
 .PHONY: check-linux
 check-linux:
@@ -117,12 +145,12 @@ check-linux:
 	@printf '%s\n' "=== hdf5r preflight: $(LINUX_CHECK_NAME) ===" > "$(LINUX_CHECK_DIR)/preflight.log"
 	@printf '%s\n' "=== started: $$(date -u '+%Y-%m-%dT%H:%M:%SZ') ===" >> "$(LINUX_CHECK_DIR)/preflight.log"
 	@mkdir -p "$(LOG_DIR)"
-	@echo "==> checking Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
+	@echo "==> checking Linux R $(R_VERSION) / HDF5 $(HDF5_VERSION) ($(HDF5_BUILD_SYSTEM_EFFECTIVE))"
 	@status="$(LINUX_CHECK_DIR)/status"
 	@if ! docker image inspect "$(DEPS_IMAGE)" >/dev/null 2>&1; then \
 	    echo FAIL > "$${status}"; \
 	    { echo "ERROR: missing image $(DEPS_IMAGE)"; \
-	      echo "Build it with: $(MAKE_COMMAND) build-linux R_VERSION=$(R_VERSION) HDF5_VERSION=$(HDF5_VERSION)"; \
+	      echo "Build it with: $(MAKE_COMMAND) build-linux R_VERSION=$(R_VERSION) HDF5_VERSION=$(HDF5_VERSION) HDF5_BUILD_SYSTEM=$(HDF5_BUILD_SYSTEM_EFFECTIVE)"; \
 	    } | tee -a "$(LINUX_CHECK_DIR)/preflight.log" >&2; \
 	    exit 2; \
 	fi
@@ -131,6 +159,7 @@ check-linux:
 	    -v "$(COMMON_DIR):/opt/scripts:ro" \
 	    -v "$(LINUX_CHECK_DIR):/out" \
 	    -e "HDF5_VERSION=$(HDF5_VERSION)" \
+	    -e "HDF5_BUILD_SYSTEM=$(HDF5_BUILD_SYSTEM_EFFECTIVE)" \
 	    -e "FAIL_ON_WARNINGS=$(FAIL_ON_WARNINGS)" \
 	    "$(DEPS_IMAGE)" \
 	    bash /opt/scripts/run-check.sh /pkg /out "$(LINUX_CHECK_NAME)" \
@@ -153,14 +182,14 @@ build-macos-r:
 .PHONY: build-macos-hdf5
 build-macos-hdf5:
 	$(require_hdf5)
-	@"$(MACOS_DIR)/build-hdf5.sh" "$(HDF5_VERSION)"
+	@"$(MACOS_DIR)/build-hdf5.sh" "$(HDF5_VERSION)" "$(HDF5_BUILD_SYSTEM_EFFECTIVE)"
 
 .PHONY: build-macos
 build-macos:
 	$(require_r)
 	$(require_hdf5)
 	@$(MAKE) --no-print-directory build-macos-r R_VERSION="$(R_VERSION)"
-	@$(MAKE) --no-print-directory build-macos-hdf5 HDF5_VERSION="$(HDF5_VERSION)"
+	@$(MAKE) --no-print-directory build-macos-hdf5 HDF5_VERSION="$(HDF5_VERSION)" HDF5_BUILD_SYSTEM="$(HDF5_BUILD_SYSTEM_EFFECTIVE)"
 
 .PHONY: check-macos
 check-macos:
@@ -168,22 +197,17 @@ check-macos:
 	$(require_hdf5)
 	$(require_safe_versions)
 	@mkdir -p "$(LOG_DIR)"
-	@echo "==> checking macOS R $(R_VERSION) / HDF5 $(HDF5_VERSION)"
+	@echo "==> checking macOS R $(R_VERSION) / HDF5 $(HDF5_VERSION) ($(HDF5_BUILD_SYSTEM_EFFECTIVE))"
 	@FAIL_ON_WARNINGS="$(FAIL_ON_WARNINGS)" \
-	    "$(MACOS_DIR)/run-check.sh" "$(R_VERSION)" "$(HDF5_VERSION)" "$(PKG_DIR)" "$(LOG_DIR)"
+	    "$(MACOS_DIR)/run-check.sh" "$(R_VERSION)" "$(HDF5_VERSION)" "$(HDF5_BUILD_SYSTEM_EFFECTIVE)" "$(PKG_DIR)" "$(LOG_DIR)"
 
 .PHONY: build-matrix-linux
 build-matrix-linux:
 	@failed=""
-	@if [ "$(FULL)" != "1" ]; then \
-	    if ! $(MAKE) --no-print-directory build-linux R_VERSION="$(LATEST_R)" HDF5_VERSION="$(SYSTEM_HDF5)"; then \
-	        failed="$${failed} r$(LATEST_R)-hdf5vSystem"; \
-	    fi; \
-	fi
-	@for combo in $$($(combo_list)); do \
-	    r="$${combo%%:*}"; h="$${combo##*:}"; \
-	    if ! $(MAKE) --no-print-directory build-linux R_VERSION="$${r}" HDF5_VERSION="$${h}"; then \
-	        failed="$${failed} r$${r}-hdf5v$${h}"; \
+	@for combo in $(combo_list); do \
+	    IFS=: read -r r h build_system <<< "$${combo}"; \
+	    if ! $(MAKE) --no-print-directory build-linux R_VERSION="$${r}" HDF5_VERSION="$${h}" HDF5_BUILD_SYSTEM="$${build_system}"; then \
+	        failed="$${failed} r$${r}-hdf5v$${h}-$${build_system}"; \
 	    fi; \
 	done
 	@if [ -n "$${failed}" ]; then echo "FAILED BUILDS:$${failed}"; exit 1; fi
@@ -196,15 +220,10 @@ prepare-check-matrix-linux:
 .PHONY: check-matrix-linux
 check-matrix-linux: prepare-check-matrix-linux
 	@failed=""
-	@if [ "$(FULL)" != "1" ]; then \
-	    if ! $(MAKE) --no-print-directory check-linux R_VERSION="$(LATEST_R)" HDF5_VERSION="$(SYSTEM_HDF5)"; then \
-	        failed="$${failed} r$(LATEST_R)-hdf5vSystem"; \
-	    fi; \
-	fi
-	@for combo in $$($(combo_list)); do \
-	    r="$${combo%%:*}"; h="$${combo##*:}"; \
-	    if ! $(MAKE) --no-print-directory check-linux R_VERSION="$${r}" HDF5_VERSION="$${h}"; then \
-	        failed="$${failed} r$${r}-hdf5v$${h}"; \
+	@for combo in $(combo_list); do \
+	    IFS=: read -r r h build_system <<< "$${combo}"; \
+	    if ! $(MAKE) --no-print-directory check-linux R_VERSION="$${r}" HDF5_VERSION="$${h}" HDF5_BUILD_SYSTEM="$${build_system}"; then \
+	        failed="$${failed} r$${r}-hdf5v$${h}-$${build_system}"; \
 	    fi; \
 	done
 	@$(MAKE) --no-print-directory summary PLATFORM=linux
@@ -218,9 +237,10 @@ build-matrix-macos:
 	        failed="$${failed} r$${r}"; \
 	    fi; \
 	done
-	@for h in $(HDF5_VERSIONS); do \
-	    if ! $(MAKE) --no-print-directory build-macos-hdf5 HDF5_VERSION="$${h}"; then \
-	        failed="$${failed} hdf5v$${h}"; \
+	@for profile in $(HDF5_PROFILES); do \
+	    IFS=: read -r h build_system <<< "$${profile}"; \
+	    if ! $(MAKE) --no-print-directory build-macos-hdf5 HDF5_VERSION="$${h}" HDF5_BUILD_SYSTEM="$${build_system}"; then \
+	        failed="$${failed} hdf5v$${h}-$${build_system}"; \
 	    fi; \
 	done
 	@if [ -n "$${failed}" ]; then echo "FAILED BUILDS:$${failed}"; exit 1; fi
@@ -233,10 +253,10 @@ prepare-check-matrix-macos:
 .PHONY: check-matrix-macos
 check-matrix-macos: prepare-check-matrix-macos
 	@failed=""
-	@for combo in $$($(combo_list)); do \
-	    r="$${combo%%:*}"; h="$${combo##*:}"; \
-	    if ! $(MAKE) --no-print-directory check-macos R_VERSION="$${r}" HDF5_VERSION="$${h}"; then \
-	        failed="$${failed} r$${r}-hdf5v$${h}"; \
+	@for combo in $(combo_list); do \
+	    IFS=: read -r r h build_system <<< "$${combo}"; \
+	    if ! $(MAKE) --no-print-directory check-macos R_VERSION="$${r}" HDF5_VERSION="$${h}" HDF5_BUILD_SYSTEM="$${build_system}"; then \
+	        failed="$${failed} r$${r}-hdf5v$${h}-$${build_system}"; \
 	    fi; \
 	done
 	@$(MAKE) --no-print-directory summary PLATFORM=macos

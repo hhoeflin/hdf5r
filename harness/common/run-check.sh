@@ -60,7 +60,7 @@ cd "${WORK}"
 {
     echo "=== hdf5r check: ${NAME} ==="
     echo "=== R: $(R --version 2>&1 | sed -n '1p')"
-    echo "=== HDF5: ${HDF5_VERSION:-system} ==="
+    echo "=== HDF5: ${HDF5_VERSION:-system} (${HDF5_BUILD_SYSTEM:-auto}) ==="
     echo "=== fail on warnings: ${FAIL_ON_WARNINGS} ==="
     echo "=== started: $(date -u '+%Y-%m-%dT%H:%M:%SZ') ==="
     echo

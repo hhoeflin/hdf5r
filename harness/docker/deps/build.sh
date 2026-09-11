@@ -7,6 +7,7 @@ HDF5_VERSION="${2:?usage: build.sh <R_VERSION> <HDF5_VERSION|system>}"
 REGISTRY="${REGISTRY:-hhoeflin}"
 INSTALL_DOCS_DEPS="${INSTALL_DOCS_DEPS:-true}"
 IMAGE_SUFFIX="${IMAGE_SUFFIX:-}"
+HDF5_BUILD_SYSTEM="${HDF5_BUILD_SYSTEM:-auto}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HARNESS_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
@@ -28,8 +29,15 @@ case "${HDF5_VERSION}" in
         ;;
     *)
         dockerfile="${HARNESS_DIR}/docker/Dockerfile_deps_custom_hdf5"
-        tag="${REGISTRY}/hdf5r-deps:r${R_VERSION}-hdf5v${HDF5_VERSION}${IMAGE_SUFFIX}"
-        common_args+=(--build-arg "HDF5_VERSION=${HDF5_VERSION}")
+        if [ "${HDF5_BUILD_SYSTEM}" = "cmake" ] && [[ "${HDF5_VERSION}" == 1.* ]]; then
+            tag="${REGISTRY}/hdf5r-deps:r${R_VERSION}-hdf5v${HDF5_VERSION}-cmake${IMAGE_SUFFIX}"
+        else
+            tag="${REGISTRY}/hdf5r-deps:r${R_VERSION}-hdf5v${HDF5_VERSION}${IMAGE_SUFFIX}"
+        fi
+        common_args+=(
+            --build-arg "HDF5_VERSION=${HDF5_VERSION}"
+            --build-arg "HDF5_BUILD_SYSTEM=${HDF5_BUILD_SYSTEM}"
+        )
         ;;
 esac
 

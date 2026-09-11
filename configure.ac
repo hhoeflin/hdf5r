@@ -157,6 +157,30 @@ HDF5_CPPFLAGS=`${H5CC} -show -c myconftest.c | ${GREP} -o "\-I[^[:space:]]\+" | 
 ]
 rm -f myconftest.c
 
+dnl h5cc may omit the high-level library for CMake-built HDF5 installations.
+dnl Probe the table API used by hdf5r with the selected HDF5 flags.
+AC_LANG_PUSH([C])
+hdf5r_save_LIBS="$LIBS"
+hdf5r_save_CPPFLAGS="$CPPFLAGS"
+LIBS="$HDF5_LIBS $LIBS"
+CPPFLAGS="$HDF5_CPPFLAGS $CPPFLAGS"
+
+AC_SEARCH_LIBS(
+  [H5TBwrite_fields_index],
+  [hdf5_hl hdf5_serial_hl],
+  [],
+  [AC_MSG_ERROR([Cannot link the HDF5 high-level library])]
+)
+
+AS_CASE([$ac_cv_search_H5TBwrite_fields_index],
+  ["none required"], [],
+  [HDF5_LIBS="$ac_cv_search_H5TBwrite_fields_index $HDF5_LIBS"]
+)
+
+LIBS="$hdf5r_save_LIBS"
+CPPFLAGS="$hdf5r_save_CPPFLAGS"
+AC_LANG_POP([C])
+
 
 dnl dummy substitute HDF5R_CFLAGS
 HDF5_CFLAGS=""

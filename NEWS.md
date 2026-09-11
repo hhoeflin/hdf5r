@@ -1,3 +1,7 @@
+# hdf5r 1.3.16
+
+- Fix configuration with CMake-built HDF5 installations that omit the high-level library from `h5cc`.
+
 # hdf5r 1.3.15
 
 - Fix configuration with Debian HDF5 installations that use serial library names.

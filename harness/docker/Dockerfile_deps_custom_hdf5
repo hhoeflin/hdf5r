@@ -16,6 +16,7 @@ FROM ${REGISTRY}/hdf5r-base-r:${R_BASE_TAG}
 
 ARG R_VERSION
 ARG HDF5_VERSION
+ARG HDF5_BUILD_SYSTEM=auto
 
 USER root
 
@@ -80,6 +81,7 @@ RUN mkdir -p "${R_LIBS_USER}" \
 COPY common/compile-hdf5.sh /tmp/compile-hdf5.sh
 RUN chmod +x /tmp/compile-hdf5.sh \
     && /tmp/compile-hdf5.sh "${HDF5_VERSION}" "/opt/hdf5/${HDF5_VERSION}" \
+        "$(nproc)" "${HDF5_BUILD_SYSTEM}" \
     && rm /tmp/compile-hdf5.sh
 
 ENV HDF5_ROOT="/opt/hdf5/${HDF5_VERSION}" \

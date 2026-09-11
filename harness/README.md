@@ -1,6 +1,7 @@
 # hdf5r test harness
 
-This directory tests hdf5r against multiple R and HDF5 versions.
+This directory tests hdf5r against multiple R and HDF5 versions and build
+systems.
 
 - Linux uses Docker.
 - macOS uses native source builds under `harness/installs/`.
@@ -17,7 +18,12 @@ Run `make help` to see the command summary. On macOS, use `gmake` in place of
 The matrix is defined once, near the top of `Makefile`.
 
 - R: 4.3.3, 4.4.3, 4.5.1, 4.6.1, devel
-- HDF5: 1.8.23, 1.10.11, 1.12.3, 1.14.6, 2.0.0, 2.1.1, 2.2.0
+- HDF5 profiles: 1.8.23/autotools, 1.10.11/autotools,
+  1.12.3/autotools, 1.14.6/autotools, 1.14.6/CMake, 2.0.0/CMake,
+  2.1.1/CMake, 2.2.0/CMake
+
+HDF5 2.x is always built with CMake. The additional `devel:1.14.6:cmake`
+combination reproduces the CMake-wrapper case from issue #246.
 
 The build scripts also accept versions outside this list.
 R-devel source builds are refreshed at most once per day.
@@ -42,6 +48,13 @@ Run its check separately:
 
 ```sh
 make check-linux R_VERSION=4.6.1 HDF5_VERSION=2.2.0
+```
+
+Run the CMake HDF5 1.14.6 regression combination:
+
+```sh
+make build-linux R_VERSION=devel HDF5_VERSION=1.14.6 HDF5_BUILD_SYSTEM=cmake
+make check-linux R_VERSION=devel HDF5_VERSION=1.14.6 HDF5_BUILD_SYSTEM=cmake
 ```
 
 The check does not build missing images. It prints the required build command
@@ -107,6 +120,9 @@ separately:
 make check-macos R_VERSION=4.6.1 HDF5_VERSION=2.2.0
 ```
 
+The CMake HDF5 1.14.6 regression combination is selected with
+`HDF5_BUILD_SYSTEM=cmake` in the same way as the Linux command above.
+
 The check uses only the selected R, HDF5, and harness-owned R library.
 
 Warnings are allowed by default. To make warnings fail the check:
@@ -142,11 +158,11 @@ make check-matrix-macos
 `build-matrix-macos` builds each R and HDF5 version once. `FULL=1` changes
 only the check matrix, because both matrix sizes use the same native installs.
 
-The default matrix runs every HDF5 version on R 4.6.1, plus HDF5 2.2.0 on
-every R version, and Debian's system HDF5 on R 4.6.1. It contains 12
-combinations.
+The default matrix is an explicit list of 13 combinations: every HDF5 profile
+on R 4.6.1, plus HDF5 2.2.0 on every R version, Debian's system HDF5 on R
+4.6.1, and the CMake HDF5 1.14.6 regression combination on R-devel.
 
-Use `FULL=1` for all 35 combinations:
+Use `FULL=1` for all 36 explicit combinations:
 
 ```sh
 make build-matrix-linux FULL=1
