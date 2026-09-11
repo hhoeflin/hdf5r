@@ -27,13 +27,13 @@ The package is compatible with HDF5 version 1.8.13 or higher (also Version 1.10.
 
 ## Requirements
 
-For OS X and Linux the HDF5 library needs to be installed via one of the (shell) commands specified below:
+For OS X and Linux the HDF5 as well as the patch library needs to be installed via one of the (shell) commands specified below:
 
 | System                                    | Command
 |:------------------------------------------|:---------------------------------|
 |**OS X (using Homebrew)**                  | `brew install hdf5`
-|**Debian-based systems (including Ubuntu)**| `sudo apt-get install libhdf5-dev`
-|**Systems supporting yum and RPMs**        | `sudo yum install hdf5-devel`
+|**Debian-based systems (including Ubuntu)**| `sudo apt-get install libhdf5-dev patch`
+|**Systems supporting yum and RPMs**        | `sudo yum install hdf5-devel patch`
 
 HDF5 1.8.14 has been pre-compiled for Windows and is available at https://github.com/mannau/h5-libwin - thus no manual installation is required.
 
